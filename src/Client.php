@@ -12,7 +12,6 @@ use SoapClient;
 
 class Client
 {
-	public $test;
 
     /**
      * @var SoapClient
