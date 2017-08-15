@@ -68,3 +68,4 @@ Temporary Items
 .idea/
 vendor/
 composer.lock
+experiments/
