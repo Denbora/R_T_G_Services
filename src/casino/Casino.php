@@ -36,7 +36,7 @@ class Casino implements CasinoInterface
             'endpoint' => 'MessageCenter.svc?WSDL',
         ],
         'Player' => [
-            'name' => 'MessageCenter',
+            'name' => 'Player',
             'class' => 'denbora\\R_T_G_Services\\casino\\PlayerService',
             'endpoint' => 'Player.svc?WSDL',
         ],
@@ -148,7 +148,7 @@ class Casino implements CasinoInterface
         //step1 validate existance of such service -> no? exception
 
         //step2 create soapclient -> no? exception
-        $soapClient = $this->createSoapClient();
+        $soapClient = $this->createSoapClient($serviceName);
 
         //step3 return Service
         if (!empty($this->serviceDescription[$serviceName]['class'])) {
