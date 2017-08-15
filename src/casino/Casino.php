@@ -36,7 +36,7 @@ class Casino implements CasinoInterface
             'endpoint' => 'MessageCenter.svc?WSDL',
         ],
         'Player' => [
-            'name' => 'MessageCenter',
+            'name' => 'Player',
             'class' => 'denbora\\R_T_G_Services\\casino\\PlayerService',
             'endpoint' => 'Player.svc?WSDL',
         ],
