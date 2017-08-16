@@ -123,6 +123,8 @@ class Casino implements CasinoInterface
     }
 
     /**
+     * Connects two parts $baseUrl and service endpoint, to create full url
+     *
      * @param string $serviceName
      * @return string
      * @throws R_T_G_ServiceException

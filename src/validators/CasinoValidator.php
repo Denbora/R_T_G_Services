@@ -12,6 +12,8 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 class CasinoValidator extends BaseValidator implements ValidatorInterface
 {
     /**
+     * Entry point for CasinoValidator, which call`s transferred method name
+     *
      * @param string $validatorName
      * @param mixed $data
      * @return bool
@@ -31,6 +33,8 @@ class CasinoValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
+     * validator for baseUrl
+     *
      * @param String $webServiceUrl
      * @return bool
      * @throws R_T_G_ServiceException
