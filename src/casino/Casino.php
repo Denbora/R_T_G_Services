@@ -4,6 +4,7 @@ namespace denbora\R_T_G_Services\casino;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\services\ServiceBase;
+use denbora\R_T_G_Services\validators\CasinoValidator;
 use SoapClient;
 
 /**
@@ -28,16 +29,19 @@ class Casino implements CasinoInterface
     private $password;
 
     /**
+     * @var /BaseValidator
+     */
+    private $validator;
+
+    /**
      * @var array
      */
     protected $serviceDescription = [
         'MessageCenter' => [
-            'name' => 'MessageCenter',
-            'class' => 'denbora\\R_T_G_Services\\casino\\MessageCenterService',
+            'class' => 'denbora\\R_T_G_Services\\services\\MessageCenterService',
             'endpoint' => 'MessageCenter.svc?WSDL',
         ],
         'Player' => [
-            'name' => 'Player',
             'class' => 'denbora\\R_T_G_Services\\services\\PlayerService',
             'endpoint' => 'Player.svc?WSDL',
         ],
@@ -54,7 +58,11 @@ class Casino implements CasinoInterface
      */
     public function __construct(string $baseWebServiceUrl, string $certFile, string $password)
     {
-        if ($this->validateBaseWebServiceUrl($baseWebServiceUrl)) {
+        $this->validator = new CasinoValidator();
+
+        // ToDo: create validator generator
+
+        if ($this->validator->call('baseWebServiceUrl', $baseWebServiceUrl)) {
             $this->baseWebServiceUrl = $baseWebServiceUrl;
         } else {
             throw new R_T_G_ServiceException('Base URL does not meet requirements');
@@ -69,15 +77,6 @@ class Casino implements CasinoInterface
         } else {
             throw new R_T_G_ServiceException('Password does not meet requirements');
         }
-    }
-
-    /**
-     * @param $baseWebServiceUrl string
-     * @return boolean
-     */
-    private function validateBaseWebServiceUrl($baseWebServiceUrl)
-    {
-        return true;
     }
 
     /**
@@ -124,10 +123,26 @@ class Casino implements CasinoInterface
     }
 
     /**
-     * @return \SoapClient
+     * Connects two parts $baseUrl and service endpoint, to create full url
+     *
+     * @param string $serviceName
+     * @return string
      * @throws R_T_G_ServiceException
      */
-    protected function createSoapClient()
+    private function createUrl(string $serviceName)
+    {
+        if (array_key_exists($serviceName, $this->serviceDescription)) {
+            return $this->baseWebServiceUrl . '/' . $this->serviceDescription[$serviceName]['endpoint'];
+        } else {
+            throw new R_T_G_ServiceException('Service ' . $serviceName . ' not found!');
+        }
+    }
+
+    /**
+     * @param String $serviceName
+     * @return SoapClient
+     */
+    protected function createSoapClient(String $serviceName)
     {
         $context = stream_context_create([
             'ssl' => [
@@ -137,6 +152,7 @@ class Casino implements CasinoInterface
             ]
         ]);
 
+        $webUrl = $this->createUrl($serviceName);
         $endpoint = $this->createEndpoint($this->baseWebServiceUrl);
 
         $soapclient_options = array(
@@ -151,7 +167,7 @@ class Casino implements CasinoInterface
         );
 
         try {
-            $soapClient = new SoapClient($this->baseWebServiceUrl, $soapclient_options);
+            $soapClient = new SoapClient($webUrl, $soapclient_options);
 
             return $soapClient;
         } catch (\Exception $e) {
@@ -205,13 +221,13 @@ class Casino implements CasinoInterface
         }
 
         //step2 create soapclient -> no? exception
-        $soapClient = $this->createSoapClient();
+        $soapClient = $this->createSoapClient($serviceName);
 
         //step3 return Service
         if (!empty($this->serviceDescription[$serviceName]['class'])) {
             $serviceClass = $this->serviceDescription[$serviceName]['class'];
         } else {
-            $serviceClass =  __NAMESPACE__ . '\\'. $serviceName . 'Service';
+            $serviceClass =  __NAMESPACE__ . '\\'. 'services' . '\\'. $serviceName . 'Service';
         }
         return new $serviceClass($soapClient);
     }
@@ -225,6 +241,6 @@ class Casino implements CasinoInterface
      */
     public function addService($serviceName, $serviceClass, $serviceEndPoint)
     {
-        // TODO: Implement addService() method.
+        // ToDo: Implement addService() method.
     }
 }
