@@ -225,5 +225,4 @@ class Casino implements CasinoInterface
 	public function setEndpoint( string $endpoint ) {
 		$this->endpoint = $endpoint;
 	}
-
 }
