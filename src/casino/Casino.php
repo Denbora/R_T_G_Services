@@ -4,6 +4,7 @@ namespace denbora\R_T_G_Services\casino;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\services\ServiceBase;
+use SoapClient;
 
 /**
  * Class Casino
@@ -37,17 +38,19 @@ class Casino implements CasinoInterface
         ],
         'Player' => [
             'name' => 'Player',
-            'class' => 'denbora\\R_T_G_Services\\casino\\PlayerService',
+            'class' => 'denbora\\R_T_G_Services\\services\\PlayerService',
             'endpoint' => 'Player.svc?WSDL',
         ],
     ];
 
     /**
      * Casino constructor.
+     *
      * @param $baseWebServiceUrl string
      * @param $certFile string
      * @param $password string
      * @throws R_T_G_ServiceException
+     *
      */
     public function __construct(string $baseWebServiceUrl, string $certFile, string $password)
     {
@@ -74,7 +77,7 @@ class Casino implements CasinoInterface
      */
     private function validateBaseWebServiceUrl($baseWebServiceUrl)
     {
-        //ToDo
+        return true;
     }
 
     /**
@@ -83,7 +86,7 @@ class Casino implements CasinoInterface
      */
     private function validateCertFile($certFile)
     {
-        //ToDO
+        return true;
     }
 
     /**
@@ -92,17 +95,69 @@ class Casino implements CasinoInterface
      */
     private function validatePassword($password)
     {
-        //ToDo
+        return true;
     }
 
     /**
      * @param $serviceName
+     *
+     * @return bool
+     */
+    private function validateService($serviceName)
+    {
+        return true;
+    }
+
+    /**
+     * Delete wsdl from webUrl, to create endpoint
+     *
+     * @param string $webServiceUrl
+     * @return string
+     */
+    private function createEndpoint(string $webServiceUrl) : string
+    {
+        $search = array('?wsdl', '?WSDL');
+
+        $endpoint = str_replace($search, "", $webServiceUrl);
+
+        return $endpoint;
+    }
+
+    /**
      * @return \SoapClient
      * @throws R_T_G_ServiceException
      */
-    protected function createSoapClient($serviceName)
+    protected function createSoapClient()
     {
-        //ToDo
+        $context = stream_context_create([
+            'ssl' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            ]
+        ]);
+
+        $endpoint = $this->createEndpoint($this->baseWebServiceUrl);
+
+        $soapclient_options = array(
+            'stream_context' => $context,
+            'location'       => $endpoint,
+            'keep_alive'     => true,
+            'trace'          => true,
+            'local_cert'     => $this->certFile,
+            'passphrase'     => $this->password,
+            'exceptions'     => true,
+            'cache_wsdl'     => WSDL_CACHE_NONE
+        );
+
+        try {
+            $soapClient = new SoapClient($this->baseWebServiceUrl, $soapclient_options);
+
+            return $soapClient;
+        } catch (\Exception $e) {
+            echo "<h2>Soap Client is not created</h2>";
+            echo $e->getMessage();
+        }
     }
 
     /**
@@ -144,11 +199,13 @@ class Casino implements CasinoInterface
      */
     public function getService(string $serviceName)
     {
-        // TODO: Implement getService() method.
         //step1 validate existance of such service -> no? exception
+        if (!$this->validateService($serviceName)) {
+            throw new R_T_G_ServiceException('Service ' . $serviceName . ' not found!');
+        }
 
         //step2 create soapclient -> no? exception
-        $soapClient = $this->createSoapClient($serviceName);
+        $soapClient = $this->createSoapClient();
 
         //step3 return Service
         if (!empty($this->serviceDescription[$serviceName]['class'])) {
@@ -170,5 +227,4 @@ class Casino implements CasinoInterface
     {
         // TODO: Implement addService() method.
     }
-
 }
