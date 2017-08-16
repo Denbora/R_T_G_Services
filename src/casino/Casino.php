@@ -4,6 +4,7 @@ namespace denbora\R_T_G_Services\casino;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\services\ServiceBase;
+use denbora\R_T_G_Services\validators\CasinoValidator;
 use SoapClient;
 
 /**
@@ -54,7 +55,9 @@ class Casino implements CasinoInterface
      */
     public function __construct(string $baseWebServiceUrl, string $certFile, string $password)
     {
-        if ($this->validateBaseWebServiceUrl($baseWebServiceUrl)) {
+        $casinoValidator = new CasinoValidator();
+
+        if ($casinoValidator->validate('BaseWebServiceUrl', $baseWebServiceUrl)) {
             $this->baseWebServiceUrl = $baseWebServiceUrl;
         } else {
             throw new R_T_G_ServiceException('Base URL does not meet requirements');
@@ -69,15 +72,6 @@ class Casino implements CasinoInterface
         } else {
             throw new R_T_G_ServiceException('Password does not meet requirements');
         }
-    }
-
-    /**
-     * @param $baseWebServiceUrl string
-     * @return boolean
-     */
-    private function validateBaseWebServiceUrl($baseWebServiceUrl)
-    {
-        return true;
     }
 
     /**
