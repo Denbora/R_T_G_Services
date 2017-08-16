@@ -4,6 +4,7 @@ namespace denbora\R_T_G_Services\casino;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\services\ServiceBase;
+use SoapClient;
 
 /**
  * Class Casino
@@ -15,6 +16,11 @@ class Casino implements CasinoInterface
      * @var string
      */
     private $baseWebServiceUrl;
+
+	/**
+	 * @var string
+	 */
+	private $endpoint;
 
     /**
      * @var string
@@ -37,19 +43,22 @@ class Casino implements CasinoInterface
         ],
         'Player' => [
             'name' => 'Player',
-            'class' => 'denbora\\R_T_G_Services\\casino\\PlayerService',
+            'class' => 'denbora\\R_T_G_Services\\services\\PlayerService',
             'endpoint' => 'Player.svc?WSDL',
         ],
     ];
 
-    /**
-     * Casino constructor.
-     * @param $baseWebServiceUrl string
-     * @param $certFile string
-     * @param $password string
-     * @throws R_T_G_ServiceException
-     */
-    public function __construct(string $baseWebServiceUrl, string $certFile, string $password)
+	/**
+	 * Casino constructor.
+	 *
+	 * @param $baseWebServiceUrl string
+	 * @param $certFile string
+	 * @param $password string
+	 * @param string $endpoint
+	 *
+	 * @throws R_T_G_ServiceException
+	 */
+    public function __construct(string $baseWebServiceUrl, string $certFile, string $password, string $endpoint)
     {
         if ($this->validateBaseWebServiceUrl($baseWebServiceUrl)) {
             $this->baseWebServiceUrl = $baseWebServiceUrl;
@@ -74,7 +83,7 @@ class Casino implements CasinoInterface
      */
     private function validateBaseWebServiceUrl($baseWebServiceUrl)
     {
-        //ToDo
+        return true;
     }
 
     /**
@@ -83,7 +92,7 @@ class Casino implements CasinoInterface
      */
     private function validateCertFile($certFile)
     {
-        //ToDO
+		return true;
     }
 
     /**
@@ -92,17 +101,47 @@ class Casino implements CasinoInterface
      */
     private function validatePassword($password)
     {
-        //ToDo
+        return true;
     }
 
+	/**
+	 * @param $serviceName
+	 *
+	 * @return bool
+	 */
+	private function validateService($serviceName)
+	{
+		return true;
+	}
+
     /**
-     * @param $serviceName
      * @return \SoapClient
      * @throws R_T_G_ServiceException
      */
-    protected function createSoapClient($serviceName)
+    protected function createSoapClient()
     {
-        //ToDo
+	    $context = stream_context_create([
+		    'ssl' => [
+			    'verify_peer' => false,
+			    'verify_peer_name' => false,
+			    'allow_self_signed' => true
+		    ]
+	    ]);
+
+	    $soapclient_options = array(
+		    'stream_context' => $context,
+		    'location'       => $this->endpoint,
+		    'keep_alive'     => true,
+		    'trace'          => true,
+		    'local_cert'     => $this->certFile,
+		    'passphrase'     => $this->password,
+		    'exceptions'     => true,
+		    'cache_wsdl'     => WSDL_CACHE_NONE
+	    );
+
+	    $soapClient = new SoapClient($this->baseWebServiceUrl, $soapclient_options);
+		// TODO: validate soapClient somehos
+	    return $soapClient;
     }
 
     /**
@@ -144,11 +183,13 @@ class Casino implements CasinoInterface
      */
     public function getService(string $serviceName)
     {
-        // TODO: Implement getService() method.
-        //step1 validate existance of such service -> no? exception
+	    //step1 validate existance of such service -> no? exception
+    	if(!$this->validateService($serviceName)) {
+		    throw new R_T_G_ServiceException('Service ' . $serviceName . ' not found!');
+	    }
 
         //step2 create soapclient -> no? exception
-        $soapClient = $this->createSoapClient($serviceName);
+        $soapClient = $this->createSoapClient();
 
         //step3 return Service
         if (!empty($this->serviceDescription[$serviceName]['class'])) {
@@ -170,5 +211,19 @@ class Casino implements CasinoInterface
     {
         // TODO: Implement addService() method.
     }
+
+	/**
+	 * @return string
+	 */
+	public function getEndpoint(): string {
+		return $this->endpoint;
+	}
+
+	/**
+	 * @param string $endpoint
+	 */
+	public function setEndpoint( string $endpoint ) {
+		$this->endpoint = $endpoint;
+	}
 
 }
