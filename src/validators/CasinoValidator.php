@@ -12,30 +12,15 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 class CasinoValidator extends BaseValidator implements ValidatorInterface
 {
     /**
-     * @var array
-     */
-    private $classMethods;
-
-    /**
-     * CasinoValidator constructor.
-     */
-    public function __construct()
-    {
-        $this->classMethods = get_class_methods($this);
-    }
-
-    /**
      * @param string $validatorName
      * @param mixed $data
      * @return bool
      * @throws R_T_G_ServiceException
      */
-    public function validate(string $validatorName, $data)
+    public function call(string $validatorName, $data)
     {
-        $methodName = 'validate'.$validatorName;
-
-        if (in_array($methodName, $this->classMethods)) {
-            if ($this->$methodName($data)) {
+        if (in_array($validatorName, $this->classMethods)) {
+            if ($this->$validatorName($data)) {
                 return true;
             } else {
                 return false;
@@ -50,9 +35,8 @@ class CasinoValidator extends BaseValidator implements ValidatorInterface
      * @return bool
      * @throws R_T_G_ServiceException
      */
-    private function validateBaseWebServiceUrl(String $webServiceUrl) : bool
+    private function baseWebServiceUrl(String $webServiceUrl) : bool
     {
-
         if (empty($webServiceUrl) && filter_var($webServiceUrl, FILTER_VALIDATE_URL) === false) {
             return false;
         }

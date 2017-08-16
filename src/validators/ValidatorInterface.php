@@ -14,5 +14,5 @@ interface ValidatorInterface
      * @param mixed $data
      * @return bool
      */
-    public function validate(string $validatorName, $data);
+    public function call(string $validatorName, $data);
 }
