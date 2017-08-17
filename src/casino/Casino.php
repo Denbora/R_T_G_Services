@@ -49,8 +49,7 @@ class Casino implements CasinoInterface
      */
     public function __construct(string $baseWebServiceUrl, string $certFile, string $password)
     {
-        $validatorFactory = new ValidatorFactory();
-        $this->validator = $validatorFactory->build('CasinoValidator');
+        $this->validator = ValidatorFactory::build('CasinoValidator');
 
         if ($this->validator->call('baseWebServiceUrl', $baseWebServiceUrl)) {
             $this->baseWebServiceUrl = $baseWebServiceUrl;
@@ -69,16 +68,6 @@ class Casino implements CasinoInterface
         }
 
         $this->serviceDescription = json_decode(file_get_contents(__DIR__ . '/../config/services.json', true), true);
-    }
-
-    /**
-     * @param $serviceName
-     *
-     * @return bool
-     */
-    private function validateService($serviceName)
-    {
-        return true;
     }
 
     /**
@@ -189,21 +178,29 @@ class Casino implements CasinoInterface
      */
     public function getService(string $serviceName)
     {
-        //step1 validate existance of such service -> no? exception
-        if (!$this->validateService($serviceName)) {
+        //step1 validate existence of such service -> no? exception
+        if (!$this->validator->call('service', $serviceName)) {
             throw new R_T_G_ServiceException('Service ' . $serviceName . ' not found!');
         }
 
-        //step2 create soapclient -> no? exception
+        //step2 create validator from config -> no? exception
+        if (array_key_exists($serviceName, $this->serviceDescription)) {
+            $serviceValidatorClass = $this->serviceDescription[$serviceName]['validatorClass'];
+            $serviceValidator = ValidatorFactory::build($serviceValidatorClass);
+        } else {
+            throw new R_T_G_ServiceException('Validator for ' . $serviceName . ' is not correct');
+        }
+
+        //step3 create soapclient -> no? exception
         $soapClient = $this->createSoapClient($serviceName);
 
-        //step3 return Service
+        //step4 return Service and Validator
         if (!empty($this->serviceDescription[$serviceName]['class'])) {
             $serviceClass = $this->serviceDescription[$serviceName]['class'];
         } else {
             $serviceClass =  __NAMESPACE__ . '\\'. 'services' . '\\'. $serviceName . 'Service';
         }
-        return new $serviceClass($soapClient);
+        return new $serviceClass($soapClient, $serviceValidator);
     }
 
     /**

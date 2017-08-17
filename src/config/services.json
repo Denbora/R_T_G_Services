@@ -1,10 +1,12 @@
 {
   "MessageCenter": {
     "class": "denbora\\R_T_G_Services\\services\\MessageCenterService",
-    "endpoint": "MessageCenter.svc?WSDL"
+    "endpoint": "MessageCenter.svc?WSDL",
+    "validatorClass": "MessageCenterValidator"
   },
   "Player": {
     "class": "denbora\\R_T_G_Services\\services\\PlayerService",
-    "endpoint": "Player.svc?WSDL"
+    "endpoint": "Player.svc?WSDL",
+    "validatorClass": "PlayerValidator"
   }
 }
