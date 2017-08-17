@@ -2,7 +2,7 @@
 
 namespace denbora\R_T_G_Services\services;
 
-class PlayerService extends ServiceBase implements ServiceInterface
+class MessageCenterService extends ServiceBase implements ServiceInterface
 {
 
     /**
