@@ -3,9 +3,8 @@
 
 namespace denbora\R_T_G_Services\validators;
 
-class MessageCenterValidator extends BaseValidator implements ValidatorInterface
+class PlayerValidator extends BaseValidator implements ValidatorInterface
 {
-
     /**
      * @param string $validatorName
      * @param mixed $data

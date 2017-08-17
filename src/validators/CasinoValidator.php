@@ -56,7 +56,7 @@ class CasinoValidator extends BaseValidator implements ValidatorInterface
      */
     protected function certFile(string $fileCertificate) : bool
     {
-        if (empty($fileCertificate)) {
+        if (empty($fileCertificate) && file_exists($fileCertificate)) {
             return false;
         }
         return true;
@@ -71,20 +71,6 @@ class CasinoValidator extends BaseValidator implements ValidatorInterface
     protected function password(string $password) : bool
     {
         if (empty($password)) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Validate existence of such service
-     *
-     * @param string $name
-     * @return bool
-     */
-    protected function service(string $name) : bool
-    {
-        if (empty($name)) {
             return false;
         }
         return true;

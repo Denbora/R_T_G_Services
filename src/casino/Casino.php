@@ -178,18 +178,14 @@ class Casino implements CasinoInterface
      */
     public function getService(string $serviceName)
     {
-        //step1 validate existence of such service -> no? exception
-        if (!$this->validator->call('service', $serviceName)) {
-            throw new R_T_G_ServiceException('Service ' . $serviceName . ' not found!');
+        //step1 validate existence of such service in config -> no? exception
+        if (!array_key_exists($serviceName, $this->serviceDescription)) {
+            throw new R_T_G_ServiceException('Service ' . $serviceName . ' not found in config');
         }
 
-        //step2 create validator from config -> no? exception
-        if (array_key_exists($serviceName, $this->serviceDescription)) {
-            $serviceValidatorClass = $this->serviceDescription[$serviceName]['validatorClass'];
-            $serviceValidator = ValidatorFactory::build($serviceValidatorClass);
-        } else {
-            throw new R_T_G_ServiceException('Validator for ' . $serviceName . ' is not correct');
-        }
+        //step2 create validator from config
+        $serviceValidatorClass = $this->serviceDescription[$serviceName]['validatorClass'];
+        $serviceValidator = ValidatorFactory::build($serviceValidatorClass);
 
         //step3 create soapclient -> no? exception
         $soapClient = $this->createSoapClient($serviceName);
