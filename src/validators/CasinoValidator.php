@@ -12,19 +12,6 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 class CasinoValidator extends BaseValidator implements ValidatorInterface
 {
     /**
-     * @var array
-     */
-    protected $classMethods;
-
-    /**
-     * CasinoValidator constructor.
-     */
-    public function __construct()
-    {
-        $this->classMethods = get_class_methods($this);
-    }
-
-    /**
      * Entry point for CasinoValidator, which call`s transferred method name
      *
      * @param string $validatorName
@@ -46,13 +33,13 @@ class CasinoValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * validator for baseUrl
+     * Validate $webServiceUrl as a real url
      *
      * @param string $webServiceUrl
      * @return bool
      * @throws R_T_G_ServiceException
      */
-    private function baseWebServiceUrl(string $webServiceUrl) : bool
+    protected function baseWebServiceUrl(string $webServiceUrl) : bool
     {
         if (empty($webServiceUrl) && filter_var($webServiceUrl, FILTER_VALIDATE_URL) === false) {
             return false;
@@ -62,14 +49,14 @@ class CasinoValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * cert file validation
+     * Cert file validation
      *
      * @param string $fileCertificate
      * @return bool
      */
-    private function certFile(string $fileCertificate) : bool
+    protected function certFile(string $fileCertificate) : bool
     {
-        if (empty($fileCertificate)) {
+        if (empty($fileCertificate) && file_exists($fileCertificate)) {
             return false;
         }
         return true;
@@ -81,7 +68,7 @@ class CasinoValidator extends BaseValidator implements ValidatorInterface
      * @param string $password
      * @return bool
      */
-    private function password(string $password) : bool
+    protected function password(string $password) : bool
     {
         if (empty($password)) {
             return false;
