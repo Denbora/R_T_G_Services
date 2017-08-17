@@ -3,7 +3,7 @@
 namespace denbora\R_T_G_Services\casino;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
-use denbora\R_T_G_Services\services\ServiceBase;
+use denbora\R_T_G_Services\services\ServiceInterface;
 use denbora\R_T_G_Services\validators\ValidatorFactory;
 use SoapClient;
 
@@ -116,7 +116,7 @@ class Casino implements CasinoInterface
         ]);
 
         $webUrl = $this->createUrl($serviceName);
-        $endpoint = $this->createEndpoint($this->baseWebServiceUrl);
+        $endpoint = $this->createEndpoint($webUrl);
 
         $soapclient_options = array(
             'stream_context' => $context,
@@ -173,7 +173,7 @@ class Casino implements CasinoInterface
 
     /**
      * @param $serviceName string
-     * @return ServiceBase
+     * @return ServiceInterface
      * @throws R_T_G_ServiceException
      */
     public function getService(string $serviceName)

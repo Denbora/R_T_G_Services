@@ -21,6 +21,11 @@ abstract class ServiceBase
     protected $validator;
 
     /**
+     * @var array
+     */
+    protected $classMethods;
+
+    /**
      * ServiceBase constructor.
      * @param \SoapClient $soapClient
      * @param ValidatorInterface $validator
@@ -29,5 +34,19 @@ abstract class ServiceBase
     {
         $this->soapClient = $soapClient;
         $this->validator = $validator;
+        $this->classMethods = get_class_methods(get_class($this));
+    }
+
+    /**
+     * gets only requested params, ignoring parents
+     *
+     * @param $response
+     * @return object
+     */
+    protected function trimResponse($response)
+    {
+        $key = key($response);
+
+        return $response->$key->Data;
     }
 }
