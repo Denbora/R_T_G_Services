@@ -16,47 +16,50 @@ class PlayerService extends ServiceBase implements ServiceInterface
     public function call(string $serviceMethod, $data)
     {
         if (in_array($serviceMethod, $this->classMethods)) {
-            $test = $this->$serviceMethod($data);
-            return $test;
+            try {
+                $service = $this->$serviceMethod($data);
+
+                return $service;
+            } catch (\SoapFault $e) {
+                echo "<h2>Soap Error</h2>";
+                echo $e->getMessage();
+            }
         } else {
             throw new R_T_G_ServiceException($serviceMethod .' does not exist');
         }
     }
 
     /**
+     * Activates a given player in the casino.
+     *
+     * @param array $args
+     * @return object
+     */
+    protected function activatePlayer($args)
+    {
+        $this->service('ActivatePlayer', $args);
+    }
+
+    /**
+     * The getPlayer method retrieves all the information of a specific player based on its Player ID (PID)
+     *
      * @param string $PID
-     * @return mixed
+     * @return object
      */
     protected function getPlayer(string $PID)
     {
-        try {
-            $playerResult = $this->soapClient->__soapCall("GetPlayer", array(array('PID' => $PID)));
-
-            $result = $this->trimResponse($playerResult);
-
-            return $result;
-        } catch (\SoapFault $e) {
-            echo "<h2>Soap Error</h2>";
-            echo $e->getMessage();
-        }
+        $this->service('getPlayer', array($PID));
     }
 
 
     /**
-     * @param $args
+     * This method retrieves all players in the casino based on their sign up date.
+     *
+     * @param array $args
      * @return object
      */
     protected function getPlayers($args)
     {
-        try {
-            $playersResult = $this->soapClient->__soapCall("getPlayers", array($args));
-
-            $result = $this->trimResponse($playersResult);
-
-            return $result;
-        } catch (\SoapFault $e) {
-            echo "<h2>Soap Error</h2>";
-            echo $e->getMessage();
-        }
+        $this->service('getPlayers', $args);
     }
 }

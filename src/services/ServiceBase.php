@@ -49,4 +49,18 @@ abstract class ServiceBase
 
         return $response->$key->Data;
     }
+
+    /**
+     * @param string $method
+     * @param $data
+     * @return object
+     */
+    protected function service(string $method, $data)
+    {
+        $callResult = $this->soapClient->__soapCall($method, array($data));
+
+        $result = $this->trimResponse($callResult);
+
+        return $result;
+    }
 }
