@@ -8,6 +8,8 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 class ValidatorFactory implements FactoryInterface
 {
     /**
+     * Creates new Validator object
+     *
      * @param string $type
      * @return ValidatorInterface
      * @throws R_T_G_ServiceException
