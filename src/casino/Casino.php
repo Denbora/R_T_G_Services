@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\casino;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\services\ServiceBase;
-use denbora\R_T_G_Services\validators\CasinoValidator;
+use denbora\R_T_G_Services\validators\ValidatorFactory;
 use SoapClient;
 
 /**
@@ -36,16 +36,7 @@ class Casino implements CasinoInterface
     /**
      * @var array
      */
-    protected $serviceDescription = [
-        'MessageCenter' => [
-            'class' => 'denbora\\R_T_G_Services\\services\\MessageCenterService',
-            'endpoint' => 'MessageCenter.svc?WSDL',
-        ],
-        'Player' => [
-            'class' => 'denbora\\R_T_G_Services\\services\\PlayerService',
-            'endpoint' => 'Player.svc?WSDL',
-        ],
-    ];
+    protected $serviceDescription;
 
     /**
      * Casino constructor.
@@ -58,43 +49,26 @@ class Casino implements CasinoInterface
      */
     public function __construct(string $baseWebServiceUrl, string $certFile, string $password)
     {
-        $this->validator = new CasinoValidator();
-
-        // ToDo: create validator generator
+        $validatorFactory = new ValidatorFactory();
+        $this->validator = $validatorFactory->build('CasinoValidator');
 
         if ($this->validator->call('baseWebServiceUrl', $baseWebServiceUrl)) {
             $this->baseWebServiceUrl = $baseWebServiceUrl;
         } else {
             throw new R_T_G_ServiceException('Base URL does not meet requirements');
         }
-        if ($this->validateCertFile($certFile)) {
+        if ($this->validator->call('certFile', $certFile)) {
             $this->certFile = $certFile;
         } else {
             throw new R_T_G_ServiceException('Certificate does not meet requirements or not found');
         }
-        if ($this->validatePassword($password)) {
+        if ($this->validator->call('password', $password)) {
             $this->password = $password;
         } else {
             throw new R_T_G_ServiceException('Password does not meet requirements');
         }
-    }
 
-    /**
-     * @param $certFile string
-     * @return boolean
-     */
-    private function validateCertFile($certFile)
-    {
-        return true;
-    }
-
-    /**
-     * @param $password string
-     * @return boolean
-     */
-    private function validatePassword($password)
-    {
-        return true;
+        $this->serviceDescription = json_decode(file_get_contents(__DIR__ . '/../config/services.json', true), true);
     }
 
     /**
