@@ -2,6 +2,7 @@
 
 namespace denbora\R_T_G_Services\services;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
 
 /**
@@ -42,25 +43,34 @@ abstract class ServiceBase
      *
      * @param $response
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function trimResponse($response)
     {
-        $key = key($response);
-
-        return $response->$key->Data;
+        if (is_object($response)) {
+            $key = key($response);
+            return $response->$key->Data;
+        } else {
+            throw new R_T_G_ServiceException('response has wrong type - ' . gettype($response));
+        }
     }
 
     /**
      * @param string $method
      * @param $data
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function service(string $method, $data)
     {
-        $callResult = $this->soapClient->__soapCall($method, array($data));
+        try {
+            $callResult = $this->soapClient->__soapCall($method, array($data));
 
-        $result = $this->trimResponse($callResult);
+            $result = $this->trimResponse($callResult);
 
-        return $result;
+            return $result;
+        } catch (\Exception $e) {
+            throw new R_T_G_ServiceException('Error: ' . $e->getMessage());
+        }
     }
 }

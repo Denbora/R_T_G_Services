@@ -21,8 +21,7 @@ class PlayerService extends ServiceBase implements ServiceInterface
 
                 return $service;
             } catch (\SoapFault $e) {
-                echo "<h2>Soap Error</h2>";
-                echo $e->getMessage();
+                throw new R_T_G_ServiceException('Error: ' . $e->getMessage());
             }
         } else {
             throw new R_T_G_ServiceException($serviceMethod .' does not exist');
