@@ -34,7 +34,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
 
         $fields = array('Player', 'ThirdPartyDataSync', 'UserID', 'MapToAffID', 'CalledFromCasino');
-        if (!$this->allInArray($fields, $data)) {
+        if (!$this->allInArrayKeyExists($fields, $data)) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
             throw new R_T_G_ValidationException($errorPrefix . 'missed fields -' . $this->getError());
         }

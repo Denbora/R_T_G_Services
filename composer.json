@@ -19,6 +19,9 @@
     }
   ],
   "autoload": {
-    "psr-4": { "denbora\\R_T_G_Services\\" : "src" }
+    "psr-4": {
+      "denbora\\R_T_G_Services\\" : "src",
+      "denbora\\R_T_G_Services\\examples\\" : "examples"
+    }
   }
 }
