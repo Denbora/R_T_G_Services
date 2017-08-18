@@ -79,10 +79,17 @@ class PlayerService extends ServiceBase implements ServiceInterface
      *
      * @param $args
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function createPlayer($args)
     {
-        return $this->service('CreatePlayer', $args);
+        $result = $this->validator->call('createPlayer', $args);
+
+        if ($result) {
+            return $this->service('CreatePlayer', $args);
+        } else {
+            throw new R_T_G_ServiceException($result);
+        }
     }
 
     /**
@@ -268,9 +275,9 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param string $PID
      * @return object
      */
-    protected function unbanPlayer(string $PID)
+    protected function unBanPlayer(string $PID)
     {
-        return $this->service('UnbanPlayer', array('PID' => $PID));
+        return $this->service('UnBanPlayer', array('PID' => $PID));
     }
 
     /**
