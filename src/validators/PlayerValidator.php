@@ -21,20 +21,23 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
 
             return $validator;
         } else {
-            throw new R_T_G_ServiceException($validatorName .' does not exist');
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . $validatorName .' does not exist');
         }
     }
 
     protected function createPlayer($data)
     {
         if (!is_array($data)) {
-            throw new R_T_G_ValidationException('entered data is not an array');
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ValidationException($errorPrefix . 'Entered data != array');
         }
+
         $fields = array('Player', 'ThirdPartyDataSync', 'UserID', 'MapToAffID', 'CalledFromCasino');
-        if (!in_array($fields, $data, true)) {
-            die('5555');
+        if (!$this->allInArray($fields, $data)) {
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ValidationException($errorPrefix . 'missed fields -' . $this->getError());
         }
-        die('322');
         return true;
     }
 }
