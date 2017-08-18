@@ -49,7 +49,11 @@ abstract class ServiceBase
     {
         if (is_object($response)) {
             $key = key($response);
-            return $response->$key->Data;
+            if ($response->$key->HasErrors) {
+                return $response->$key;
+            } else {
+                return $response->$key->Data;
+            }
         } else {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
             throw new R_T_G_ServiceException($errorPrefix . 'response has wrong type - ' . gettype($response));
