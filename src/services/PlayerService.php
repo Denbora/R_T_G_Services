@@ -21,10 +21,12 @@ class PlayerService extends ServiceBase implements ServiceInterface
 
                 return $service;
             } catch (\SoapFault $e) {
-                throw new R_T_G_ServiceException('Error: ' . $e->getMessage());
+                $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+                throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
             }
         } else {
-            throw new R_T_G_ServiceException($serviceMethod .' does not exist');
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . $serviceMethod .' does not exist');
         }
     }
 
