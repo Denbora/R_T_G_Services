@@ -26,6 +26,7 @@ class MessageCenterService extends ServiceBase implements ServiceInterface
     /**
      * @param $args
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     protected function getMessageList($args)
     {
@@ -34,8 +35,8 @@ class MessageCenterService extends ServiceBase implements ServiceInterface
 
             return $messageList;
         } catch (\SoapFault $e) {
-            echo "<h2>Soap Error</h2>";
-            echo $e->getMessage();
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
         }
     }
 }

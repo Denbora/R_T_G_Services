@@ -49,13 +49,10 @@ abstract class ServiceBase
     {
         if (is_object($response)) {
             $key = key($response);
-            if ($response->$key->HasErrors) {
-                return $response->$key;
-            } else {
-                return $response->$key->Data;
-            }
+            return $response->$key->Data;
         } else {
-            throw new R_T_G_ServiceException('Response has wrong type - ' . gettype($response));
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . 'response has wrong type - ' . gettype($response));
         }
     }
 
@@ -74,7 +71,8 @@ abstract class ServiceBase
 
             return $result;
         } catch (\Exception $e) {
-            throw new R_T_G_ServiceException('Error: ' . $e->getMessage());
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
         }
     }
 }

@@ -97,13 +97,15 @@ class Casino implements CasinoInterface
         if (array_key_exists($serviceName, $this->serviceDescription)) {
             return $this->baseWebServiceUrl . '/' . $this->serviceDescription[$serviceName]['endpoint'];
         } else {
-            throw new R_T_G_ServiceException('Service ' . $serviceName . ' not found!');
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . 'Service ' . $serviceName . ' not found!');
         }
     }
 
     /**
      * @param String $serviceName
      * @return SoapClient
+     * @throws R_T_G_ServiceException
      */
     protected function createSoapClient(String $serviceName)
     {
@@ -134,8 +136,8 @@ class Casino implements CasinoInterface
 
             return $soapClient;
         } catch (\Exception $e) {
-            echo "<h2>Soap Client is not created</h2>";
-            echo $e->getMessage();
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . 'Soap Client is not created ' . $e->getMessage());
         }
     }
 
@@ -180,7 +182,8 @@ class Casino implements CasinoInterface
     {
         //step1 validate existence of such service in config -> no? exception
         if (!array_key_exists($serviceName, $this->serviceDescription)) {
-            throw new R_T_G_ServiceException('Service ' . $serviceName . ' not found in config');
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . 'Service ' . $serviceName . ' not found in config');
         }
 
         //step2 create validator from config

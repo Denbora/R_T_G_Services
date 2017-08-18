@@ -28,7 +28,8 @@ class CasinoValidator extends BaseValidator implements ValidatorInterface
                 return false;
             }
         } else {
-            throw new R_T_G_ServiceException($validatorName .' does not exist');
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . $validatorName .' does not exist');
         }
     }
 
