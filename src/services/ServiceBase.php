@@ -50,7 +50,10 @@ abstract class ServiceBase
         if (is_object($response)) {
             $key = key($response);
             if ($response->$key->HasErrors) {
-                return $response->$key;
+                $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+                throw new R_T_G_ServiceException($errorPrefix .
+                    'RTG ErrorCode - ' . $response->$key->ErrorCode . '; ' .
+                    'Message - ' . $response->$key->Message);
             } else {
                 return $response->$key->Data;
             }
