@@ -48,11 +48,11 @@ class BaseValidator
     /**
      * This method checks is all of $needles are $keys in $array
      *
-     * @param $needles
-     * @param $array
+     * @param array $needles
+     * @param array $array
      * @return bool
      */
-    protected function allInArray($needles, $array)
+    protected function allInArrayKeyExists($needles, $array)
     {
         $missed = '';
 
