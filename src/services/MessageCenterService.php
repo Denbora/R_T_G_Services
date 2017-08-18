@@ -30,7 +30,7 @@ class MessageCenterService extends ServiceBase implements ServiceInterface
     protected function getMessageList($args)
     {
         try {
-            $messageList = $this->soapClient->__soapCall("GetPlayers", array($args));
+            $messageList = $this->soapClient->__soapCall("GetMessageList", array($args));
 
             return $messageList;
         } catch (\SoapFault $e) {
