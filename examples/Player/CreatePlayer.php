@@ -19,15 +19,25 @@ class CreatePlayer
         try {
             $playerService = $casino->getService($service);
             $createData = array(
-                'Player' => 1,
-                'ThirdPartyDataSync' => 'test1',
+                'Player' => array(
+                    'Login' => 'porter-12351',
+                    'Password' => 'porter_12351',
+                    'Contact' => array(
+                        'CountryID' => 'EG',
+                        'EMail' => 'opagangtest21@gmail.com'
+                    )
+                ),
+                'ThirdPartyDataSync' => false,
                 'UserID' => '1',
-                'MapToAffID' => '11',
-                'CalledFromCasino' => 'adsf'
+                'MapToAffID' => false,
+                'CalledFromCasino' => false
             );
 
             $result = $playerService->call($method, $createData);
+
+            echo "<pre>";
             var_dump($result);
+            echo "<pre>";
         } catch (\Exception $e) {
             echo "<pre>";
             var_dump($e);
