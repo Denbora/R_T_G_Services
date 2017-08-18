@@ -21,7 +21,8 @@ class ValidatorFactory implements FactoryInterface
         if (class_exists($validator)) {
             return new $validator();
         } else {
-            throw new R_T_G_ServiceException("Invalid validator given.");
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . 'Invalid validator given');
         }
     }
 }

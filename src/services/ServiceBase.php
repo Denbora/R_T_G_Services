@@ -51,7 +51,8 @@ abstract class ServiceBase
             $key = key($response);
             return $response->$key->Data;
         } else {
-            throw new R_T_G_ServiceException('response has wrong type - ' . gettype($response));
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . 'response has wrong type - ' . gettype($response));
         }
     }
 
@@ -70,7 +71,8 @@ abstract class ServiceBase
 
             return $result;
         } catch (\Exception $e) {
-            throw new R_T_G_ServiceException('Error: ' . $e->getMessage());
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
         }
     }
 }
