@@ -1,6 +1,7 @@
 <?php
 
 use denbora\R_T_G_Services\casino\Casino;
+use denbora\R_T_G_Services\examples\Create;
 use denbora\R_T_G_Services\examples\Loader;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -12,7 +13,12 @@ $method = 'updatePlayer';
 $service = 'Player';
 
 try {
-    Loader::call($service, $method, $casino);
+    //Loader::call($service, $method, $casino);
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        Create::savePlayer($_POST, $casino);
+    } else {
+        Create::printForm();
+    }
 } catch (\Exception $e) {
     echo "<pre>";
     var_dump($e);
