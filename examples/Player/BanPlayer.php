@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\examples\Player;
 
 use denbora\R_T_G_Services\casino\Casino;
 
-class GetPlayer
+class BanPlayer
 {
     /**
      * GetPlayer constructor.
@@ -16,9 +16,13 @@ class GetPlayer
     {
         try {
             $playerService = $casino->getService($service);
-            $pid = '10013051';
+            $ban = array(
+                'PID' => '10023655',
+                'Comment' => 'test',
+                'BanType' => 1
+            );
 
-            $result = $playerService->call($method, $pid);
+            $result = $playerService->call($method, $ban);
             echo "<pre>";
             var_dump($result);
             echo "</pre>";

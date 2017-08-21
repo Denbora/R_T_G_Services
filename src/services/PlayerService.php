@@ -35,10 +35,17 @@ class PlayerService extends ServiceBase implements ServiceInterface
      *
      * @param array $args
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function activatePlayer($args)
     {
-        return $this->service('ActivatePlayer', $args);
+        $result = $this->validator->call('activatePlayer', $args);
+
+        if ($result) {
+            return $this->service('ActivatePlayer', $args);
+        } else {
+            throw new R_T_G_ServiceException($result);
+        }
     }
 
     /**
@@ -186,10 +193,17 @@ class PlayerService extends ServiceBase implements ServiceInterface
      *
      * @param string $login
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPID(string $login)
     {
-        return $this->service('GetPID', array('Login' => $login));
+        $result = $this->validator->call('getPID', $login);
+
+        if ($result) {
+            return $this->service('GetPID', array('Login' => $login));
+        } else {
+            throw new R_T_G_ServiceException($result);
+        }
     }
 
     /**
@@ -197,10 +211,17 @@ class PlayerService extends ServiceBase implements ServiceInterface
      *
      * @param string $PID
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayer(string $PID)
     {
-        return $this->service('getPlayer', array('PID' => $PID));
+        $result = $this->validator->call('getPlayer', $PID);
+
+        if ($result) {
+            return $this->service('GetPlayer', array('PID' => $PID));
+        } else {
+            throw new R_T_G_ServiceException($result);
+        }
     }
 
     /**
@@ -330,10 +351,17 @@ class PlayerService extends ServiceBase implements ServiceInterface
      *
      * @param array $args
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function savePlayer($args)
     {
-        return $this->service('SavePlayer', $args);
+        $result = $this->validator->call('savePlayer', $args);
+
+        if ($result) {
+            return $this->service('SavePlayer', $args);
+        } else {
+            throw new R_T_G_ServiceException($result);
+        }
     }
 
     /**

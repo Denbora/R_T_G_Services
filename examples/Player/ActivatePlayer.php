@@ -4,10 +4,10 @@ namespace denbora\R_T_G_Services\examples\Player;
 
 use denbora\R_T_G_Services\casino\Casino;
 
-class GetPlayer
+class ActivatePlayer
 {
     /**
-     * GetPlayer constructor.
+     * ActivatePlayer constructor.
      * @param string $service
      * @param string $method
      * @param Casino $casino
@@ -16,9 +16,12 @@ class GetPlayer
     {
         try {
             $playerService = $casino->getService($service);
-            $pid = '10013051';
+            $activate = array(
+                'Login' => 'porter-12351',
+                'UserID' => 0
+            );
 
-            $result = $playerService->call($method, $pid);
+            $result = $playerService->call($method, $activate);
             echo "<pre>";
             var_dump($result);
             echo "</pre>";
