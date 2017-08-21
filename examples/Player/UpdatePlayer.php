@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\examples\Player;
 
 use denbora\R_T_G_Services\casino\Casino;
 
-class CreatePlayer
+class UpdatePlayer
 {
     /**
      * CreatePlayer constructor.
@@ -18,17 +18,21 @@ class CreatePlayer
             $playerService = $casino->getService($service);
             $createData = array(
                 'Player' => array(
+                    'PID' => '10023655',  //nu
                     'Login' => 'porter-12351',
+                    'BirthDate' => '1980-01-01',
                     'Password' => 'porter_12351',
                     'Contact' => array(
+                        'Gender' => 'Male',
+                        'FirstName' => 'Test',
+                        'LastName' => 'OPa',
                         'CountryID' => 'EG',
                         'EMail' => 'opagangtest21@gmail.com'
                     )
                 ),
                 'ThirdPartyDataSync' => false,
                 'UserID' => 0,
-                'MapToAffID' => false,
-                'CalledFromCasino' => false
+                'allowBlanks' => false
             );
 
             $result = $playerService->call($method, $createData);
