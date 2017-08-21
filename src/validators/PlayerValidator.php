@@ -280,6 +280,11 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         return true;
     }
 
+    /**
+     * @param $data
+     * @return bool
+     * @throws R_T_G_ValidationException
+     */
     protected function banPlayer($data) : bool
     {
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
