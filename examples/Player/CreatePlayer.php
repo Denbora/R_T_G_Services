@@ -28,7 +28,7 @@ class CreatePlayer
                     )
                 ),
                 'ThirdPartyDataSync' => false,
-                'UserID' => '1',
+                'UserID' => 0,
                 'MapToAffID' => false,
                 'CalledFromCasino' => false
             );

@@ -197,10 +197,17 @@ class PlayerService extends ServiceBase implements ServiceInterface
      *
      * @param string $PID
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayer(string $PID)
     {
-        return $this->service('getPlayer', array('PID' => $PID));
+        $result = $this->validator->call('getPlayer', $PID);
+
+        if ($result) {
+            return $this->service('GetPlayer', array('PID' => $PID));
+        } else {
+            throw new R_T_G_ServiceException($result);
+        }
     }
 
     /**

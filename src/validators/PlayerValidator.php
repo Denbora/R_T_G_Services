@@ -26,18 +26,109 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
     }
 
-    protected function createPlayer($data)
+    /**
+     * @param $data
+     * @return bool
+     * @throws R_T_G_ValidationException
+     */
+    protected function createPlayer($data) : bool
     {
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
         if (!is_array($data)) {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
             throw new R_T_G_ValidationException($errorPrefix . 'Entered data != array');
         }
 
         $fields = array('Player', 'ThirdPartyDataSync', 'UserID', 'MapToAffID', 'CalledFromCasino');
         if (!$this->allInArrayKeyExists($fields, $data)) {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
             throw new R_T_G_ValidationException($errorPrefix . 'missed fields -' . $this->getError());
         }
+
+        foreach ($data as $key => $value) {
+            if (empty($data[$key]) && !isset($data[$key])) {
+                throw new R_T_G_ValidationException($errorPrefix . 'Required field - ' . $key . ' is missing');
+            }
+        }
+
+        if (!is_array($data['Player'])) {
+            throw new R_T_G_ValidationException($errorPrefix . 'Player should be array, ' .
+                gettype($data["Player"]) . ' given');
+        }
+
+        if (!is_bool($data['ThirdPartyDataSync'])) {
+            throw new R_T_G_ValidationException($errorPrefix . 'ThirdPartyDataSync should be bool, ' .
+                gettype($data["ThirdPartyDataSync"]) . ' given');
+        }
+
+        if (!is_int($data['UserID']) && !is_numeric($data['UserID'])) {
+            throw new R_T_G_ValidationException($errorPrefix . 'UserID should be int, ' .
+                gettype($data["UserID"]) . ' given');
+        }
+
+        if (!is_bool($data['MapToAffID'])) {
+            throw new R_T_G_ValidationException($errorPrefix . 'MapToAffID should be bool, ' .
+                gettype($data["MapToAffID"]) . ' given');
+        }
+
+        if (!is_bool($data['CalledFromCasino'])) {
+            throw new R_T_G_ValidationException($errorPrefix . 'CalledFromCasino should be bool, ' .
+                gettype($data["CalledFromCasino"]) . ' given');
+        }
+
+        $player = $data['Player'];
+
+        if (empty($player['Login']) &&
+            empty($player['Password']) &&
+            empty($player['Contact']['CountryID']) &&
+            empty($player['Contact']['EMail'])) {
+            throw new R_T_G_ValidationException($errorPrefix . 'Required Player field(s) is missing');
+        }
+
+        if (!is_string($player['Login'])) {
+            throw new R_T_G_ValidationException($errorPrefix . 'Login should be String, ' .
+                gettype($player["Login"]) . ' given');
+        }
+
+        if (!is_string($player['Password'])) {
+            throw new R_T_G_ValidationException($errorPrefix . 'Password should be String, ' .
+                gettype($player["Password"]) . ' given');
+        }
+
+        if (!is_string($player['Contact']['CountryID'])) {
+            throw new R_T_G_ValidationException($errorPrefix . 'CountryID should be String, ' .
+                gettype($player['Contact']['CountryID']) . ' given');
+        }
+
+        if (!is_string($player['Contact']['EMail'])) {
+            throw new R_T_G_ValidationException($errorPrefix . 'Email should be String, ' .
+                gettype($player['Contact']['EMail']) . ' given');
+        }
+
+        if (strpos($player['Contact']['EMail'], '@') === false) {
+            throw new R_T_G_ValidationException($errorPrefix . 'Invalid email address');
+        }
+
+        return true;
+    }
+
+    /**
+     * @param int $pid
+     * @return bool
+     * @throws R_T_G_ValidationException
+     */
+    public function getPlayer($pid) : bool
+    {
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        if (empty($pid)) {
+            throw new R_T_G_ValidationException($errorPrefix . 'PID is a required field');
+        }
+
+        if (!is_int($pid) && !is_numeric($pid)) {
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be int, ' .
+                gettype($pid) . ' given');
+        }
+
         return true;
     }
 }
