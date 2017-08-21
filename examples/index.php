@@ -13,12 +13,12 @@ $method = 'updatePlayer';
 $service = 'Player';
 
 try {
-    //Loader::call($service, $method, $casino);
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    Loader::call($service, $method, $casino);
+    /*if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Create::savePlayer($_POST, $casino);
     } else {
         Create::printForm();
-    }
+    }*/
 } catch (\Exception $e) {
     echo "<pre>";
     var_dump($e);
