@@ -14,6 +14,11 @@ use SoapClient;
 class Casino implements CasinoInterface
 {
     /**
+     * @var array of 'serviceName' => serviceInstance
+     */
+    private $serviceInstances = [];
+
+    /**
      * @var string
      */
     private $baseWebServiceUrl;
@@ -180,6 +185,11 @@ class Casino implements CasinoInterface
      */
     public function getService(string $serviceName)
     {
+        //step0 : return instance of needed service in case it is already created
+        if (!empty($this->serviceInstances[$serviceName])) {
+            return $this->serviceInstances[$serviceName];
+        }
+
         //step1 validate existence of such service in config -> no? exception
         if (!array_key_exists($serviceName, $this->serviceDescription)) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
@@ -193,13 +203,18 @@ class Casino implements CasinoInterface
         //step3 create soapclient -> no? exception
         $soapClient = $this->createSoapClient($serviceName);
 
-        //step4 return Service and Validator
+        //step4 creating Service and Validator
         if (!empty($this->serviceDescription[$serviceName]['class'])) {
             $serviceClass = $this->serviceDescription[$serviceName]['class'];
         } else {
             $serviceClass =  __NAMESPACE__ . '\\'. 'services' . '\\'. $serviceName . 'Service';
         }
-        return new $serviceClass($soapClient, $serviceValidator);
+        $service = new $serviceClass($soapClient, $serviceValidator);
+
+        //step5 saving created service and returning it
+        $this->serviceInstances[$serviceName] = $service;
+
+        return $service;
     }
 
     /**
