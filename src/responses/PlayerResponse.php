@@ -17,6 +17,25 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
 
     /**
      * @param $response
+     * @param $errorMessage
+     * @return mixed
+     * @throws R_T_G_ServiceException
+     */
+    private function getStringOrError($response, $errorMessage)
+    {
+        $key = key($response);
+        if ($response->$key->Message) {
+            return $response->$key->Data->string;
+        } else {
+            $errorPrefix = $errorMessage . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix .
+                'RTG ErrorCode - ' . $response->$key->ErrorCode . '; ' .
+                'Message - ' . $response->$key->Message);
+        }
+    }
+
+    /**
+     * @param $response
      * @return mixed
      */
     public function getPlayer($response)
@@ -31,12 +50,7 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
      */
     public function activatePlayer($response)
     {
-        if ($this->hasErrors($response)) {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . 'RTG error - ' . $this->getMessage($response));
-        } else {
-            return true;
-        }
+        return $this->validate($response, 'Activate Player Error');
     }
 
     /**
@@ -46,12 +60,7 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
      */
     public function banPlayer($response)
     {
-        if ($this->hasErrors($response)) {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . 'RTG error - ' . $this->getMessage($response));
-        } else {
-            return true;
-        }
+        return $this->validate($response, 'Ban Player Error');
     }
 
     public function changePasswordWithToken($response)
@@ -115,7 +124,7 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
 
     public function getPID($response)
     {
-        return $response;
+        return $this->getStringOrError($response, 'Get PID Error');
     }
 
     public function getPlayerClass($response)
@@ -158,9 +167,13 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
         return $response;
     }
 
+    /**
+     * @param $response
+     * @return bool
+     */
     public function validateCredentials($response)
     {
-        return $this->hasErrors($response);
+        return $this->validate($response, 'Validate Credentials Error');
     }
 
     public function getLedgerInformation($response)
@@ -173,9 +186,14 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
         return $response;
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     * @throws R_T_G_ServiceException
+     */
     public function savePlayer($response)
     {
-        return $this->baseTrim($response);
+        return $this->getStringOrError($response, 'Save Player Error');
     }
 
     public function logout($response)

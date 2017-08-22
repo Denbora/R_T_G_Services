@@ -13,19 +13,14 @@ class BaseResponse
      */
     protected function baseTrim($response)
     {
-        if (is_object($response)) {
-            $key = key($response);
-            if ($response->$key->HasErrors) {
-                $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-                throw new R_T_G_ServiceException($errorPrefix .
-                    'RTG ErrorCode - ' . $response->$key->ErrorCode . '; ' .
-                    'Message - ' . $response->$key->Message);
-            } else {
-                return $response->$key->Data;
-            }
-        } else {
+        $key = key($response);
+        if ($response->$key->HasErrors) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . 'response has wrong type - ' . gettype($response));
+            throw new R_T_G_ServiceException($errorPrefix .
+                'RTG ErrorCode - ' . $response->$key->ErrorCode . '; ' .
+                'Message - ' . $response->$key->Message);
+        } else {
+            return $response->$key->Data;
         }
     }
 
@@ -60,6 +55,24 @@ class BaseResponse
         } else {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
             throw new R_T_G_ServiceException($errorPrefix . 'message not found in response');
+        }
+    }
+
+    /**
+     * Method for non unique validation in this class
+     *
+     * @param $response
+     * @param string $errorMessage
+     * @return bool
+     * @throws R_T_G_ServiceException
+     */
+    protected function validate($response, string $errorMessage)
+    {
+        if ($this->hasErrors($response)) {
+            $errorPrefix = $errorMessage . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . 'RTG error - ' . $this->getMessage($response));
+        } else {
+            return true;
         }
     }
 }

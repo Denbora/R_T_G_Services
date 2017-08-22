@@ -18,11 +18,11 @@ class SavePlayer
             $playerService = $casino->getService($service);
             $createData = array(
                 'Player' => array(
-                    'Login' => 'porter-981',
-                    'Password' => 'porter_981',
+                    'Login' => 'porter-922',
+                    'Password' => 'porter_922',
                     'Contact' => array(
                         'CountryID' => 'EG',
-                        'EMail' => 'ad12fa4test21@gmail.com'
+                        'EMail' => 'test900@test.test'
                     )
                 ),
                 'ThirdPartyDataSync' => false,

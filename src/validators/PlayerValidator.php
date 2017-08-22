@@ -30,7 +30,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
      * @return bool
      * @throws R_T_G_ValidationException
      */
-    private function validatePlayerCreation($data) : bool
+    protected function validatePlayerCreation($data) : bool
     {
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
@@ -305,6 +305,121 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
             throw new R_T_G_ValidationException($errorPrefix . 'BanType should be int, ' .
                 gettype($data['BanType']) . ' given');
         }
+        return true;
+    }
+
+    protected function getPlayerClass($PID) : bool
+    {
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        if (empty($PID)) {
+            throw new R_T_G_ValidationException($errorPrefix . 'PID is a required field');
+        }
+
+        if (!is_string($PID)) {
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($PID) . ' given');
+        }
+    }
+
+
+    protected function changePasswordWithToken($data) : bool
+    {
+        return true;
+    }
+
+    protected function changePlayerClass($data) : bool
+    {
+        return true;
+    }
+
+    protected function createPlayerAndToken($data) : bool
+    {
+        return true;
+    }
+
+    protected function deactivatePlayer($data) : bool
+    {
+        return true;
+    }
+
+    protected function deactivateAndLogoutPlayer($data) : bool
+    {
+        return true;
+    }
+
+    protected function forgotPassword($PID) : bool
+    {
+        return true;
+    }
+
+    protected function forgotUsername($email) : bool
+    {
+        return true;
+    }
+
+    protected function getAdjustedNetWinbyPID($PID) : bool
+    {
+        return true;
+    }
+
+    protected function getNonCashTotalbyPID($PID) : bool
+    {
+        return true;
+    }
+
+    protected function getNonCashTotalbyPIDandDate($data) : bool
+    {
+        return true;
+    }
+
+    protected function getPlayers($data) : bool
+    {
+        return true;
+    }
+
+    protected function getPlayersActiveSessions($data) : bool
+    {
+        return true;
+    }
+
+    protected function getPlayersDelta($data) : bool
+    {
+        return true;
+    }
+
+    protected function getPlayerPasscode($login) : bool
+    {
+        return true;
+    }
+
+    protected function resetPassword($PID) : bool
+    {
+        return true;
+    }
+
+    protected function unBanPlayer($PID) : bool
+    {
+        return true;
+    }
+
+    protected function validateCredentials($data) : bool
+    {
+        return true;
+    }
+
+    protected function getLedgerInformation($data) : bool
+    {
+        return true;
+    }
+
+    protected function getAuditTrailReport($data) : bool
+    {
+        return true;
+    }
+
+    protected function logout($data) : bool
+    {
         return true;
     }
 }
