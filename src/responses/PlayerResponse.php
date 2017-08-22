@@ -2,8 +2,14 @@
 
 namespace denbora\R_T_G_Services\responses;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
+
 class PlayerResponse extends BaseResponse implements ResponseInterface
 {
+    public function cleanResponse($response)
+    {
+        return $response;
+    }
 
     public function getPlayer($response)
     {
@@ -17,7 +23,12 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
 
     public function banPlayer($response)
     {
-        return $response;
+        if ($this->hasErrors($response)) {
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . 'RTG error - ' . $this->getMessage($response));
+        } else {
+            return true;
+        }
     }
 
     public function changePasswordWithToken($response)

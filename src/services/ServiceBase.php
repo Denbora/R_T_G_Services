@@ -28,14 +28,21 @@ abstract class ServiceBase
     protected $classMethods;
 
     /**
+     * bool @var
+     */
+    protected $cleanResponse;
+
+    /**
      * ServiceBase constructor.
      * @param \SoapClient $soapClient
      * @param ValidatorInterface $validator
+     * @param bool $cleanResponse
      */
-    public function __construct(\SoapClient $soapClient, ValidatorInterface $validator)
+    public function __construct(\SoapClient $soapClient, ValidatorInterface $validator, bool $cleanResponse)
     {
         $this->soapClient = $soapClient;
         $this->validator = $validator;
+        $this->cleanResponse = $cleanResponse;
         $this->classMethods = get_class_methods(get_class($this));
     }
 
@@ -52,7 +59,11 @@ abstract class ServiceBase
             $callResult = $this->soapClient->__soapCall($method, array($data));
 
             $responseMethod = lcfirst($method);
-            $result = $responseObject->$responseMethod($callResult);
+            if ($this->cleanResponse === true) {
+                $result = $responseObject->cleanResponse($callResult);
+            } else {
+                $result = $responseObject->$responseMethod($callResult);
+            }
 
             return $result;
         } catch (\Exception $e) {

@@ -17,10 +17,11 @@ class SecurityService extends ServiceBase implements ServiceInterface
      * SecurityService constructor.
      * @param \SoapClient $soapClient
      * @param ValidatorInterface $validator
+     * @param bool $cleanResponse
      */
-    public function __construct(\SoapClient $soapClient, ValidatorInterface $validator)
+    public function __construct(\SoapClient $soapClient, ValidatorInterface $validator, bool $cleanResponse)
     {
-        parent::__construct($soapClient, $validator);
+        parent::__construct($soapClient, $validator, $cleanResponse);
         $this->response = new PlayerResponse();
     }
 

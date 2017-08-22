@@ -4,6 +4,11 @@ namespace denbora\R_T_G_Services\responses;
 
 class SecurityResponse extends BaseResponse implements ResponseInterface
 {
+    public function cleanResponse($response)
+    {
+        return $response;
+    }
+
     public function createToken($response)
     {
         return $response;

@@ -180,10 +180,11 @@ class Casino implements CasinoInterface
 
     /**
      * @param $serviceName string
+     * @param bool $cleanResponse
      * @return ServiceInterface
      * @throws R_T_G_ServiceException
      */
-    public function getService(string $serviceName)
+    public function getService(string $serviceName, bool $cleanResponse = false)
     {
         //step0 : return instance of needed service in case it is already created
         if (!empty($this->serviceInstances[$serviceName])) {
@@ -209,7 +210,7 @@ class Casino implements CasinoInterface
         } else {
             $serviceClass =  __NAMESPACE__ . '\\'. 'services' . '\\'. $serviceName . 'Service';
         }
-        $service = new $serviceClass($soapClient, $serviceValidator);
+        $service = new $serviceClass($soapClient, $serviceValidator, $cleanResponse);
 
         //step5 saving created service and returning it
         $this->serviceInstances[$serviceName] = $service;
