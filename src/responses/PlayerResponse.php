@@ -6,21 +6,44 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 class PlayerResponse extends BaseResponse implements ResponseInterface
 {
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function rawResponse($response)
     {
         return $response;
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function getPlayer($response)
     {
         return $this->baseTrim($response);
     }
 
+    /**
+     * @param $response
+     * @return bool
+     * @throws R_T_G_ServiceException
+     */
     public function activatePlayer($response)
     {
-        return $response;
+        if ($this->hasErrors($response)) {
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . 'RTG error - ' . $this->getMessage($response));
+        } else {
+            return true;
+        }
     }
 
+    /**
+     * @param $response
+     * @return bool
+     * @throws R_T_G_ServiceException
+     */
     public function banPlayer($response)
     {
         if ($this->hasErrors($response)) {
@@ -41,6 +64,10 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
         return $response;
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function createPlayer($response)
     {
         return $this->baseTrim($response);

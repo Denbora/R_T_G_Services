@@ -263,7 +263,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
             throw new R_T_G_ValidationException($errorPrefix . 'login is a required field');
         }
 
-        if (empty($data['UserID'])) {
+        if (empty($data['UserID']) && !isset($data['UserID'])) {
             throw new R_T_G_ValidationException($errorPrefix . 'UserID is a required field');
         }
 

@@ -17,7 +17,7 @@ class ActivatePlayer
         try {
             $playerService = $casino->getService($service);
             $activate = array(
-                'Login' => 'porter-12351',
+                'Login' => 'porter-981',
                 'UserID' => 0
             );
 
