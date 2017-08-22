@@ -3,6 +3,7 @@
 namespace denbora\R_T_G_Services\casino;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
+use denbora\R_T_G_Services\responses\ResponseFactory;
 use denbora\R_T_G_Services\services\ServiceInterface;
 use denbora\R_T_G_Services\validators\ValidatorFactory;
 use SoapClient;
@@ -180,11 +181,10 @@ class Casino implements CasinoInterface
 
     /**
      * @param $serviceName string
-     * @param bool $cleanResponse
      * @return ServiceInterface
      * @throws R_T_G_ServiceException
      */
-    public function getService(string $serviceName, bool $cleanResponse = false)
+    public function getService(string $serviceName)
     {
         //step0 : return instance of needed service in case it is already created
         if (!empty($this->serviceInstances[$serviceName])) {
@@ -201,16 +201,20 @@ class Casino implements CasinoInterface
         $serviceValidatorClass = $this->serviceDescription[$serviceName]['validatorClass'];
         $serviceValidator = ValidatorFactory::build($serviceValidatorClass);
 
+        //step3 create response from config
+        $serviceResponseClass = $this->serviceDescription[$serviceName]['responseClass'];
+        $serviceResponse = ResponseFactory::build($serviceResponseClass);
+
         //step3 create soapclient -> no? exception
         $soapClient = $this->createSoapClient($serviceName);
 
-        //step4 creating Service and Validator
+        //step4 creating Service
         if (!empty($this->serviceDescription[$serviceName]['class'])) {
             $serviceClass = $this->serviceDescription[$serviceName]['class'];
         } else {
             $serviceClass =  __NAMESPACE__ . '\\'. 'services' . '\\'. $serviceName . 'Service';
         }
-        $service = new $serviceClass($soapClient, $serviceValidator, $cleanResponse);
+        $service = new $serviceClass($soapClient, $serviceValidator, $serviceResponse);
 
         //step5 saving created service and returning it
         $this->serviceInstances[$serviceName] = $service;

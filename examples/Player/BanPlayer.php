@@ -15,7 +15,7 @@ class BanPlayer
     public function __construct(string $service, string $method, $casino)
     {
         try {
-            $playerService = $casino->getService($service, true);
+            $playerService = $casino->getService($service);
             $ban = array(
                 'PID' => '10024291',
                 'Comment' => 'test',

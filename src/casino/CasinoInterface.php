@@ -10,10 +10,9 @@ interface CasinoInterface
 {
     /**
      * @param $serviceName string
-     * @param bool $cleanResponse
      * @return mixed
      */
-    public function getService(string $serviceName, bool $cleanResponse);
+    public function getService(string $serviceName);
 
     /**
      * @param $serviceName string

@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\responses;
 
 class SecurityResponse extends BaseResponse implements ResponseInterface
 {
-    public function cleanResponse($response)
+    public function rawResponse($response)
     {
         return $response;
     }

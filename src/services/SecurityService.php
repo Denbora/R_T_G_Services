@@ -3,41 +3,23 @@
 namespace denbora\R_T_G_Services\services;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
-use denbora\R_T_G_Services\responses\PlayerResponse;
-use denbora\R_T_G_Services\validators\ValidatorInterface;
 
 class SecurityService extends ServiceBase implements ServiceInterface
 {
     /**
-     * @var PlayerResponse
-     */
-    private $response;
-
-    /**
-     * SecurityService constructor.
-     * @param \SoapClient $soapClient
-     * @param ValidatorInterface $validator
-     * @param bool $cleanResponse
-     */
-    public function __construct(\SoapClient $soapClient, ValidatorInterface $validator, bool $cleanResponse)
-    {
-        parent::__construct($soapClient, $validator, $cleanResponse);
-        $this->response = new PlayerResponse();
-    }
-
-    /**
      * @param $serviceMethod string
      * @param $data
+     * @param bool $rawResponse
      * @return mixed
      * @throws R_T_G_ServiceException
      */
-    public function call(string $serviceMethod, $data)
+    public function call(string $serviceMethod, $data, bool $rawResponse = false)
     {
         if (in_array($serviceMethod, $this->classMethods)) {
             try {
-                $service = $this->$serviceMethod($data);
+                $serviceResponse = $this->$serviceMethod($data, $rawResponse);
 
-                return $service;
+                return $serviceResponse;
             } catch (\SoapFault $e) {
                 $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
                 throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
@@ -53,15 +35,16 @@ class SecurityService extends ServiceBase implements ServiceInterface
      * authenticate players against flash games and RTG’s web cashier.
      *
      * @param string $PID
+     * @param bool $rawResponse
      * @return object
      * @throws R_T_G_ServiceException
      */
-    protected function createToken(string $PID)
+    protected function createToken(string $PID, bool $rawResponse)
     {
         $result = $this->validator->call('createToken', $PID);
 
         if ($result) {
-            return $this->service('CreateToken', array('PID' => $PID), $this->response);
+            return $this->service('CreateToken', array('PID' => $PID), $rawResponse);
         } else {
             throw new R_T_G_ServiceException($result);
         }
@@ -71,15 +54,16 @@ class SecurityService extends ServiceBase implements ServiceInterface
      * Validates a given token for a specific player.
      *
      * @param $args
+     * @param bool $rawResponse
      * @return object
      * @throws R_T_G_ServiceException
      */
-    protected function validateToken($args)
+    protected function validateToken($args, bool $rawResponse)
     {
         $result = $this->validator->call('validateToken', $args);
 
         if ($result) {
-            return $this->service('ValidateToken', $args, $this->response);
+            return $this->service('ValidateToken', $args, $rawResponse);
         } else {
             throw new R_T_G_ServiceException($result);
         }
@@ -89,15 +73,16 @@ class SecurityService extends ServiceBase implements ServiceInterface
      * Creates a token for a specific player and a specific application.
      *
      * @param $args
+     * @param bool $rawResponse
      * @return object
      * @throws R_T_G_ServiceException
      */
-    protected function createTokenByApp($args)
+    protected function createTokenByApp($args, bool $rawResponse)
     {
         $result = $this->validator->call('createTokenByApp', $args);
 
         if ($result) {
-            return $this->service('CreateTokenByApp', $args, $this->response);
+            return $this->service('CreateTokenByApp', $args, $rawResponse);
         } else {
             throw new R_T_G_ServiceException($result);
         }
@@ -105,15 +90,16 @@ class SecurityService extends ServiceBase implements ServiceInterface
 
     /**
      * @param $args
+     * @param bool $rawResponse
      * @return object
      * @throws R_T_G_ServiceException
      */
-    protected function validateTokenByApp($args)
+    protected function validateTokenByApp($args, bool $rawResponse)
     {
         $result = $this->validator->call('validateTokenByApp', $args);
 
         if ($result) {
-            return $this->service('ValidateTokenByApp', $args, $this->response);
+            return $this->service('ValidateTokenByApp', $args, $rawResponse);
         } else {
             throw new R_T_G_ServiceException($result);
         }
@@ -121,15 +107,16 @@ class SecurityService extends ServiceBase implements ServiceInterface
 
     /**
      * @param $args
+     * @param bool $rawResponse
      * @return object
      * @throws R_T_G_ServiceException
      */
-    protected function createGameRestrictedTokenByApp($args)
+    protected function createGameRestrictedTokenByApp($args, bool $rawResponse)
     {
         $result = $this->validator->call('createGameRestrictedTokenByApp', $args);
 
         if ($result) {
-            return $this->service('CreateGameRestrictedTokenByApp', $args, $this->response);
+            return $this->service('CreateGameRestrictedTokenByApp', $args, $rawResponse);
         } else {
             throw new R_T_G_ServiceException($result);
         }

@@ -28,41 +28,41 @@ abstract class ServiceBase
     protected $classMethods;
 
     /**
-     * bool @var
+     * ResponseInterface @var
      */
-    protected $cleanResponse;
+    protected $response;
 
     /**
      * ServiceBase constructor.
      * @param \SoapClient $soapClient
      * @param ValidatorInterface $validator
-     * @param bool $cleanResponse
+     * @param ResponseInterface $response
      */
-    public function __construct(\SoapClient $soapClient, ValidatorInterface $validator, bool $cleanResponse)
+    public function __construct(\SoapClient $soapClient, ValidatorInterface $validator, ResponseInterface $response)
     {
         $this->soapClient = $soapClient;
         $this->validator = $validator;
-        $this->cleanResponse = $cleanResponse;
+        $this->response = $response;
         $this->classMethods = get_class_methods(get_class($this));
     }
 
     /**
      * @param string $method
      * @param $data
-     * @param ResponseInterface $responseObject
+     * @param $rawResponse
      * @return object
      * @throws R_T_G_ServiceException
      */
-    protected function service(string $method, $data, $responseObject)
+    protected function service(string $method, $data, $rawResponse)
     {
         try {
             $callResult = $this->soapClient->__soapCall($method, array($data));
 
             $responseMethod = lcfirst($method);
-            if ($this->cleanResponse === true) {
-                $result = $responseObject->cleanResponse($callResult);
+            if ($rawResponse === true) {
+                $result = $this->response->rawResponse($callResult);
             } else {
-                $result = $responseObject->$responseMethod($callResult);
+                $result = $this->response->$responseMethod($callResult);
             }
 
             return $result;

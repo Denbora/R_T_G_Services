@@ -16,11 +16,7 @@ class BaseResponse
                     'RTG ErrorCode - ' . $response->$key->ErrorCode . '; ' .
                     'Message - ' . $response->$key->Message);
             } else {
-                if ($response->$key == 'CreateTokenByAppResult') {
-                    return $response->$key;
-                } else {
-                    return $response->$key->Data;
-                }
+                return $response->$key->Data;
             }
         } else {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';

@@ -11,7 +11,8 @@ interface ServiceInterface
     /**
      * @param $serviceMethod string
      * @param $data
+     * @param bool $rawResponse
      * @return mixed
      */
-    public function call(string $serviceMethod, $data);
+    public function call(string $serviceMethod, $data, bool $rawResponse = false);
 }

@@ -6,7 +6,7 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 class PlayerResponse extends BaseResponse implements ResponseInterface
 {
-    public function cleanResponse($response)
+    public function rawResponse($response)
     {
         return $response;
     }
