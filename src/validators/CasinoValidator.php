@@ -1,6 +1,5 @@
 <?php
 
-
 namespace denbora\R_T_G_Services\validators;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;

@@ -3,9 +3,27 @@
 namespace denbora\R_T_G_Services\services;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
+use denbora\R_T_G_Services\responses\PlayerResponse;
+use denbora\R_T_G_Services\validators\ValidatorInterface;
 
 class SecurityService extends ServiceBase implements ServiceInterface
 {
+    /**
+     * @var PlayerResponse
+     */
+    private $response;
+
+    /**
+     * SecurityService constructor.
+     * @param \SoapClient $soapClient
+     * @param ValidatorInterface $validator
+     */
+    public function __construct(\SoapClient $soapClient, ValidatorInterface $validator)
+    {
+        parent::__construct($soapClient, $validator);
+        $this->response = new PlayerResponse();
+    }
+
     /**
      * @param $serviceMethod string
      * @param $data
@@ -42,7 +60,7 @@ class SecurityService extends ServiceBase implements ServiceInterface
         $result = $this->validator->call('createToken', $PID);
 
         if ($result) {
-            return $this->service('CreateToken', array('PID' => $PID));
+            return $this->service('CreateToken', array('PID' => $PID), $this->response);
         } else {
             throw new R_T_G_ServiceException($result);
         }
@@ -60,7 +78,7 @@ class SecurityService extends ServiceBase implements ServiceInterface
         $result = $this->validator->call('validateToken', $args);
 
         if ($result) {
-            return $this->service('ValidateToken', $args);
+            return $this->service('ValidateToken', $args, $this->response);
         } else {
             throw new R_T_G_ServiceException($result);
         }
@@ -78,7 +96,7 @@ class SecurityService extends ServiceBase implements ServiceInterface
         $result = $this->validator->call('createTokenByApp', $args);
 
         if ($result) {
-            return $this->service('CreateTokenByApp', $args);
+            return $this->service('CreateTokenByApp', $args, $this->response);
         } else {
             throw new R_T_G_ServiceException($result);
         }
@@ -94,7 +112,7 @@ class SecurityService extends ServiceBase implements ServiceInterface
         $result = $this->validator->call('validateTokenByApp', $args);
 
         if ($result) {
-            return $this->service('ValidateTokenByApp', $args);
+            return $this->service('ValidateTokenByApp', $args, $this->response);
         } else {
             throw new R_T_G_ServiceException($result);
         }
@@ -110,7 +128,7 @@ class SecurityService extends ServiceBase implements ServiceInterface
         $result = $this->validator->call('createGameRestrictedTokenByApp', $args);
 
         if ($result) {
-            return $this->service('CreateGameRestrictedTokenByApp', $args);
+            return $this->service('CreateGameRestrictedTokenByApp', $args, $this->response);
         } else {
             throw new R_T_G_ServiceException($result);
         }

@@ -3,6 +3,7 @@
 namespace denbora\R_T_G_Services\services;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
+use denbora\R_T_G_Services\responses\ResponseInterface;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
 
 /**
@@ -39,46 +40,19 @@ abstract class ServiceBase
     }
 
     /**
-     * gets only requested params, ignoring parents
-     *
-     * @param $response
-     * @return object
-     * @throws R_T_G_ServiceException
-     */
-    protected function trimResponse($response)
-    {
-        if (is_object($response)) {
-            $key = key($response);
-            if ($response->$key->HasErrors) {
-                $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-                throw new R_T_G_ServiceException($errorPrefix .
-                    'RTG ErrorCode - ' . $response->$key->ErrorCode . '; ' .
-                    'Message - ' . $response->$key->Message);
-            } else {
-                if ($response->$key == 'CreateTokenByAppResult') {
-                    return $response->$key;
-                } else {
-                    return $response->$key->Data;
-                }
-            }
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . 'response has wrong type - ' . gettype($response));
-        }
-    }
-
-    /**
      * @param string $method
      * @param $data
+     * @param ResponseInterface $responseObject
      * @return object
      * @throws R_T_G_ServiceException
      */
-    protected function service(string $method, $data)
+    protected function service(string $method, $data, $responseObject)
     {
         try {
             $callResult = $this->soapClient->__soapCall($method, array($data));
 
-            $result = $this->trimResponse($callResult);
+            $responseMethod = lcfirst($method);
+            $result = $responseObject->$responseMethod($callResult);
 
             return $result;
         } catch (\Exception $e) {
