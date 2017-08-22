@@ -6,6 +6,11 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 class BaseResponse
 {
+    /**
+     * @param $response
+     * @return mixed
+     * @throws R_T_G_ServiceException
+     */
     protected function baseTrim($response)
     {
         if (is_object($response)) {
@@ -24,6 +29,12 @@ class BaseResponse
         }
     }
 
+    /**
+     * Checks errors in RTG response
+     *
+     * @param $response
+     * @return bool
+     */
     protected function hasErrors($response)
     {
         $key = key($response);
@@ -34,6 +45,13 @@ class BaseResponse
         }
     }
 
+    /**
+     * Gets message from RTG response
+     *
+     * @param $response
+     * @return mixed
+     * @throws R_T_G_ServiceException
+     */
     protected function getMessage($response)
     {
         $key = key($response);
