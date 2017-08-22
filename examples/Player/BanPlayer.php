@@ -17,7 +17,7 @@ class BanPlayer
         try {
             $playerService = $casino->getService($service);
             $ban = array(
-                'PID' => '10023655',
+                'PID' => '10024291',
                 'Comment' => 'test',
                 'BanType' => 1
             );

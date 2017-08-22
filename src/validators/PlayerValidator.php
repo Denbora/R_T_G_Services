@@ -1,6 +1,5 @@
 <?php
 
-
 namespace denbora\R_T_G_Services\validators;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
@@ -264,7 +263,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
             throw new R_T_G_ValidationException($errorPrefix . 'login is a required field');
         }
 
-        if (empty($data['UserID'])) {
+        if (empty($data['UserID']) && !isset($data['UserID'])) {
             throw new R_T_G_ValidationException($errorPrefix . 'UserID is a required field');
         }
 

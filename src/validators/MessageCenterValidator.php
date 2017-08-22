@@ -1,6 +1,5 @@
 <?php
 
-
 namespace denbora\R_T_G_Services\validators;
 
 class MessageCenterValidator extends BaseValidator implements ValidatorInterface
