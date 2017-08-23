@@ -4,10 +4,10 @@ namespace denbora\R_T_G_Services\examples\Player;
 
 use denbora\R_T_G_Services\casino\Casino;
 
-class SavePlayer
+class DeactivateAndLogoutPlayer
 {
     /**
-     * SavePlayer constructor.
+     * DeactivateAndLogoutPlayer constructor.
      * @param string $service
      * @param string $method
      * @param Casino $casino
@@ -17,25 +17,9 @@ class SavePlayer
         try {
             $playerService = $casino->getService($service);
             $createData = array(
-                'Player' => array(
-                    'Login' => 'porter-913',
-                    'Password' => 'porter_913',
-                    'Contact' => array(
-                        'CountryID' => 'EG',
-                        'EMail' => 'test1447@tste.test'
-                    )
-                ),
-                'ThirdPartyDataSync' => false,
-                'UserID' => 0,
-                'MapToAffID' => false,
-                'CalledFromCasino' => false
+                'Login' => 'porter-922',
+                'UserID' => 0
             );
-
-            /*
-             * id for porter-698 - 10024193
-             * id for porter-981 - 10024291
-             *
-             * */
 
             $result = $playerService->call($method, $createData);
 
