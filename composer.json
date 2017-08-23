@@ -1,5 +1,5 @@
 {
-  "name": "denbora/R_T_G_Services",
+  "name": "denbora/r_t_g_services",
   "type": "library",
   "require": {
     "php": ">=7.1"
