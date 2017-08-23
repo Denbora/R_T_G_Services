@@ -17,25 +17,6 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
 
     /**
      * @param $response
-     * @param $errorMessage
-     * @return mixed
-     * @throws R_T_G_ServiceException
-     */
-    private function getStringOrError($response, $errorMessage)
-    {
-        $key = key($response);
-        if ($response->$key->Message) {
-            return $response->$key->Data->string;
-        } else {
-            $errorPrefix = $errorMessage . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix .
-                'RTG ErrorCode - ' . $response->$key->ErrorCode . '; ' .
-                'Message - ' . $response->$key->Message);
-        }
-    }
-
-    /**
-     * @param $response
      * @param $field
      * @param $errorPrefix
      * @return mixed
