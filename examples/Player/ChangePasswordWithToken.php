@@ -4,10 +4,10 @@ namespace denbora\R_T_G_Services\examples\Player;
 
 use denbora\R_T_G_Services\casino\Casino;
 
-class BanPlayer
+class ChangePasswordWithToken
 {
     /**
-     * GetPlayer constructor.
+     * ChangePasswordWithToken constructor.
      * @param string $service
      * @param string $method
      * @param Casino $casino
@@ -16,13 +16,13 @@ class BanPlayer
     {
         try {
             $playerService = $casino->getService($service);
-            $ban = array(
-                'PID' => '10024291',
-                'Comment' => 'test',
-                'BanType' => 1
+            $data = array(
+                'Login' => 'porter-922',
+                'NewPassword' => 'porter-2231',
+                'Token' => 'adwfsqwe',
             );
 
-            $result = $playerService->call($method, $ban);
+            $result = $playerService->call($method, $data);
             echo "<pre>";
             var_dump($result);
             echo "</pre>";

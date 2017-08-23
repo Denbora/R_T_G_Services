@@ -4,10 +4,10 @@ namespace denbora\R_T_G_Services\examples\Player;
 
 use denbora\R_T_G_Services\casino\Casino;
 
-class BanPlayer
+class ForgotUsername
 {
     /**
-     * GetPlayer constructor.
+     * ForgotUsername constructor.
      * @param string $service
      * @param string $method
      * @param Casino $casino
@@ -16,16 +16,13 @@ class BanPlayer
     {
         try {
             $playerService = $casino->getService($service);
-            $ban = array(
-                'PID' => '10024291',
-                'Comment' => 'test',
-                'BanType' => 1
-            );
+            $email = 'test1447@tste.test';
 
-            $result = $playerService->call($method, $ban);
+            $result = $playerService->call($method, $email);
+
             echo "<pre>";
             var_dump($result);
-            echo "</pre>";
+            echo "<pre>";
         } catch (\Exception $e) {
             echo "<pre>";
             var_dump($e);
