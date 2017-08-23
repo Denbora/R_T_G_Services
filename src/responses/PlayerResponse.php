@@ -36,6 +36,25 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
 
     /**
      * @param $response
+     * @param $field
+     * @param $errorPrefix
+     * @return mixed
+     * @throws R_T_G_ServiceException
+     */
+    private function getDataFields($response, $field, $errorPrefix)
+    {
+        $key = key($response);
+        if ($response->$key->HasErrors) {
+            throw new R_T_G_ServiceException($errorPrefix .
+                'RTG ErrorCode - ' . $response->$key->ErrorCode . '; ' .
+                'Message - ' . $response->$key->Message);
+        } else {
+            return $response->$key->Data->$field;
+        }
+    }
+
+    /**
+     * @param $response
      * @return mixed
      */
     public function getPlayer($response)
@@ -68,9 +87,13 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
         return $response;
     }
 
+    /**
+     * @param $response
+     * @return bool
+     */
     public function changePlayerClass($response)
     {
-        return $response;
+        return $this->validate($response, 'Change Player Class Error');
     }
 
     /**
@@ -82,89 +105,180 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
         return $this->baseTrim($response);
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function createPlayerAndToken($response)
     {
-        return $response;
+        return $this->baseTrim($response);
     }
 
+    /**
+     * @param $response
+     * @return bool
+     */
     public function deactivatePlayer($response)
     {
-        return $response;
+        return $this->validate($response, 'Error in deactivatePlayer');
     }
 
+    /**
+     * @param $response
+     * @return bool
+     */
     public function deactivateAndLogoutPlayer($response)
     {
-        return $response;
+        return $this->validate($response, 'Error in deactivateAndLogoutPlayer');
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function forgotPassword($response)
     {
-        return $response;
+        return $this->getMessage($response);
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function forgotUsername($response)
     {
         return $response;
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function getAdjustedNetWinbyPID($response)
     {
-        return $response;
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        return $this->getDataFields($response, 'decimal', $errorPrefix);
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function getNonCashTotalbyPID($response)
     {
-        return $response;
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        return $this->getDataFields($response, 'decimal', $errorPrefix);
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function getNonCashTotalbyPIDandDate($response)
     {
-        return $response;
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        return $this->getDataFields($response, 'decimal', $errorPrefix);
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function getPID($response)
     {
-        return $this->getStringOrError($response, 'Get PID Error');
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        return $this->getDataFields($response, 'string', $errorPrefix);
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     * @throws R_T_G_ServiceException
+     */
     public function getPlayerClass($response)
     {
-        return $response;
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        return $this->getDataFields($response, 'PlayerClass', $errorPrefix);
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     * @throws R_T_G_ServiceException
+     */
     public function getPlayers($response)
     {
-        return $response;
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        return $this->getDataFields($response, 'Player', $errorPrefix);
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     * @throws R_T_G_ServiceException
+     */
     public function getPlayersActiveSessions($response)
     {
-        return $response;
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        return $this->getDataFields($response, 'PlayerActiveSession', $errorPrefix);
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function getPlayersDelta($response)
     {
-        return $response;
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        return $this->getDataFields($response, 'Player', $errorPrefix);
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function getPlayerPasscode($response)
     {
-        return $response;
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        return $this->getDataFields($response, 'string', $errorPrefix);
     }
 
+    /**
+     * @param $response
+     * @return bool
+     */
     public function resetPassword($response)
     {
-        return $response;
+        return $this->validate($response, 'Reset Password Error');
     }
 
-    public function unBanPlayer($response)
+    /**
+     * @param $response
+     * @return bool
+     */
+    public function unbanPlayer($response)
     {
-        return $response;
+        return $this->validate($response, 'Unban Player Error');
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function updatePlayer($response)
     {
-        return $response;
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        return $this->getDataFields($response, 'Player', $errorPrefix);
     }
 
     /**
@@ -193,7 +307,9 @@ class PlayerResponse extends BaseResponse implements ResponseInterface
      */
     public function savePlayer($response)
     {
-        return $this->getStringOrError($response, 'Save Player Error');
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        return $this->getDataFields($response, 'string', $errorPrefix);
     }
 
     public function logout($response)

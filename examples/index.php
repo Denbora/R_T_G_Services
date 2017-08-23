@@ -9,7 +9,7 @@ require_once __DIR__ . '/../experiments/config.php';
 
 $casino = new Casino($base_url, $certificate, $rtgPassword);
 
-$method = 'getPlayerClass';
+$method = 'getPID';
 $service = 'Player';
 
 try {

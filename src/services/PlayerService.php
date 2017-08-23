@@ -274,15 +274,14 @@ class PlayerService extends ServiceBase implements ServiceInterface
     /**
      * This method retrieves all active/open player sessions
      *
-     * @param $args
      * @param bool $rawResponse
      * @return object
      */
-    protected function getPlayersActiveSessions($args, bool $rawResponse)
+    protected function getPlayersActiveSessions(bool $rawResponse)
     {
-        $this->validator->call('getPlayersActiveSessions', $args);
+        $this->validator->call('getPlayersActiveSessions', '');
 
-        return $this->service('GetPlayersActiveSessions', $args, $rawResponse);
+        return $this->service('GetPlayersActiveSessions', $rawResponse, '');
     }
 
     /**
@@ -334,7 +333,7 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param bool $rawResponse
      * @return object
      */
-    protected function unBanPlayer(string $PID, bool $rawResponse)
+    protected function unbanPlayer(string $PID, bool $rawResponse)
     {
         $this->validator->call('unBanPlayer', $PID);
 
