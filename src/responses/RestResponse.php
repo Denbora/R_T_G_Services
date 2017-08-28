@@ -5,8 +5,21 @@ namespace denbora\R_T_G_Services\responses;
 class RestResponse implements ResponseInterface
 {
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function rawResponse($response)
     {
-        // TODO: Implement rawResponse() method.
+        return $response;
+    }
+
+    /**
+     * @param $response
+     * @return mixed
+     */
+    public function onlyContent($response)
+    {
+        return $response->body;
     }
 }

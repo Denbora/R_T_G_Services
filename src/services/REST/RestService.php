@@ -2,6 +2,8 @@
 
 namespace denbora\R_T_G_Services\services\REST;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
+use denbora\R_T_G_Services\responses\RestResponse;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
 use Httpful\Request;
 
@@ -11,6 +13,7 @@ class RestService implements RestServiceInterface
     private $key;
     private $password;
     private $validator;
+    private $response;
     private $baseUrl;
 
     public function __construct(
@@ -18,27 +21,41 @@ class RestService implements RestServiceInterface
         string $key,
         string $password,
         ValidatorInterface $validator,
+        RestResponse $response,
         string $baseUrl
     ) {
         $this->certificate = $certificate;
         $this->key = $key;
         $this->password = $password;
         $this->validator = $validator;
+        $this->response = $response;
         $this->baseUrl = $baseUrl;
     }
 
     /**
-     * @param string $partUrl
+     * @param string $url
+     * @param bool $rawResponse
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
-    public function get(string $partUrl)
+    public function get(string $url, bool $rawResponse = false)
     {
-        $url = $this->baseUrl . $partUrl;
-        $response = Request::get($url)
-            ->authenticateWithCert($this->certificate, $this->key, $this->password)
-            ->send();
+        try {
+            $response = Request::get($url)
+                ->authenticateWithCert($this->certificate, $this->key, $this->password)
+                ->send();
 
-        return $response;
+            if ($rawResponse === true) {
+                $result = $this->response->rawResponse($response);
+            } else {
+                $result = $this->response->onlyContent($response);
+            }
+
+            return $result;
+        } catch (\Exception $e) {
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
+        }
     }
 
     /**
@@ -69,5 +86,19 @@ class RestService implements RestServiceInterface
     public function delete(string $url, $data = '')
     {
         // TODO: Implement delete() method.
+    }
+
+    /**
+     * @param $login
+     * @param bool $rawResponse
+     * @return \Httpful\Response
+     */
+    public function getPid($login, bool $rawResponse = false)
+    {
+        $partUrl = 'accounts/playerid?login=';
+
+        $url = $this->baseUrl . $partUrl . $login;
+        $response = $this->get($url, $rawResponse);
+        return $response;
     }
 }

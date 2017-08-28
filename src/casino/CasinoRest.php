@@ -102,6 +102,7 @@ class CasinoRest implements CasinoInterface
             $this->keyFile,
             $this->password,
             $serviceValidator,
+            $serviceResponse,
             $this->baseUrl
         );
 
