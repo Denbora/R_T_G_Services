@@ -10,29 +10,29 @@ interface RestServiceInterface
 {
     /**
      * @param string $url
-     * @param string $data
      * @return mixed
+     * @internal param string $data
      */
-    public function get(string $url, $data = '');
+    public function get(string $url);
 
     /**
      * @param string $url
-     * @param string $data
      * @return mixed
+     * @internal param string $data
      */
-    public function post(string $url, $data = '');
+    public function post(string $url);
 
     /**
      * @param string $url
-     * @param string $data
      * @return mixed
+     * @internal param string $data
      */
-    public function put(string $url, $data = '');
+    public function put(string $url);
 
     /**
      * @param string $url
-     * @param string $data
      * @return mixed
+     * @internal param string $data
      */
-    public function delete(string $url, $data = '');
+    public function delete(string $url);
 }

@@ -29,17 +29,11 @@ class RestService implements RestServiceInterface
 
     /**
      * @param string $partUrl
-     * @param string $data
      * @return mixed
-     * @internal param string $url
      */
-    public function get(string $partUrl, $data = '')
+    public function get(string $partUrl)
     {
-        if ($data != '') {
-            $url = $this->baseUrl . $partUrl . $data;
-        } else {
-            $url = $this->baseUrl . $partUrl;
-        }
+        $url = $this->baseUrl . $partUrl;
         $response = Request::get($url)
             ->authenticateWithCert($this->certificate, $this->key, $this->password)
             ->send();
