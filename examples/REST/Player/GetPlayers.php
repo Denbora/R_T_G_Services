@@ -1,21 +1,23 @@
 <?php
 
-namespace denbora\R_T_G_Services\examples\REST;
+namespace denbora\R_T_G_Services\examples\REST\Player;
 
 use denbora\R_T_G_Services\casino\CasinoRest;
 
-class GetPid
+class GetPlayers
 {
     /**
      * GetPid constructor.
-     * @param $casino
+     * @param CasinoRest $casino
      */
-    public function __construct(CasinoRest $casino)
+    public function __construct($casino)
     {
         try {
-            $restCall = $casino->getService('Rest');
-            $login = 'porter-9821';
-            $result = $restCall->getPid($login, true);
+            $query = '{
+                "startDate": "2017-08-09",
+                "endDate": "2017-08-10"
+            }';
+            $result = $casino->player->getPlayers($query);
 
             echo "<pre>";
             var_dump($result);

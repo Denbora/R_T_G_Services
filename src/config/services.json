@@ -18,8 +18,9 @@
     "responseClass": "SecurityResponse"
   },
   "Rest": {
-    "class": "denbora\\R_T_G_Services\\services\\REST\\RestService",
-    "validatorClass": "RestValidator",
-    "responseClass": "RestResponse"
+    "Player": {
+      "validatorClass": "RestValidator",
+      "responseClass": "RestResponse"
+    }
   }
 }

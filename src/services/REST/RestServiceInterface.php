@@ -10,10 +10,9 @@ interface RestServiceInterface
 {
     /**
      * @param string $url
-     * @param bool $rawResponse
      * @return mixed
      */
-    public function get(string $url, bool $rawResponse);
+    public function get(string $url);
 
     /**
      * @param string $url

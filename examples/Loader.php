@@ -26,16 +26,16 @@ class Loader
     }
 
     /**
+     * @param string $service
      * @param string $method
      * @param CasinoRest $casino
      * @return mixed
      * @throws R_T_G_ServiceException
-     * @internal param RestService $service
      */
-    public static function rest(string $method, $casino)
+    public static function rest(string $service, string $method, $casino)
     {
         try {
-            $serviceClass = __NAMESPACE__ . '\\' . 'REST'. '\\' . ucwords($method);
+            $serviceClass = __NAMESPACE__ . '\\' . 'REST'. '\\' . $service . '\\' .  ucwords($method);
             return new $serviceClass($casino);
         } catch (\Exception $e) {
             throw new R_T_G_ServiceException('Loader error: ' . $e->getMessage());

@@ -39,6 +39,23 @@ class CasinoRest implements CasinoInterface
     protected $serviceDescription;
 
     /**
+     * @param string $name
+     * @return object
+     * @throws R_T_G_ServiceException
+     */
+    public function __get($name)
+    {
+        $className = ucwords($name) . 'Service';
+        $fullClassName = 'denbora\R_T_G_Services\services\REST\\' . $className;
+
+        if (class_exists($fullClassName)) {
+            return $this->getService(ucwords($name));
+        } else {
+            throw new R_T_G_ServiceException('No such service - ' . $name);
+        }
+    }
+
+    /**
      * CasinoRest constructor.
      * @param string $baseUrl
      * @param string $certificate
@@ -73,8 +90,10 @@ class CasinoRest implements CasinoInterface
         } else {
             throw new R_T_G_ServiceException('Password does not meet requirements');
         }
-
-        $this->serviceDescription = json_decode(file_get_contents(__DIR__ . '/../config/services.json', true), true);
+        $this->serviceDescription = json_decode(
+            file_get_contents(__DIR__ . '/../config/services.json', true),
+            true
+        )['Rest'];
     }
 
     /**
@@ -83,20 +102,22 @@ class CasinoRest implements CasinoInterface
      */
     public function getService(string $serviceName)
     {
+        $nameInConfig = str_replace("Service", "", $serviceName);
         //step1 create validator from config
-        $serviceValidatorClass = $this->serviceDescription[$serviceName]['validatorClass'];
+        $serviceValidatorClass = $this->serviceDescription[$nameInConfig]['validatorClass'];
         $serviceValidator = ValidatorFactory::build($serviceValidatorClass);
 
         //step2 create response from config
-        $serviceResponseClass = $this->serviceDescription[$serviceName]['responseClass'];
+        $serviceResponseClass = $this->serviceDescription[$nameInConfig]['responseClass'];
         $serviceResponse = ResponseFactory::build($serviceResponseClass);
 
         //step3 creating Service
         if (!empty($this->serviceDescription[$serviceName]['class'])) {
             $serviceClass = $this->serviceDescription[$serviceName]['class'];
         } else {
-            $serviceClass =  __NAMESPACE__ . '\\'. 'services' . '\\'. 'Rest' . '\\'. $serviceName . 'Service';
+            $serviceClass =  'denbora\R_T_G_Services\services' . '\\'. 'REST' . '\\'. $serviceName . 'Service';
         }
+
         $service = new $serviceClass(
             $this->certificateFile,
             $this->keyFile,
