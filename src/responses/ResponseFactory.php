@@ -9,10 +9,10 @@ class ResponseFactory implements FactoryInterface
 {
     /**
      * @param string $type
-     * @return ResponseInterface
+     * @return SoapResponseInterface
      * @throws R_T_G_ServiceException
      */
-    public static function build(string $type) : ResponseInterface
+    public static function build(string $type) : SoapResponseInterface
     {
         $response = 'denbora\\R_T_G_Services\\responses\\' . ucwords($type);
 

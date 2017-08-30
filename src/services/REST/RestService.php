@@ -136,7 +136,6 @@ class RestService implements RestServiceInterface
      * @param null $queryParams
      * @param string $endpoint
      * @return string
-     * @internal param array|null $inlineParams
      */
     protected function createFullUrl(
         string $query,

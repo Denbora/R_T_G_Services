@@ -11,12 +11,12 @@ require_once __DIR__ . '/../experiments/config.php';
 $casino = new Casino($base_url, $certificate, $rtgPassword);
 $casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
 
-$method = 'postPlayerNotes';
+$method = 'createPlayer';
 $service = 'Player';
 
 try {
     //Loader::call($service, $method, $casino);
-    Loader::rest($service, $method, $casinoRest);
+    Loader::call($service, $method, $casino);
     /*if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Create::savePlayer($_POST, $casino);
     } else {

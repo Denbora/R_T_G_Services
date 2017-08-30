@@ -3,7 +3,7 @@
 namespace denbora\R_T_G_Services\services\SOAP;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
-use denbora\R_T_G_Services\responses\ResponseInterface;
+use denbora\R_T_G_Services\responses\SoapResponseInterface;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
 
 /**
@@ -36,9 +36,9 @@ abstract class ServiceBase
      * ServiceBase constructor.
      * @param \SoapClient $soapClient
      * @param ValidatorInterface $validator
-     * @param ResponseInterface $response
+     * @param SoapResponseInterface $response
      */
-    public function __construct(\SoapClient $soapClient, ValidatorInterface $validator, ResponseInterface $response)
+    public function __construct(\SoapClient $soapClient, ValidatorInterface $validator, SoapResponseInterface $response)
     {
         $this->soapClient = $soapClient;
         $this->validator = $validator;
