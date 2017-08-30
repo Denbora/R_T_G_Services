@@ -23,10 +23,6 @@ class PostPlayerNotes
 
             $result = $casino->player->postPlayerNotes($data);
 
-            /*$restCall = $casino->getService('Rest');
-            $login = 'porter-9821';
-            $result = $restCall->getPid($login, true);*/
-
             echo "<pre>";
             var_dump($result);
             echo "</pre>";

@@ -1,19 +1,24 @@
 <?php
 
-namespace denbora\R_T_G_Services\examples\REST;
+namespace denbora\R_T_G_Services\examples\REST\Player;
 
 use denbora\R_T_G_Services\casino\CasinoRest;
 
-class GetPid
+class GetNonCashTotal
 {
     /**
-     * GetPid constructor.
+     * GetNonCashTotal constructor.
      * @param CasinoRest $casino
      */
     public function __construct($casino)
     {
         try {
-            $result = $casino->player->getPlayers('test');
+            $query = '{
+                "playerId": "10024193",
+                "startDate": "2017-08-09",
+                "endDate": "2017-08-10"
+            }';
+            $result = $casino->player->getNonCashTotal($query);
 
             echo "<pre>";
             var_dump($result);

@@ -88,6 +88,7 @@ class RestService implements RestServiceInterface
         try {
             $response = Request::put($url)
                 ->authenticateWithCert($this->certificate, $this->key, $this->password)
+                ->sendsJSON()
                 ->body($data)
                 ->send();
 
@@ -133,7 +134,6 @@ class RestService implements RestServiceInterface
      * @param string $query
      * @param string $serviceApiUrl
      * @param null $pathParams
-     * @param null $queryParams
      * @param string $endpoint
      * @return string
      */
@@ -141,7 +141,6 @@ class RestService implements RestServiceInterface
         string $query,
         string $serviceApiUrl,
         $pathParams = null,
-        $queryParams = null,
         string $endpoint = ''
     ) {
         if ($query != '') {
@@ -155,23 +154,6 @@ class RestService implements RestServiceInterface
                         $path .= $queryObject->$value . '/';
                         unset($queryObject->$value);
                     }
-                }
-            }
-
-            if (is_array($queryParams)) {
-                $i = 0;
-                foreach ($queryParams as $key => $value) {
-                    if (property_exists($queryObject, $value)) {
-                        if ($i == 0) {
-                            $queryData .= '?' . $key . '=' . $value;
-                        } else {
-                            $queryData .= '&' . $key . '=' . $value;
-                        }
-
-                        $queryData .= $queryObject->$value . '/';
-                        unset($queryObject->$value);
-                    }
-                    $i++;
                 }
             }
 
@@ -190,5 +172,60 @@ class RestService implements RestServiceInterface
             }
         }
         return $url;
+    }
+
+    /**
+     * @param string $query
+     * @param string $serviceApiUrl
+     * @param null $pathParams
+     * @param string $endpoint
+     * @return string
+     */
+    public function createGetFullUrl(string $query, string $serviceApiUrl, $pathParams = null, string $endpoint = '')
+    {
+        if ($query != '') {
+            $path = '';
+            $url = $this->baseUrl . $serviceApiUrl;
+            $queryObject = json_decode($query);
+            if (is_array($pathParams)) {
+                foreach ($pathParams as $value) {
+                    if (property_exists($queryObject, $value)) {
+                        $path .= $queryObject->$value . '/';
+                        unset($queryObject->$value);
+                    }
+                }
+            }
+
+            if ($path != '') {
+                $url .= '/' . $path;
+                if ($endpoint != '') {
+                    $url .= $endpoint;
+                }
+            }
+            $url .= $this->toUrlFormat($queryObject);
+        } else {
+            $url = $this->baseUrl . $serviceApiUrl;
+
+            if ($endpoint != '') {
+                $url .= '/' . $endpoint;
+            }
+        }
+        return $url;
+    }
+
+    /**
+     * @param $query
+     * @param $remove
+     * @return mixed
+     */
+    protected function removeFromQuery(string $query, $remove)
+    {
+        $data = json_decode($query);
+
+        foreach ($remove as $value) {
+            unset($data->$value);
+        }
+
+        return json_encode($data);
     }
 }

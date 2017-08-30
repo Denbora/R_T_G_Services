@@ -1,19 +1,23 @@
 <?php
 
-namespace denbora\R_T_G_Services\examples\REST;
+namespace denbora\R_T_G_Services\examples\REST\Player;
 
 use denbora\R_T_G_Services\casino\CasinoRest;
 
-class GetPid
+class PutClass
 {
     /**
-     * GetPid constructor.
+     * PutClass constructor.
      * @param CasinoRest $casino
      */
     public function __construct($casino)
     {
         try {
-            $result = $casino->player->getPlayers('test');
+            $query = '{
+                "playerId": "10024193",
+                "player_class_id": 0
+            }';
+            $result = $casino->player->putClass($query);
 
             echo "<pre>";
             var_dump($result);

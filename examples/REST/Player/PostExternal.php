@@ -4,17 +4,16 @@ namespace denbora\R_T_G_Services\examples\REST\Player;
 
 use denbora\R_T_G_Services\casino\CasinoRest;
 
-class PutPlayer
+class PostExternal
 {
     /**
-     * PutPlayer constructor.
+     * PostExternal constructor.
      * @param CasinoRest $casino
      */
     public function __construct($casino)
     {
         try {
             $query = '{
-                "playerId": "10024193",
                 "token_type": "web_cashier",
                 "currency_id": "EUR",
                 "login": "porter-9941",
@@ -52,7 +51,7 @@ class PutPlayer
                 "accept_promotion": true,
                 "no_spam": true
             }';
-            $result = $casino->player->putPlayer($query);
+            $result = $casino->player->postExternal($query);
 
             echo "<pre>";
             var_dump($result);

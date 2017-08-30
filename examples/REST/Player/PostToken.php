@@ -1,19 +1,23 @@
 <?php
 
-namespace denbora\R_T_G_Services\examples\REST;
+namespace denbora\R_T_G_Services\examples\REST\Player;
 
 use denbora\R_T_G_Services\casino\CasinoRest;
 
-class GetPid
+class PostToken
 {
     /**
-     * GetPid constructor.
+     * PostToken constructor.
      * @param CasinoRest $casino
      */
     public function __construct($casino)
     {
         try {
-            $result = $casino->player->getPlayers('test');
+            $query = '{
+                "playerId": "10024193",
+                "token_type": "external_token"
+            }';
+            $result = $casino->player->postToken($query);
 
             echo "<pre>";
             var_dump($result);

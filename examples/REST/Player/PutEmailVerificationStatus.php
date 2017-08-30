@@ -1,19 +1,23 @@
 <?php
 
-namespace denbora\R_T_G_Services\examples\REST;
+namespace denbora\R_T_G_Services\examples\REST\Player;
 
 use denbora\R_T_G_Services\casino\CasinoRest;
 
-class GetPid
+class PutEmailVerificationStatus
 {
     /**
-     * GetPid constructor.
+     * PutEmailVerificationStatus constructor.
      * @param CasinoRest $casino
      */
     public function __construct($casino)
     {
         try {
-            $result = $casino->player->getPlayers('test');
+            $query = '{
+                "playerId": "10024193",
+                "status": true
+            }';
+            $result = $casino->player->putEmailVerificationStatus($query);
 
             echo "<pre>";
             var_dump($result);
