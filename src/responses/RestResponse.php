@@ -13,9 +13,6 @@ class RestResponse implements ResponseInterface
      */
     public function getContent($response)
     {
-        echo "<pre>";
-        var_dump($response);
-        die();
         if (is_int($response->code) && $response->code != 200) {
             throw new R_T_G_ServiceException('RTG Code - ' . $response->code);
         } else {

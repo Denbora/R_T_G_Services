@@ -29,7 +29,7 @@ class PostPlayer
                 "zip": "11545",
                 "country": "EG",
                 "cell_phone": "212121",
-                "gender": "male",
+                "gender": true,
                 "user_id": 0,
                 "download_id": 0,
                 "birth_date": "1992-08-29",

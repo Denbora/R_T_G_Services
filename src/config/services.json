@@ -21,6 +21,14 @@
     "Player": {
       "validatorClass": "RestValidator",
       "responseClass": "RestResponse"
+    },
+    "Account": {
+      "validatorClass": "RestValidator",
+      "responseClass": "RestResponse"
+    },
+    "Report": {
+      "validatorClass": "RestValidator",
+      "responseClass": "RestResponse"
     }
   }
 }

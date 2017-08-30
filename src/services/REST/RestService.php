@@ -159,11 +159,13 @@ class RestService implements RestServiceInterface
 
             if ($path != '') {
                 $url .= '/' . $path;
-                if ($endpoint != '') {
-                    $url .= $endpoint;
-                }
             }
+
             $url .= $queryData;
+
+            if ($endpoint != '') {
+                $url .= '/' . $endpoint;
+            }
         } else {
             $url = $this->baseUrl . $serviceApiUrl;
 
@@ -198,9 +200,10 @@ class RestService implements RestServiceInterface
 
             if ($path != '') {
                 $url .= '/' . $path;
-                if ($endpoint != '') {
-                    $url .= $endpoint;
-                }
+            }
+
+            if ($endpoint != '') {
+                $url .= '/' . $endpoint;
             }
             $url .= $this->toUrlFormat($queryObject);
         } else {

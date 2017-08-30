@@ -11,8 +11,10 @@ require_once __DIR__ . '/../experiments/config.php';
 $casino = new Casino($base_url, $certificate, $rtgPassword);
 $casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
 
-$method = 'putPlayer';
-$service = 'Player';
+$method = 'getTransactionHistory';
+$service = 'Report';
+/*$method = 'getPID';
+$service = 'Player';*/
 
 try {
     //Loader::call($service, $method, $casino);

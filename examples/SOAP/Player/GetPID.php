@@ -16,7 +16,7 @@ class GetPID
     {
         try {
             $playerService = $casino->getService($service);
-            $login = 'porter-44124';//porter-12351
+            $login = 'porter-913';//porter-12351
 
             $result = $playerService->call($method, $login);
             echo "<pre>";
