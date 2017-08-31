@@ -29,6 +29,30 @@
     "Report": {
       "validatorClass": "RestValidator",
       "responseClass": "RestResponse"
+    },
+    "Game": {
+      "validatorClass": "RestValidator",
+      "responseClass": "RestResponse"
+    },
+    "Jackpot": {
+      "validatorClass": "RestValidator",
+      "responseClass": "RestResponse"
+    },
+    "Service": {
+      "validatorClass": "RestValidator",
+      "responseClass": "RestResponse"
+    },
+    "Settings": {
+      "validatorClass": "RestValidator",
+      "responseClass": "RestResponse"
+    },
+    "Cashier": {
+      "validatorClass": "RestValidator",
+      "responseClass": "RestResponse"
+    },
+    "History": {
+      "validatorClass": "RestValidator",
+      "responseClass": "RestResponse"
     }
   }
 }
