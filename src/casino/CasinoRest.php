@@ -102,13 +102,12 @@ class CasinoRest implements CasinoInterface
      */
     public function getService(string $serviceName)
     {
-        $nameInConfig = str_replace("Service", "", $serviceName);
         //step1 create validator from config
-        $serviceValidatorClass = $this->serviceDescription[$nameInConfig]['validatorClass'];
+        $serviceValidatorClass = $this->serviceDescription[$serviceName]['validatorClass'];
         $serviceValidator = ValidatorFactory::build($serviceValidatorClass);
 
         //step2 create response from config
-        $serviceResponseClass = $this->serviceDescription[$nameInConfig]['responseClass'];
+        $serviceResponseClass = $this->serviceDescription[$serviceName]['responseClass'];
         $serviceResponse = ResponseFactory::build($serviceResponseClass);
 
         //step3 creating Service
