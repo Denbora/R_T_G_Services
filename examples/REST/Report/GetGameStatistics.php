@@ -14,7 +14,7 @@ class GetGameStatistics
     {
         try {
             $query = '{
-                "lastUpdateDate": 3,
+                "lastUpdateDate": "2017-08-30",
                 "forMoney": "true"
             }';
             $result = $casino->report->getGameStatistics($query);

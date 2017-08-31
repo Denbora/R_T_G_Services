@@ -16,7 +16,7 @@ class GetGamingStats
             $query = '{
                 "startDate": "2017-08-09",
                 "endDate": "2017-08-10",
-                "forMoney": "true"
+                "forMoney": "false"
             }';
             $result = $casino->report->getGamingStats($query);
 

@@ -15,10 +15,10 @@ class PutChangePassword
         try {
             $query = '{
                 "player": {
-                    "player_id": "10024427"
+                    "player_id": "10025123"
                 },
-                "current_password": "porter_914",
-                "new_password": "porter_913"
+                "current_password": "porter_12356",
+                "new_password": "porter_12356"
             }';
             $result = $casino->account->putChangePassword($query);
 

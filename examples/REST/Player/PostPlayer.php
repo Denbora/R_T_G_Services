@@ -13,6 +13,21 @@ class PostPlayer
     public function __construct($casino)
     {
         try {
+            $test = '{
+                "player": {
+                    "login": "porter-6876",
+                    "password": "porter_6877",
+                    "contact": {
+                        "country": "EG",
+                        "email": "test6867@gmail.com"
+                    },
+                    "third_party_id": "0",
+                    "user_id": 0,
+                    "affiliate_id": 0,
+                    "put_in_affiliate_id": false,
+                    "called_from_casino": 0
+                }
+            }';
             $data = '{
                 "currency_id": "EUR",
                 "login": "porter-6876",

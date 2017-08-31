@@ -14,7 +14,7 @@ class GetPlayerid
     {
         try {
             $query = '{
-                "login": "porter-44124"
+                "login": "porter-12355"
             }';
             $result = $casino->account->getPlayerid($query);
 

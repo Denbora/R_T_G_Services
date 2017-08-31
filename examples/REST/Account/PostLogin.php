@@ -14,12 +14,12 @@ class PostLogin
     {
         try {
             $query = '{
-                "login": "porter-913",
-                "password": "porter_913",
+                "login": "porter-12355",
+                "password": "porter_12356",
                 "skin_id": 0,
                 "client_id": 0,
                 "switchToRealSource": 0,
-                "player_id": "10024427",
+                "player_id": "10025123",
                 "for_money": true
             }';
             $result = $casino->account->postLogin($query);

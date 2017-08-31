@@ -164,7 +164,11 @@ class RestService implements RestServiceInterface
             $url .= $queryData;
 
             if ($endpoint != '') {
-                $url .= '/' . $endpoint;
+                if (is_null($pathParams) || $pathParams == '') {
+                    $url .= '/' . $endpoint;
+                } else {
+                    $url .= $endpoint;
+                }
             }
         } else {
             $url = $this->baseUrl . $serviceApiUrl;
