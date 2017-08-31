@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\responses;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 
-class SecurityResponse extends BaseResponse implements ResponseInterface
+class SecurityResponse extends BaseResponse implements SoapResponseInterface
 {
     /**
      * @param $response

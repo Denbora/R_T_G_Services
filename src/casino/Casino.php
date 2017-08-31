@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\casino;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\ResponseFactory;
-use denbora\R_T_G_Services\services\ServiceInterface;
+use denbora\R_T_G_Services\services\SOAP\ServiceInterface;
 use denbora\R_T_G_Services\validators\ValidatorFactory;
 use SoapClient;
 
@@ -212,7 +212,7 @@ class Casino implements CasinoInterface
         if (!empty($this->serviceDescription[$serviceName]['class'])) {
             $serviceClass = $this->serviceDescription[$serviceName]['class'];
         } else {
-            $serviceClass =  __NAMESPACE__ . '\\'. 'services' . '\\'. $serviceName . 'Service';
+            $serviceClass =  __NAMESPACE__ . '\\'. 'services' . '\\'. 'SOAP' . '\\'. $serviceName . 'Service';
         }
         $service = new $serviceClass($soapClient, $serviceValidator, $serviceResponse);
 

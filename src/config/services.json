@@ -1,20 +1,34 @@
 {
   "MessageCenter": {
-    "class": "denbora\\R_T_G_Services\\services\\MessageCenterService",
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\MessageCenterService",
     "endpoint": "MessageCenter.svc?WSDL",
     "validatorClass": "MessageCenterValidator",
     "responseClass": "MessageCenterResponse"
   },
   "Player": {
-    "class": "denbora\\R_T_G_Services\\services\\PlayerService",
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\PlayerService",
     "endpoint": "Player.svc?WSDL",
     "validatorClass": "PlayerValidator",
     "responseClass": "PlayerResponse"
   },
   "Security": {
-    "class": "denbora\\R_T_G_Services\\services\\SecurityService",
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\SecurityService",
     "endpoint": "Utilities/Security.svc?WSDL",
     "validatorClass": "SecurityValidator",
     "responseClass": "SecurityResponse"
+  },
+  "Rest": {
+    "Player": {
+      "validatorClass": "RestValidator",
+      "responseClass": "RestResponse"
+    },
+    "Account": {
+      "validatorClass": "RestValidator",
+      "responseClass": "RestResponse"
+    },
+    "Report": {
+      "validatorClass": "RestValidator",
+      "responseClass": "RestResponse"
+    }
   }
 }
