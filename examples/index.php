@@ -10,9 +10,8 @@ require_once __DIR__ . '/../experiments/config.php';
 
 //$casino = new Casino($base_url, $certificate, $rtgPassword);
 $casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
-
-$method = 'getBaccarat';
-$service = 'History';
+$method = 'postPlayer';
+$service = 'Player';
 /*$method = 'getPID';
 $service = 'Player';*/
 
