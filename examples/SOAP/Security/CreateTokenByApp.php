@@ -18,7 +18,7 @@ class CreateTokenByApp
             $playerService = $casino->getService($service);
 
             $data = array(
-                'PID' => '10013051',
+                'PID' => '10025631',
                 'ApplicationName' => 'External Token'
             );
 

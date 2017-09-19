@@ -168,16 +168,6 @@ class SecurityValidator extends BaseValidator implements ValidatorInterface
             throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
                 gettype($data['PID']) . ' given');
         }
-
-        if (!is_bool($data['CrossCasinoDisabled'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'CrossCasinoDisabled should be bool, ' .
-                gettype($data['CrossCasinoDisabled']) . ' given');
-        }
-
-        if (!is_bool($data['Local'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Local should be bool, ' .
-                gettype($data['Local']) . ' given');
-        }
         return true;
     }
 }

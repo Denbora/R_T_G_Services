@@ -14,8 +14,8 @@ class PutEmailVerificationStatus
     {
         try {
             $query = '{
-                "playerId": "10024193",
-                "status": "false"
+                "playerId": "10025631",
+                "status": "true"
             }';
             $result = $casino->player->putEmailVerificationStatus($query);
 

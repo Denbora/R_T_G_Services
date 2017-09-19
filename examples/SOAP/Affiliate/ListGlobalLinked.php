@@ -1,13 +1,13 @@
 <?php
 
-namespace denbora\R_T_G_Services\examples\SOAP\Security;
+namespace denbora\R_T_G_Services\examples\SOAP\Affiliate;
 
 use denbora\R_T_G_Services\casino\Casino;
 
-class CreateGameRestrictedTokenByApp
+class ListGlobalLinked
 {
     /**
-     * CreateGameRestrictedTokenByApp constructor.
+     * ListGlobalLinked constructor.
      * @param string $service
      * @param string $method
      * @param Casino $casino
@@ -16,16 +16,14 @@ class CreateGameRestrictedTokenByApp
     {
         try {
             $playerService = $casino->getService($service);
+            $GlobalID = '53953';
 
-            $data = array(
-                'PID' => '10025624',
-                'ApplicationName' => 'Web Cashier'
-            );
+            $result = $playerService->call($method, $GlobalID);
 
-            $result = $playerService->call($method, $data);
             echo "<pre>";
             var_dump($result);
             echo "</pre>";
+
         } catch (\Exception $e) {
             echo "<pre>";
             var_dump($e);

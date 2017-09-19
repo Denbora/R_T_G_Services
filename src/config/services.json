@@ -11,6 +11,12 @@
     "validatorClass": "PlayerValidator",
     "responseClass": "PlayerResponse"
   },
+  "Affiliate": {
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\AffiliateService",
+    "endpoint": "CasinoAPI/affiliate.asmx?WSDL",
+    "validatorClass": "AffiliateValidator",
+    "responseClass": "AffiliateResponse"
+  },
   "Security": {
     "class": "denbora\\R_T_G_Services\\services\\SOAP\\SecurityService",
     "endpoint": "Utilities/Security.svc?WSDL",

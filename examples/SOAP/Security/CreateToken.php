@@ -17,7 +17,7 @@ class CreateToken
         try {
             $playerService = $casino->getService($service);
 
-            $pid = '10013051';
+            $pid = '10025631';
 
             $result = $playerService->call($method, $pid);
             echo "<pre>";

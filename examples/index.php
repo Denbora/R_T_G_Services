@@ -8,16 +8,16 @@ use denbora\R_T_G_Services\examples\Loader;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../experiments/config.php';
 
-//$casino = new Casino($base_url, $certificate, $rtgPassword);
-$casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
-$method = 'postPlayer';
-$service = 'Player';
-/*$method = 'getPID';
+$casino = new Casino($clear_url, $certificate, $rtgPassword);
+//$casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
+$method = 'listGlobalLinked';
+$service = 'Affiliate';
+/*$method = 'putEmailVerificationStatus';
 $service = 'Player';*/
 
 try {
-    //Loader::call($service, $method, $casino);
-    Loader::rest($service, $method, $casinoRest);
+    Loader::call($service, $method, $casino);
+    //Loader::rest($service, $method, $casinoRest);
     /*if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Create::savePlayer($_POST, $casino);
     } else {

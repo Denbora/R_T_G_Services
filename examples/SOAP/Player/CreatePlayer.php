@@ -18,18 +18,22 @@ class CreatePlayer
             $playerService = $casino->getService($service);
             $createData = array(
                 'Player' => array(
-                    'Login' => 'porter-12355',
-                    'Password' => 'porter_12356',
+                    'Login' => 'porter-007',
+                    'Password' => 'porter_007',
                     'Contact' => array(
                         'CountryID' => 'EG',
-                        'EMail' => 'opagangtest25@gmail.com'
+                        'EMail' => 'opagangtest28@gmail.com'
                     )
                 ),
+                'HashedPassword' => '9bc34549d565d9505b287de0cd20ac77be1d3f2c',
                 'ThirdPartyDataSync' => false,
                 'UserID' => 0,
                 'MapToAffID' => false,
                 'CalledFromCasino' => false
             );
+
+            //porter-8034 - pid - 10025631
+            //porter-007  - pid - 10025652 - password - porter_007 - hash - 9bc34549d565d9505b287de0cd20ac77be1d3f2c
 
             $result = $playerService->call($method, $createData);
 
