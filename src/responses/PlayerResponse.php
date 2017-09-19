@@ -17,25 +17,6 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
 
     /**
      * @param $response
-     * @param $field
-     * @param $errorPrefix
-     * @return mixed
-     * @throws R_T_G_ServiceException
-     */
-    private function getDataFields($response, $field, $errorPrefix)
-    {
-        $key = key($response);
-        if ($response->$key->HasErrors) {
-            throw new R_T_G_ServiceException($errorPrefix .
-                'RTG ErrorCode - ' . $response->$key->ErrorCode . '; ' .
-                'Message - ' . $response->$key->Message);
-        } else {
-            return $response->$key->Data->$field;
-        }
-    }
-
-    /**
-     * @param $response
      * @return mixed
      */
     public function getPlayer($response)

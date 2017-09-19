@@ -23,6 +23,12 @@
     "validatorClass": "SecurityValidator",
     "responseClass": "SecurityResponse"
   },
+  "Download": {
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\DownloadService",
+    "endpoint": "Download.svc?WSDL",
+    "validatorClass": "DownloadValidator",
+    "responseClass": "DownloadResponse"
+  },
   "Rest": {
     "Player": {
       "validatorClass": "RestValidator",

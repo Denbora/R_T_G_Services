@@ -8,10 +8,10 @@ use denbora\R_T_G_Services\examples\Loader;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../experiments/config.php';
 
-$casino = new Casino($clear_url, $certificate, $rtgPassword);
+$casino = new Casino($base_url, $certificate, $rtgPassword);
 //$casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
-$method = 'createProgram';
-$service = 'Affiliate';
+$method = 'getDownloadURL';
+$service = 'Download';
 /*$method = 'putEmailVerificationStatus';
 $service = 'Player';*/
 
