@@ -35,13 +35,55 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
     {
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
-        if (empty($globalID)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID is a required field');
+        if (!isset($globalID) && empty($globalID)) {
+            throw new R_T_G_ValidationException($errorPrefix . 'GlobalID is a required field');
         }
 
         if (!is_string($globalID) && !is_numeric($globalID)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+            throw new R_T_G_ValidationException($errorPrefix . 'GlobalID should be string, ' .
                 gettype($globalID) . ' given');
+        }
+
+        return true;
+    }
+
+    /**
+     * @param $data
+     * @return bool
+     * @throws R_T_G_ValidationException
+     */
+    protected function createAffiliate($data)
+    {
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        if (empty($data)) {
+            throw new R_T_G_ValidationException($errorPrefix . 'all data is a required field');
+        }
+
+        if (!is_array($data)) {
+            throw new R_T_G_ValidationException($errorPrefix . 'Data should be array, ' .
+                gettype($data) . ' given');
+        }
+
+        return true;
+    }
+
+    /**
+     * @param $data
+     * @return bool
+     * @throws R_T_G_ValidationException
+     */
+    protected function createProgram($data)
+    {
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+
+        if (empty($data)) {
+            throw new R_T_G_ValidationException($errorPrefix . 'all data is a required field');
+        }
+
+        if (!is_array($data)) {
+            throw new R_T_G_ValidationException($errorPrefix . 'Data should be array, ' .
+                gettype($data) . ' given');
         }
 
         return true;

@@ -10,7 +10,7 @@ require_once __DIR__ . '/../experiments/config.php';
 
 $casino = new Casino($clear_url, $certificate, $rtgPassword);
 //$casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
-$method = 'listGlobalLinked';
+$method = 'createProgram';
 $service = 'Affiliate';
 /*$method = 'putEmailVerificationStatus';
 $service = 'Player';*/

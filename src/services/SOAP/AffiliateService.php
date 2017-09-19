@@ -42,4 +42,28 @@ class AffiliateService extends ServiceBase implements ServiceInterface
 
         return $this->service('ListGlobalLinked', array('GlobalID' => $globalID), $rawResponse);
     }
+
+    /**
+     * @param $data
+     * @param bool $rawResponse
+     * @return object
+     */
+    protected function createAffiliate($data, bool $rawResponse)
+    {
+        $this->validator->call('createAffiliate', $data);
+
+        return $this->service('CreateAffiliate', $data, $rawResponse);
+    }
+
+    /**
+     * @param $data
+     * @param bool $rawResponse
+     * @return object
+     */
+    protected function createProgram($data, bool $rawResponse)
+    {
+        $this->validator->call('createProgram', $data);
+
+        return $this->service('CreateProgram', $data, $rawResponse);
+    }
 }

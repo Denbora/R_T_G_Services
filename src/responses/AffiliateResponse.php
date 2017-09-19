@@ -27,4 +27,22 @@ class AffiliateResponse extends BaseResponse implements SoapResponseInterface
 
         return $data->NewDataSet->Table;
     }
+
+    /**
+     * @param $response
+     * @return bool
+     */
+    public function createAffiliate($response)
+    {
+        return $response;
+    }
+
+    /**
+     * @param $response
+     * @return mixed
+     */
+    public function createProgram($response)
+    {
+        return $response;
+    }
 }
