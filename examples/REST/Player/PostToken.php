@@ -14,7 +14,7 @@ class PostToken
     {
         try {
             $query = '{
-                "playerId": "10024193",
+                "playerId": "10025631",
                 "token_type": "external_token"
             }';
             $result = $casino->player->postToken($query);

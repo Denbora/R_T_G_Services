@@ -18,9 +18,9 @@ class ValidateTokenByApp
             $playerService = $casino->getService($service);
 
             $validate = array(
-                'Token' => 'sjkhgjsdfg',
-                'PID' => '10013051',
-                'ApplicationName' => 'External Token'
+                'Token' => '582F6460-E7A9-4556-9230-DF70EC15AF83s@Lt',
+                'PID' => '10024291',
+                'ApplicationName' => 'Web Cashier'
             );
 
             $result = $playerService->call($method, $validate);

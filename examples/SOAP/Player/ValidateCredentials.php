@@ -16,15 +16,14 @@ class ValidateCredentials
     {
         try {
             $playerService = $casino->getService($service);
-            $login = 'test_john_115';
-            $password = 'test_john_115';
+            $login = 'porter-007';
+            $password = 'porter_007';
             $credentials = [
                 'Login' => $login,
                 'HashedPassword' => strtoupper(sha1($password, false)),
-                'ForMoney' => true,
+                'ForMoney' => false,
                 'IP' => '77.88.239.206'
             ];
-
 
             $result = $playerService->call($method, $credentials);
             echo "<pre>";
