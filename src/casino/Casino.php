@@ -101,7 +101,7 @@ class Casino implements CasinoInterface
     private function createUrl(string $serviceName)
     {
         if (array_key_exists($serviceName, $this->serviceDescription)) {
-            return $this->baseWebServiceUrl . '/' . $this->serviceDescription[$serviceName]['endpoint'];
+            return $this->baseWebServiceUrl . $this->serviceDescription[$serviceName]['endpoint'];
         } else {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
             throw new R_T_G_ServiceException($errorPrefix . 'Service ' . $serviceName . ' not found!');

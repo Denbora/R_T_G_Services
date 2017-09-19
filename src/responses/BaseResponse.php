@@ -75,4 +75,23 @@ class BaseResponse
             return true;
         }
     }
+
+    /**
+     * @param $response
+     * @param $field
+     * @param $errorPrefix
+     * @return mixed
+     * @throws R_T_G_ServiceException
+     */
+    protected function getDataFields($response, $field, $errorPrefix)
+    {
+        $key = key($response);
+        if ($response->$key->HasErrors) {
+            throw new R_T_G_ServiceException($errorPrefix .
+                'RTG ErrorCode - ' . $response->$key->ErrorCode . '; ' .
+                'Message - ' . $response->$key->Message);
+        } else {
+            return $response->$key->Data->$field;
+        }
+    }
 }
