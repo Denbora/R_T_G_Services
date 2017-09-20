@@ -18,7 +18,7 @@ class GetDownloadInformationByAIDPeriod
             $playerService = $casino->getService($service);
 
             $data = array(
-                'StartDate' => '2017-08-01',
+                'StartDate' => '2017-07-01',
                 'EndDate' => '2017-08-03',
                 'AID' => 19
             );
