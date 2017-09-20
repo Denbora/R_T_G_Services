@@ -40,13 +40,13 @@ class RestResponse implements ResponseInterface
         $categoryName = $category[0];
 
         $action = explode('?', end($category))[0];
-        if ($action == '') {
+        if ($action == '' || $category[0] == $categoryName) {
             $action = '/';
         }
 
         $message = $this->codeList[$categoryName][$action][$code];
 
-        if (is_null($message) && $action == '/') {
+        if (is_null($message)) {
             $message = $this->codeList[$categoryName][$action][$this->method][$code];
         }
         return $message;
@@ -59,7 +59,7 @@ class RestResponse implements ResponseInterface
      */
     public function getContent($response)
     {
-        if (is_int($response->code) && $response->code != 200) {
+        if ($response->code != 200 && $response->code != 201) {
             if ($response->code != 500) {
                 $this->method = $response->request->method;
                 $message = $this->getError($response->code, $response->request->uri);

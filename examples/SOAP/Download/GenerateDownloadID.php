@@ -22,7 +22,7 @@ class GenerateDownloadID
                 'ipAddress' => '127.0.0.1',
                 'cameFrom' => 'http://saur4ig.com/',
                 'adID' => 0,
-                'affiliateID' => 19,
+                'affiliateID' => 0,
                 'trackingID' => ''
             );
 

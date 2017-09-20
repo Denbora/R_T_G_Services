@@ -16,7 +16,7 @@ class GetDownloadInformationByDID
     {
         try {
             $playerService = $casino->getService($service);
-            $DID = 129910;
+            $DID = 131378;
 
             $result = $playerService->call($method, $DID);
 
