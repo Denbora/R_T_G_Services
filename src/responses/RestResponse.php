@@ -41,7 +41,7 @@ class RestResponse implements ResponseInterface
 
         $action = explode('?', end($category))[0];
         if ($action == '' || $category[0] == $categoryName) {
-            $action = '/';
+            $action = 'index';
         }
 
         $message = $this->codeList[$categoryName][$action][$code];

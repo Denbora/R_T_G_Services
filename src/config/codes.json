@@ -92,7 +92,7 @@
     }
   },
   "games": {
-    "/": {
+    "index": {
       "401": "Unauthorized"
     },
     "details": {
@@ -234,7 +234,7 @@
     }
   },
   "jackpots": {
-    "/": {
+    "index": {
       "400": "Bad request.",
       "401": "Unauthorized",
       "404": "Game was not found."
@@ -265,7 +265,7 @@
       "400": "Bad request.",
       "404": "Player was not found."
     },
-    "/": {
+    "index": {
       "GET": {
         "400": "Bad request.",
         "404": "Player was not found."
