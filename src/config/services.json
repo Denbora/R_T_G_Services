@@ -35,6 +35,12 @@
     "validatorClass": "GameHistoryValidator",
     "responseClass": "GameHistoryResponse"
   },
+  "Jackpot": {
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\JackpotService",
+    "endpoint": "Jackpot.svc?WSDL",
+    "validatorClass": "JackpotValidator",
+    "responseClass": "JackpotResponse"
+  },
   "Rest": {
     "Player": {
       "validatorClass": "RestValidator",
