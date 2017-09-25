@@ -52,7 +52,13 @@ class MessageCenterService extends ServiceBase implements ServiceInterface
      */
     protected function getMessageList($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'getMessageList', 'GetMessageList');
+        $normal = array(
+            'PID' => (string) $data['PID'],
+            'MoneyType' => (string) $data['MoneyType'],
+            'SkinID' => (int) $data['SkinID'],
+            'ClientType' => (string) $data['ClientType']
+        );
+        return $this->run($normal, $rawResponse, 'getMessageList', 'GetMessageList');
     }
 
     /**
@@ -62,7 +68,13 @@ class MessageCenterService extends ServiceBase implements ServiceInterface
      */
     protected function getUnreadMessagesCount($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'getUnreadMessagesCount', 'GetUnreadMessagesCount');
+        $normal = array(
+            'PID' => (string) $data['PID'],
+            'MoneyType' => (string) $data['MoneyType'],
+            'SkinID' => (int) $data['SkinID'],
+            'ClientType' => (string) $data['ClientType']
+        );
+        return $this->run($normal, $rawResponse, 'getUnreadMessagesCount', 'GetUnreadMessagesCount');
     }
 
     /**
@@ -72,7 +84,18 @@ class MessageCenterService extends ServiceBase implements ServiceInterface
      */
     protected function generateMessageForPlayer($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'generateMessageForPlayer', 'GenerateMessageForPlayer');
+        $normal = array(
+            'MessageID' => (int) $data['MessageID'],
+            'PID' => (int) $data['PID'],
+            'CasinoID' => (int) $data['CasinoID'],
+            'Scheme' => (string) $data['Scheme'],
+            'CashierURL' => (string) $data['CashierURL'],
+            'TournamentURL' => (string) $data['TournamentURL'],
+            'MpRouletteURL' => (string) $data['MpRouletteURL'],
+            'PlayMode' => (string) $data['PlayMode'],
+            'ClientType' => (string) $data['ClientType']
+        );
+        return $this->run($normal, $rawResponse, 'generateMessageForPlayer', 'GenerateMessageForPlayer');
     }
 
     /**
@@ -82,7 +105,11 @@ class MessageCenterService extends ServiceBase implements ServiceInterface
      */
     protected function deleteMessage($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'deleteMessage', 'DeleteMessage');
+        $normal = array(
+            'MessageID' => (int) $data['MessageID'],
+            'PID' => (string) $data['PID']
+        );
+        return $this->run($normal, $rawResponse, 'deleteMessage', 'DeleteMessage');
     }
 
     /**
@@ -92,7 +119,12 @@ class MessageCenterService extends ServiceBase implements ServiceInterface
      */
     protected function getForceOnEntrance($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'getForceOnEntrance', 'GetForceOnEntrance');
+        $normal = array(
+            'MoneyType' => (int) $data['MoneyType'],
+            'PID' => (string) $data['PID'],
+            'SkinID' => (int) $data['SkinID']
+        );
+        return $this->run($normal, $rawResponse, 'getForceOnEntrance', 'GetForceOnEntrance');
     }
 
     /**
@@ -102,6 +134,12 @@ class MessageCenterService extends ServiceBase implements ServiceInterface
      */
     protected function getForceOnExit($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'getForceOnExit', 'GetForceOnExit');
+        $normal = array(
+            'moneyType' => (bool) $data['moneyType'],
+            'PID' => (string) $data['moneyType'],
+            'skinID' => (int) $data['moneyType'],
+            'clientType' => (bool) $data['clientType']
+        );
+        return $this->run($normal, $rawResponse, 'getForceOnExit', 'GetForceOnExit');
     }
 }
