@@ -41,6 +41,12 @@
     "validatorClass": "JackpotValidator",
     "responseClass": "JackpotResponse"
   },
+  "Tournament": {
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\TournamentService",
+    "endpoint": "Tournament.svc?WSDL",
+    "validatorClass": "TournamentValidator",
+    "responseClass": "TournamentResponse"
+  },
   "Rest": {
     "Player": {
       "validatorClass": "RestValidator",
