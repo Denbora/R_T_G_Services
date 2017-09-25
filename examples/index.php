@@ -8,12 +8,12 @@ use denbora\R_T_G_Services\examples\Loader;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../experiments/config.php';
 
-$url = $clear_url;
-//$url = $base_url;
+//$url = $clear_url;
+$url = $base_url;
 $casino = new Casino($url, $certificate, $rtgPassword);
 //$casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
-$method = 'getInitialDeposits';
-$service = 'Affiliate';
+$method = 'getRSVSGameDetailsHistoryWithIcons';
+$service = 'GameHistory';
 /*$method = 'putEmailVerificationStatus';
 $service = 'Player';*/
 

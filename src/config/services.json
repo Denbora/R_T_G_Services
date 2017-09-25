@@ -29,6 +29,12 @@
     "validatorClass": "DownloadValidator",
     "responseClass": "DownloadResponse"
   },
+  "GameHistory": {
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\GameHistoryService",
+    "endpoint": "GameHistory.svc?WSDL",
+    "validatorClass": "GameHistoryValidator",
+    "responseClass": "GameHistoryResponse"
+  },
   "Rest": {
     "Player": {
       "validatorClass": "RestValidator",
