@@ -53,6 +53,18 @@
     "validatorClass": "NotificationValidator",
     "responseClass": "NotificationResponse"
   },
+  "PlayerReports": {
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\PlayerReportsService",
+    "endpoint": "PlayerReports.svc?WSDL",
+    "validatorClass": "PlayerReportsValidator",
+    "responseClass": "PlayerReportsResponse"
+  },
+  "DataCollect": {
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\DataCollectService",
+    "endpoint": "CasinoAPI/DataCollect.asmx?WSDL",
+    "validatorClass": "DataCollectValidator",
+    "responseClass": "DataCollectResponse"
+  },
   "Rest": {
     "Player": {
       "validatorClass": "RestValidator",
