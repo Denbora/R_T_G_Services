@@ -65,6 +65,18 @@
     "validatorClass": "DataCollectValidator",
     "responseClass": "DataCollectResponse"
   },
+  "Lobby": {
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\LobbyService",
+    "endpoint": "RTG.WebServices.Lobby/Lobby.asmx?WSDL",
+    "validatorClass": "LobbyValidator",
+    "responseClass": "LobbyResponse"
+  },
+  "Session": {
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\SessionService",
+    "endpoint": "CasinoAPI/Session.asmx?WSDL",
+    "validatorClass": "SessionValidator",
+    "responseClass": "SessionResponse"
+  },
   "Rest": {
     "Player": {
       "validatorClass": "RestValidator",
