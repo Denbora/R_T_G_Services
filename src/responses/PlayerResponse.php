@@ -227,7 +227,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
      * @param $response
      * @return bool
      */
-    public function unbanPlayer($response)
+    public function unBanPlayer($response)
     {
         return $this->validate($response, 'Unban Player Error');
     }

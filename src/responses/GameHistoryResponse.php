@@ -44,7 +44,7 @@ class GameHistoryResponse extends BaseResponse implements SoapResponseInterface
      * @param $response
      * @return mixed
      */
-    public function playerGamingActivity($response)
+    public function getPlayerGamingActivity($response)
     {
         return $response;
     }

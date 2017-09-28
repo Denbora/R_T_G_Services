@@ -4,10 +4,10 @@ namespace denbora\R_T_G_Services\examples\SOAP\Tournament;
 
 use denbora\R_T_G_Services\casino\Casino;
 
-class GetTournamentDetails
+class GetSlotTournamentsList
 {
     /**
-     * GetTournamentDetails constructor.
+     * GetSlotTournamentsList constructor.
      * @param string $service
      * @param string $method
      * @param Casino $casino
@@ -17,7 +17,9 @@ class GetTournamentDetails
         try {
             $tournamentService = $casino->getService($service);
             $inputs = array(
-                'TournamentID' => 15
+                'FromDate' => '2017-08-03',
+                'ToDate' => '2017-09-03',
+                'Status' => 0
             );
 
             $result = $tournamentService->call($method, $inputs);
@@ -25,7 +27,6 @@ class GetTournamentDetails
             echo "<pre>";
             var_dump($result);
             echo "</pre>";
-
         } catch (\Exception $e) {
             echo "<pre>";
             var_dump($e);

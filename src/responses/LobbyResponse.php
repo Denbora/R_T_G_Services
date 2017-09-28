@@ -123,7 +123,7 @@ class LobbyResponse extends BaseResponse implements SoapResponseInterface
      * @param $response
      * @return array
      */
-    public function getJackpot($response)
+    public function getJackPot($response)
     {
         return $this->getValuesFromDataSet($response, 'GetJackPotResult');
     }

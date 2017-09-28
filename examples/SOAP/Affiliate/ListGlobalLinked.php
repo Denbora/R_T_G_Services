@@ -15,15 +15,14 @@ class ListGlobalLinked
     public function __construct(string $service, string $method, $casino)
     {
         try {
-            $playerService = $casino->getService($service);
+            $affiliateService = $casino->getService($service);
             $GlobalID = '53953';
 
-            $result = $playerService->call($method, $GlobalID);
+            $result = $affiliateService->call($method, $GlobalID);
 
             echo "<pre>";
             var_dump($result);
             echo "</pre>";
-
         } catch (\Exception $e) {
             echo "<pre>";
             var_dump($e);

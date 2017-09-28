@@ -17,7 +17,7 @@ class MessageCenterResponse extends BaseResponse implements SoapResponseInterfac
      * @param $response
      * @return mixed
      */
-    public function getMessageList($response)
+    public function getMessagesList($response)
     {
         return $this->baseTrim($response);
     }

@@ -180,7 +180,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
      * @param $data
      * @return bool
      */
-    protected function getJackpot($data)
+    protected function getJackPot($data)
     {
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 

@@ -50,7 +50,7 @@ class MessageCenterService extends ServiceBase implements ServiceInterface
      * @param bool $rawResponse
      * @return mixed
      */
-    protected function getMessageList($data, bool $rawResponse)
+    protected function getMessagesList($data, bool $rawResponse)
     {
         $normal = array(
             'PID' => (string) $data['PID'],
@@ -58,7 +58,7 @@ class MessageCenterService extends ServiceBase implements ServiceInterface
             'SkinID' => (int) $data['SkinID'],
             'ClientType' => (string) $data['ClientType']
         );
-        return $this->run($normal, $rawResponse, 'getMessageList', 'GetMessageList');
+        return $this->run($normal, $rawResponse, 'getMessagesList', 'GetMessagesList');
     }
 
     /**

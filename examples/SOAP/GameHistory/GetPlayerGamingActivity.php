@@ -1,13 +1,13 @@
 <?php
 
-namespace denbora\R_T_G_Services\examples\SOAP\Lobby;
+namespace denbora\R_T_G_Services\examples\SOAP\GameHistory;
 
 use denbora\R_T_G_Services\casino\Casino;
 
-class GetJackpot
+class GetPlayerGamingActivity
 {
     /**
-     * GetJackpot constructor.
+     * GetPlayerGamingActivity constructor.
      * @param string $service
      * @param string $method
      * @param Casino $casino
@@ -15,14 +15,15 @@ class GetJackpot
     public function __construct(string $service, string $method, $casino)
     {
         try {
-            $lobbyService = $casino->getService($service);
+            $gameHistoryService = $casino->getService($service);
             $inputs = array(
-                'optionId' => 164,
-                'IsForReal' => 1,
-                'skinId' => 1,
+                'PID' => '10025652',
+                'forMoney' => false,
+                'startDate' => '2017-08-03',
+                'endDate' => '2017-09-03'
             );
 
-            $result = $lobbyService->call($method, $inputs);
+            $result = $gameHistoryService->call($method, $inputs);
 
             echo "<pre>";
             var_dump($result);

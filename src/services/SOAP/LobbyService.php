@@ -129,9 +129,9 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param bool $rawResponse
      * @return object
      */
-    protected function getJackpot($data, bool $rawResponse)
+    protected function getJackPot($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'getJackpot', 'GetJackpot');
+        return $this->run($data, $rawResponse, 'getJackPot', 'GetJackPot');
     }
 
     /**

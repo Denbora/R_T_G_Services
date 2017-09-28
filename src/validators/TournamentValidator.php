@@ -30,7 +30,7 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
      * @return bool
      * @throws R_T_G_ValidationException
      */
-    protected function getTournamentList($data)
+    protected function getSlotTournamentsList($data)
     {
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
@@ -67,7 +67,7 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
      * @return bool
      * @throws R_T_G_ValidationException
      */
-    protected function getTournamentDetails($data)
+    protected function getSlotTournamentDetails($data)
     {
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 

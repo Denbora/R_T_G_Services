@@ -80,9 +80,9 @@ class GameHistoryService extends ServiceBase implements ServiceInterface
      * @param bool $rawResponse
      * @return object
      */
-    protected function playerGamingActivity($data, bool $rawResponse)
+    protected function getPlayerGamingActivity($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'playerGamingActivity', 'PlayerGamingActivity');
+        return $this->run($data, $rawResponse, 'getPlayerGamingActivity', 'GetPlayerGamingActivity');
     }
 
     /**

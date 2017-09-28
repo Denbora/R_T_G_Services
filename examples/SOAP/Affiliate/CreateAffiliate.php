@@ -15,7 +15,7 @@ class CreateAffiliate
     public function __construct(string $service, string $method, $casino)
     {
         try {
-            $playerService = $casino->getService($service);
+            $affiliateService = $casino->getService($service);
             $inputs = array(
                 'programID' => '15',
                 'firstName' => 'test',
@@ -38,12 +38,11 @@ class CreateAffiliate
                 'noSpam' => 'true',
             );
 
-            $result = $playerService->call($method, $inputs);
+            $result = $affiliateService->call($method, $inputs);
 
             echo "<pre>";
             var_dump($result);
             echo "</pre>";
-
         } catch (\Exception $e) {
             echo "<pre>";
             var_dump($e);

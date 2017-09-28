@@ -333,7 +333,7 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param bool $rawResponse
      * @return object
      */
-    protected function unbanPlayer(string $PID, bool $rawResponse)
+    protected function unBanPlayer(string $PID, bool $rawResponse)
     {
         $this->validator->call('unBanPlayer', $PID);
 

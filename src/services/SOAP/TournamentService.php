@@ -49,9 +49,9 @@ class TournamentService extends ServiceBase implements ServiceInterface
      * @param bool $rawResponse
      * @return object
      */
-    protected function getTournamentList($data, bool $rawResponse)
+    protected function getSlotTournamentsList($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'getTournamentList', 'GetTournamentList');
+        return $this->run($data, $rawResponse, 'getSlotTournamentsList', 'GetSlotTournamentsList');
     }
 
     /**
@@ -59,9 +59,9 @@ class TournamentService extends ServiceBase implements ServiceInterface
      * @param bool $rawResponse
      * @return object
      */
-    protected function getTournamentDetails($data, bool $rawResponse)
+    protected function getSlotTournamentDetails($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'getTournamentDetails', 'GetTournamentDetails');
+        return $this->run($data, $rawResponse, 'getSlotTournamentDetails', 'GetSlotTournamentDetails');
     }
 
     /**
