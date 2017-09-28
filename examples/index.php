@@ -12,8 +12,8 @@ $url = $clear_url;
 //$url = $base_url;
 $casino = new Casino($url, $certificate, $rtgPassword);
 //$casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
-$method = 'getRouletteGamesHistory';
-$service = 'DataCollect';
+$method = 'turnOnCacheState';
+$service = 'Lobby';
 /*$method = 'putEmailVerificationStatus';
 $service = 'Player';*/
 

@@ -4,6 +4,11 @@ namespace denbora\R_T_G_Services\responses;
 
 class DataCollectResponse extends BaseResponse implements SoapResponseInterface
 {
+    /**
+     * @param $response
+     * @param $responseName
+     * @return mixed
+     */
     private function getCollectionData($response, $responseName)
     {
         $xml = $response->$responseName->any;
