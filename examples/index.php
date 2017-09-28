@@ -12,8 +12,8 @@ $url = $clear_url;
 //$url = $base_url;
 $casino = new Casino($url, $certificate, $rtgPassword);
 //$casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
-$method = 'turnOnCacheState';
-$service = 'Lobby';
+$method = 'getActiveSessions';
+$service = 'Session';
 /*$method = 'putEmailVerificationStatus';
 $service = 'Player';*/
 
