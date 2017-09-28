@@ -27,21 +27,21 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $globalID
+     * @param $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
-    protected function listGlobalLinked($globalID)
+    protected function listGlobalLinked($data)
     {
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
-        if (!isset($globalID) && empty($globalID)) {
+        if (!isset($data['globalID']) && empty($data['globalID'])) {
             throw new R_T_G_ValidationException($errorPrefix . 'GlobalID is a required field');
         }
 
-        if (!is_string($globalID) && !is_numeric($globalID)) {
+        if (!is_string($data['globalID']) && !is_numeric($data['globalID'])) {
             throw new R_T_G_ValidationException($errorPrefix . 'GlobalID should be string, ' .
-                gettype($globalID) . ' given');
+                gettype($data['globalID']) . ' given');
         }
 
         return true;
