@@ -35,13 +35,13 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
     {
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
-        if (!isset($data['globalID']) && empty($data['globalID'])) {
+        if (!isset($data['GlobalID']) && empty($data['GlobalID'])) {
             throw new R_T_G_ValidationException($errorPrefix . 'GlobalID is a required field');
         }
 
-        if (!is_string($data['globalID']) && !is_numeric($data['globalID'])) {
+        if (!is_string($data['GlobalID']) && !is_numeric($data['GlobalID'])) {
             throw new R_T_G_ValidationException($errorPrefix . 'GlobalID should be string, ' .
-                gettype($data['globalID']) . ' given');
+                gettype($data['GlobalID']) . ' given');
         }
 
         return true;
