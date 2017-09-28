@@ -1,13 +1,13 @@
 <?php
 
-namespace denbora\R_T_G_Services\examples\SOAP\MessageCenter;
+namespace denbora\R_T_G_Services\examples\SOAP\Tournament;
 
 use denbora\R_T_G_Services\casino\Casino;
 
-class GetMessageList
+class GetSlotTournamentDetails
 {
     /**
-     * GetMessageList constructor.
+     * GetSlotTournamentDetails constructor.
      * @param string $service
      * @param string $method
      * @param Casino $casino
@@ -15,15 +15,12 @@ class GetMessageList
     public function __construct(string $service, string $method, $casino)
     {
         try {
-            $jackpotService = $casino->getService($service);
+            $tournamentService = $casino->getService($service);
             $inputs = array(
-                'PID' => '10025652',
-                'MoneyType' => '1',
-                'SkinID' => 1,
-                'ClientType' => '1'
+                'TournamentID' => 15
             );
 
-            $result = $jackpotService->call($method, $inputs);
+            $result = $tournamentService->call($method, $inputs);
 
             echo "<pre>";
             var_dump($result);

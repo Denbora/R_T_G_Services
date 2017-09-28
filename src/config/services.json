@@ -1,13 +1,13 @@
 {
   "MessageCenter": {
     "class": "denbora\\R_T_G_Services\\services\\SOAP\\MessageCenterService",
-    "endpoint": "MessageCenter.svc?WSDL",
+    "endpoint": "RTG.Services/MessageCenter.svc?WSDL",
     "validatorClass": "MessageCenterValidator",
     "responseClass": "MessageCenterResponse"
   },
   "Player": {
     "class": "denbora\\R_T_G_Services\\services\\SOAP\\PlayerService",
-    "endpoint": "Player.svc?WSDL",
+    "endpoint": "RTG.Services/Player.svc?WSDL",
     "validatorClass": "PlayerValidator",
     "responseClass": "PlayerResponse"
   },
@@ -19,43 +19,43 @@
   },
   "Security": {
     "class": "denbora\\R_T_G_Services\\services\\SOAP\\SecurityService",
-    "endpoint": "Utilities/Security.svc?WSDL",
+    "endpoint": "RTG.Services/Utilities/Security.svc?WSDL",
     "validatorClass": "SecurityValidator",
     "responseClass": "SecurityResponse"
   },
   "Download": {
     "class": "denbora\\R_T_G_Services\\services\\SOAP\\DownloadService",
-    "endpoint": "Download.svc?WSDL",
+    "endpoint": "RTG.Services/Download.svc?WSDL",
     "validatorClass": "DownloadValidator",
     "responseClass": "DownloadResponse"
   },
   "GameHistory": {
     "class": "denbora\\R_T_G_Services\\services\\SOAP\\GameHistoryService",
-    "endpoint": "GameHistory.svc?WSDL",
+    "endpoint": "RTG.Services/GameHistory.svc?WSDL",
     "validatorClass": "GameHistoryValidator",
     "responseClass": "GameHistoryResponse"
   },
   "Jackpot": {
     "class": "denbora\\R_T_G_Services\\services\\SOAP\\JackpotService",
-    "endpoint": "Jackpot.svc?WSDL",
+    "endpoint": "RTG.Services/Jackpot.svc?WSDL",
     "validatorClass": "JackpotValidator",
     "responseClass": "JackpotResponse"
   },
   "Tournament": {
     "class": "denbora\\R_T_G_Services\\services\\SOAP\\TournamentService",
-    "endpoint": "Tournament.svc?WSDL",
+    "endpoint": "RTG.Services/Tournament.svc?WSDL",
     "validatorClass": "TournamentValidator",
     "responseClass": "TournamentResponse"
   },
   "Notification": {
     "class": "denbora\\R_T_G_Services\\services\\SOAP\\NotificationService",
-    "endpoint": "Utilities/Notification.svc?WSDL",
+    "endpoint": "RTG.Services/Utilities/Notification.svc?WSDL",
     "validatorClass": "NotificationValidator",
     "responseClass": "NotificationResponse"
   },
   "PlayerReports": {
     "class": "denbora\\R_T_G_Services\\services\\SOAP\\PlayerReportsService",
-    "endpoint": "PlayerReports.svc?WSDL",
+    "endpoint": "RTG.Services/PlayerReports.svc?WSDL",
     "validatorClass": "PlayerReportsValidator",
     "responseClass": "PlayerReportsResponse"
   },

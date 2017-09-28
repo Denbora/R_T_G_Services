@@ -666,7 +666,7 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
      * @return bool
      * @throws R_T_G_ValidationException
      */
-    protected function getUnbannedPlayers($data)
+    protected function getUnBannedPlayers($data)
     {
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 

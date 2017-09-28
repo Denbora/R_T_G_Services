@@ -15,7 +15,7 @@ class CreateProgram
     public function __construct(string $service, string $method, $casino)
     {
         try {
-            $playerService = $casino->getService($service);
+            $affiliateService = $casino->getService($service);
             $inputs = array(
                 'name' => 'BovegasTest',
                 'payPerDownloader' => 0.0,
@@ -28,12 +28,11 @@ class CreateProgram
                 'published' => 0
             );
 
-            $result = $playerService->call($method, $inputs);
+            $result = $affiliateService->call($method, $inputs);
 
             echo "<pre>";
             var_dump($result);
             echo "</pre>";
-
         } catch (\Exception $e) {
             echo "<pre>";
             var_dump($e);

@@ -15,14 +15,14 @@ class GetForceOnEntrance
     public function __construct(string $service, string $method, $casino)
     {
         try {
-            $jackpotService = $casino->getService($service);
+            $messageCenterService = $casino->getService($service);
             $inputs = array(
                 'MoneyType' => 1,
                 'PID' => '10025652',
                 'SkinID' => 1
             );
 
-            $result = $jackpotService->call($method, $inputs);
+            $result = $messageCenterService->call($method, $inputs);
 
             echo "<pre>";
             var_dump($result);

@@ -15,7 +15,7 @@ class GetUnreadMessagesCount
     public function __construct(string $service, string $method, $casino)
     {
         try {
-            $jackpotService = $casino->getService($service);
+            $messageCenterService = $casino->getService($service);
             $inputs = array(
                 'PID' => '10025652',
                 'MoneyType' => '0',
@@ -23,7 +23,7 @@ class GetUnreadMessagesCount
                 'ClientType' => '0'
             );
 
-            $result = $jackpotService->call($method, $inputs);
+            $result = $messageCenterService->call($method, $inputs);
 
             echo "<pre>";
             var_dump($result);

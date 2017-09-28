@@ -235,7 +235,7 @@ class AffiliateResponse extends BaseResponse implements SoapResponseInterface
      * @param $response
      * @return mixed
      */
-    public function getUnbannedPlayers($response)
+    public function getUnBannedPlayers($response)
     {
         return $this->getAffiliateData($response, 'GetUnBannedPlayersResult');
     }

@@ -8,6 +8,14 @@ class AffiliateService extends ServiceBase implements ServiceInterface
 {
 
     /**
+     * @return array
+     */
+    public function getClassMethods()
+    {
+        return $this->classMethods;
+    }
+
+    /**
      * @param $serviceMethod string
      * @param $data
      * @param bool $rawResponse
@@ -275,9 +283,9 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param bool $rawResponse
      * @return object
      */
-    protected function getUnbannedPlayers($data, bool $rawResponse)
+    protected function getUnBannedPlayers($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'getUnbannedPlayers', 'GetUnbannedPlayers');
+        return $this->run($data, $rawResponse, 'getUnBannedPlayers', 'GetUnBannedPlayers');
     }
 
     /**

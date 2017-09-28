@@ -31,7 +31,7 @@ class MessageCenterValidator extends BaseValidator implements ValidatorInterface
      * @return bool
      * @throws R_T_G_ValidationException
      */
-    public function getMessageList($data)
+    public function getMessagesList($data)
     {
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 

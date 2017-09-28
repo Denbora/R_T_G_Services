@@ -15,7 +15,7 @@ class GetForceOnExit
     public function __construct(string $service, string $method, $casino)
     {
         try {
-            $jackpotService = $casino->getService($service);
+            $messageCenterService = $casino->getService($service);
             $inputs = array(
                 'moneyType' => true,
                 'PID' => '10025652',
@@ -23,7 +23,7 @@ class GetForceOnExit
                 'clientType' => true
             );
 
-            $result = $jackpotService->call($method, $inputs);
+            $result = $messageCenterService->call($method, $inputs);
 
             echo "<pre>";
             var_dump($result);

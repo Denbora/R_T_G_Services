@@ -233,4 +233,36 @@ class Casino implements CasinoInterface
     {
         // ToDo: Implement addService() method.
     }
+
+    /**
+     * comparison of functions in methods.json with __getFunctions result
+     *
+     * @return array
+     */
+    public function testAllMethods()
+    {
+        $errors = array();
+
+        $services = json_decode(file_get_contents(__DIR__ . '/../config/methods.json', true), true);
+
+        foreach ($services as $serviceName => $service) {
+            $soapClient = $this->createSoapClient($serviceName);
+            $functions = $soapClient->__getFunctions();
+
+            $soapFunctions = array();
+
+            foreach ($functions as $function) {
+                $first = stristr($function, 'Response', true);
+                array_push($soapFunctions, $first);
+            }
+
+            foreach ($service as $method) {
+                if (!in_array(ucwords($method), $soapFunctions)) {
+                    $text = $method . ' is not valid in - ' . $serviceName;
+                    array_push($errors, $text);
+                }
+            }
+        }
+        return $errors;
+    }
 }

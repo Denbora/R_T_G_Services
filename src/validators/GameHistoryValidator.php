@@ -145,7 +145,7 @@ class GameHistoryValidator extends BaseValidator implements ValidatorInterface
      * @return bool
      * @throws R_T_G_ValidationException
      */
-    protected function playerGamingActivity($data)
+    protected function getPlayerGamingActivity($data)
     {
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 

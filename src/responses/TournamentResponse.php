@@ -17,7 +17,7 @@ class TournamentResponse extends BaseResponse implements SoapResponseInterface
      * @param $response
      * @return mixed
      */
-    public function getTournamentList($response)
+    public function getSlotTournamentsList($response)
     {
         return $this->baseTrim($response);
     }
@@ -26,7 +26,7 @@ class TournamentResponse extends BaseResponse implements SoapResponseInterface
      * @param $response
      * @return mixed
      */
-    public function getTournamentDetails($response)
+    public function getSlotTournamentDetails($response)
     {
         return $this->baseTrim($response);
     }

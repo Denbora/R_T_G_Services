@@ -1,13 +1,13 @@
 <?php
 
-namespace denbora\R_T_G_Services\examples\SOAP\Affiliate;
+namespace denbora\R_T_G_Services\examples\SOAP\MessageCenter;
 
 use denbora\R_T_G_Services\casino\Casino;
 
-class GetUnbannedPlayers
+class GetMessagesList
 {
     /**
-     * GetUnbannedPlayers constructor.
+     * GetMessagesList constructor.
      * @param string $service
      * @param string $method
      * @param Casino $casino
@@ -15,19 +15,19 @@ class GetUnbannedPlayers
     public function __construct(string $service, string $method, $casino)
     {
         try {
-            $affiliateService = $casino->getService($service);
+            $messageCenterService = $casino->getService($service);
             $inputs = array(
-                'aid' => 13,
-                'fromDate' => '2017-01-05',
-                'toDate' => '2017-09-21'
+                'PID' => '10025652',
+                'MoneyType' => '1',
+                'SkinID' => 1,
+                'ClientType' => '1'
             );
 
-            $result = $affiliateService->call($method, $inputs);
+            $result = $messageCenterService->call($method, $inputs);
 
             echo "<pre>";
             var_dump($result);
             echo "</pre>";
-
         } catch (\Exception $e) {
             echo "<pre>";
             var_dump($e);
