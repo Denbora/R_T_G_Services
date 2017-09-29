@@ -16,7 +16,7 @@ class ListGlobalLinked
     {
         try {
             $affiliateService = $casino->getService($service);
-            $GlobalID = '53953';
+            $GlobalID = '55054';
 
             $result = $affiliateService->call($method, $GlobalID);
 

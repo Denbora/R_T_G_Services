@@ -12,12 +12,13 @@ class DataCollectResponse extends BaseResponse implements SoapResponseInterface
     private function getCollectionData($response, $responseName)
     {
         $xml = $response->$responseName->any;
-
         $data = simplexml_load_string($xml);
-
         $array =  (array) $data->NewDataSet;
-
-        return $array['Table'];
+        if (empty($array)) {
+            return null;
+        } else {
+            return $array['Table'];
+        }
     }
 
     /**

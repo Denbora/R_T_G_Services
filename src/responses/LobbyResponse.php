@@ -39,12 +39,14 @@ class LobbyResponse extends BaseResponse implements SoapResponseInterface
         $first = stristr($xml, '<NewDataSet>');
         $second = stristr($first, '</diffgr:diffgram>', true);
         $finalString = preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i", '<$1$2>', $second);
-
         $data = simplexml_load_string($finalString);
-
         $array = (array) $data;
 
-        return $array['Table'];
+        if (empty($array)) {
+            return null;
+        } else {
+            return $array['Table'];
+        }
     }
 
     /**
@@ -157,12 +159,14 @@ class LobbyResponse extends BaseResponse implements SoapResponseInterface
         $first = stristr($xml, '<NewDataSet>');
         $second = stristr($first, '</diffgr:diffgram>', true);
         $finalString = preg_replace("/<(Table*)[^>]*?(\/?)>/i", '<$1$2>', $second);
-
         $data = simplexml_load_string($finalString);
-
         $array = (array) $data;
 
-        return $array['Table'];
+        if (empty($array)) {
+            return null;
+        } else {
+            return $array['Table'];
+        }
     }
 
     /**
@@ -194,11 +198,14 @@ class LobbyResponse extends BaseResponse implements SoapResponseInterface
         $first = stristr($xml, '<NewDataSet>');
         $second = stristr($first, '</diffgr:diffgram>', true);
         $finalString = preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i", '<$1$2>', $second);
-
         $data = simplexml_load_string($finalString);
-
         $array = (array) $data;
-        return $array['SubMenusOfMenu1'];
+
+        if (empty($array)) {
+            return null;
+        } else {
+            return $array['SubMenusOfMenu1'];
+        }
     }
 
     /**
@@ -239,12 +246,14 @@ class LobbyResponse extends BaseResponse implements SoapResponseInterface
         $first = stristr($xml, '<NewDataSet>');
         $second = stristr($first, '</diffgr:diffgram>', true);
         $finalString = preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i", '<$1$2>', $second);
-
         $data = simplexml_load_string($finalString);
-
         $array = (array) $data;
 
-        return $array['TopGamesPlayed'];
+        if (empty($array)) {
+            return null;
+        } else {
+            return $array['TopGamesPlayed'];
+        }
     }
 
     /**
@@ -258,12 +267,14 @@ class LobbyResponse extends BaseResponse implements SoapResponseInterface
         $first = stristr($xml, '<NewDataSet>');
         $second = stristr($first, '</diffgr:diffgram>', true);
         $finalString = preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i", '<$1$2>', $second);
-
         $data = simplexml_load_string($finalString);
-
         $array = (array) $data;
 
-        return $array['TopLocalJackpots'];
+        if (empty($array)) {
+            return null;
+        } else {
+            return $array['TopLocalJackpots'];
+        }
     }
 
     /**
