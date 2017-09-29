@@ -65,6 +65,12 @@
     "validatorClass": "DataCollectValidator",
     "responseClass": "DataCollectResponse"
   },
+  "Game": {
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\GameService",
+    "endpoint": "RTG.Services/Game.svc?WSDL",
+    "validatorClass": "GameValidator",
+    "responseClass": "GameResponse"
+  },
   "Lobby": {
     "class": "denbora\\R_T_G_Services\\services\\SOAP\\LobbyService",
     "endpoint": "RTG.WebServices.Lobby/Lobby.asmx?WSDL",

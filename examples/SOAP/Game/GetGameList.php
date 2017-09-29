@@ -1,13 +1,13 @@
 <?php
 
-namespace denbora\R_T_G_Services\examples\SOAP\Download;
+namespace denbora\R_T_G_Services\examples\SOAP\Game;
 
 use denbora\R_T_G_Services\casino\Casino;
 
-class GetDownloadURL
+class GetGameList
 {
     /**
-     * GetDownloadURL constructor.
+     * GetGameList constructor.
      * @param string $service
      * @param string $method
      * @param Casino $casino
@@ -15,13 +15,13 @@ class GetDownloadURL
     public function __construct(string $service, string $method, $casino)
     {
         try {
-            $playerService = $casino->getService($service);
-
-            $serverType = array(
-                'serverType' => 2
+            $gameService = $casino->getService($service);
+            $inputs = array(
+                'Type' => 0,
+                'SkinId' => 1
             );
 
-            $result = $playerService->call($method, $serverType);
+            $result = $gameService->call($method, $inputs);
 
             echo "<pre>";
             var_dump($result);
