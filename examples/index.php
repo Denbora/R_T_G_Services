@@ -8,11 +8,11 @@ use denbora\R_T_G_Services\examples\Loader;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../experiments/config.php';
 
-$casino = new Casino($base_url_EU, $certificate, $rtgPassword);
+$casino = new Casino($base_url_EU, $certificateEU, $rtgPasswordEU);
 
 //$casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
-$method = 'listGlobalLinked';
-$service = 'Affiliate';
+$method = 'getFlashGameList';
+$service = 'Game';
 /*$method = 'putEmailVerificationStatus';
 $service = 'Player';*/
 

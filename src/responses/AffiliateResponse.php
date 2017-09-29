@@ -48,7 +48,7 @@ class AffiliateResponse extends BaseResponse implements SoapResponseInterface
      */
     public function createAffiliate($response)
     {
-        return $response;
+        return $this->getAffiliateData($response, 'CreateAffiliateResult');
     }
 
     /**
@@ -57,7 +57,7 @@ class AffiliateResponse extends BaseResponse implements SoapResponseInterface
      */
     public function createProgram($response)
     {
-        return $response;
+        return $this->getAffiliateData($response, 'CreateProgramResult');
     }
 
     /**

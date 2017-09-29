@@ -175,21 +175,21 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $serverType
+     * @param $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
-    protected function getDownloadURL($serverType)
+    protected function getDownloadURL($data)
     {
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
-        if (empty($serverType) && !isset($serverType)) {
+        if (empty($data['serverType']) && !isset($data['serverType'])) {
             throw new R_T_G_ValidationException($errorPrefix . 'serverType is a required field');
         }
 
-        if (!is_int($serverType)) {
+        if (!is_int($data['serverType'])) {
             throw new R_T_G_ValidationException($errorPrefix . 'serverType should be int, ' .
-                gettype($serverType) . ' given');
+                gettype($data['serverType']) . ' given');
         }
 
         return true;

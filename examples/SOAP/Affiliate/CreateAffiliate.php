@@ -17,7 +17,7 @@ class CreateAffiliate
         try {
             $affiliateService = $casino->getService($service);
             $inputs = array(
-                'programID' => '15',
+                'programID' => '1',
                 'firstName' => 'test',
                 'lastName' => 'porter',
                 'password' => '123456789',
