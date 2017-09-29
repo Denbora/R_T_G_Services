@@ -22,6 +22,10 @@ class SessionResponse extends BaseResponse implements SoapResponseInterface
     {
         $xml = $response->GetActiveSessionsResult->any;
         $data = simplexml_load_string($xml);
-        return $data->NewDataSet->Table;
+        if (empty($data)) {
+            return null;
+        } else {
+            return $data->NewDataSet->Table;
+        }
     }
 }

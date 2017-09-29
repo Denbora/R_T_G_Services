@@ -252,11 +252,19 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
         return $this->validate($response, 'Validate Credentials Error');
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function getLedgerInformation($response)
     {
         return $response;
     }
 
+    /**
+     * @param $response
+     * @return mixed
+     */
     public function getAuditTrailReport($response)
     {
         return $response;
