@@ -237,7 +237,6 @@ class Casino implements CasinoInterface
     /**
      * comparison of functions in methods.json with __getFunctions result
      *
-     * @return array
      */
     public function testAllMethods()
     {
@@ -263,6 +262,6 @@ class Casino implements CasinoInterface
                 }
             }
         }
-        return $errors;
+        return !empty($errors) ? $errors : 'OK';
     }
 }

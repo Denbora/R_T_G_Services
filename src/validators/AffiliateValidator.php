@@ -804,7 +804,7 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         $fields = array(
-            'AID',
+            'aid',
             'firstName',
             'lastName',
             'newPassword',
@@ -817,21 +817,21 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
             'addnlURL',
             'addr1',
             'addr2',
-            'City',
+            'city',
             'state',
-            'Zip',
+            'zip',
             'country'
         );
         if (!$this->allInArrayKeyExists($fields, $data)) {
             throw new R_T_G_ValidationException($errorPrefix . 'missed fields -' . $this->getError());
         }
 
-        if (!is_int($data['AID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'AID should be int, ' .
-                gettype($data['AID']) . ' given');
+        if (!is_int($data['aid'])) {
+            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' .
+                gettype($data['aid']) . ' given');
         }
 
-        unset($data['AID']);
+        unset($data['aid']);
         array_walk_recursive($data, "validateString");
 
         return true;
