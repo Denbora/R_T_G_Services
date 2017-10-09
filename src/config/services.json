@@ -83,6 +83,12 @@
     "validatorClass": "SessionValidator",
     "responseClass": "SessionResponse"
   },
+  "Cashier": {
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\CashierService",
+    "endpoint": "processor/ProcessorAPI/Cashier2.asmx?WSDL",
+    "validatorClass": "CashierValidator",
+    "responseClass": "CashierResponse"
+  },
   "Rest": {
     "Player": {
       "validatorClass": "RestValidator",

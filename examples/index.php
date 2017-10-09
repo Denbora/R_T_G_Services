@@ -11,8 +11,8 @@ require_once __DIR__ . '/../experiments/config.php';
 $casino = new Casino($base_url_EU, $certificateEU, $rtgPasswordEU);
 
 //$casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
-$method = 'getFlashGameList';
-$service = 'Game';
+$method = 'denyCoupon';
+$service = 'Cashier';
 /*$method = 'putEmailVerificationStatus';
 $service = 'Player';*/
 

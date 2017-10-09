@@ -17,7 +17,7 @@ class CreateProgram
         try {
             $affiliateService = $casino->getService($service);
             $inputs = array(
-                'name' => 'BovegasTest',
+                'name' => 'Basic',
                 'payPerDownloader' => 0.0,
                 'payPerSignup' => 0.0,
                 'payPerNewDepositor' => 0.0,
@@ -25,7 +25,7 @@ class CreateProgram
                 'payPercentLifeDeposits' => 0.0,
                 'payPercentNetRevenue' => 0.0,
                 'enabled' => 1,
-                'published' => 0
+                'published' => 1
             );
 
             $result = $affiliateService->call($method, $inputs);
