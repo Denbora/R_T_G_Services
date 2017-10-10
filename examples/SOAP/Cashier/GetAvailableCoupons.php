@@ -17,8 +17,8 @@ class GetAvailableCoupons
         try {
             $gameService = $casino->getService($service);
             $inputs = array(
-                'pid' => '10025652',
-                'skinId' => 2
+                'pid' => '10032080',
+                'skinId' => 1
             );
 
             $result = $gameService->call($method, $inputs);

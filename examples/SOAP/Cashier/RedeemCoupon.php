@@ -18,9 +18,9 @@ class RedeemCoupon
             $gameService = $casino->getService($service);
             $inputs = array(
                 'casinoID' => 1,
-                'PID' => '10025652',
-                'couponCode' => 'DRAGONKING',
-                'sessionID' => 1,
+                'PID' => '10032088',
+                'couponCode' => 'BOVEGAS250',
+                'sessionID' => 317686,
                 'skinID' => 2,
                 'includeLiability' => 'DEFAULT_VALUES'
             );

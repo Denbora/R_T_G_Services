@@ -17,8 +17,8 @@ class GetActiveCouponCode
         try {
             $gameService = $casino->getService($service);
             $inputs = array(
-                'PID' => '10025652',
-                'casinoId' => 2
+                'PID' => '10032080',
+                'casinoId' => 1
             );
 
             $result = $gameService->call($method, $inputs);
