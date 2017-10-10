@@ -10,11 +10,11 @@ require_once __DIR__ . '/../experiments/config.php';
 
 $casino = new Casino($base_url_EU, $certificateEU, $rtgPasswordEU);
 
-//$casinoRest = new CasinoRest($restBaseUrl, $crt, $key, $rtgPassword);
+//$casinoRest = new CasinoRest($restBaseUrlEU, $certificateEU, $rtgKeyEU, $rtgPasswordEU);
 $method = 'redeemCoupon';
 $service = 'Cashier';
-/*$method = 'putEmailVerificationStatus';
-$service = 'Player';*/
+//$method = 'putEmailVerificationStatus';
+//$service = 'Player';
 
 try {
     //$casino->testAllMethods();
