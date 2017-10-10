@@ -40,7 +40,7 @@ class RestResponse implements ResponseInterface
         $categoryName = $category[0];
 
         $action = explode('?', end($category))[0];
-        if ($action == '' || $category[0] == $categoryName) {
+        if ($action == '') {
             $action = 'index';
         }
 
