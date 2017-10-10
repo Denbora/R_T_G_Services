@@ -240,9 +240,10 @@ class PlayerService extends RestService
     public function putEmailVerificationStatus($query = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
+            $status = json_decode($query)->status;
             return $this->put(
                 $this->createFullUrl($query, self::APIURL, array('playerId'), 'email-verification-status'),
-                $this->removeFromQuery($query, array('playerId'))
+                $status
             );
         }
     }
