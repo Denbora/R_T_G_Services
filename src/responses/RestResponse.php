@@ -44,11 +44,12 @@ class RestResponse implements ResponseInterface
             $action = 'index';
         }
 
-        $message = $this->codeList[$categoryName][$action][$code];
-
-        if (is_null($message)) {
+        if (!isset($this->codeList[$categoryName][$action][$code])) {
             $message = $this->codeList[$categoryName][$action][$this->method][$code];
+        } else {
+            $message = $this->codeList[$categoryName][$action][$code];
         }
+
         return $message;
     }
 
