@@ -2,7 +2,7 @@
   "name": "denbora/r_t_g_services",
   "type": "library",
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.0",
     "nategood/httpful": "*"
   },
   "require-dev": {
