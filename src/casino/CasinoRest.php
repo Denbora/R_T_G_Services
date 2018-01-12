@@ -99,6 +99,7 @@ class CasinoRest implements CasinoInterface
     /**
      * @param $serviceName string
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getService(string $serviceName)
     {

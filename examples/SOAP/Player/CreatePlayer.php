@@ -18,14 +18,13 @@ class CreatePlayer
             $playerService = $casino->getService($service);
             $createData = array(
                 'Player' => array(
-                    'Login' => 'porter-007',
-                    'Password' => 'porter_007',
+                    'Login' => 'porter-987235',
+                    'Password' => 'porter_987235',
                     'Contact' => array(
                         'CountryID' => 'EG',
-                        'EMail' => 'opagangtest28@gmail.com'
+                        'EMail' => 'porter487228@mail.com'
                     )
                 ),
-                'HashedPassword' => '9bc34549d565d9505b287de0cd20ac77be1d3f2c',
                 'ThirdPartyDataSync' => false,
                 'UserID' => 0,
                 'MapToAffID' => false,

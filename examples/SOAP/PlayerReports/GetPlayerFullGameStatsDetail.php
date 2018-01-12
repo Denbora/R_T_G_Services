@@ -17,9 +17,9 @@ class GetPlayerFullGameStatsDetail
         try {
             $playerReportsService = $casino->getService($service);
             $inputs = array(
-                'PID' => '10025652',
-                'FromDate' => '2017-08-03',
-                'ToDate' => '2017-09-03'
+                'PID' => '10198692',
+                'FromDate' => '2017-12-11T08:58:33-05:00',
+                'ToDate' => '2017-12-11T10:58:33-05:00'
             );
 
             $result = $playerReportsService->call($method, $inputs);

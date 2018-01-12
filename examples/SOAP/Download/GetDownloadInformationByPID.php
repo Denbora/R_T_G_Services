@@ -16,7 +16,7 @@ class GetDownloadInformationByPID
     {
         try {
             $playerService = $casino->getService($service);
-            $PID = '10013051';
+            $PID = '122112';
 
             $result = $playerService->call($method, $PID);
 
