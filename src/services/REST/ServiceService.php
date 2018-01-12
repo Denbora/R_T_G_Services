@@ -14,6 +14,7 @@ class ServiceService extends RestService
      * @param null $array
      * @param string $endpoint
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     private function callGet($query, $array = null, $endpoint = '')
     {
@@ -25,6 +26,7 @@ class ServiceService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getTypes($query = '')
     {
@@ -34,6 +36,7 @@ class ServiceService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getStatuses($query = '')
     {
@@ -43,6 +46,7 @@ class ServiceService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getCategories($query = '')
     {
@@ -52,6 +56,7 @@ class ServiceService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function postComments($query = '')
     {
@@ -60,6 +65,30 @@ class ServiceService extends RestService
                 $this->createFullUrl($query, self::APIURL, '', 'comments'),
                 $query
             );
+        }
+    }
+
+    public function postDownloadId($query = '')
+    {
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            return $this->post(
+                $this->createFullUrl($query, self::APIURL, '', 'download-id'),
+                $query
+            );
+        }
+    }
+
+    public function getDownloads($query = '')
+    {
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            return $this->callGet($query, '', 'downloads');
+        }
+    }
+
+    public function getCurrencies($query = '')
+    {
+        if ($query == '') {
+            return $this->callGet($query, '', 'currencies');
         }
     }
 }

@@ -89,6 +89,12 @@
     "validatorClass": "CashierValidator",
     "responseClass": "CashierResponse"
   },
+  "DoughFlow": {
+    "class": "denbora\\R_T_G_Services\\services\\SOAP\\DoughFlowService",
+    "endpoint": "processor/ProcessorAPI/Cashier2.asmx?WSDL",
+    "validatorClass": "DoughFlowValidator",
+    "responseClass": "DoughFlowResponse"
+  },
   "Rest": {
     "Player": {
       "validatorClass": "RestValidator",

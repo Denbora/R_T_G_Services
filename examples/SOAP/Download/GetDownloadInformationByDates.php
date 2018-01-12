@@ -18,8 +18,8 @@ class GetDownloadInformationByDates
             $playerService = $casino->getService($service);
 
             $data = array(
-                'StartDate' => '2017-07-01',
-                'EndDate' => '2017-08-03'
+                'StartDate' => '2017-12-25',
+                'EndDate' => '2017-12-26'
             );
 
             $result = $playerService->call($method, $data);

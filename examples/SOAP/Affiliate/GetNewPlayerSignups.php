@@ -17,8 +17,8 @@ class GetNewPlayerSignups
         try {
             $affiliateService = $casino->getService($service);
             $inputs = array(
-                'asOfDate' => '2017-09-20',
-                'untilDate' => '2017-09-21'
+                'asOfDate' => '2017-12-11',
+                'untilDate' => '2017-12-17'
             );
 
             $result = $affiliateService->call($method, $inputs);
