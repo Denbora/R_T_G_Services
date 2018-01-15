@@ -14,7 +14,7 @@ class GetPlayerAccountBalance
     {
         try {
             $query = '{
-                "playerId": "10024193",
+                "playerId": "10219132",
                 "forMoney": "true"
             }';
             $result = $casino->player->getPlayerAccountBalance($query);

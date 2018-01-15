@@ -14,7 +14,7 @@ class GetDownloads
     {
         try {
             $query = '{
-                "playerId": "10221674",
+                "playerId": "10221678",
                 "startDate": "",
                 "endDate": "",
                 "downloadId": "",
