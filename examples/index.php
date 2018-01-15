@@ -11,8 +11,8 @@ require_once __DIR__ . '/../experiments/config.php';
 //$casino = new Casino($base_url_US, $certificateUS, $rtgPasswordUS);
 
 $casinoRest = new CasinoRest($restBaseUrlUS, $certificateUS, $rtgKeyUS, $rtgPasswordUS);
-$method = 'getCurrencies';
-$service = 'Service';
+$method = 'getPlayerAccountBalance';
+$service = 'Player';
 //$method = 'getDownloadInformationByDates';
 //$service = 'Download';
 

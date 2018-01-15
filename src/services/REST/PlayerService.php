@@ -11,9 +11,10 @@ class PlayerService extends RestService
 
     /**
      * @param $query
-     * @param string $endpoint
      * @param null|array $array
+     * @param string $endpoint
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     private function callGet($query, $array = null, $endpoint = '')
     {
@@ -25,6 +26,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getPlayers($query = '')
     {
@@ -34,15 +36,17 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getPlayerAccountBalance($query = '')
     {
-        return $this->callGet($query, array('playerId'));
+        return $this->callGet($query, array('playerId'), 'balance');
     }
 
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getBaccaratHistory($query = '')
     {
@@ -52,6 +56,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getBlackjackHistory($query = '')
     {
@@ -61,6 +66,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getRouletteHistory($query = '')
     {
@@ -70,6 +76,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getRsvsHistory($query = '')
     {
@@ -79,6 +86,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getGamingActivity($query = '')
     {
@@ -88,6 +96,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getPlayer($query = '')
     {
@@ -97,6 +106,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function putPlayer($query = '')
     {
@@ -111,6 +121,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function postPlayer($query = '')
     {
@@ -122,6 +133,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function postPlayerNotes($query = '')
     {
@@ -136,6 +148,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getNonCashTotal($query = '')
     {
@@ -145,6 +158,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getAdjustedNetWin($query = '')
     {
@@ -154,6 +168,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function postToken($query = '')
     {
@@ -168,6 +183,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getLedger($query = '')
     {
@@ -177,6 +193,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getBalanceSummary($query = '')
     {
@@ -186,6 +203,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getClass($query = '')
     {
@@ -195,6 +213,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function putClass($query = '')
     {
@@ -209,6 +228,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getPasscode($query = '')
     {
@@ -218,6 +238,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getNotes($query = '')
     {
@@ -227,6 +248,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function getEmailVerificationStatus($query = '')
     {
@@ -236,6 +258,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function putEmailVerificationStatus($query = '')
     {
@@ -251,6 +274,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function putResetSpecialFeatures($query = '')
     {
@@ -265,6 +289,7 @@ class PlayerService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
      */
     public function postExternal($query = '')
     {
