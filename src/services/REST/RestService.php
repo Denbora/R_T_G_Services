@@ -121,12 +121,13 @@ class RestService implements RestServiceInterface
         $i = 0;
         foreach ($request as $key => $value) {
             if ($i == 0) {
-                $partUrl .= '?' . $key . '=' . $value;
+                $partUrl .= '?' . $key . '=' . urlencode($value);
             } else {
-                $partUrl .= '&' . $key . '=' . $value;
+                $partUrl .= '&' . $key . '=' . urlencode($value);
             }
             $i++;
         }
+
         return $partUrl;
     }
 
@@ -148,6 +149,7 @@ class RestService implements RestServiceInterface
             $queryData = '';
             $url = $this->baseUrl . $serviceApiUrl;
             $queryObject = json_decode($query);
+
             if (is_array($pathParams)) {
                 foreach ($pathParams as $value) {
                     if (property_exists($queryObject, $value)) {
@@ -177,6 +179,7 @@ class RestService implements RestServiceInterface
                 $url .= '/' . $endpoint;
             }
         }
+
         return $url;
     }
 
@@ -193,6 +196,7 @@ class RestService implements RestServiceInterface
             $path = '';
             $url = $this->baseUrl . $serviceApiUrl;
             $queryObject = json_decode($query);
+
             if (is_array($pathParams)) {
                 foreach ($pathParams as $value) {
                     if (property_exists($queryObject, $value)) {
@@ -219,6 +223,7 @@ class RestService implements RestServiceInterface
                 $url .= '/' . $endpoint;
             }
         }
+
         return $url;
     }
 
