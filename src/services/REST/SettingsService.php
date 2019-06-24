@@ -2,6 +2,8 @@
 
 namespace denbora\R_T_G_Services\services\REST;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
+
 class SettingsService extends RestService
 {
     /**
@@ -14,17 +16,20 @@ class SettingsService extends RestService
      * @param null $array
      * @param string $endpoint
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     private function callGet($query, $array = null, $endpoint = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->get($this->createGetFullUrl($query, self::APIURL, $array, $endpoint));
         }
+        return false;
     }
 
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayerRestrictions($query = '')
     {
@@ -34,6 +39,7 @@ class SettingsService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getAccountFields($query = '')
     {
@@ -43,6 +49,7 @@ class SettingsService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getLoginFields($query = '')
     {
@@ -52,6 +59,7 @@ class SettingsService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getFlashConfig($query = '')
     {

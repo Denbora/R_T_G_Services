@@ -37,6 +37,7 @@ class GameResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getGame($response)
     {
@@ -46,6 +47,7 @@ class GameResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getGames($response)
     {
@@ -55,6 +57,7 @@ class GameResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getGamesBySkin($response)
     {
@@ -63,7 +66,8 @@ class GameResponse extends BaseResponse implements SoapResponseInterface
 
     /**
      * @param $response
-     * @return mixed
+     * @return \SimpleXMLElement
+     * @throws R_T_G_ServiceException
      */
     public function getFlashCasinoConfiguration($response)
     {
@@ -75,6 +79,7 @@ class GameResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getFlashGameInfo($response)
     {
@@ -84,6 +89,7 @@ class GameResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getActiveGames($response)
     {
@@ -93,6 +99,7 @@ class GameResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getActiveFlashGamesInfo($response)
     {
@@ -102,6 +109,7 @@ class GameResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function resetPlayerSpecialFeatures($response)
     {
@@ -111,6 +119,7 @@ class GameResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getGameList($response)
     {
@@ -120,6 +129,7 @@ class GameResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getFlashGameList($response)
     {
@@ -129,6 +139,7 @@ class GameResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function lockUnlockGamesByPID($response)
     {

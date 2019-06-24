@@ -10,7 +10,7 @@ class PostLogin
      * PostLogin constructor.
      * @param CasinoRest $casino
      */
-    public function __construct($casino)
+    public function __construct(CasinoRest $casino)
     {
         try {
             $query = '{

@@ -2,6 +2,8 @@
 
 namespace denbora\R_T_G_Services\services\REST;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
+
 class ReportService extends RestService
 {
     /**
@@ -9,16 +11,25 @@ class ReportService extends RestService
      */
     const APIURL = 'reports';
 
+    /**
+     * @param $query
+     * @param null $array
+     * @param string $endpoint
+     * @return mixed
+     * @throws R_T_G_ServiceException
+     */
     private function callGet($query, $array = null, $endpoint = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->get($this->createGetFullUrl($query, self::APIURL, $array, $endpoint));
         }
+        return false;
     }
 
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getAuditTrail($query = '')
     {
@@ -28,6 +39,7 @@ class ReportService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getActiveSessions($query = '')
     {
@@ -37,6 +49,7 @@ class ReportService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getDepositors($query = '')
     {
@@ -46,6 +59,7 @@ class ReportService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayerDepositors($query = '')
     {
@@ -55,6 +69,7 @@ class ReportService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getGameStatistics($query = '')
     {
@@ -64,6 +79,7 @@ class ReportService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getAccountsDelta($query = '')
     {
@@ -73,6 +89,7 @@ class ReportService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getTransactions($query = '')
     {
@@ -82,6 +99,7 @@ class ReportService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getAffiliates($query = '')
     {
@@ -91,6 +109,7 @@ class ReportService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getLastGamesPlayed($query = '')
     {
@@ -100,6 +119,7 @@ class ReportService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getTransactionHistory($query = '')
     {
@@ -109,6 +129,7 @@ class ReportService extends RestService
     /**
      * @param string $query
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getGamingStats($query = '')
     {

@@ -1,136 +1,136 @@
 {
-  "MessageCenter": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\MessageCenterService",
-    "endpoint": "RTG.Services/MessageCenter.svc?WSDL",
-    "validatorClass": "MessageCenterValidator",
-    "responseClass": "MessageCenterResponse"
-  },
-  "Player": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\PlayerService",
-    "endpoint": "RTG.Services/Player.svc?WSDL",
-    "validatorClass": "PlayerValidator",
-    "responseClass": "PlayerResponse"
-  },
-  "Affiliate": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\AffiliateService",
-    "endpoint": "CasinoAPI/affiliate.asmx?WSDL",
-    "validatorClass": "AffiliateValidator",
-    "responseClass": "AffiliateResponse"
-  },
-  "Security": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\SecurityService",
-    "endpoint": "RTG.Services/Utilities/Security.svc?WSDL",
-    "validatorClass": "SecurityValidator",
-    "responseClass": "SecurityResponse"
-  },
-  "Download": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\DownloadService",
-    "endpoint": "RTG.Services/Download.svc?WSDL",
-    "validatorClass": "DownloadValidator",
-    "responseClass": "DownloadResponse"
-  },
-  "GameHistory": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\GameHistoryService",
-    "endpoint": "RTG.Services/GameHistory.svc?WSDL",
-    "validatorClass": "GameHistoryValidator",
-    "responseClass": "GameHistoryResponse"
-  },
-  "Jackpot": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\JackpotService",
-    "endpoint": "RTG.Services/Jackpot.svc?WSDL",
-    "validatorClass": "JackpotValidator",
-    "responseClass": "JackpotResponse"
-  },
-  "Tournament": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\TournamentService",
-    "endpoint": "RTG.Services/Tournament.svc?WSDL",
-    "validatorClass": "TournamentValidator",
-    "responseClass": "TournamentResponse"
-  },
-  "Notification": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\NotificationService",
-    "endpoint": "RTG.Services/Utilities/Notification.svc?WSDL",
-    "validatorClass": "NotificationValidator",
-    "responseClass": "NotificationResponse"
-  },
-  "PlayerReports": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\PlayerReportsService",
-    "endpoint": "RTG.Services/PlayerReports.svc?WSDL",
-    "validatorClass": "PlayerReportsValidator",
-    "responseClass": "PlayerReportsResponse"
-  },
-  "DataCollect": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\DataCollectService",
-    "endpoint": "CasinoAPI/DataCollect.asmx?WSDL",
-    "validatorClass": "DataCollectValidator",
-    "responseClass": "DataCollectResponse"
-  },
-  "Game": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\GameService",
-    "endpoint": "RTG.Services/Game.svc?WSDL",
-    "validatorClass": "GameValidator",
-    "responseClass": "GameResponse"
-  },
-  "Lobby": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\LobbyService",
-    "endpoint": "RTG.WebServices.Lobby/Lobby.asmx?WSDL",
-    "validatorClass": "LobbyValidator",
-    "responseClass": "LobbyResponse"
-  },
-  "Session": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\SessionService",
-    "endpoint": "CasinoAPI/Session.asmx?WSDL",
-    "validatorClass": "SessionValidator",
-    "responseClass": "SessionResponse"
-  },
-  "Cashier": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\CashierService",
-    "endpoint": "processor/ProcessorAPI/Cashier2.asmx?WSDL",
-    "validatorClass": "CashierValidator",
-    "responseClass": "CashierResponse"
-  },
-  "DoughFlow": {
-    "class": "denbora\\R_T_G_Services\\services\\SOAP\\DoughFlowService",
-    "endpoint": "processor/ProcessorAPI/Cashier2.asmx?WSDL",
-    "validatorClass": "DoughFlowValidator",
-    "responseClass": "DoughFlowResponse"
-  },
-  "Rest": {
+    "MessageCenter": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\MessageCenterService",
+        "endpoint": "RTG.Services/MessageCenter.svc?WSDL",
+        "validatorClass": "MessageCenterValidator",
+        "responseClass": "MessageCenterResponse"
+    },
     "Player": {
-      "validatorClass": "RestValidator",
-      "responseClass": "RestResponse"
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\PlayerService",
+        "endpoint": "RTG.Services/Player.svc?WSDL",
+        "validatorClass": "PlayerValidator",
+        "responseClass": "PlayerResponse"
     },
-    "Account": {
-      "validatorClass": "RestValidator",
-      "responseClass": "RestResponse"
+    "Affiliate": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\AffiliateService",
+        "endpoint": "CasinoAPI/affiliate.asmx?WSDL",
+        "validatorClass": "AffiliateValidator",
+        "responseClass": "AffiliateResponse"
     },
-    "Report": {
-      "validatorClass": "RestValidator",
-      "responseClass": "RestResponse"
+    "Security": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\SecurityService",
+        "endpoint": "RTG.Services/Utilities/Security.svc?WSDL",
+        "validatorClass": "SecurityValidator",
+        "responseClass": "SecurityResponse"
     },
-    "Game": {
-      "validatorClass": "RestValidator",
-      "responseClass": "RestResponse"
+    "Download": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\DownloadService",
+        "endpoint": "RTG.Services/Download.svc?WSDL",
+        "validatorClass": "DownloadValidator",
+        "responseClass": "DownloadResponse"
+    },
+    "GameHistory": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\GameHistoryService",
+        "endpoint": "RTG.Services/GameHistory.svc?WSDL",
+        "validatorClass": "GameHistoryValidator",
+        "responseClass": "GameHistoryResponse"
     },
     "Jackpot": {
-      "validatorClass": "RestValidator",
-      "responseClass": "RestResponse"
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\JackpotService",
+        "endpoint": "RTG.Services/Jackpot.svc?WSDL",
+        "validatorClass": "JackpotValidator",
+        "responseClass": "JackpotResponse"
     },
-    "Service": {
-      "validatorClass": "RestValidator",
-      "responseClass": "RestResponse"
+    "Tournament": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\TournamentService",
+        "endpoint": "RTG.Services/Tournament.svc?WSDL",
+        "validatorClass": "TournamentValidator",
+        "responseClass": "TournamentResponse"
     },
-    "Settings": {
-      "validatorClass": "RestValidator",
-      "responseClass": "RestResponse"
+    "Notification": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\NotificationService",
+        "endpoint": "RTG.Services/Utilities/Notification.svc?WSDL",
+        "validatorClass": "NotificationValidator",
+        "responseClass": "NotificationResponse"
+    },
+    "PlayerReports": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\PlayerReportsService",
+        "endpoint": "RTG.Services/PlayerReports.svc?WSDL",
+        "validatorClass": "PlayerReportsValidator",
+        "responseClass": "PlayerReportsResponse"
+    },
+    "DataCollect": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\DataCollectService",
+        "endpoint": "CasinoAPI/DataCollect.asmx?WSDL",
+        "validatorClass": "DataCollectValidator",
+        "responseClass": "DataCollectResponse"
+    },
+    "Game": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\GameService",
+        "endpoint": "RTG.Services/Game.svc?WSDL",
+        "validatorClass": "GameValidator",
+        "responseClass": "GameResponse"
+    },
+    "Lobby": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\LobbyService",
+        "endpoint": "RTG.WebServices.Lobby/Lobby.asmx?WSDL",
+        "validatorClass": "LobbyValidator",
+        "responseClass": "LobbyResponse"
+    },
+    "Session": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\SessionService",
+        "endpoint": "CasinoAPI/Session.asmx?WSDL",
+        "validatorClass": "SessionValidator",
+        "responseClass": "SessionResponse"
     },
     "Cashier": {
-      "validatorClass": "RestValidator",
-      "responseClass": "RestResponse"
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\CashierService",
+        "endpoint": "processor/ProcessorAPI/Cashier2.asmx?WSDL",
+        "validatorClass": "CashierValidator",
+        "responseClass": "CashierResponse"
     },
-    "History": {
-      "validatorClass": "RestValidator",
-      "responseClass": "RestResponse"
+    "DoughFlow": {
+        "class": "denbora\\R_T_G_Services\\services\\SOAP\\DoughFlowService",
+        "endpoint": "processor/ProcessorAPI/Cashier2.asmx?WSDL",
+        "validatorClass": "DoughFlowValidator",
+        "responseClass": "DoughFlowResponse"
+    },
+    "Rest": {
+        "Player": {
+            "validatorClass": "RestValidator",
+            "responseClass": "RestResponse"
+        },
+        "Account": {
+            "validatorClass": "RestValidator",
+            "responseClass": "RestResponse"
+        },
+        "Report": {
+            "validatorClass": "RestValidator",
+            "responseClass": "RestResponse"
+        },
+        "Game": {
+            "validatorClass": "RestValidator",
+            "responseClass": "RestResponse"
+        },
+        "Jackpot": {
+            "validatorClass": "RestValidator",
+            "responseClass": "RestResponse"
+        },
+        "Service": {
+            "validatorClass": "RestValidator",
+            "responseClass": "RestResponse"
+        },
+        "Settings": {
+            "validatorClass": "RestValidator",
+            "responseClass": "RestResponse"
+        },
+        "Cashier": {
+            "validatorClass": "RestValidator",
+            "responseClass": "RestResponse"
+        },
+        "History": {
+            "validatorClass": "RestValidator",
+            "responseClass": "RestResponse"
+        }
     }
-  }
 }

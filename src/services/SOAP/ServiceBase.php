@@ -28,7 +28,7 @@ abstract class ServiceBase
     protected $classMethods;
 
     /**
-     * ResponseInterface @var
+     * @var SoapResponseInterface
      */
     protected $response;
 
@@ -44,6 +44,43 @@ abstract class ServiceBase
         $this->validator = $validator;
         $this->response = $response;
         $this->classMethods = get_class_methods(get_class($this));
+    }
+
+    /**
+     * @param $data
+     * @param bool $rawResponse
+     * @param $validatorName
+     * @param $service
+     * @return object
+     * @throws R_T_G_ServiceException
+     */
+    protected function run($data, bool $rawResponse, $validatorName, $service)
+    {
+        $result = $this->validator->call($validatorName, $data);
+
+        if ($result) {
+            return $this->service($service, $data, $rawResponse);
+        }
+
+        throw new R_T_G_ServiceException($result);
+    }
+
+    /**
+     * @param string $serviceMethod
+     * @param $data
+     * @param bool $rawResponse
+     * @return mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function call(string $serviceMethod, $data, bool $rawResponse = false)
+    {
+        if (in_array($serviceMethod, $this->classMethods)) {
+            $serviceResponse = $this->$serviceMethod($data, $rawResponse);
+            return $serviceResponse;
+        } else {
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . $serviceMethod . ' does not exist');
+        }
     }
 
     /**

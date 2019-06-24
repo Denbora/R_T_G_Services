@@ -13,7 +13,7 @@ class DataCollectResponse extends BaseResponse implements SoapResponseInterface
     {
         $xml = $response->$responseName->any;
         $data = simplexml_load_string($xml);
-        $array =  (array) $data->NewDataSet;
+        $array = (array)$data->NewDataSet;
         if (empty($array)) {
             return null;
         } else {

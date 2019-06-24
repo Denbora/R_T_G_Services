@@ -7,25 +7,6 @@ use denbora\R_T_G_Services\R_T_G_ValidationException;
 
 class DownloadValidator extends BaseValidator implements ValidatorInterface
 {
-
-    /**
-     * @param string $validatorName
-     * @param mixed $data
-     * @return bool
-     * @throws R_T_G_ServiceException
-     */
-    public function call(string $validatorName, $data)
-    {
-        if (in_array($validatorName, $this->classMethods)) {
-            $validator = $this->$validatorName($data);
-
-            return $validator;
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $validatorName . ' does not exist');
-        }
-    }
-
     /**
      * @param $data
      * @return bool
@@ -40,8 +21,7 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_array($data)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'data should be array, ' .
-                gettype($data) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'data should be array, ' . gettype($data) . ' given');
         }
 
         return true;
@@ -61,8 +41,7 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($PID)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
-                gettype($PID) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($PID) . ' given');
         }
 
         return true;
@@ -82,8 +61,7 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($DID)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'DID should be int, ' .
-                gettype($DID) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'DID should be int, ' . gettype($DID) . ' given');
         }
 
         return true;
@@ -99,11 +77,11 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
         if (empty($data['StartDate']) && !isset($data['StartDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['StartDate']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['StartDate'] . ' is a required field');
         }
 
         if (empty($data['EndDate']) && !isset($data['EndDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['EndDate']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['EndDate'] . ' is a required field');
         }
 
         if (!strtotime($data['StartDate'])) {
@@ -111,7 +89,7 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!strtotime($data['EndDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['EndDate']. ' should be DateTime!');
+            throw new R_T_G_ValidationException($errorPrefix . $data['EndDate'] . ' should be DateTime!');
         }
         return true;
     }
@@ -129,8 +107,7 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($AffiliatedID)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'AffiliatedID should be int, ' .
-                gettype($AffiliatedID) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'AffiliatedID should be int, ' . gettype($AffiliatedID) . ' given');
         }
     }
 
@@ -148,8 +125,7 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($TrackingID)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'TrackingID should be string, ' .
-                gettype($TrackingID) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'TrackingID should be string, ' . gettype($TrackingID) . ' given');
         }
         return true;
     }
@@ -168,8 +144,7 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_array($data)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'data should be array, ' .
-                gettype($data) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'data should be array, ' . gettype($data) . ' given');
         }
         return true;
     }
@@ -188,8 +163,7 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['serverType'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'serverType should be int, ' .
-                gettype($data['serverType']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'serverType should be int, ' . gettype($data['serverType']) . ' given');
         }
 
         return true;

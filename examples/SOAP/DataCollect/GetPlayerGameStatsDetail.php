@@ -12,7 +12,7 @@ class GetPlayerGameStatsDetail
      * @param string $method
      * @param Casino $casino
      */
-    public function __construct(string $service, string $method, $casino)
+    public function __construct(string $service, string $method, Casino $casino)
     {
         try {
             $dataCollection = $casino->getService($service);

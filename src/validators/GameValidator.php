@@ -9,26 +9,9 @@ class GameValidator extends BaseValidator implements ValidatorInterface
 {
 
     /**
-     * @param string $validatorName
-     * @param mixed $data
-     * @return bool
-     * @throws R_T_G_ServiceException
-     */
-    public function call(string $validatorName, $data)
-    {
-        if (in_array($validatorName, $this->classMethods)) {
-            $validator = $this->$validatorName($data);
-
-            return $validator;
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $validatorName . ' does not exist');
-        }
-    }
-
-    /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getGame($data)
     {
@@ -62,6 +45,7 @@ class GameValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getGamesBySkin($data)
     {
@@ -92,6 +76,7 @@ class GameValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getFlashGameInfo($data)
     {
@@ -111,6 +96,7 @@ class GameValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getActiveGames($data)
     {
@@ -125,6 +111,7 @@ class GameValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getFlashGamesInfo($data)
     {
@@ -138,6 +125,7 @@ class GameValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getActiveFlashGamesInfo($data)
     {
@@ -151,6 +139,7 @@ class GameValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function resetPlayerSpecialFeatures($data)
     {
@@ -164,6 +153,7 @@ class GameValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getGameList($data)
     {
@@ -181,6 +171,7 @@ class GameValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getFlashGameList($data)
     {
@@ -198,6 +189,7 @@ class GameValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function lockUnlockGamesByPID($data)
     {

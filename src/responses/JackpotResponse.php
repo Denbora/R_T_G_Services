@@ -2,6 +2,8 @@
 
 namespace denbora\R_T_G_Services\responses;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
+
 class JackpotResponse extends BaseResponse implements SoapResponseInterface
 {
 
@@ -17,6 +19,7 @@ class JackpotResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getProgressiveJackpot($response)
     {
@@ -26,6 +29,7 @@ class JackpotResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getProgressiveJackpots($response)
     {
@@ -35,6 +39,7 @@ class JackpotResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getLastJackpotWinners($response)
     {
@@ -44,6 +49,7 @@ class JackpotResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getLastJackpotWinnersBySkin($response)
     {

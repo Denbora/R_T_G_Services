@@ -9,24 +9,6 @@ class JackpotValidator extends BaseValidator implements ValidatorInterface
 {
 
     /**
-     * @param string $validatorName
-     * @param mixed $data
-     * @return bool
-     * @throws R_T_G_ServiceException
-     */
-    public function call(string $validatorName, $data)
-    {
-        if (in_array($validatorName, $this->classMethods)) {
-            $validator = $this->$validatorName($data);
-
-            return $validator;
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $validatorName . ' does not exist');
-        }
-    }
-
-    /**
      * @param $data
      * @return bool
      * @throws R_T_G_ValidationException
@@ -48,18 +30,15 @@ class JackpotValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['GameID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'GameID should be int, ' .
-                gettype($data['GameID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'GameID should be int, ' . gettype($data['GameID']) . ' given');
         }
 
         if (!is_int($data['MachineID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'MachineID should be int, ' .
-                gettype($data['MachineID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'MachineID should be int, ' . gettype($data['MachineID']) . ' given');
         }
 
         if (!is_bool($data['ForReal'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ForReal should be bool, ' .
-                gettype($data['ForReal']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ForReal should be bool, ' . gettype($data['ForReal']) . ' given');
         }
 
         return true;
@@ -79,8 +58,7 @@ class JackpotValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_bool($data['ForReal'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ForReal should be bool, ' .
-                gettype($data['ForReal']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ForReal should be bool, ' . gettype($data['ForReal']) . ' given');
         }
 
         return true;
@@ -100,8 +78,7 @@ class JackpotValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['amountOfPlayers'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'amountOfPlayers should be int, ' .
-                gettype($data['amountOfPlayers']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'amountOfPlayers should be int, ' . gettype($data['amountOfPlayers']) . ' given');
         }
 
         return true;
@@ -125,13 +102,11 @@ class JackpotValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['amountOfPlayers'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'amountOfPlayers should be int, ' .
-                gettype($data['amountOfPlayers']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'amountOfPlayers should be int, ' . gettype($data['amountOfPlayers']) . ' given');
         }
 
         if (!is_int($data['skinId'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'skinId should be int, ' .
-                gettype($data['skinId']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'skinId should be int, ' . gettype($data['skinId']) . ' given');
         }
 
         return true;

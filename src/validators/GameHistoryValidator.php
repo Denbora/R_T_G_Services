@@ -9,24 +9,6 @@ class GameHistoryValidator extends BaseValidator implements ValidatorInterface
 {
 
     /**
-     * @param string $validatorName
-     * @param mixed $data
-     * @return bool
-     * @throws R_T_G_ServiceException
-     */
-    public function call(string $validatorName, $data)
-    {
-        if (in_array($validatorName, $this->classMethods)) {
-            $validator = $this->$validatorName($data);
-
-            return $validator;
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $validatorName . ' does not exist');
-        }
-    }
-
-    /**
      * @param $data
      * @return bool
      * @throws R_T_G_ValidationException
@@ -48,18 +30,15 @@ class GameHistoryValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['Login'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Login should be string, ' .
-                gettype($data['Login']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Login should be string, ' . gettype($data['Login']) . ' given');
         }
 
         if (!is_string($data['pid']) && !is_numeric($data['pid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'pid should be string, ' .
-                gettype($data['pid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'pid should be string, ' . gettype($data['pid']) . ' given');
         }
 
         if (!is_bool($data['forMoney'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'forMoney should be bool, ' .
-                gettype($data["forMoney"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'forMoney should be bool, ' . gettype($data["forMoney"]) . ' given');
         }
 
         return true;
@@ -86,18 +65,15 @@ class GameHistoryValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['GameId'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'GameId should be int, ' .
-                gettype($data['GameId']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'GameId should be int, ' . gettype($data['GameId']) . ' given');
         }
 
         if (!is_int($data['MachID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'MachID should be int, ' .
-                gettype($data['MachID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'MachID should be int, ' . gettype($data['MachID']) . ' given');
         }
 
         if (!is_int($data['GameNumber'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'GameNumber should be int, ' .
-                gettype($data['GameNumber']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'GameNumber should be int, ' . gettype($data['GameNumber']) . ' given');
         }
     }
 
@@ -123,18 +99,15 @@ class GameHistoryValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['Login'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Login should be string, ' .
-                gettype($data['Login']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Login should be string, ' . gettype($data['Login']) . ' given');
         }
 
         if (!is_string($data['PID']) && !is_numeric($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
-                gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
         }
 
         if (!is_bool($data['forMoney'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'forMoney should be bool, ' .
-                gettype($data["forMoney"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'forMoney should be bool, ' . gettype($data["forMoney"]) . ' given');
         }
 
         return true;
@@ -158,13 +131,11 @@ class GameHistoryValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['PID']) && !is_numeric($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
-                gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
         }
 
         if (!is_bool($data['forMoney'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'forMoney should be bool, ' .
-                gettype($data["forMoney"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'forMoney should be bool, ' . gettype($data["forMoney"]) . ' given');
         }
 
         return true;
@@ -196,23 +167,19 @@ class GameHistoryValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['Login'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Login should be string, ' .
-                gettype($data['Login']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Login should be string, ' . gettype($data['Login']) . ' given');
         }
 
         if (!is_string($data['PID']) && !is_numeric($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
-                gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
         }
 
         if (!is_bool($data['forMoney'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'forMoney should be bool, ' .
-                gettype($data["forMoney"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'forMoney should be bool, ' . gettype($data["forMoney"]) . ' given');
         }
 
         if (!is_int($data['machID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'machID should be int, ' .
-                gettype($data['machID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'machID should be int, ' . gettype($data['machID']) . ' given');
         }
 
         return true;
@@ -244,23 +211,19 @@ class GameHistoryValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['Login'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Login should be string, ' .
-                gettype($data['Login']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Login should be string, ' . gettype($data['Login']) . ' given');
         }
 
         if (!is_string($data['pid']) && !is_numeric($data['pid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'pid should be string, ' .
-                gettype($data['pid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'pid should be string, ' . gettype($data['pid']) . ' given');
         }
 
         if (!is_bool($data['forMoney'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'forMoney should be bool, ' .
-                gettype($data["forMoney"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'forMoney should be bool, ' . gettype($data["forMoney"]) . ' given');
         }
 
         if (!is_int($data['machID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'machID should be int, ' .
-                gettype($data['machID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'machID should be int, ' . gettype($data['machID']) . ' given');
         }
 
         return true;
@@ -280,8 +243,7 @@ class GameHistoryValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['GameNumber'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'GameNumber should be int, ' .
-                gettype($data['GameNumber']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'GameNumber should be int, ' . gettype($data['GameNumber']) . ' given');
         }
 
         return true;
@@ -302,8 +264,7 @@ class GameHistoryValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['gamenum'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'gamenum should be int, ' .
-                gettype($data['gamenum']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'gamenum should be int, ' . gettype($data['gamenum']) . ' given');
         }
 
         return true;

@@ -3,6 +3,7 @@
 namespace denbora\R_T_G_Services\examples;
 
 use denbora\R_T_G_Services\casino\Casino;
+use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 class Create
 {
@@ -14,8 +15,9 @@ class Create
     /**
      * @param $data
      * @param Casino $casino
+     * @throws R_T_G_ServiceException
      */
-    public static function savePlayer($data, $casino)
+    public static function savePlayer($data, Casino $casino)
     {
         if ($data["Password"] === $data["Password-repeat"]) {
             unset($data["Password-repeat"]);

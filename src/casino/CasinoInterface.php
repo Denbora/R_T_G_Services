@@ -9,16 +9,16 @@ namespace denbora\R_T_G_Services\casino;
 interface CasinoInterface
 {
     /**
-     * @param $serviceName string
+     * @param string $serviceName
      * @return mixed
      */
     public function getService(string $serviceName);
 
     /**
-     * @param $serviceName string
-     * @param $serviceClass string
-     * @param $serviceEndPoint string
-     * @return boolean
+     * @param string $serviceName
+     * @param string $serviceClass
+     * @param string $serviceEndPoint
+     * @return bool
      */
-    public function addService($serviceName, $serviceClass, $serviceEndPoint);
+    public function addService(string $serviceName, string $serviceClass, string $serviceEndPoint): bool;
 }

@@ -29,6 +29,7 @@ class CashierValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getAvailableCoupons($data)
     {
@@ -46,6 +47,7 @@ class CashierValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function redeemCoupon($data)
     {
@@ -71,6 +73,7 @@ class CashierValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function denyCoupon($data)
     {
@@ -96,6 +99,7 @@ class CashierValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getActiveCouponCode($data)
     {
@@ -113,6 +117,7 @@ class CashierValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getActiveCouponDetails($data)
     {
@@ -132,6 +137,7 @@ class CashierValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function cancelPlayerCoupon($data)
     {
@@ -165,6 +171,7 @@ class CashierValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getCouponInfo($data)
     {
@@ -180,6 +187,7 @@ class CashierValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getCouponSummaryReport($data)
     {

@@ -7,41 +7,16 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 class PlayerService extends ServiceBase implements ServiceInterface
 {
     /**
-     * @param $serviceMethod string
-     * @param $data
-     * @param bool $rawResponse
-     * @return mixed
-     * @throws R_T_G_ServiceException
-     */
-    public function call(string $serviceMethod, $data, bool $rawResponse = false)
-    {
-        if (in_array($serviceMethod, $this->classMethods)) {
-            try {
-                $serviceResponse = $this->$serviceMethod($data, $rawResponse);
-
-                return $serviceResponse;
-            } catch (\SoapFault $e) {
-                $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-                throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
-            }
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $serviceMethod .' does not exist');
-        }
-    }
-
-    /**
      * Activates a given player in the casino.
      *
-     * @param array $args
+     * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function activatePlayer($args, bool $rawResponse)
     {
-        $this->validator->call('activatePlayer', $args);
-
-        return $this->service('ActivatePlayer', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'activatePlayer', 'ActivatePlayer');
     }
 
     /**
@@ -50,12 +25,11 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function banPlayer($args, bool $rawResponse)
     {
-        $this->validator->call('banPlayer', $args);
-
-        return $this->service('BanPlayer', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'banPlayer', 'BanPlayer');
     }
 
     /**
@@ -64,12 +38,11 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function changePasswordWithToken($args, bool $rawResponse)
     {
-        $this->validator->call('changePasswordWithToken', $args);
-
-        return $this->service('ChangePasswordWithToken', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'changePasswordWithToken', 'ChangePasswordWithToken');
     }
 
     /**
@@ -78,12 +51,11 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function changePlayerClass($args, bool $rawResponse)
     {
-        $this->validator->call('changePlayerClass', $args);
-
-        return $this->service('ChangePlayerClass', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'changePlayerClass', 'ChangePlayerClass');
     }
 
     /**
@@ -96,9 +68,7 @@ class PlayerService extends ServiceBase implements ServiceInterface
      */
     protected function createPlayer($args, bool $rawResponse)
     {
-        $this->validator->call('createPlayer', $args);
-
-        return $this->service('CreatePlayer', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'createPlayer', 'CreatePlayer');
     }
 
     /**
@@ -107,12 +77,11 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function createPlayerAndToken($args, bool $rawResponse)
     {
-        $this->validator->call('createPlayerAndToken', $args);
-
-        return $this->service('CreatePlayerAndToken', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'createPlayerAndToken', 'CreatePlayerAndToken');
     }
 
     /**
@@ -121,12 +90,11 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function deactivatePlayer($args, bool $rawResponse)
     {
-        $this->validator->call('deactivatePlayer', $args);
-
-        return $this->service('DeactivatePlayer', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'deactivatePlayer', 'DeactivatePlayer');
     }
 
     /**
@@ -135,41 +103,46 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function deactivateAndLogoutPlayer($args, bool $rawResponse)
     {
-        $this->validator->call('deactivateAndLogoutPlayer', $args);
-
-        return $this->service('DeactivateAndLogoutPlayer', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'deactivateAndLogoutPlayer', 'DeactivateAndLogoutPlayer');
     }
 
     /**
-     * This method will send the player an email notification with the Security Token to change the password.
+     * his method will send the player an email notification with the Security Token to change the password.
      *
      * @param string $PID
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function forgotPassword(string $PID, bool $rawResponse)
     {
-        $this->validator->call('forgotPassword', $PID);
+        $data = [
+            'PID' => $PID
+        ];
 
-        return $this->service('ForgotPassword', array('PID' => $PID), $rawResponse);
+        return $this->run($data, $rawResponse, 'forgotPassword', 'ForgotPassword');
     }
 
     /**
-     * This method will send the player an email notification with the login (username) information corresponding to
+     *  This method will send the player an email notification with the login (username) information corresponding to
      * the provided email.
      *
      * @param string $email
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function forgotUsername(string $email, bool $rawResponse)
     {
-        $this->validator->call('forgotUsername', $email);
+        $data = [
+            'Email' => $email
+        ];
 
-        return $this->service('ForgotUsername', array('Email' => $email), $rawResponse);
+        return $this->run($data, $rawResponse, 'forgotUsername', 'ForgotUsername');
     }
 
     /**
@@ -178,12 +151,15 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param string $PID
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getAdjustedNetWinbyPID(string $PID, bool $rawResponse)
     {
-        $this->validator->call('getAdjustedNetWinbyPID', $PID);
+        $data = [
+            'PID' => $PID
+        ];
 
-        return $this->service('GetAdjustedNetWinbyPID', array('PID' => $PID), $rawResponse);
+        return $this->run($data, $rawResponse, 'getAdjustedNetWinbyPID', 'GetAdjustedNetWinbyPID');
     }
 
     /**
@@ -192,12 +168,15 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param string $PID
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getNonCashTotalbyPID(string $PID, bool $rawResponse)
     {
-        $this->validator->call('getNonCashTotalbyPID', $PID);
+        $data = [
+            'PID' => $PID
+        ];
 
-        return $this->service('GetNonCashTotalbyPID', array('PID' => $PID), $rawResponse);
+        return $this->run($data, $rawResponse, 'getNonCashTotalbyPID', 'GetNonCashTotalbyPID');
     }
 
     /**
@@ -206,12 +185,11 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getNonCashTotalbyPIDandDate($args, bool $rawResponse)
     {
-        $this->validator->call('getNonCashTotalbyPIDandDate', $args);
-
-        return $this->service('GetNonCashTotalbyPIDandDate', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'getNonCashTotalbyPIDandDate', 'GetNonCashTotalbyPIDandDate');
     }
 
     /**
@@ -224,9 +202,11 @@ class PlayerService extends ServiceBase implements ServiceInterface
      */
     protected function getPID(string $login, bool $rawResponse)
     {
-        $this->validator->call('getPID', $login);
+        $data = [
+            'Login' => $login
+        ];
 
-        return $this->service('GetPID', array('Login' => $login), $rawResponse);
+        return $this->run($data, $rawResponse, 'getPID', 'GetPID');
     }
 
     /**
@@ -235,12 +215,15 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param string $PID
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayer(string $PID, bool $rawResponse)
     {
-        $this->validator->call('getPlayer', $PID);
+        $data = [
+            'PID' => $PID
+        ];
 
-        return $this->service('GetPlayer', array('PID' => $PID), $rawResponse);
+        return $this->run($data, $rawResponse, 'getPlayer', 'GetPlayer');
     }
 
     /**
@@ -249,26 +232,28 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param string $PID
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayerClass(string $PID, bool $rawResponse)
     {
-        $this->validator->call('getPlayerClass', $PID);
+        $data = [
+            'PID' => $PID
+        ];
 
-        return $this->service('GetPlayerClass', array('PID' => $PID), $rawResponse);
+        return $this->run($data, $rawResponse, 'getPlayerClass', 'GetPlayerClass');
     }
 
     /**
      * This method retrieves all players in the casino based on their sign up date.
      *
-     * @param array $args
+     * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayers($args, bool $rawResponse)
     {
-        $this->validator->call('getPlayers', $args);
-
-        return $this->service('getPlayers', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'getPlayers', 'getPlayers');
     }
 
     /**
@@ -276,12 +261,11 @@ class PlayerService extends ServiceBase implements ServiceInterface
      *
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayersActiveSessions(bool $rawResponse)
     {
-        $this->validator->call('getPlayersActiveSessions', '');
-
-        return $this->service('GetPlayersActiveSessions', $rawResponse, '');
+        return $this->run('', $rawResponse, 'getPlayersActiveSessions', 'GetPlayersActiveSessions');
     }
 
     /**
@@ -290,12 +274,11 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayersDelta($args, bool $rawResponse)
     {
-        $this->validator->call('getPlayersDelta', $args);
-
-        return $this->service('GetPlayersDelta', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'getPlayersDelta', 'GetPlayersDelta');
     }
 
     /**
@@ -304,12 +287,15 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param string $login
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayerPasscode(string $login, bool $rawResponse)
     {
-        $this->validator->call('getPlayerPasscode', $login);
+        $data = [
+            'Login' => $login
+        ];
 
-        return $this->service('GetPlayerPasscode', array('Login' => $login), $rawResponse);
+        return $this->run($data, $rawResponse, 'getPlayerPasscode', 'GetPlayerPasscode');
     }
 
     /**
@@ -318,12 +304,15 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param string $PID
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function resetPassword(string $PID, bool $rawResponse)
     {
-        $this->validator->call('resetPassword', $PID);
+        $data = [
+            'PID' => $PID
+        ];
 
-        return $this->service('ResetPassword', array('PID' => $PID), $rawResponse);
+        return $this->run($data, $rawResponse, 'resetPassword', 'ResetPassword');
     }
 
     /**
@@ -332,40 +321,41 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param string $PID
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function unBanPlayer(string $PID, bool $rawResponse)
     {
-        $this->validator->call('unBanPlayer', $PID);
+        $data = [
+            'PID' => $PID
+        ];
 
-        return $this->service('UnBanPlayer', array('PID' => $PID), $rawResponse);
+        return $this->run($data, $rawResponse, 'unBanPlayer', 'UnBanPlayer');
     }
 
     /**
      * Updates the details of an existing player in the database.
      *
-     * @param array $args
+     * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function updatePlayer($args, bool $rawResponse)
     {
-        $this->validator->call('updatePlayer', $args);
-
-        return $this->service('UpdatePlayer', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'updatePlayer', 'UpdatePlayer');
     }
 
     /**
      * Validates if the credentials of a given player are valid or not.
      *
-     * @param array $args
+     * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function validateCredentials($args, bool $rawResponse)
     {
-        $this->validator->call('validateCredentials', $args);
-
-        return $this->service('ValidateCredentials', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'validateCredentials', 'ValidateCredentials');
     }
 
     /**
@@ -374,27 +364,29 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * @param string $PID
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getLedgerInformation(string $PID, bool $rawResponse)
     {
-        $this->validator->call('getLedgerInformation', $PID);
+        $data = [
+            'PID' => $PID
+        ];
 
-        return $this->service('GetLedgerInformation', array('PID' => $PID), $rawResponse);
+        return $this->run($data, $rawResponse, 'getLedgerInformation', 'GetLedgerInformation');
     }
 
     /**
      * The GetAuditTrailReport method retrieves the information about Audit Trails for Players Details,
      * Game Settings and Table Limits.
      *
-     * @param array $args
+     * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getAuditTrailReport($args, bool $rawResponse)
     {
-        $this->validator->call('getAuditTrailReport', $args);
-
-        return $this->service('GetAuditTrailReport', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'getAuditTrailReport', 'GetAuditTrailReport');
     }
 
     /**
@@ -407,22 +399,19 @@ class PlayerService extends ServiceBase implements ServiceInterface
      */
     protected function savePlayer($args, bool $rawResponse)
     {
-        $this->validator->call('savePlayer', $args);
-
-        return $this->service('SavePlayer', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'savePlayer', 'SavePlayer');
     }
 
     /**
      * Logout a given player in the casino.
      *
-     * @param array $args
+     * @param $args
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function logout($args, bool $rawResponse)
     {
-        $this->validator->call('logout', $args);
-
-        return $this->service('Logout', $args, $rawResponse);
+        return $this->run($args, $rawResponse, 'logout', 'Logout');
     }
 }

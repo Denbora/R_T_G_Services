@@ -8,47 +8,10 @@ class CashierService extends ServiceBase implements ServiceInterface
 {
 
     /**
-     * @param $serviceMethod string
      * @param $data
      * @param bool $rawResponse
-     * @return mixed
+     * @return object
      * @throws R_T_G_ServiceException
-     */
-    public function call(string $serviceMethod, $data, bool $rawResponse = false)
-    {
-        if (in_array($serviceMethod, $this->classMethods)) {
-            try {
-                $serviceResponse = $this->$serviceMethod($data, $rawResponse);
-
-                return $serviceResponse;
-            } catch (\SoapFault $e) {
-                $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-                throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
-            }
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $serviceMethod .' does not exist');
-        }
-    }
-
-    /**
-     * @param $data
-     * @param bool $rawResponse
-     * @param $validatorName
-     * @param $service
-     * @return object
-     */
-    private function run($data, bool $rawResponse, $validatorName, $service)
-    {
-        $this->validator->call($validatorName, $data);
-
-        return $this->service($service, $data, $rawResponse);
-    }
-
-    /**
-     * @param $data
-     * @param bool $rawResponse
-     * @return object
      */
     protected function getAvailableCoupons($data, bool $rawResponse)
     {
@@ -59,6 +22,7 @@ class CashierService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function redeemCoupon($data, bool $rawResponse)
     {
@@ -69,6 +33,7 @@ class CashierService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function denyCoupon($data, bool $rawResponse)
     {
@@ -79,6 +44,7 @@ class CashierService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getActiveCouponCode($data, bool $rawResponse)
     {
@@ -89,6 +55,7 @@ class CashierService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getActiveCouponDetails($data, bool $rawResponse)
     {
@@ -99,6 +66,7 @@ class CashierService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function cancelPlayerCoupon($data, bool $rawResponse)
     {
@@ -109,6 +77,7 @@ class CashierService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getAvailableCouponsBasicInfo($data, bool $rawResponse)
     {
@@ -119,6 +88,7 @@ class CashierService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getCouponInfo($data, bool $rawResponse)
     {
@@ -129,6 +99,7 @@ class CashierService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getCouponSummaryReport($data, bool $rawResponse)
     {
@@ -139,6 +110,7 @@ class CashierService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayersActiveCoupons($data, bool $rawResponse)
     {

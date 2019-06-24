@@ -28,6 +28,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function addToFavorite($data)
     {
@@ -51,6 +52,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function addToFavoriteByGame($data)
     {
@@ -76,6 +78,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getAccountBalance($data)
     {
@@ -95,6 +98,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getActiveMessages($data)
     {
@@ -132,6 +136,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getComponents($data)
     {
@@ -146,6 +151,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getCurrentTheme($data)
     {
@@ -160,6 +166,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getGameInformation($data)
     {
@@ -179,6 +186,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getJackPot($data)
     {
@@ -198,6 +206,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getLanguageCode($data)
     {
@@ -212,6 +221,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getLastGamesPlayed($data)
     {
@@ -244,6 +254,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getMarquee($data)
     {
@@ -263,6 +274,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getMenus($data)
     {
@@ -277,6 +289,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getMenuStructure($data)
     {
@@ -296,6 +309,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getMobileMenu($data)
     {
@@ -313,6 +327,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getRestrictedGames($data)
     {
@@ -330,6 +345,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getSessionHash($data)
     {
@@ -344,6 +360,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getTopGamesPlayed($data)
     {
@@ -363,6 +380,7 @@ class LobbyValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getTopLocalAuslotJackpots($data)
     {

@@ -2,7 +2,9 @@
 
 namespace denbora\R_T_G_Services;
 
-class R_T_G_ValidationException  extends \Exception
+use \Exception;
+
+class R_T_G_ValidationException  extends Exception
 {
 
 }

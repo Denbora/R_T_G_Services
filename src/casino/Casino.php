@@ -82,7 +82,7 @@ class Casino implements CasinoInterface
      * @param string $webServiceUrl
      * @return string
      */
-    private function createEndpoint(string $webServiceUrl) : string
+    private function createEndpoint(string $webServiceUrl): string
     {
         $search = array('?wsdl', '?WSDL');
 
@@ -128,13 +128,13 @@ class Casino implements CasinoInterface
 
         $soapclient_options = array(
             'stream_context' => $context,
-            'location'       => $endpoint,
-            'keep_alive'     => true,
-            'trace'          => true,
-            'local_cert'     => $this->certFile,
-            'passphrase'     => $this->password,
-            'exceptions'     => true,
-            'cache_wsdl'     => WSDL_CACHE_NONE
+            'location' => $endpoint,
+            'keep_alive' => true,
+            'trace' => true,
+            'local_cert' => $this->certFile,
+            'passphrase' => $this->password,
+            'exceptions' => true,
+            'cache_wsdl' => WSDL_CACHE_NONE
         );
 
         try {
@@ -180,8 +180,8 @@ class Casino implements CasinoInterface
     }
 
     /**
-     * @param $serviceName string
-     * @return ServiceInterface
+     * @param string $serviceName
+     * @return mixed
      * @throws R_T_G_ServiceException
      */
     public function getService(string $serviceName)
@@ -212,7 +212,7 @@ class Casino implements CasinoInterface
         if (!empty($this->serviceDescription[$serviceName]['class'])) {
             $serviceClass = $this->serviceDescription[$serviceName]['class'];
         } else {
-            $serviceClass =  __NAMESPACE__ . '\\'. 'services' . '\\'. 'SOAP' . '\\'. $serviceName . 'Service';
+            $serviceClass = __NAMESPACE__ . '\\' . 'services' . '\\' . 'SOAP' . '\\' . $serviceName . 'Service';
         }
         $service = new $serviceClass($soapClient, $serviceValidator, $serviceResponse);
 
@@ -223,13 +223,12 @@ class Casino implements CasinoInterface
     }
 
     /**
-     * @param $serviceName string
-     * @param $serviceClass string
-     * @param $serviceEndPoint string
-     * @return boolean
-     * @throws R_T_G_ServiceException
+     * @param string $serviceName
+     * @param string $serviceClass
+     * @param string $serviceEndPoint
+     * @return bool
      */
-    public function addService($serviceName, $serviceClass, $serviceEndPoint)
+    public function addService(string $serviceName, string $serviceClass, string $serviceEndPoint): bool
     {
         // ToDo: Implement addService() method.
     }

@@ -9,24 +9,6 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
 {
 
     /**
-     * @param string $validatorName
-     * @param mixed $data
-     * @return bool
-     * @throws R_T_G_ServiceException
-     */
-    public function call(string $validatorName, $data)
-    {
-        if (in_array($validatorName, $this->classMethods)) {
-            $validator = $this->$validatorName($data);
-
-            return $validator;
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $validatorName . ' does not exist');
-        }
-    }
-
-    /**
      * @param $data
      * @return bool
      * @throws R_T_G_ValidationException
@@ -130,6 +112,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getCasinoStats($data)
     {
@@ -144,6 +127,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getPlayerGameStatsDetail($data)
     {
@@ -165,6 +149,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getPlayerGameStatsDetailByGame($data)
     {
@@ -190,6 +175,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getPlayerGameStatsDetailByGameBySession($data)
     {
@@ -215,6 +201,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getPlayerGameStatsBySession($data)
     {
@@ -266,6 +253,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getGameDetailSummary($data)
     {
@@ -285,6 +273,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getCasinoSummaryData($data)
     {
@@ -304,6 +293,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getCasinoSummaryByAffiliate($data)
     {
@@ -323,6 +313,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getCasinoSummaryDataBySkin($data)
     {
@@ -346,6 +337,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getRSVSJackpotsByPID($data)
     {
@@ -367,6 +359,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getRSVSJackpotsAll($data)
     {
@@ -386,6 +379,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getNewDepositors($data)
     {
@@ -403,6 +397,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getNewDepositorsBySkin($data)
     {
@@ -442,6 +437,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getBaccaratGamesHistory($data)
     {
@@ -469,6 +465,7 @@ class DataCollectValidator extends BaseValidator implements ValidatorInterface
     /**
      * @param $data
      * @return bool
+     * @throws R_T_G_ValidationException
      */
     protected function getRouletteGamesHistory($data)
     {

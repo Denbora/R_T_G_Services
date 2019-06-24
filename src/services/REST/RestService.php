@@ -6,6 +6,7 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestResponse;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
 use Httpful\Request;
+use \Exception;
 
 class RestService implements RestServiceInterface
 {
@@ -47,7 +48,7 @@ class RestService implements RestServiceInterface
             $result = $this->response->getContent($response);
 
             return $result;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
             throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
         }
@@ -71,7 +72,7 @@ class RestService implements RestServiceInterface
             $result = $this->response->getContent($response);
 
             return $result;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
             throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
         }
@@ -95,7 +96,7 @@ class RestService implements RestServiceInterface
             $result = $this->response->getContent($response);
 
             return $result;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
             throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
         }
@@ -143,7 +144,8 @@ class RestService implements RestServiceInterface
         string $serviceApiUrl,
         $pathParams = null,
         string $endpoint = ''
-    ) {
+    )
+    {
         if ($query != '') {
             $path = '';
             $queryData = '';

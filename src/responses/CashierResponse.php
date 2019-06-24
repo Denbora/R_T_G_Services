@@ -4,11 +4,16 @@ namespace denbora\R_T_G_Services\responses;
 
 class CashierResponse extends BaseResponse implements SoapResponseInterface
 {
+    /**
+     * @param $response
+     * @param $responseName
+     * @return mixed|null
+     */
     private function getCollectionData($response, $responseName)
     {
         $xml = $response->$responseName;
         $data = simplexml_load_string($xml);
-        $array =  (array) $data->NewDataSet;
+        $array = (array)$data->NewDataSet;
         if (empty($array)) {
             return null;
         } else {
