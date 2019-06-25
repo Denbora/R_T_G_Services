@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\casino;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\ResponseFactory;
-use denbora\R_T_G_Services\services\SOAP\ServiceInterface;
+use denbora\R_T_G_Services\services\SOAP\AffiliateService;
 use denbora\R_T_G_Services\validators\ValidatorFactory;
 use SoapClient;
 
@@ -109,11 +109,11 @@ class Casino implements CasinoInterface
     }
 
     /**
-     * @param String $serviceName
+     * @param string $serviceName
      * @return SoapClient
      * @throws R_T_G_ServiceException
      */
-    protected function createSoapClient(String $serviceName)
+    protected function createSoapClient(string $serviceName)
     {
         $context = stream_context_create([
             'ssl' => [
@@ -180,6 +180,8 @@ class Casino implements CasinoInterface
     }
 
     /**
+     * @example $serviceName is Affiliate
+     * @see AffiliateService
      * @param string $serviceName
      * @return mixed
      * @throws R_T_G_ServiceException
