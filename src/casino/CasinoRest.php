@@ -4,6 +4,7 @@ namespace denbora\R_T_G_Services\casino;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\ResponseFactory;
+use denbora\R_T_G_Services\services\REST\CasinoService;
 use denbora\R_T_G_Services\validators\ValidatorFactory;
 use denbora\R_T_G_Services\services\REST\AccountService;
 use denbora\R_T_G_Services\services\REST\CashierService;
@@ -27,6 +28,7 @@ use denbora\R_T_G_Services\services\REST\SettingsService;
  * @property ReportService report
  * @property ServiceService service
  * @property SettingsService settings
+ * @property CasinoService casino
  */
 class CasinoRest implements CasinoInterface
 {
