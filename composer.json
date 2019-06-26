@@ -1,8 +1,10 @@
 {
     "name": "denbora/r_t_g_services",
     "type": "library",
+    "description": "RTG Services",
     "require": {
         "php": ">=7.0",
+        "ext-json": "*",
         "nategood/httpful": "*"
     },
     "require-dev": {

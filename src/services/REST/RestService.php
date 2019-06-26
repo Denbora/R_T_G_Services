@@ -238,4 +238,35 @@ class RestService implements RestServiceInterface
 
         return json_encode($data);
     }
+
+    /**
+     * Added param to link
+     *
+     * @param string $query
+     * @param string $param
+     * @param string $url
+     * @return string
+     */
+    protected function addQueryParameterToUrl(string &$query, string $param, string $url)
+    {
+        $data = json_decode($query, true);
+
+        if (!isset($data[$param])) {
+            return $url;
+        }
+
+        $urlQuery = parse_url($url, PHP_URL_QUERY);
+
+        if ($urlQuery) { // If url query not empty - added param to exists params
+            $url .= '&';
+        } else {
+            $url .= '?';
+        }
+
+        $url .= $param . '=' . (string) $data[$param];
+        unset($data[$param]);
+        $query = json_encode($data);
+
+        return $url;
+    }
 }
