@@ -13,7 +13,7 @@ class CashierService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function postCommonWalletDeposit($query = '')
@@ -29,7 +29,7 @@ class CashierService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function postCommonWalletWithdrawal($query = '')

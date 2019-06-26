@@ -2,7 +2,6 @@
 
 namespace denbora\R_T_G_Services\validators;
 
-use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\R_T_G_ValidationException;
 
 class AffiliateValidator extends BaseValidator implements ValidatorInterface
@@ -99,7 +98,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['aid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' . gettype($data['aid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' .
+                gettype($data['aid']) . ' given');
         }
 
         return true;
@@ -163,7 +163,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['aid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' . gettype($data['aid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' .
+                gettype($data['aid']) . ' given');
         }
 
         return true;
@@ -219,7 +220,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['aid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' . gettype($data['aid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' .
+                gettype($data['aid']) . ' given');
         }
 
         return true;
@@ -283,7 +285,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['aid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' . gettype($data['aid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' .
+                gettype($data['aid']) . ' given');
         }
 
         return true;
@@ -302,7 +305,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['gaid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'gaid should be int, ' . gettype($data['gaid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'gaid should be int, ' .
+                gettype($data['gaid']) . ' given');
         }
 
         if (empty($data['payperiod']) && !isset($data['payperiod'])) {
@@ -409,7 +413,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['aid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' . gettype($data['aid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' .
+                gettype($data['aid']) . ' given');
         }
 
         return true;
@@ -457,7 +462,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['startAID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'startAID should be int, ' . gettype($data['startAID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'startAID should be int, ' .
+                gettype($data['startAID']) . ' given');
         }
 
         if (!isset($data['endAID']) && empty($data['endAID'])) {
@@ -465,7 +471,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['endAID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'endAID should be int, ' . gettype($data['endAID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'endAID should be int, ' .
+                gettype($data['endAID']) . ' given');
         }
 
         if (empty($data['fromDate']) && !isset($data['fromDate'])) {
@@ -545,7 +552,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['AID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'AID should be int, ' . gettype($data['AID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'AID should be int, ' .
+                gettype($data['AID']) . ' given');
         }
 
         if (empty($data['fromDate']) && !isset($data['fromDate'])) {
@@ -581,7 +589,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['AID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'AID should be int, ' . gettype($data['AID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'AID should be int, ' .
+                gettype($data['AID']) . ' given');
         }
 
         if (empty($data['fromDate']) && !isset($data['fromDate'])) {
@@ -645,7 +654,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['aid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' . gettype($data['aid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' .
+                gettype($data['aid']) . ' given');
         }
 
         if (empty($data['fromDate']) && !isset($data['fromDate'])) {
@@ -681,7 +691,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['GlobalID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'GlobalID should be int, ' . gettype($data['GlobalID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'GlobalID should be int, ' .
+                gettype($data['GlobalID']) . ' given');
         }
 
         if (!isset($data['LocalID']) && empty($data['LocalID'])) {
@@ -689,7 +700,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['LocalID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'LocalID should be int, ' . gettype($data['LocalID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'LocalID should be int, ' .
+                gettype($data['LocalID']) . ' given');
         }
 
         return true;
@@ -741,7 +753,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['aid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' . gettype($data['aid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' .
+                gettype($data['aid']) . ' given');
         }
 
         if (!isset($data['newProgramID']) && empty($data['newProgramID'])) {
@@ -749,7 +762,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['newProgramID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'newProgramID should be int, ' . gettype($data['newProgramID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'newProgramID should be int, ' .
+                gettype($data['newProgramID']) . ' given');
         }
 
         return true;
@@ -792,7 +806,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['aid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' . gettype($data['aid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' .
+                gettype($data['aid']) . ' given');
         }
 
         unset($data['aid']);
@@ -826,7 +841,8 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['aid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' . gettype($data['aid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'aid should be int, ' .
+                gettype($data['aid']) . ' given');
         }
 
         if (empty($data['fromDate']) && !isset($data['fromDate'])) {

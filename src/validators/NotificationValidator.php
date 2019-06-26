@@ -22,7 +22,8 @@ class NotificationValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_array($data['MailItemList'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'MailItemList should be array, ' . gettype($data['MailItemList']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'MailItemList should be array, ' .
+                gettype($data['MailItemList']) . ' given');
         }
 
         return true;

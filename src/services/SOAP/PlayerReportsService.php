@@ -29,7 +29,8 @@ class PlayerReportsService extends ServiceBase implements ServiceInterface
      */
     protected function getPlayerDepositorsByDepositCount($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'getPlayerDepositorsByDepositCount', 'GetPlayerDepositorsByDepositCount');
+        return $this
+            ->run($data, $rawResponse, 'getPlayerDepositorsByDepositCount', 'GetPlayerDepositorsByDepositCount');
     }
 
     /**

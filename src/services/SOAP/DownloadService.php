@@ -58,7 +58,8 @@ class DownloadService extends ServiceBase implements ServiceInterface
      */
     protected function getDownloadInformationByAffId($AffiliatedID, bool $rawResponse)
     {
-        return $this->run($AffiliatedID, $rawResponse, 'getDownloadInformationByAffId', 'GetDownloadInformationByAffId');
+        return $this
+            ->run($AffiliatedID, $rawResponse, 'getDownloadInformationByAffId', 'GetDownloadInformationByAffId');
     }
 
     /**
@@ -69,7 +70,8 @@ class DownloadService extends ServiceBase implements ServiceInterface
      */
     protected function getDownloadInformationByTracking($TrackingID, bool $rawResponse)
     {
-        return $this->run($TrackingID, $rawResponse, 'getDownloadInformationByTracking', 'GetDownloadInformationByTracking');
+        return $this
+            ->run($TrackingID, $rawResponse, 'getDownloadInformationByTracking', 'GetDownloadInformationByTracking');
     }
 
     /**
@@ -80,7 +82,8 @@ class DownloadService extends ServiceBase implements ServiceInterface
      */
     protected function getDownloadInformationByAIDPeriod($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'getDownloadInformationByAIDPeriod', 'GetDownloadInformationByAIDPeriod');
+        return $this
+            ->run($data, $rawResponse, 'getDownloadInformationByAIDPeriod', 'GetDownloadInformationByAIDPeriod');
     }
 
     /**

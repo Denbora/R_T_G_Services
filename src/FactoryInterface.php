@@ -10,7 +10,7 @@ interface FactoryInterface
 {
     /**
      * @param string $type
-     * @return mixed
+     * @return object
      */
     public static function build(string $type);
 }

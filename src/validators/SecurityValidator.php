@@ -9,7 +9,7 @@ class SecurityValidator extends BaseValidator implements ValidatorInterface
 {
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -30,7 +30,7 @@ class SecurityValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -47,17 +47,19 @@ class SecurityValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['Token'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Token should be string, ' . gettype($data['Token']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Token should be string, ' .
+                gettype($data['Token']) . ' given');
         }
 
         if (!is_string($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($data['PID']) . ' given');
         }
         return true;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -78,21 +80,24 @@ class SecurityValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['ApplicationName'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ApplicationName should be string, ' . gettype($data['ApplicationName']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ApplicationName should be string, ' .
+                gettype($data['ApplicationName']) . ' given');
         }
 
         if (!is_string($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($data['PID']) . ' given');
         }
 
         if (!is_string($data['Token'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Token should be string, ' . gettype($data['Token']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Token should be string, ' .
+                gettype($data['Token']) . ' given');
         }
         return true;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -109,17 +114,19 @@ class SecurityValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['ApplicationName'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ApplicationName should be string, ' . gettype($data['ApplicationName']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ApplicationName should be string, ' .
+                gettype($data['ApplicationName']) . ' given');
         }
 
         if (!is_string($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($data['PID']) . ' given');
         }
         return true;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -136,11 +143,13 @@ class SecurityValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['ApplicationName'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ApplicationName should be string, ' . gettype($data['ApplicationName']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ApplicationName should be string, ' .
+                gettype($data['ApplicationName']) . ' given');
         }
 
         if (!is_string($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($data['PID']) . ' given');
         }
         return true;
     }

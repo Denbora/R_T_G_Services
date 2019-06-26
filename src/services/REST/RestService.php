@@ -24,7 +24,8 @@ class RestService implements RestServiceInterface
         ValidatorInterface $validator,
         RestResponse $response,
         string $baseUrl
-    ) {
+    )
+    {
         $this->certificate = $certificate;
         $this->key = $key;
         $this->password = $password;
@@ -118,18 +119,12 @@ class RestService implements RestServiceInterface
      */
     protected function toUrlFormat($request)
     {
-        $partUrl = '';
-        $i = 0;
+        $urlParameters = [];
         foreach ($request as $key => $value) {
-            if ($i == 0) {
-                $partUrl .= '?' . $key . '=' . urlencode($value);
-            } else {
-                $partUrl .= '&' . $key . '=' . urlencode($value);
-            }
-            $i++;
+            $urlParameters[$key] = urlencode($value);
         }
 
-        return $partUrl;
+        return '?' . http_build_query($urlParameters);
     }
 
     /**
@@ -144,8 +139,7 @@ class RestService implements RestServiceInterface
         string $serviceApiUrl,
         $pathParams = null,
         string $endpoint = ''
-    )
-    {
+    ) {
         if ($query != '') {
             $path = '';
             $queryData = '';

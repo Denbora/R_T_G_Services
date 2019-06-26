@@ -107,7 +107,8 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($AffiliatedID)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'AffiliatedID should be int, ' . gettype($AffiliatedID) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'AffiliatedID should be int, ' .
+                gettype($AffiliatedID) . ' given');
         }
     }
 
@@ -125,7 +126,8 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($TrackingID)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'TrackingID should be string, ' . gettype($TrackingID) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'TrackingID should be string, ' .
+                gettype($TrackingID) . ' given');
         }
         return true;
     }
@@ -163,7 +165,8 @@ class DownloadValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['serverType'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'serverType should be int, ' . gettype($data['serverType']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'serverType should be int, ' .
+                gettype($data['serverType']) . ' given');
         }
 
         return true;

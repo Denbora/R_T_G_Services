@@ -15,7 +15,7 @@ class ServiceService extends RestService
      * @param $query
      * @param null $array
      * @param string $endpoint
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     private function callGet($query, $array = null, $endpoint = '')
@@ -28,7 +28,7 @@ class ServiceService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getTypes($query = '')
@@ -38,7 +38,7 @@ class ServiceService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getStatuses($query = '')
@@ -48,7 +48,7 @@ class ServiceService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getCategories($query = '')
@@ -58,7 +58,7 @@ class ServiceService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function postComments($query = '')

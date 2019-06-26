@@ -9,7 +9,7 @@ class PlayerService extends ServiceBase implements ServiceInterface
     /**
      * Activates a given player in the casino.
      *
-     * @param $args
+     * @param array $args
      * @param bool $rawResponse
      * @return object
      * @throws R_T_G_ServiceException
@@ -111,7 +111,7 @@ class PlayerService extends ServiceBase implements ServiceInterface
     }
 
     /**
-     * his method will send the player an email notification with the Security Token to change the password.
+     * This method will send the player an email notification with the Security Token to change the password.
      *
      * @param string $PID
      * @param bool $rawResponse
@@ -335,7 +335,7 @@ class PlayerService extends ServiceBase implements ServiceInterface
     /**
      * Updates the details of an existing player in the database.
      *
-     * @param $args
+     * @param array $args
      * @param bool $rawResponse
      * @return object
      * @throws R_T_G_ServiceException
@@ -348,7 +348,7 @@ class PlayerService extends ServiceBase implements ServiceInterface
     /**
      * Validates if the credentials of a given player are valid or not.
      *
-     * @param $args
+     * @param array $args
      * @param bool $rawResponse
      * @return object
      * @throws R_T_G_ServiceException
@@ -379,7 +379,7 @@ class PlayerService extends ServiceBase implements ServiceInterface
      * The GetAuditTrailReport method retrieves the information about Audit Trails for Players Details,
      * Game Settings and Table Limits.
      *
-     * @param $args
+     * @param array $args
      * @param bool $rawResponse
      * @return object
      * @throws R_T_G_ServiceException

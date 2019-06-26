@@ -34,18 +34,22 @@ class MessageCenterValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['PID']) && !is_numeric($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($data['PID']) . ' given');
         }
 
         if (!is_string($data['MoneyType']) && !is_numeric($data['MoneyType'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'MoneyType should be string, ' . gettype($data['MoneyType']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'MoneyType should be string, ' .
+                gettype($data['MoneyType']) . ' given');
         }
         if (!is_int($data['SkinID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'SkinID should be int, ' . gettype($data['SkinID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'SkinID should be int, ' .
+                gettype($data['SkinID']) . ' given');
         }
 
         if (!is_string($data['ClientType']) && !is_numeric($data['ClientType'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ClientType should be string, ' . gettype($data['ClientType']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ClientType should be string, ' .
+                gettype($data['ClientType']) . ' given');
         }
         return true;
     }
@@ -73,18 +77,22 @@ class MessageCenterValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['PID']) && !is_numeric($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($data['PID']) . ' given');
         }
 
         if (!is_string($data['MoneyType']) && !is_numeric($data['MoneyType'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'MoneyType should be string, ' . gettype($data['MoneyType']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'MoneyType should be string, ' .
+                gettype($data['MoneyType']) . ' given');
         }
         if (!is_int($data['SkinID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'SkinID should be int, ' . gettype($data['SkinID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'SkinID should be int, ' .
+                gettype($data['SkinID']) . ' given');
         }
 
         if (!is_string($data['ClientType']) && !is_numeric($data['ClientType'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ClientType should be string, ' . gettype($data['ClientType']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ClientType should be string, ' .
+                gettype($data['ClientType']) . ' given');
         }
 
         return true;
@@ -113,31 +121,38 @@ class MessageCenterValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['MessageID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'MessageID should be int, ' . gettype($data['MessageID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'MessageID should be int, ' .
+                gettype($data['MessageID']) . ' given');
         }
 
         if (!is_int($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be int, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be int, ' .
+                gettype($data['PID']) . ' given');
         }
 
         if (!is_int($data['CasinoID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'CasinoID should be int, ' . gettype($data['CasinoID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'CasinoID should be int, ' .
+                gettype($data['CasinoID']) . ' given');
         }
 
         if (!is_string($data['Scheme'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Scheme should be string, ' . gettype($data['Scheme']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Scheme should be string, ' .
+                gettype($data['Scheme']) . ' given');
         }
 
         if (!is_string($data['CashierURL'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'CashierURL should be string, ' . gettype($data['CashierURL']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'CashierURL should be string, ' .
+                gettype($data['CashierURL']) . ' given');
         }
 
         if (!is_string($data['PlayMode'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PlayMode should be string, ' . gettype($data['PlayMode']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PlayMode should be string, ' .
+                gettype($data['PlayMode']) . ' given');
         }
 
         if (!is_string($data['ClientType'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ClientType should be string, ' . gettype($data['ClientType']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ClientType should be string, ' .
+                gettype($data['ClientType']) . ' given');
         }
 
         return true;
@@ -161,11 +176,13 @@ class MessageCenterValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['PID']) && !is_numeric($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($data['PID']) . ' given');
         }
 
         if (!is_int($data['MessageID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'MessageID should be int, ' . gettype($data['MessageID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'MessageID should be int, ' .
+                gettype($data['MessageID']) . ' given');
         }
 
         return true;
@@ -193,15 +210,18 @@ class MessageCenterValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['PID']) && !is_numeric($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($data['PID']) . ' given');
         }
 
         if (!is_int($data['MoneyType'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'MoneyType should be int, ' . gettype($data['MoneyType']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'MoneyType should be int, ' .
+                gettype($data['MoneyType']) . ' given');
         }
 
         if (!is_int($data['SkinID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'SkinID should be int, ' . gettype($data['SkinID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'SkinID should be int, ' .
+                gettype($data['SkinID']) . ' given');
         }
         return true;
     }
@@ -232,19 +252,23 @@ class MessageCenterValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['PID']) && !is_numeric($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($data['PID']) . ' given');
         }
 
         if (!is_bool($data['moneyType'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'moneyType should be bool, ' . gettype($data['moneyType']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'moneyType should be bool, ' .
+                gettype($data['moneyType']) . ' given');
         }
 
         if (!is_int($data['skinID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'skinID should be int, ' . gettype($data['skinID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'skinID should be int, ' .
+                gettype($data['skinID']) . ' given');
         }
 
         if (!is_bool($data['clientType'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'clientType should be bool, ' . gettype($data['clientType']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'clientType should be bool, ' .
+                gettype($data['clientType']) . ' given');
         }
 
         return true;

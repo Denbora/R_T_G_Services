@@ -162,7 +162,9 @@ class CashierValidator extends BaseValidator implements ValidatorInterface
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
         if ($data != '') {
-            throw new R_T_G_ValidationException($errorPrefix . 'Inputs for getAvailableCouponsBasicInfo should be empty');
+            throw new R_T_G_ValidationException(
+                $errorPrefix . 'Inputs for getAvailableCouponsBasicInfo should be empty'
+            );
         }
 
         return true;

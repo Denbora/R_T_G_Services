@@ -15,7 +15,7 @@ class GameService extends RestService
      * @param $query
      * @param null $array
      * @param string $endpoint
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     private function callGet($query, $array = null, $endpoint = '')
@@ -28,7 +28,7 @@ class GameService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getGames($query = '')
@@ -38,7 +38,7 @@ class GameService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getDetails($query = '')
@@ -48,7 +48,7 @@ class GameService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getFlash($query = '')
@@ -58,7 +58,7 @@ class GameService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getActive($query = '')
@@ -68,7 +68,7 @@ class GameService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getFavorite($query = '')
@@ -78,7 +78,7 @@ class GameService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getActiveFlash($query = '')
@@ -88,7 +88,7 @@ class GameService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getFavoriteFlash($query = '')
@@ -98,7 +98,7 @@ class GameService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function postBlock($query = '')

@@ -15,7 +15,7 @@ class SettingsService extends RestService
      * @param $query
      * @param null $array
      * @param string $endpoint
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     private function callGet($query, $array = null, $endpoint = '')
@@ -28,7 +28,7 @@ class SettingsService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getPlayerRestrictions($query = '')
@@ -38,7 +38,7 @@ class SettingsService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getAccountFields($query = '')
@@ -48,7 +48,7 @@ class SettingsService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getLoginFields($query = '')
@@ -58,7 +58,7 @@ class SettingsService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getFlashConfig($query = '')

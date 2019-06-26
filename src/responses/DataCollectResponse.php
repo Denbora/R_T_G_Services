@@ -7,7 +7,7 @@ class DataCollectResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @param $responseName
-     * @return mixed
+     * @return mixed|null
      */
     private function getCollectionData($response, $responseName)
     {
@@ -32,7 +32,7 @@ class DataCollectResponse extends BaseResponse implements SoapResponseInterface
 
     /**
      * @param $response
-     * @return mixed
+     * @return mixed|null
      */
     public function getPlayerGameStats($response)
     {
@@ -41,7 +41,7 @@ class DataCollectResponse extends BaseResponse implements SoapResponseInterface
 
     /**
      * @param $response
-     * @return mixed
+     * @return mixed|null
      */
     public function getPlayerGameStatsByDateRange($response)
     {
@@ -50,7 +50,7 @@ class DataCollectResponse extends BaseResponse implements SoapResponseInterface
 
     /**
      * @param $response
-     * @return mixed
+     * @return mixed|null
      */
     public function getPlayerSessions($response)
     {
@@ -68,7 +68,7 @@ class DataCollectResponse extends BaseResponse implements SoapResponseInterface
 
     /**
      * @param $response
-     * @return mixed
+     * @return mixed|null
      */
     public function getCasinoStats($response)
     {

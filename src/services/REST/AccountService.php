@@ -13,7 +13,7 @@ class AccountService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function postActivate($query = '')
@@ -29,7 +29,7 @@ class AccountService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function postDeactivate($query = '')
@@ -45,7 +45,7 @@ class AccountService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function postLogin($query = '')
@@ -61,7 +61,7 @@ class AccountService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function putChangePassword($query = '')
@@ -77,7 +77,7 @@ class AccountService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function putChangePasswordWithToken($query = '')
@@ -93,7 +93,7 @@ class AccountService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function postResetPassword($query = '')
@@ -109,7 +109,7 @@ class AccountService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function putForgotPassword($query = '')
@@ -125,7 +125,7 @@ class AccountService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function putForgotUsername($query = '')
@@ -141,7 +141,7 @@ class AccountService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getIncompleteSignups($query = '')
@@ -170,7 +170,7 @@ class AccountService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function postLogout($query = '')
@@ -186,7 +186,7 @@ class AccountService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getPlayerid($query = '')

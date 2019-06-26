@@ -77,10 +77,10 @@ abstract class ServiceBase
         if (in_array($serviceMethod, $this->classMethods)) {
             $serviceResponse = $this->$serviceMethod($data, $rawResponse);
             return $serviceResponse;
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $serviceMethod . ' does not exist');
         }
+
+        $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+        throw new R_T_G_ServiceException($errorPrefix . $serviceMethod . ' does not exist');
     }
 
     /**

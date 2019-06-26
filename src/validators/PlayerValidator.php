@@ -52,23 +52,28 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_array($data['Player'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Player should be array, ' . gettype($data["Player"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Player should be array, ' .
+                gettype($data["Player"]) . ' given');
         }
 
         if (!is_bool($data['ThirdPartyDataSync'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ThirdPartyDataSync should be bool, ' . gettype($data["ThirdPartyDataSync"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ThirdPartyDataSync should be bool, ' .
+                gettype($data["ThirdPartyDataSync"]) . ' given');
         }
 
         if (!is_int($data['UserID']) && !is_numeric($data['UserID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'UserID should be int, ' . gettype($data["UserID"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'UserID should be int, ' .
+                gettype($data["UserID"]) . ' given');
         }
 
         if (!is_bool($data['MapToAffID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'MapToAffID should be bool, ' . gettype($data["MapToAffID"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'MapToAffID should be bool, ' .
+                gettype($data["MapToAffID"]) . ' given');
         }
 
         if (!is_bool($data['CalledFromCasino'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'CalledFromCasino should be bool, ' . gettype($data["CalledFromCasino"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'CalledFromCasino should be bool, ' .
+                gettype($data["CalledFromCasino"]) . ' given');
         }
 
         $player = $data['Player'];
@@ -78,19 +83,23 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($player['Login'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Login should be String, ' . gettype($player["Login"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Login should be String, ' .
+                gettype($player["Login"]) . ' given');
         }
 
         if (!is_string($player['Password'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Password should be String, ' . gettype($player["Password"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Password should be String, ' .
+                gettype($player["Password"]) . ' given');
         }
 
         if (!is_string($player['Contact']['CountryID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'CountryID should be String, ' . gettype($player['Contact']['CountryID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'CountryID should be String, ' .
+                gettype($player['Contact']['CountryID']) . ' given');
         }
 
         if (!is_string($player['Contact']['EMail'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Email should be String, ' . gettype($player['Contact']['EMail']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Email should be String, ' .
+                gettype($player['Contact']['EMail']) . ' given');
         }
 
         if (strpos($player['Contact']['EMail'], '@') === false) {
@@ -123,7 +132,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -153,7 +162,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -177,11 +186,13 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_array($data['Player'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Player should be array, ' . gettype($data["Player"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Player should be array, ' .
+                gettype($data["Player"]) . ' given');
         }
 
         if (!is_bool($data['ThirdPartyDataSync'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ThirdPartyDataSync should be bool, ' . gettype($data["ThirdPartyDataSync"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ThirdPartyDataSync should be bool, ' .
+                gettype($data["ThirdPartyDataSync"]) . ' given');
         }
 
         if (!is_int($data['UserID']) && !is_numeric($data['UserID'])) {
@@ -190,24 +201,29 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
 
         $player = $data['Player'];
 
-        if (empty($player['Login']) && empty($player['Password']) && empty($player['Contact']['CountryID']) && empty($player['Contact']['EMail'])) {
+        if (empty($player['Login']) && empty($player['Password']) &&
+            empty($player['Contact']['CountryID']) && empty($player['Contact']['EMail'])) {
             throw new R_T_G_ValidationException($errorPrefix . 'Required Player field(s) is missing');
         }
 
         if (!is_string($player['Login'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Login should be String, ' . gettype($player["Login"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Login should be String, ' .
+                gettype($player["Login"]) . ' given');
         }
 
         if (!is_string($player['Password'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Password should be String, ' . gettype($player["Password"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Password should be String, ' .
+                gettype($player["Password"]) . ' given');
         }
 
         if (!is_string($player['Contact']['CountryID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'CountryID should be String, ' . gettype($player['Contact']['CountryID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'CountryID should be String, ' .
+                gettype($player['Contact']['CountryID']) . ' given');
         }
 
         if (!is_string($player['Contact']['EMail'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Email should be String, ' . gettype($player['Contact']['EMail']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Email should be String, ' .
+                gettype($player['Contact']['EMail']) . ' given');
         }
 
         if (strpos($player['Contact']['EMail'], '@') === false) {
@@ -218,7 +234,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -235,17 +251,19 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['Login'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'login should be string, ' . gettype($data['Login']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'login should be string, ' .
+                gettype($data['Login']) . ' given');
         }
 
         if (!is_int($data['UserID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'UserID should be int, ' . gettype($data['UserID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'UserID should be int, ' .
+                gettype($data['UserID']) . ' given');
         }
         return true;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -262,17 +280,19 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($data['PID']) . ' given');
         }
 
         if (!is_int($data['BanType'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'BanType should be int, ' . gettype($data['BanType']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'BanType should be int, ' .
+                gettype($data['BanType']) . ' given');
         }
         return true;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -285,7 +305,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
 
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -300,14 +320,15 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
             }
 
             if (!is_string($data[$value])) {
-                throw new R_T_G_ValidationException($errorPrefix . $value . ' should be string, ' . gettype($data[$value]) . ' given');
+                throw new R_T_G_ValidationException($errorPrefix . $value . ' should be string, ' .
+                    gettype($data[$value]) . ' given');
             }
         }
         return true;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -328,21 +349,24 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($data['PID']) . ' given');
         }
 
         if (!is_int($data['playerClassID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'playerClassID should be int, ' . gettype($data['playerClassID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'playerClassID should be int, ' .
+                gettype($data['playerClassID']) . ' given');
         }
 
         if (!is_int($data['UserID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'UserID should be int, ' . gettype($data['UserID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'UserID should be int, ' .
+                gettype($data['UserID']) . ' given');
         }
         return true;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -360,49 +384,60 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_array($data['Player'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Player should be array, ' . gettype($data["Player"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Player should be array, ' .
+                gettype($data["Player"]) . ' given');
         }
 
         if (!is_bool($data['ThirdPartyDataSync'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ThirdPartyDataSync should be bool, ' . gettype($data["ThirdPartyDataSync"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ThirdPartyDataSync should be bool, ' .
+                gettype($data["ThirdPartyDataSync"]) . ' given');
         }
 
         if (!is_int($data['UserID']) && !is_numeric($data['UserID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'UserID should be int, ' . gettype($data["UserID"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'UserID should be int, ' .
+                gettype($data["UserID"]) . ' given');
         }
 
         if (!is_bool($data['MapToAffID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'MapToAffID should be bool, ' . gettype($data["MapToAffID"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'MapToAffID should be bool, ' .
+                gettype($data["MapToAffID"]) . ' given');
         }
 
         if (!is_bool($data['CalledFromCasino'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'CalledFromCasino should be bool, ' . gettype($data["CalledFromCasino"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'CalledFromCasino should be bool, ' .
+                gettype($data["CalledFromCasino"]) . ' given');
         }
 
         if (!is_string($data['ApplicationName'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ApplicationName should be string, ' . gettype($data["ApplicationName"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ApplicationName should be string, ' .
+                gettype($data["ApplicationName"]) . ' given');
         }
 
         $player = $data['Player'];
 
-        if (empty($player['Login']) && empty($player['Password']) && empty($player['Contact']['CountryID']) && empty($player['Contact']['EMail'])) {
+        if (empty($player['Login']) && empty($player['Password']) &&
+            empty($player['Contact']['CountryID']) && empty($player['Contact']['EMail'])) {
             throw new R_T_G_ValidationException($errorPrefix . 'Required Player field(s) is missing');
         }
 
         if (!is_string($player['Login'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Login should be String, ' . gettype($player["Login"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Login should be String, ' .
+                gettype($player["Login"]) . ' given');
         }
 
         if (!is_string($player['Password'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Password should be String, ' . gettype($player["Password"]) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Password should be String, ' .
+                gettype($player["Password"]) . ' given');
         }
 
         if (!is_string($player['Contact']['CountryID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'CountryID should be String, ' . gettype($player['Contact']['CountryID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'CountryID should be String, ' .
+                gettype($player['Contact']['CountryID']) . ' given');
         }
 
         if (!is_string($player['Contact']['EMail'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Email should be String, ' . gettype($player['Contact']['EMail']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Email should be String, ' .
+                gettype($player['Contact']['EMail']) . ' given');
         }
 
         if (strpos($player['Contact']['EMail'], '@') === false) {
@@ -413,7 +448,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @param $errorPrefix
      * @return bool
      * @throws R_T_G_ValidationException
@@ -429,18 +464,20 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['Login'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'login should be string, ' . gettype($data['Login']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'login should be string, ' .
+                gettype($data['Login']) . ' given');
         }
 
         if (!is_int($data['UserID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'UserID should be int, ' . gettype($data['UserID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'UserID should be int, ' .
+                gettype($data['UserID']) . ' given');
         }
 
         return true;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -464,7 +501,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -476,7 +513,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -497,7 +534,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -509,7 +546,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -521,7 +558,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -542,7 +579,8 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['PID']) && !is_numeric($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
+                gettype($data['PID']) . ' given');
         }
 
         if (!strtotime($data['BeginDate'])) {
@@ -557,7 +595,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @param $firstDate
      * @param $secondDate
      * @return bool
@@ -587,7 +625,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -616,7 +654,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -636,7 +674,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -648,7 +686,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -660,7 +698,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -685,26 +723,30 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['Login'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Login should be string, ' . gettype($data['Login']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Login should be string, ' .
+                gettype($data['Login']) . ' given');
         }
 
         if (!is_string($data['HashedPassword'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'HashedPassword should be string, ' . gettype($data['HashedPassword']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'HashedPassword should be string, ' .
+                gettype($data['HashedPassword']) . ' given');
         }
 
         if (!is_bool($data['ForMoney'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ForMoney should be bool, ' . gettype($data['ForMoney']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ForMoney should be bool, ' .
+                gettype($data['ForMoney']) . ' given');
         }
 
         if (!is_string($data['IP'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'IP should be string, ' . gettype($data['IP']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'IP should be string, ' .
+                gettype($data['IP']) . ' given');
         }
 
         return true;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -716,7 +758,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -734,7 +776,8 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
 
         foreach ($fields as $value) {
             if (!is_string($data[$value])) {
-                throw new R_T_G_ValidationException($errorPrefix . $value . ' should be string, ' . gettype($data[$value]) . ' given');
+                throw new R_T_G_ValidationException($errorPrefix . $value . ' should be string, ' .
+                    gettype($data[$value]) . ' given');
             }
             if (!isset($data[$value])) {
                 throw new R_T_G_ValidationException($errorPrefix . $value . ' is required field');
@@ -745,7 +788,7 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -770,19 +813,23 @@ class PlayerValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['casinoId'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'casinoId should be int, ' . gettype($data['casinoId']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'casinoId should be int, ' .
+                gettype($data['casinoId']) . ' given');
         }
 
         if (!is_string($data['pid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'pid should be string, ' . gettype($data['pid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'pid should be string, ' .
+                gettype($data['pid']) . ' given');
         }
 
         if (!is_bool($data['forMoney'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'forMoney should be bool, ' . gettype($data['forMoney']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'forMoney should be bool, ' .
+                gettype($data['forMoney']) . ' given');
         }
 
         if (!is_int($data['logoutType'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'logoutType should be int, ' . gettype($data['logoutType']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'logoutType should be int, ' .
+                gettype($data['logoutType']) . ' given');
         }
 
         return true;

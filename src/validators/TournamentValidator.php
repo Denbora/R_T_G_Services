@@ -2,14 +2,13 @@
 
 namespace denbora\R_T_G_Services\validators;
 
-use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\R_T_G_ValidationException;
 
 class TournamentValidator extends BaseValidator implements ValidatorInterface
 {
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -38,7 +37,8 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['Status'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Status should be int, ' . gettype($data['Status']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Status should be int, ' .
+                gettype($data['Status']) . ' given');
         }
 
         return true;
@@ -58,7 +58,8 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['TournamentID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'TournamentID should be int, ' . gettype($data['TournamentID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'TournamentID should be int, ' .
+                gettype($data['TournamentID']) . ' given');
         }
 
         return true;
@@ -95,7 +96,7 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -124,13 +125,14 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_object($data['casinoList'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'casinoList should be object, ' . gettype($data['casinoList']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'casinoList should be object, ' .
+                gettype($data['casinoList']) . ' given');
         }
         return true;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -168,7 +170,8 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_object($data['playerClass'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'playerClass should be object, ' . gettype($data['playerClass']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'playerClass should be object, ' .
+                gettype($data['playerClass']) . ' given');
         }
         return true;
     }

@@ -2,8 +2,6 @@
 
 namespace denbora\R_T_G_Services\validators;
 
-use denbora\R_T_G_Services\R_T_G_ServiceException;
-
 /**
  * Class CasinoValidator
  * @package denbora\R_T_G_Services\validators

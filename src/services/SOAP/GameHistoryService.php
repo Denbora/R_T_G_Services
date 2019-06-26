@@ -92,6 +92,7 @@ class GameHistoryService extends ServiceBase implements ServiceInterface
      */
     protected function getRSVSGameDetailsHistoryWithIcons($data, bool $rawResponse)
     {
-        return $this->run($data, $rawResponse, 'getRSVSGameDetailsHistoryWithIcons', 'GetRSVSGameDetailsHistoryWithIcons');
+        return $this
+            ->run($data, $rawResponse, 'getRSVSGameDetailsHistoryWithIcons', 'GetRSVSGameDetailsHistoryWithIcons');
     }
 }

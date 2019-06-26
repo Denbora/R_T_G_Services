@@ -4,7 +4,6 @@ namespace denbora\R_T_G_Services\casino;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\ResponseFactory;
-use denbora\R_T_G_Services\services\SOAP\AffiliateService;
 use denbora\R_T_G_Services\validators\ValidatorFactory;
 use SoapClient;
 
@@ -180,10 +179,8 @@ class Casino implements CasinoInterface
     }
 
     /**
-     * @example $serviceName is Affiliate
-     * @see AffiliateService
      * @param string $serviceName
-     * @return mixed
+     * @return CasinoInterface
      * @throws R_T_G_ServiceException
      */
     public function getService(string $serviceName)
@@ -216,6 +213,8 @@ class Casino implements CasinoInterface
         } else {
             $serviceClass = __NAMESPACE__ . '\\' . 'services' . '\\' . 'SOAP' . '\\' . $serviceName . 'Service';
         }
+
+        /**@var $service CasinoInterface*/
         $service = new $serviceClass($soapClient, $serviceValidator, $serviceResponse);
 
         //step5 saving created service and returning it

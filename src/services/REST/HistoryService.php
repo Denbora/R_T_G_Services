@@ -15,7 +15,7 @@ class HistoryService extends RestService
      * @param $query
      * @param null $array
      * @param string $endpoint
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     private function callGet($query, $array = null, $endpoint = '')
@@ -28,7 +28,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getBaccarat($query = '')
@@ -38,7 +38,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getBingo($query = '')
@@ -48,7 +48,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getBlackjack($query = '')
@@ -58,7 +58,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getCaribbeanDraw($query = '')
@@ -68,7 +68,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getCaribbeanHoldem($query = '')
@@ -78,7 +78,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getCaribbeanStud($query = '')
@@ -88,7 +88,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getCraps($query = '')
@@ -98,7 +98,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getEuropeanSlotsPoker($query = '')
@@ -108,7 +108,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getKeno($query = '')
@@ -118,7 +118,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getLetEmRide($query = '')
@@ -128,7 +128,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getMultiHandVideoPoker($query = '')
@@ -138,7 +138,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getMultiPlayerRoulette($query = '')
@@ -148,7 +148,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getPaiGowPoker($query = '')
@@ -158,7 +158,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getRoulette($query = '')
@@ -168,7 +168,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getRsvs($query = '')
@@ -178,7 +178,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getRsvsGameDetails($query = '')
@@ -188,7 +188,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getRsvsGameDetailsWithIcons($query = '')
@@ -198,7 +198,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getScratchCards($query = '')
@@ -208,7 +208,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getSevenStudPoker($query = '')
@@ -218,7 +218,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getSicBo($query = '')
@@ -228,7 +228,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getSlots3Reels($query = '')
@@ -238,7 +238,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getTexasHoldemBonusPoker($query = '')
@@ -248,7 +248,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getTriCardPoker($query = '')
@@ -258,7 +258,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getVegasThreeCardRummy($query = '')
@@ -268,7 +268,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getVideoPoker($query = '')
@@ -278,7 +278,7 @@ class HistoryService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
     public function getWar($query = '')
