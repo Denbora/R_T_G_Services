@@ -9,7 +9,7 @@ class ResponseFactory implements FactoryInterface
 {
     /**
      * @param string $type
-     * @return mixed|object
+     * @return object
      * @throws R_T_G_ServiceException
      */
     public static function build(string $type)

@@ -2,6 +2,8 @@
 
 namespace denbora\R_T_G_Services\services\REST;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
+
 class CashierService extends RestService
 {
     /**
@@ -11,7 +13,8 @@ class CashierService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
      */
     public function postCommonWalletDeposit($query = '')
     {
@@ -21,11 +24,13 @@ class CashierService extends RestService
                 $query
             );
         }
+        return false;
     }
 
     /**
      * @param string $query
-     * @return mixed
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
      */
     public function postCommonWalletWithdrawal($query = '')
     {
@@ -35,5 +40,6 @@ class CashierService extends RestService
                 $query
             );
         }
+        return false;
     }
 }

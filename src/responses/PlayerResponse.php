@@ -18,6 +18,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayer($response)
     {
@@ -52,6 +53,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return bool
+     * @throws R_T_G_ServiceException
      */
     public function changePlayerClass($response)
     {
@@ -61,6 +63,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function createPlayer($response)
     {
@@ -70,6 +73,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function createPlayerAndToken($response)
     {
@@ -79,6 +83,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return bool
+     * @throws R_T_G_ServiceException
      */
     public function deactivatePlayer($response)
     {
@@ -88,6 +93,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return bool
+     * @throws R_T_G_ServiceException
      */
     public function deactivateAndLogoutPlayer($response)
     {
@@ -97,6 +103,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function forgotPassword($response)
     {
@@ -115,6 +122,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getAdjustedNetWinbyPID($response)
     {
@@ -126,6 +134,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getNonCashTotalbyPID($response)
     {
@@ -137,6 +146,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getNonCashTotalbyPIDandDate($response)
     {
@@ -148,6 +158,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPID($response)
     {
@@ -195,6 +206,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayersDelta($response)
     {
@@ -206,6 +218,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayerPasscode($response)
     {
@@ -217,6 +230,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return bool
+     * @throws R_T_G_ServiceException
      */
     public function resetPassword($response)
     {
@@ -226,6 +240,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return bool
+     * @throws R_T_G_ServiceException
      */
     public function unBanPlayer($response)
     {
@@ -235,6 +250,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function updatePlayer($response)
     {
@@ -246,6 +262,7 @@ class PlayerResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return bool
+     * @throws R_T_G_ServiceException
      */
     public function validateCredentials($response)
     {

@@ -50,6 +50,7 @@ class SecurityResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return bool
+     * @throws R_T_G_ServiceException
      */
     public function validateToken($response)
     {
@@ -59,6 +60,7 @@ class SecurityResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function createTokenByApp($response)
     {
@@ -68,6 +70,7 @@ class SecurityResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return bool
+     * @throws R_T_G_ServiceException
      */
     public function validateTokenByApp($response)
     {
@@ -77,6 +80,7 @@ class SecurityResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function createGameRestrictedTokenByApp($response)
     {

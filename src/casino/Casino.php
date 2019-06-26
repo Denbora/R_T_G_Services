@@ -4,7 +4,6 @@ namespace denbora\R_T_G_Services\casino;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\ResponseFactory;
-use denbora\R_T_G_Services\services\SOAP\ServiceInterface;
 use denbora\R_T_G_Services\validators\ValidatorFactory;
 use SoapClient;
 
@@ -82,7 +81,7 @@ class Casino implements CasinoInterface
      * @param string $webServiceUrl
      * @return string
      */
-    private function createEndpoint(string $webServiceUrl) : string
+    private function createEndpoint(string $webServiceUrl): string
     {
         $search = array('?wsdl', '?WSDL');
 
@@ -109,11 +108,11 @@ class Casino implements CasinoInterface
     }
 
     /**
-     * @param String $serviceName
+     * @param string $serviceName
      * @return SoapClient
      * @throws R_T_G_ServiceException
      */
-    protected function createSoapClient(String $serviceName)
+    protected function createSoapClient(string $serviceName)
     {
         $context = stream_context_create([
             'ssl' => [
@@ -128,13 +127,13 @@ class Casino implements CasinoInterface
 
         $soapclient_options = array(
             'stream_context' => $context,
-            'location'       => $endpoint,
-            'keep_alive'     => true,
-            'trace'          => true,
-            'local_cert'     => $this->certFile,
-            'passphrase'     => $this->password,
-            'exceptions'     => true,
-            'cache_wsdl'     => WSDL_CACHE_NONE
+            'location' => $endpoint,
+            'keep_alive' => true,
+            'trace' => true,
+            'local_cert' => $this->certFile,
+            'passphrase' => $this->password,
+            'exceptions' => true,
+            'cache_wsdl' => WSDL_CACHE_NONE
         );
 
         try {
@@ -180,8 +179,8 @@ class Casino implements CasinoInterface
     }
 
     /**
-     * @param $serviceName string
-     * @return ServiceInterface
+     * @param string $serviceName
+     * @return CasinoInterface
      * @throws R_T_G_ServiceException
      */
     public function getService(string $serviceName)
@@ -212,8 +211,10 @@ class Casino implements CasinoInterface
         if (!empty($this->serviceDescription[$serviceName]['class'])) {
             $serviceClass = $this->serviceDescription[$serviceName]['class'];
         } else {
-            $serviceClass =  __NAMESPACE__ . '\\'. 'services' . '\\'. 'SOAP' . '\\'. $serviceName . 'Service';
+            $serviceClass = __NAMESPACE__ . '\\' . 'services' . '\\' . 'SOAP' . '\\' . $serviceName . 'Service';
         }
+
+        /**@var $service CasinoInterface*/
         $service = new $serviceClass($soapClient, $serviceValidator, $serviceResponse);
 
         //step5 saving created service and returning it
@@ -223,13 +224,12 @@ class Casino implements CasinoInterface
     }
 
     /**
-     * @param $serviceName string
-     * @param $serviceClass string
-     * @param $serviceEndPoint string
-     * @return boolean
-     * @throws R_T_G_ServiceException
+     * @param string $serviceName
+     * @param string $serviceClass
+     * @param string $serviceEndPoint
+     * @return bool
      */
-    public function addService($serviceName, $serviceClass, $serviceEndPoint)
+    public function addService(string $serviceName, string $serviceClass, string $serviceEndPoint): bool
     {
         // ToDo: Implement addService() method.
     }

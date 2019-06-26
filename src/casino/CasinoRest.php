@@ -5,7 +5,29 @@ namespace denbora\R_T_G_Services\casino;
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\ResponseFactory;
 use denbora\R_T_G_Services\validators\ValidatorFactory;
+use denbora\R_T_G_Services\services\REST\AccountService;
+use denbora\R_T_G_Services\services\REST\CashierService;
+use denbora\R_T_G_Services\services\REST\GameService;
+use denbora\R_T_G_Services\services\REST\HistoryService;
+use denbora\R_T_G_Services\services\REST\JackpotService;
+use denbora\R_T_G_Services\services\REST\PlayerService;
+use denbora\R_T_G_Services\services\REST\ReportService;
+use denbora\R_T_G_Services\services\REST\ServiceService;
+use denbora\R_T_G_Services\services\REST\SettingsService;
 
+/**
+ * Class CasinoRest
+ * @package denbora\R_T_G_Services\casino
+ * @property AccountService account
+ * @property CashierService cashier
+ * @property GameService game
+ * @property HistoryService history
+ * @property JackpotService jackpot
+ * @property PlayerService player
+ * @property ReportService report
+ * @property ServiceService service
+ * @property SettingsService settings
+ */
 class CasinoRest implements CasinoInterface
 {
     /**
@@ -34,8 +56,8 @@ class CasinoRest implements CasinoInterface
     private $validator;
 
     /**
-    * @var array
-    */
+     * @var array
+     */
     protected $serviceDescription;
 
     /**
@@ -90,14 +112,13 @@ class CasinoRest implements CasinoInterface
         } else {
             throw new R_T_G_ServiceException('Password does not meet requirements');
         }
-        $this->serviceDescription = json_decode(
-            file_get_contents(__DIR__ . '/../config/services.json', true),
-            true
-        )['Rest'];
+
+        $services = json_decode(file_get_contents(__DIR__ . '/../config/services.json', true), true);
+        $this->serviceDescription = $services['Rest'];
     }
 
     /**
-     * @param $serviceName string
+     * @param string $serviceName
      * @return mixed
      * @throws R_T_G_ServiceException
      */
@@ -115,7 +136,7 @@ class CasinoRest implements CasinoInterface
         if (!empty($this->serviceDescription[$serviceName]['class'])) {
             $serviceClass = $this->serviceDescription[$serviceName]['class'];
         } else {
-            $serviceClass =  'denbora\R_T_G_Services\services' . '\\'. 'REST' . '\\'. $serviceName . 'Service';
+            $serviceClass = 'denbora\R_T_G_Services\services' . '\\' . 'REST' . '\\' . $serviceName . 'Service';
         }
 
         $service = new $serviceClass(
@@ -131,12 +152,12 @@ class CasinoRest implements CasinoInterface
     }
 
     /**
-     * @param $serviceName string
-     * @param $serviceClass string
-     * @param $serviceEndPoint string
-     * @return boolean
+     * @param string $serviceName
+     * @param string $serviceClass
+     * @param string $serviceEndPoint
+     * @return bool
      */
-    public function addService($serviceName, $serviceClass, $serviceEndPoint)
+    public function addService(string $serviceName, string $serviceClass, string $serviceEndPoint): bool
     {
         // TODO: Implement addService() method.
     }

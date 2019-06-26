@@ -6,48 +6,12 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 class GameService extends ServiceBase implements ServiceInterface
 {
+
     /**
-     * @param $serviceMethod string
      * @param $data
      * @param bool $rawResponse
-     * @return mixed
+     * @return object
      * @throws R_T_G_ServiceException
-     */
-    public function call(string $serviceMethod, $data, bool $rawResponse = false)
-    {
-        if (in_array($serviceMethod, $this->classMethods)) {
-            try {
-                $serviceResponse = $this->$serviceMethod($data, $rawResponse);
-
-                return $serviceResponse;
-            } catch (\SoapFault $e) {
-                $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-                throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
-            }
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $serviceMethod .' does not exist');
-        }
-    }
-
-    /**
-     * @param $data
-     * @param bool $rawResponse
-     * @param $validatorName
-     * @param $service
-     * @return object
-     */
-    private function run($data, bool $rawResponse, $validatorName, $service)
-    {
-        $this->validator->call($validatorName, $data);
-
-        return $this->service($service, $data, $rawResponse);
-    }
-
-    /**
-     * @param $data
-     * @param bool $rawResponse
-     * @return object
      */
     protected function getGame($data, bool $rawResponse)
     {
@@ -58,6 +22,7 @@ class GameService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getGames($data, bool $rawResponse)
     {
@@ -68,6 +33,7 @@ class GameService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getGamesBySkin($data, bool $rawResponse)
     {
@@ -78,6 +44,7 @@ class GameService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getFlashCasinoConfiguration($data, bool $rawResponse)
     {
@@ -88,6 +55,7 @@ class GameService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getFlashGameInfo($data, bool $rawResponse)
     {
@@ -98,6 +66,7 @@ class GameService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getActiveGames($data, bool $rawResponse)
     {
@@ -108,6 +77,7 @@ class GameService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getFlashGamesInfo($data, bool $rawResponse)
     {
@@ -118,6 +88,7 @@ class GameService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getActiveFlashGamesInfo($data, bool $rawResponse)
     {
@@ -128,6 +99,7 @@ class GameService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function resetPlayerSpecialFeatures($data, bool $rawResponse)
     {
@@ -138,6 +110,7 @@ class GameService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getGameList($data, bool $rawResponse)
     {
@@ -148,6 +121,7 @@ class GameService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getFlashGameList($data, bool $rawResponse)
     {
@@ -158,6 +132,7 @@ class GameService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function lockUnlockGamesByPID($data, bool $rawResponse)
     {

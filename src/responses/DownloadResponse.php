@@ -31,6 +31,7 @@ class DownloadResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getDownloadInformationByPID($response)
     {
@@ -51,6 +52,7 @@ class DownloadResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getDownloadInformationByDates($response)
     {

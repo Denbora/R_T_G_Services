@@ -2,6 +2,8 @@
 
 namespace denbora\R_T_G_Services\responses;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
+
 class MessageCenterResponse extends BaseResponse implements SoapResponseInterface
 {
     /**
@@ -16,6 +18,7 @@ class MessageCenterResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getMessagesList($response)
     {
@@ -25,6 +28,7 @@ class MessageCenterResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getUnreadMessagesCount($response)
     {
@@ -61,6 +65,7 @@ class MessageCenterResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getForceOnExit($response)
     {

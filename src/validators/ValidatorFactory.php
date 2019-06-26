@@ -14,7 +14,7 @@ class ValidatorFactory implements FactoryInterface
      * @return ValidatorInterface
      * @throws R_T_G_ServiceException
      */
-    public static function build(string $type) : ValidatorInterface
+    public static function build(string $type): ValidatorInterface
     {
         $validator = 'denbora\\R_T_G_Services\\validators\\' . ucwords($type);
 

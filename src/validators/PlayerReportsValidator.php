@@ -9,24 +9,6 @@ class PlayerReportsValidator extends BaseValidator implements ValidatorInterface
 {
 
     /**
-     * @param string $validatorName
-     * @param mixed $data
-     * @return bool
-     * @throws R_T_G_ServiceException
-     */
-    public function call(string $validatorName, $data)
-    {
-        if (in_array($validatorName, $this->classMethods)) {
-            $validator = $this->$validatorName($data);
-
-            return $validator;
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $validatorName . ' does not exist');
-        }
-    }
-
-    /**
      * @param $data
      * @return bool
      * @throws R_T_G_ValidationException
@@ -36,13 +18,13 @@ class PlayerReportsValidator extends BaseValidator implements ValidatorInterface
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
         if (empty($data['DaysAgoLastBet']) && !isset($data['DaysAgoLastBet'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['DaysAgoLastBet']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['DaysAgoLastBet'] . ' is a required field');
         }
 
         if (!is_int($data['DaysAgoLastBet'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'DaysAgoLastBet should be int, ' .
-                gettype($data['DaysAgoLastBet']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'DaysAgoLastBet should be int, ' . gettype($data['DaysAgoLastBet']) . ' given');
         }
+
         return true;
     }
 
@@ -64,14 +46,13 @@ class PlayerReportsValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['DaysAgoLastBet'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'DaysAgoLastBet should be int, ' .
-                gettype($data['DaysAgoLastBet']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'DaysAgoLastBet should be int, ' . gettype($data['DaysAgoLastBet']) . ' given');
         }
 
         if (!is_int($data['DepositCount'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'DepositCount should be int, ' .
-                gettype($data['DepositCount']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'DepositCount should be int, ' . gettype($data['DepositCount']) . ' given');
         }
+
         return true;
     }
 
@@ -105,9 +86,9 @@ class PlayerReportsValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
-                gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
         }
+
         return true;
     }
 
@@ -137,13 +118,11 @@ class PlayerReportsValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['LoginFilter'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'LoginFilter should be string, ' .
-                gettype($data['LoginFilter']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'LoginFilter should be string, ' . gettype($data['LoginFilter']) . ' given');
         }
 
         if (!is_bool($data['ForMoney'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'ForMoney should be bool, ' .
-                gettype($data['ForMoney']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'ForMoney should be bool, ' . gettype($data['ForMoney']) . ' given');
         }
         return true;
     }
@@ -162,16 +141,13 @@ class PlayerReportsValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['PID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' .
-                gettype($data['PID']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'PID should be string, ' . gettype($data['PID']) . ' given');
         }
 
-        if (isset($data['NumGames'])) {
-            if (!is_int($data['NumGames'])) {
-                throw new R_T_G_ValidationException($errorPrefix . 'NumGames should be int, ' .
-                    gettype($data['NumGames']) . ' given');
-            }
+        if (isset($data['NumGames']) && !is_int($data['NumGames'])) {
+            throw new R_T_G_ValidationException($errorPrefix . 'NumGames should be int, ' . gettype($data['NumGames']) . ' given');
         }
+
         return true;
     }
 
@@ -189,9 +165,9 @@ class PlayerReportsValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['DaysAgoSignup'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'DaysAgoSignup should be int, ' .
-                gettype($data['DaysAgoSignup']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'DaysAgoSignup should be int, ' . gettype($data['DaysAgoSignup']) . ' given');
         }
+
         return true;
     }
 
@@ -219,6 +195,7 @@ class PlayerReportsValidator extends BaseValidator implements ValidatorInterface
         if (!strtotime($data['EndDate'])) {
             throw new R_T_G_ValidationException($errorPrefix . ' EndDate should be DateTime!');
         }
+
         return true;
     }
 
@@ -252,9 +229,9 @@ class PlayerReportsValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_int($data['SkinId'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'SkinId should be int, ' .
-                gettype($data['SkinId']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'SkinId should be int, ' . gettype($data['SkinId']) . ' given');
         }
+
         return true;
     }
 
@@ -297,9 +274,9 @@ class PlayerReportsValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['Pid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Pid should be string, ' .
-                gettype($data['Pid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Pid should be string, ' . gettype($data['Pid']) . ' given');
         }
+
         return true;
     }
 
@@ -333,9 +310,9 @@ class PlayerReportsValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_string($data['Pid'])) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Pid should be string, ' .
-                gettype($data['Pid']) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Pid should be string, ' . gettype($data['Pid']) . ' given');
         }
+
         return true;
     }
 }

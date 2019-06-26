@@ -2,6 +2,8 @@
 
 namespace denbora\R_T_G_Services\services\REST;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
+
 class ServiceService extends RestService
 {
     /**
@@ -13,20 +15,21 @@ class ServiceService extends RestService
      * @param $query
      * @param null $array
      * @param string $endpoint
-     * @return mixed
-     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
      */
     private function callGet($query, $array = null, $endpoint = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->get($this->createGetFullUrl($query, self::APIURL, $array, $endpoint));
         }
+        return false;
     }
 
     /**
      * @param string $query
-     * @return mixed
-     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
      */
     public function getTypes($query = '')
     {
@@ -35,8 +38,8 @@ class ServiceService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
-     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
      */
     public function getStatuses($query = '')
     {
@@ -45,8 +48,8 @@ class ServiceService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
-     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
      */
     public function getCategories($query = '')
     {
@@ -55,8 +58,8 @@ class ServiceService extends RestService
 
     /**
      * @param string $query
-     * @return mixed
-     * @throws \denbora\R_T_G_Services\R_T_G_ServiceException
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
      */
     public function postComments($query = '')
     {
@@ -66,8 +69,14 @@ class ServiceService extends RestService
                 $query
             );
         }
+        return false;
     }
 
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
     public function postDownloadId($query = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
@@ -76,19 +85,32 @@ class ServiceService extends RestService
                 $query
             );
         }
+        return false;
     }
 
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
     public function getDownloads($query = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->callGet($query, '', 'downloads');
         }
+        return false;
     }
 
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
     public function getCurrencies($query = '')
     {
         if ($query == '') {
             return $this->callGet($query, '', 'currencies');
         }
+        return false;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace denbora\R_T_G_Services\validators;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\R_T_G_ValidationException;
 
 /**
@@ -28,6 +29,26 @@ class BaseValidator
     public function __construct()
     {
         $this->classMethods = get_class_methods(get_class($this));
+    }
+
+    /**
+     * @param string $validatorName
+     * @param mixed $data
+     * @return bool
+     * @throws R_T_G_ServiceException
+     */
+    public function call(string $validatorName, $data)
+    {
+        if (in_array($validatorName, $this->classMethods)) {
+            if ($this->$validatorName($data)) {
+                return true;
+            }
+        } else {
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . $validatorName . ' does not exist');
+        }
+
+        return false;
     }
 
     /**

@@ -9,7 +9,7 @@ namespace denbora\R_T_G_Services\services\SOAP;
 interface ServiceInterface
 {
     /**
-     * @param $serviceMethod string
+     * @param string $serviceMethod
      * @param $data
      * @param bool $rawResponse
      * @return mixed

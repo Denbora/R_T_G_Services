@@ -6,7 +6,6 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 class AffiliateService extends ServiceBase implements ServiceInterface
 {
-
     /**
      * @return array
      */
@@ -16,47 +15,10 @@ class AffiliateService extends ServiceBase implements ServiceInterface
     }
 
     /**
-     * @param $serviceMethod string
-     * @param $data
-     * @param bool $rawResponse
-     * @return mixed
-     * @throws R_T_G_ServiceException
-     */
-    public function call(string $serviceMethod, $data, bool $rawResponse = false)
-    {
-        if (in_array($serviceMethod, $this->classMethods)) {
-            try {
-                $serviceResponse = $this->$serviceMethod($data, $rawResponse);
-
-                return $serviceResponse;
-            } catch (\SoapFault $e) {
-                $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-                throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
-            }
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $serviceMethod .' does not exist');
-        }
-    }
-
-    /**
-     * @param $data
-     * @param bool $rawResponse
-     * @param $validatorName
-     * @param $service
-     * @return object
-     */
-    private function run($data, bool $rawResponse, $validatorName, $service)
-    {
-        $this->validator->call($validatorName, $data);
-
-        return $this->service($service, $data, $rawResponse);
-    }
-
-    /**
      * @param string $globalID
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function listGlobalLinked(string $globalID, bool $rawResponse)
     {
@@ -67,6 +29,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function createAffiliate($data, bool $rawResponse)
     {
@@ -77,6 +40,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function createProgram($data, bool $rawResponse)
     {
@@ -87,6 +51,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getAccountLedger($data, bool $rawResponse)
     {
@@ -97,6 +62,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getAccountLedgerAll($data, bool $rawResponse)
     {
@@ -107,6 +73,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getBannedDeactivatedPlayers($data, bool $rawResponse)
     {
@@ -117,6 +84,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getBannedDeactivatedPlayersALL($data, bool $rawResponse)
     {
@@ -127,6 +95,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getDownloadInformation($data, bool $rawResponse)
     {
@@ -137,6 +106,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getDownloadInformationAll($data, bool $rawResponse)
     {
@@ -147,6 +117,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getDownloadInformationByDateRange($data, bool $rawResponse)
     {
@@ -162,6 +133,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getGlobalAffiliateStatsByLocalAID($data, bool $rawResponse)
     {
@@ -177,6 +149,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getNewPlayerSignups($data, bool $rawResponse)
     {
@@ -187,6 +160,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getNewPlayerSignupsByAID($data, bool $rawResponse)
     {
@@ -197,6 +171,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayerSummary($data, bool $rawResponse)
     {
@@ -207,6 +182,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayerSummaryALL($data, bool $rawResponse)
     {
@@ -217,6 +193,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayerSummaryByAIDRange($data, bool $rawResponse)
     {
@@ -227,6 +204,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getPlayersCount($data, bool $rawResponse)
     {
@@ -237,6 +215,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getStatsSummary($data, bool $rawResponse)
     {
@@ -247,6 +226,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getStatsSummaryByAID($data, bool $rawResponse)
     {
@@ -257,6 +237,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getDownloadTrackingIDsByAID($data, bool $rawResponse)
     {
@@ -267,6 +248,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getDownloadTrackingIDsByDateRange($data, bool $rawResponse)
     {
@@ -282,6 +264,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getUnBannedPlayers($data, bool $rawResponse)
     {
@@ -292,6 +275,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function globalLink($data, bool $rawResponse)
     {
@@ -302,6 +286,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function listAffiliates($data, bool $rawResponse)
     {
@@ -312,6 +297,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function listPrograms($data, bool $rawResponse)
     {
@@ -322,6 +308,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function programChange($data, bool $rawResponse)
     {
@@ -332,6 +319,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function updateAffiliate($data, bool $rawResponse)
     {
@@ -342,6 +330,7 @@ class AffiliateService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getInitialDeposits($data, bool $rawResponse)
     {

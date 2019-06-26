@@ -2,31 +2,13 @@
 
 namespace denbora\R_T_G_Services\validators;
 
-use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\R_T_G_ValidationException;
 
 class TournamentValidator extends BaseValidator implements ValidatorInterface
 {
-    /**
-     * @param string $validatorName
-     * @param mixed $data
-     * @return bool
-     * @throws R_T_G_ServiceException
-     */
-    public function call(string $validatorName, $data)
-    {
-        if (in_array($validatorName, $this->classMethods)) {
-            $validator = $this->$validatorName($data);
-
-            return $validator;
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $validatorName . ' does not exist');
-        }
-    }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -35,11 +17,11 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
         if (empty($data['FromDate']) && !isset($data['FromDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['FromDate']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['FromDate'] . ' is a required field');
         }
 
         if (empty($data['ToDate']) && !isset($data['ToDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['ToDate']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['ToDate'] . ' is a required field');
         }
 
         if (!isset($data['Status']) && empty($data['Status'])) {
@@ -51,7 +33,7 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!strtotime($data['ToDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['ToDate']. ' should be DateTime!');
+            throw new R_T_G_ValidationException($errorPrefix . $data['ToDate'] . ' should be DateTime!');
         }
 
         if (!is_int($data['Status'])) {
@@ -72,7 +54,7 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
         if (empty($data['TournamentID']) && !isset($data['TournamentID'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['TournamentID']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['TournamentID'] . ' is a required field');
         }
 
         if (!is_int($data['TournamentID'])) {
@@ -108,14 +90,13 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
         if (!is_object($data)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'input should be object, ' .
-                gettype($data) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'input should be object, ' . gettype($data) . ' given');
         }
         return true;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -140,7 +121,7 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!strtotime($data['EndDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['EndDate']. ' should be DateTime!');
+            throw new R_T_G_ValidationException($errorPrefix . $data['EndDate'] . ' should be DateTime!');
         }
 
         if (!is_object($data['casinoList'])) {
@@ -151,7 +132,7 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return bool
      * @throws R_T_G_ValidationException
      */
@@ -180,7 +161,7 @@ class TournamentValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!strtotime($data['EndDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['EndDate']. ' should be DateTime!');
+            throw new R_T_G_ValidationException($errorPrefix . $data['EndDate'] . ' should be DateTime!');
         }
 
         if (!is_object($data['casinoList'])) {

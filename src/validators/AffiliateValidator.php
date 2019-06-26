@@ -2,29 +2,10 @@
 
 namespace denbora\R_T_G_Services\validators;
 
-use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\R_T_G_ValidationException;
 
 class AffiliateValidator extends BaseValidator implements ValidatorInterface
 {
-
-    /**
-     * @param string $validatorName
-     * @param mixed $data
-     * @return bool
-     * @throws R_T_G_ServiceException
-     */
-    public function call(string $validatorName, $data)
-    {
-        if (in_array($validatorName, $this->classMethods)) {
-            $validator = $this->$validatorName($data);
-
-            return $validator;
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $validatorName . ' does not exist');
-        }
-    }
 
     /**
      * @param $data
@@ -61,8 +42,7 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_array($data)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Data should be array, ' .
-                gettype($data) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Data should be array, ' . gettype($data) . ' given');
         }
 
         return true;
@@ -82,8 +62,7 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!is_array($data)) {
-            throw new R_T_G_ValidationException($errorPrefix . 'Data should be array, ' .
-                gettype($data) . ' given');
+            throw new R_T_G_ValidationException($errorPrefix . 'Data should be array, ' . gettype($data) . ' given');
         }
 
         return true;
@@ -99,11 +78,11 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
         if (empty($data['fromDate']) && !isset($data['fromDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['fromDate']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['fromDate'] . ' is a required field');
         }
 
         if (empty($data['toDate']) && !isset($data['toDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['toDate']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['toDate'] . ' is a required field');
         }
 
         if (!isset($data['aid']) && empty($data['aid'])) {
@@ -115,7 +94,7 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!strtotime($data['toDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['toDate']. ' should be DateTime!');
+            throw new R_T_G_ValidationException($errorPrefix . $data['toDate'] . ' should be DateTime!');
         }
 
         if (!is_int($data['aid'])) {
@@ -136,11 +115,11 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
         if (empty($data['fromDate']) && !isset($data['fromDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['fromDate']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['fromDate'] . ' is a required field');
         }
 
         if (empty($data['toDate']) && !isset($data['toDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['toDate']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['toDate'] . ' is a required field');
         }
 
         if (!strtotime($data['fromDate'])) {
@@ -148,7 +127,7 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!strtotime($data['toDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['toDate']. ' should be DateTime!');
+            throw new R_T_G_ValidationException($errorPrefix . $data['toDate'] . ' should be DateTime!');
         }
 
         return true;
@@ -164,11 +143,11 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
         if (empty($data['fromDate']) && !isset($data['fromDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['fromDate']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['fromDate'] . ' is a required field');
         }
 
         if (empty($data['toDate']) && !isset($data['toDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['toDate']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['toDate'] . ' is a required field');
         }
 
         if (!isset($data['aid']) && empty($data['aid'])) {
@@ -180,7 +159,7 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!strtotime($data['toDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['toDate']. ' should be DateTime!');
+            throw new R_T_G_ValidationException($errorPrefix . $data['toDate'] . ' should be DateTime!');
         }
 
         if (!is_int($data['aid'])) {
@@ -201,11 +180,11 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
 
         if (empty($data['fromDate']) && !isset($data['fromDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['fromDate']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['fromDate'] . ' is a required field');
         }
 
         if (empty($data['toDate']) && !isset($data['toDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['toDate']. ' is a required field');
+            throw new R_T_G_ValidationException($errorPrefix . $data['toDate'] . ' is a required field');
         }
 
         if (!strtotime($data['fromDate'])) {
@@ -213,7 +192,7 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
         }
 
         if (!strtotime($data['toDate'])) {
-            throw new R_T_G_ValidationException($errorPrefix . $data['toDate']. ' should be DateTime!');
+            throw new R_T_G_ValidationException($errorPrefix . $data['toDate'] . ' should be DateTime!');
         }
 
         return true;
@@ -844,8 +823,7 @@ class AffiliateValidator extends BaseValidator implements ValidatorInterface
     private function validateString($value)
     {
         if (!is_string($value)) {
-            throw new R_T_G_ValidationException('AID should be int, ' .
-                gettype($value) . ' given');
+            throw new R_T_G_ValidationException('AID should be int, ' . gettype($value) . ' given');
         }
     }
 

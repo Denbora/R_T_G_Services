@@ -40,7 +40,7 @@ class LobbyResponse extends BaseResponse implements SoapResponseInterface
         $second = stristr($first, '</diffgr:diffgram>', true);
         $finalString = preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i", '<$1$2>', $second);
         $data = simplexml_load_string($finalString);
-        $array = (array) $data;
+        $array = (array)$data;
 
         if (empty($array)) {
             return null;
@@ -160,7 +160,7 @@ class LobbyResponse extends BaseResponse implements SoapResponseInterface
         $second = stristr($first, '</diffgr:diffgram>', true);
         $finalString = preg_replace("/<(Table*)[^>]*?(\/?)>/i", '<$1$2>', $second);
         $data = simplexml_load_string($finalString);
-        $array = (array) $data;
+        $array = (array)$data;
 
         if (empty($array)) {
             return null;
@@ -199,7 +199,7 @@ class LobbyResponse extends BaseResponse implements SoapResponseInterface
         $second = stristr($first, '</diffgr:diffgram>', true);
         $finalString = preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i", '<$1$2>', $second);
         $data = simplexml_load_string($finalString);
-        $array = (array) $data;
+        $array = (array)$data;
 
         if (empty($array)) {
             return null;
@@ -247,7 +247,7 @@ class LobbyResponse extends BaseResponse implements SoapResponseInterface
         $second = stristr($first, '</diffgr:diffgram>', true);
         $finalString = preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i", '<$1$2>', $second);
         $data = simplexml_load_string($finalString);
-        $array = (array) $data;
+        $array = (array)$data;
 
         if (empty($array)) {
             return null;
@@ -268,7 +268,7 @@ class LobbyResponse extends BaseResponse implements SoapResponseInterface
         $second = stristr($first, '</diffgr:diffgram>', true);
         $finalString = preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i", '<$1$2>', $second);
         $data = simplexml_load_string($finalString);
-        $array = (array) $data;
+        $array = (array)$data;
 
         if (empty($array)) {
             return null;

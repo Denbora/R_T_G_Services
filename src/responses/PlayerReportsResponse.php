@@ -2,6 +2,8 @@
 
 namespace denbora\R_T_G_Services\responses;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
+
 class PlayerReportsResponse extends BaseResponse implements SoapResponseInterface
 {
 
@@ -17,6 +19,7 @@ class PlayerReportsResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayerDepositors($response)
     {
@@ -26,6 +29,7 @@ class PlayerReportsResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayerDepositorsByDepositCount($response)
     {
@@ -35,6 +39,7 @@ class PlayerReportsResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayerFullGameStatsDetail($response)
     {
@@ -44,6 +49,7 @@ class PlayerReportsResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayerGameStats($response)
     {
@@ -53,6 +59,7 @@ class PlayerReportsResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayerLastGamesPlayed($response)
     {
@@ -62,6 +69,7 @@ class PlayerReportsResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayerNonDepositors($response)
     {
@@ -71,6 +79,7 @@ class PlayerReportsResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayersByDepositDate($response)
     {
@@ -80,6 +89,7 @@ class PlayerReportsResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayersTransactions($response)
     {
@@ -89,6 +99,7 @@ class PlayerReportsResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayerTransactions($response)
     {
@@ -98,6 +109,7 @@ class PlayerReportsResponse extends BaseResponse implements SoapResponseInterfac
     /**
      * @param $response
      * @return mixed
+     * @throws R_T_G_ServiceException
      */
     public function getPlayerBalanceSummary($response)
     {

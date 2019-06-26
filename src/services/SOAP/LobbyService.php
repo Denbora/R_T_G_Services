@@ -6,48 +6,12 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 class LobbyService extends ServiceBase implements ServiceInterface
 {
+
     /**
-     * @param $serviceMethod string
      * @param $data
      * @param bool $rawResponse
-     * @return mixed
+     * @return object
      * @throws R_T_G_ServiceException
-     */
-    public function call(string $serviceMethod, $data, bool $rawResponse = false)
-    {
-        if (in_array($serviceMethod, $this->classMethods)) {
-            try {
-                $serviceResponse = $this->$serviceMethod($data, $rawResponse);
-
-                return $serviceResponse;
-            } catch (\SoapFault $e) {
-                $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-                throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
-            }
-        } else {
-            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $serviceMethod .' does not exist');
-        }
-    }
-
-    /**
-     * @param $data
-     * @param bool $rawResponse
-     * @param $validatorName
-     * @param $service
-     * @return object
-     */
-    private function run($data, bool $rawResponse, $validatorName, $service)
-    {
-        $this->validator->call($validatorName, $data);
-
-        return $this->service($service, $data, $rawResponse);
-    }
-
-    /**
-     * @param $data
-     * @param bool $rawResponse
-     * @return object
      */
     protected function addToFavorite($data, bool $rawResponse)
     {
@@ -58,6 +22,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function addToFavoriteByGame($data, bool $rawResponse)
     {
@@ -68,6 +33,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getAccountBalance($data, bool $rawResponse)
     {
@@ -78,6 +44,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getActiveMessages($data, bool $rawResponse)
     {
@@ -88,6 +55,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getCacheState($data, bool $rawResponse)
     {
@@ -98,6 +66,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getComponents($data, bool $rawResponse)
     {
@@ -108,6 +77,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getCurrentTheme($data, bool $rawResponse)
     {
@@ -118,6 +88,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getGameInformation($data, bool $rawResponse)
     {
@@ -128,6 +99,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getJackPot($data, bool $rawResponse)
     {
@@ -138,6 +110,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getLanguageCode($data, bool $rawResponse)
     {
@@ -148,6 +121,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getLastGamesPlayed($data, bool $rawResponse)
     {
@@ -158,6 +132,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getLocaleInfo($data, bool $rawResponse)
     {
@@ -168,6 +143,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getMarquee($data, bool $rawResponse)
     {
@@ -178,6 +154,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getMenus($data, bool $rawResponse)
     {
@@ -188,6 +165,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getMenuStructure($data, bool $rawResponse)
     {
@@ -198,6 +176,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getMobileMenu($data, bool $rawResponse)
     {
@@ -208,6 +187,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getRestrictedGames($data, bool $rawResponse)
     {
@@ -218,6 +198,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getSessionHash($data, bool $rawResponse)
     {
@@ -228,6 +209,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getTopGamesPlayed($data, bool $rawResponse)
     {
@@ -238,6 +220,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function getTopLocalAuslotJackpots($data, bool $rawResponse)
     {
@@ -248,6 +231,7 @@ class LobbyService extends ServiceBase implements ServiceInterface
      * @param $data
      * @param bool $rawResponse
      * @return object
+     * @throws R_T_G_ServiceException
      */
     protected function turnOnCacheState($data, bool $rawResponse)
     {

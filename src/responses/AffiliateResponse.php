@@ -10,19 +10,20 @@ class AffiliateResponse extends BaseResponse implements SoapResponseInterface
     /**
      * @param $response
      * @param $responseName
-     * @return mixed
+     * @return mixed|null
      */
     private function getAffiliateData($response, $responseName)
     {
         $xml = $response->$responseName->any;
         $data = simplexml_load_string($xml);
-        $array =  (array) $data->NewDataSet;
+        $array = (array)$data->NewDataSet;
         if (empty($array)) {
             return null;
         } else {
             return $array['Table'];
         }
     }
+
     /**
      * @param $response
      * @return mixed
@@ -34,8 +35,7 @@ class AffiliateResponse extends BaseResponse implements SoapResponseInterface
 
     /**
      * @param $response
-     * @return object
-     * @throws R_T_G_ServiceException
+     * @return mixed|null
      */
     public function listGlobalLinked($response)
     {
@@ -218,7 +218,7 @@ class AffiliateResponse extends BaseResponse implements SoapResponseInterface
         $stringIds = $obj->NewDepositorsDownloadTrackingIDs;
         $ids = explode(",", $stringIds);
 
-        $array =  (array) $obj;
+        $array = (array)$obj;
         unset($array['NewDepositorsDownloadTrackingIDs']);
         $array['TrackingIDs'] = $ids;
 
