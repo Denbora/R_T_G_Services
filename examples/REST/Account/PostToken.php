@@ -10,6 +10,7 @@ class PostToken
     {
         try {
             $query = '{
+                "login": "malinichev",
                 "token_type": "web_cashier"
             }';
 

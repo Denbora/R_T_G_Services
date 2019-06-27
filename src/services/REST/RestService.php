@@ -243,17 +243,13 @@ class RestService implements RestServiceInterface
      * Added param to link
      *
      * @param string $query
-     * @param string $param
+     * @param array $parameters
      * @param string $url
      * @return string
      */
-    protected function addQueryParameterToUrl(string &$query, string $param, string $url)
+    protected function addQueryParametersToUrl(string $query, array $parameters, string $url)
     {
         $data = json_decode($query, true);
-
-        if (!isset($data[$param])) {
-            return $url;
-        }
 
         $urlQuery = parse_url($url, PHP_URL_QUERY);
 
@@ -263,10 +259,25 @@ class RestService implements RestServiceInterface
             $url .= '?';
         }
 
-        $url .= $param . '=' . (string) $data[$param];
-        unset($data[$param]);
-        $query = json_encode($data);
+        foreach ($parameters as $parameter) {
+            if (isset($data[$parameter])) {
+                $url .= $parameter . '=' . (string) $data[$parameter];
+            }
+        }
 
         return $url;
+    }
+
+    public function removeParametersFromQuery(string $query, array $parameters)
+    {
+        $data = json_decode($query, true);
+
+        foreach ($parameters as $parameter) {
+            if (isset($data[$parameter])) {
+                unset($data[$parameter]);
+            }
+        }
+
+        return json_encode($data);
     }
 }

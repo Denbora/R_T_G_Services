@@ -241,7 +241,8 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             $url = $this->createFullUrl($query, self::APIURL, '', 'token');
-            $url = $this->addQueryParameterToUrl($query, 'login', $url);
+            $url = $this->addQueryParametersToUrl($query, ['login'], $url);
+            $query = $this->removeParametersFromQuery($query, ['login']);
 
             return $this->post(
                 $url,
@@ -263,7 +264,8 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             $url = $this->createFullUrl($query, self::APIURL, '', 'ban');
-            $url = $this->addQueryParameterToUrl($query, 'deductAffiliateEarnings', $url);
+            $url = $this->addQueryParametersToUrl($query, ['deductAffiliateEarnings'], $url);
+            $query = $this->removeParametersFromQuery($query, ['deductAffiliateEarnings']);
 
             return $this->post(
                 $url,
@@ -284,7 +286,8 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             $url = $this->createFullUrl($query, self::APIURL, '', 'unban');
-            $url = $this->addQueryParameterToUrl($query, 'includeAffiliateEarnings', $url);
+            $url = $this->addQueryParametersToUrl($query, ['includeAffiliateEarnings'], $url);
+            $query = $this->removeParametersFromQuery($query, ['includeAffiliateEarnings']);
 
             return $this->post(
                 $url,
