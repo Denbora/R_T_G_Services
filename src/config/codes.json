@@ -91,6 +91,18 @@
             "417": "Transaction denied."
         }
     },
+    "casino": {
+        "skins": {
+            "401": "Unauthorized"
+        },
+        "clients": {
+            "401": "Unauthorized"
+        },
+        "totals": {
+            "400": "Bad request.",
+            "401": "Unauthorized"
+        }
+    },
     "games": {
         "index": {
             "401": "Unauthorized"

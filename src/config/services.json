@@ -131,6 +131,10 @@
         "History": {
             "validatorClass": "RestValidator",
             "responseClass": "RestResponse"
+        },
+        "Casino": {
+            "validatorClass": "RestValidator",
+            "responseClass": "RestResponse"
         }
     }
 }
