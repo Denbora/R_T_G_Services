@@ -196,4 +196,104 @@ class AccountService extends RestService
         }
         return false;
     }
+
+    /**
+     * Get player balance by login
+     *
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function getBalance($query = '')
+    {
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            return $this->get($this->createGetFullUrl($query, self::APIURL, '', 'balance'));
+        }
+        return false;
+    }
+
+    /**
+     * Set player password by id
+     *
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function postSetPassword($query = '')
+    {
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            return $this->post(
+                $this->createFullUrl($query, self::APIURL, '', 'set-password'),
+                $query
+            );
+        }
+        return false;
+    }
+
+    /**
+     * Create player token by login and type
+     *
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function postToken($query = '')
+    {
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $url = $this->createFullUrl($query, self::APIURL, '', 'token');
+            $url = $this->addQueryParametersToUrl($query, ['login'], $url);
+            $query = $this->removeParametersFromQuery($query, ['login']);
+
+            return $this->post(
+                $url,
+                $query
+            );
+        }
+        return false;
+    }
+
+    /**
+     * Ban player by id. Also with type and comment
+     * With deduct affiliate earnings true/false
+     *
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function postBan($query = '')
+    {
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $url = $this->createFullUrl($query, self::APIURL, '', 'ban');
+            $url = $this->addQueryParametersToUrl($query, ['deductAffiliateEarnings'], $url);
+            $query = $this->removeParametersFromQuery($query, ['deductAffiliateEarnings']);
+
+            return $this->post(
+                $url,
+                $query
+            );
+        }
+        return false;
+    }
+
+    /**
+     * Unban player by id
+     *
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function postUnban($query = '')
+    {
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $url = $this->createFullUrl($query, self::APIURL, '', 'unban');
+            $url = $this->addQueryParametersToUrl($query, ['includeAffiliateEarnings'], $url);
+            $query = $this->removeParametersFromQuery($query, ['includeAffiliateEarnings']);
+
+            return $this->post(
+                $url,
+                $query
+            );
+        }
+        return false;
+    }
 }
