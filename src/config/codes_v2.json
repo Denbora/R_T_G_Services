@@ -1,0 +1,897 @@
+{
+    "GET /api/accounts/playerid": {
+        "200": "OK",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/accounts/balance": {
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/accounts/incomplete-signups": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "POST /api/accounts/incomplete-signups": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "409": "Player with such login or email already exists.",
+        "412": "Creation of incomplete signup failed."
+    },
+    "PUT /api/accounts/change-password": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Old password doesn't match.",
+        "412": "Change player password failed.",
+        "417": "New password does not comply with the account creation requirements."
+    },
+    "PUT /api/accounts/forgot-password": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Sending forgot password email failed."
+    },
+    "PUT /api/accounts/forgot-username": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Sending forgot username email failed."
+    },
+    "PUT /api/accounts/change-password-with-token": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Token is invalid or expired.",
+        "410": "Maximum number of change password attempts reached.",
+        "412": "Change player password failed.",
+        "417": "New password does not comply with the account creation requirements."
+    },
+    "POST /api/accounts/login": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Player login failed.",
+        "410": "Player login restricted.",
+        "412": "Player password expired."
+    },
+    "POST /api/accounts/logout": {
+        "200": "OK",
+        "202": "Player is not logged in.",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Players logout failed."
+    },
+    "POST /api/accounts/activate": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "412": "Player activation failed."
+    },
+    "POST /api/accounts/deactivate": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "412": "Player deactivation failed."
+    },
+    "POST /api/accounts/set-password": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Set player's password failed."
+    },
+    "POST /api/accounts/reset-password": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "412": "Reset player password failed."
+    },
+    "POST /api/accounts/token": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "The player is banned or deactivated.",
+        "412": "Player password has been reset.",
+        "417": "The application is not registered."
+    },
+    "POST /api/accounts/ban": {
+        "200": "OK",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Invalid ban type."
+    },
+    "POST /api/accounts/unban": {
+        "200": "OK",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/cashier/cashback": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "POST /api/cashier": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Player is banned.",
+        "410": "Token couldn't be created because player password has been reset.",
+        "417": "Cashier settings were not found."
+    },
+    "POST /api/cashier/chargeback": {
+        "401": "Unauthorized"
+    },
+    "POST /api/cashier/common-wallet-deposit": {
+        "201": "Deposit succeeded but coupon not processed.",
+        "202": "Transaction pending.",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Invalid number of decimal places in the amount.",
+        "417": "Transaction denied."
+    },
+    "POST /api/cashier/common-wallet-withdrawal": {
+        "201": "Deposit succeeded but coupon not processed.",
+        "202": "Transaction pending.",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Invalid number of decimal places in the amount.",
+        "417": "Transaction denied."
+    },
+    "GET /api/casino/skins": {
+        "401": "Unauthorized"
+    },
+    "GET /api/casino/clients": {
+        "401": "Unauthorized"
+    },
+    "GET /api/casino/totals": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/v2/coupons": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "416": "More than 30 days of data is not allowed."
+    },
+    "DELETE /api/coupons": {
+        "200": "OK",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "417": "Coupon is invalid"
+    },
+    "GET /api/coupons": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "POST /api/coupons": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Transaction conflict.",
+        "412": "Transaction failed."
+    },
+    "POST /api/coupons/templates": {
+        "401": "Unauthorized",
+        "404": "Coupon was not found.",
+        "409": "This coupon cannot be copied."
+    },
+    "POST /api/v2/coupons/bonus-balance/single-use/fixed-amount-on-redemption": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "409": "Coupon could not be created."
+    },
+    "POST /api/v2/coupons/bonus-balance/single-account/fixed-amount/percentage-next-deposit": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "409": "Coupon could not be created."
+    },
+    "POST /api/v2/coupons/bonus-balance/single-use/multiple-of-deposit/fixed-amount-next-deposit": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "409": "Coupon could not be created."
+    },
+    "POST /api/v2/coupons/bonus-balance/single-account/multiple-of-deposit/percentage-next-deposit": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "409": "Coupon could not be created."
+    },
+    "GET /api/email-notifications": {
+        "401": "Unauthorized"
+    },
+    "PUT /api/email-notifications/{emailId}/emails": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/games/recommended": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/games/{gameId}/details": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/games/favorite": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/games/active": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/games/favorite-flash": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/games": {
+        "401": "Unauthorized"
+    },
+    "GET /api/games/active-flash": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/games/flash": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "POST /api/games/block": {
+        "200": "OK",
+        "401": "Unauthorized"
+    },
+    "DELETE /api/games/favorites/playerid": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "POST /api/games/favorites/playerid": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/history/rsvs-game-details": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/war": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/keno": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/bingo": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/craps": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/rsvs-game-details-with-icons": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/sic-bo": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/baccarat": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/roulette": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/blackjack": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/let-em-ride": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/video-poker": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/pai-gow-poker": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/scratch-cards": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/slots-3-reels": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/caribbean-draw": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/caribbean-stud": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/tri-card-poker": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/caribbean-holdem": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/seven-stud-poker": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/rsvs": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/history/european-slots-poker": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/multi-player-roulette": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/multi-hand-video-poker": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/vegas-three-card-rummy": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/history/texas-holdem-bonus-poker": {
+        "401": "Unauthorized",
+        "404": "Game was not found."
+    },
+    "GET /api/jackpots/lobby-progressive-jackpot": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/jackpots": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Game was not found"
+    },
+    "GET /api/jackpots/top-local-auslot": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/jackpots/jackpot-winners": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/messages/{messageId}": {
+        "404": "The message was not found."
+    },
+    "PUT /api/messages/{messageId}": {
+        "200": "OK",
+        "400": "Bad request.",
+        "404": "The message was not found.",
+        "409": "The message code is already used by another message."
+    },
+    "POST /api/messages": {
+        "400": "Bad request.",
+        "409": "The message code is already used by another message."
+    },
+    "GET /api/players/classes": {
+        "401": "Unauthorized"
+    },
+    "GET /api/players/{playerId}": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "PUT /api/players/{playerId}": {
+        "200": "OK",
+        "202": "Player update success. Communication with DoughFlow failed.",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Player update failed.",
+        "417": "Player object validation failed."
+    },
+    "GET /api/players/{playerId}/class": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "PUT /api/players/{playerId}/class": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Player class update failed.",
+        "417": "Invalid player class ID."
+    },
+    "GET /api/players/{playerId}/ledger": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players/{playerId}/passcode": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players/{playerId}/coupons/active": {
+        "204": "Coupon was not found.",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players/{playerId}/adjusted-net-win": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players/{playerId}/phone-number-status": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "PUT /api/players/{playerId}/phone-number-status": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Unable to set player's phone number status."
+    },
+    "GET /api/players/{playerId}/notes": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "POST /api/players/{playerId}/notes": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Unable to save player note."
+    },
+    "GET /api/players/{playerId}/email-verification-status": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "PUT /api/players/{playerId}/email-verification-status": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Unable to set player's email verification status."
+    },
+    "GET /api/players/{playerId}/balance": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players/{playerId}/coupons": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players/{playerId}/couponDetails": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players/{playerId}/token/{playerToken}": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "417": "The application is not registered."
+    },
+    "GET /api/players/{playerId}/non-cash-total": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players/{playerId}/balance-summary": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "POST /api/players": {
+        "200": "OK",
+        "201": "Created",
+        "202": "Player created but the communication with DoughFlow failed.",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "409": "Player creation failed. Will return any of the following messages: 0 - failed, 2 - banned, 3 - already_exists, 4 - email_already_exists, 6 - xss_validation_failed, 7 - currency_error, 8 - field_validation_error.",
+        "417": "Player object validation failed."
+    },
+    "GET /api/players/{playerId}/gaming-activity": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players/{playerId}/rsvs-history": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players/{playerId}/baccarat-history": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players/{playerId}/roulette-history": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/players/{playerId}/blackjack-history": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/v2/players/coupons": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "PUT /api/players/{playerId}/comp-points": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Unable to adjust player's comppoints."
+    },
+    "PUT /api/players/{playerId}/reset-special-features": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Failed to reset player's counters and special features.",
+        "412": "Unable to reset player's counters and special features. The player is logged in."
+    },
+    "PUT /api/players/{playerId}/promotions/{promotionId}": {
+        "200": "OK",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Promotion was not found."
+    },
+    "POST /api/players/external": {
+        "201": "Created",
+        "202": "Player created but the communication with DoughFlow failed.",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "403": "The application is not registered.",
+        "409": "Player creation failed. Will return any of the following messages: 0 - failed, 2 - banned, 3 - already_exists, 4 - email_already_exists, 6 - xss_validation_failed, 7 - currency_error, 8 - field_validation_error.",
+        "417": "Player object validation failed."
+    },
+    "POST /api/players/{playerId}/token": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "The player is banned or deactivated.",
+        "412": "Player password has been reset.",
+        "417": "The application is not registered."
+    },
+    "POST /api/players/{playerId}/transaction/failed": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "POST /api/players/{playerId}/redeemed-comp-points": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Unable to redeem player's comppoints."
+    },
+    "DELETE /api/v2/players/{playerId}/coupons": {
+        "200": "OK",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "417": "Coupon is invalid"
+    },
+    "POST /api/v2/players/{playerId}/coupons": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Transaction conflict.",
+        "412": "Transaction failed."
+    },
+    "DELETE /api/promotions/{promotionId}": {
+        "200": "OK",
+        "404": "Promotion was not found."
+    },
+    "GET /api/promotions/{promotionId}": {
+        "404": "Promotion was not found."
+    },
+    "PUT /api/promotions/{promotionId}": {
+        "200": "OK",
+        "400": "Bad request.",
+        "404": "Promotion was not found."
+    },
+    "GET /api/promotions/active": {
+        "404": "Player was not found."
+    },
+    "GET /api/promotions/statistics": {
+        "404": "Promotion was not found."
+    },
+    "GET /api/promotions": {},
+    "POST /api/promotions": {
+        "201": "Created",
+        "400": "Bad request."
+    },
+    "PUT /api/promotions/{promotionId}/active": {
+        "200": "OK",
+        "404": "Promotion was not found."
+    },
+    "POST /api/promotions/banners": {
+        "400": "Bad request."
+    },
+    "GET /api/reports/jackpot-data": {
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/active-sessions": {
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/affiliates": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/reports/optin": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/non-depositors": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/depositors": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/sidebets-statistics": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/baccarat-detail-summary": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/last-games-played": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/reports/sessions": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/gaming-summary": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/player-depositors": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/transaction-history": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/reports/deposits-withdrawals": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/reports/top-games-played": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/reports/player-signups": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/players-summary": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/game-statistics": {
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/jackpot-group-played-games": {
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/sessions-per-weekday": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/fullgame-stats": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/reports/gaming-stats": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/reports/vendor-gaming-stats": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/accounts-delta": {
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/third-party-jackpot-opt-in-out": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Game not found."
+    },
+    "GET /api/reports/vendor-gaming-stats-player": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/reports/third-party-jackpot-game-stats": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Game not found.",
+        "417": "High bet cannot be lower than the low bet."
+    },
+    "GET /api/reports/game-stats": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found.",
+        "409": "Game was not found."
+    },
+    "GET /api/reports/played-games": {
+        "401": "Unauthorized"
+    },
+    "GET /api/reports/transactions": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/reports/audit-trail": {
+        "401": "Unauthorized"
+    },
+    "GET /api/service/currencies": {
+        "401": "Unauthorized"
+    },
+    "DELETE /api/service/comments/{commentId}": {
+        "200": "OK",
+        "401": "Unauthorized",
+        "404": "Comment was not found."
+    },
+    "GET /api/service/comments/{commentId}": {
+        "401": "Unauthorized",
+        "404": "Comment was not found."
+    },
+    "PUT /api/service/comments/{commentId}": {
+        "200": "OK",
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Comment not found.",
+        "417": "Comment validation failed."
+    },
+    "GET /api/service/download-url/{serverType}": {
+        "401": "Unauthorized",
+        "404": "Download URL was not found.",
+        "412": "Unable to get download URL."
+    },
+    "GET /api/service/types": {
+        "401": "Unauthorized"
+    },
+    "GET /api/service/categories": {
+        "401": "Unauthorized"
+    },
+    "GET /api/service/statuses": {
+        "401": "Unauthorized"
+    },
+    "GET /api/service/downloads": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "404": "Player was not found."
+    },
+    "GET /api/service/comments/search": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "POST /api/service/comments": {
+        "400": "Bad request.",
+        "401": "Unauthorized",
+        "417": "Comment validation failed."
+    },
+    "POST /api/service/download-id": {
+        "400": "Bad request.",
+        "401": "Unauthorized"
+    },
+    "GET /api/settings/flash-config": {
+        "401": "Unauthorized"
+    },
+    "GET /api/settings/login-fields": {
+        "401": "Unauthorized"
+    },
+    "GET /api/settings/account-fields": {
+        "401": "Unauthorized"
+    },
+    "GET /api/settings/player-restrictions": {
+        "401": "Unauthorized"
+    },
+    "POST /api/vig/message": {
+        "200": "OK",
+        "400": "BadRequest",
+        "401": "Unauthorized"
+    },
+    "GET /api/wallet/players/{login}/balance": {
+        "404": "Player was not found."
+    },
+    "DELETE /api/wallet/players/{login}/clients/{clientId}/notifications": {
+        "200": "OK",
+        "404": "Player was not found or Player is not active.",
+        "417": "Invalid ClientId."
+    },
+    "GET /api/wallet/players/{login}/clients/{clientId}/notifications": {
+        "404": "Notification was not found"
+    },
+    "POST /api/wallet/players/{login}/clients/{clientId}/notifications": {
+        "200": "OK",
+        "400": "Bad request.",
+        "404": "Player was not found or Player is not active.",
+        "409": "Subscription already exists.",
+        "417": "Invalid ClientId."
+    },
+    "POST /api/wallet/players/balance": {},
+    "DELETE /api/wallet/players/{login}/clients/{clientId}/bets": {
+        "400": "Bad request.",
+        "404": "Player was not found or Player is not active.",
+        "412": "Invalid Transaction.",
+        "417": "Invalid ClientId."
+    },
+    "POST /api/wallet/players/{login}/clients/{clientId}/bets": {
+        "400": "Bad request.",
+        "404": "Player was not found or Player is not active.",
+        "409": "Insufficient Funds.",
+        "410": "The transaction is being processed, please try again later",
+        "412": "Invalid Transaction.",
+        "417": "Invalid ClientId."
+    },
+    "POST /api/wallet/players/{login}/clients/{clientId}/settlements": {
+        "400": "Bad request.",
+        "404": "Player was not found or Player is not active.",
+        "410": "The transaction is being processed, please try again later",
+        "412": "Invalid Transaction.",
+        "417": "Invalid ClientId."
+    }
+}

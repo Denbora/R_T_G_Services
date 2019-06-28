@@ -4,27 +4,28 @@ namespace denbora\R_T_G_Services\examples\REST\Player;
 
 use denbora\R_T_G_Services\casino\CasinoRest;
 
-class GetPlayer
+class PostRedeemCompPoints
 {
     /**
-     * GetPlayer constructor.
+     * GetClass constructor.
      * @param CasinoRest $casino
      */
     public function __construct($casino)
     {
         try {
             $query = [
-                'playerId' => '10024193'
+                'playerId' => '10096980',
+                'amount' => '10',
             ];
 
-            $result = $casino->player->getPlayer(json_encode($query));
+            $result = $casino->player->postRedeemCompPoints(json_encode($query));
 
             echo "<pre>";
-            var_dump($result);
+            print_r($result);
             echo "</pre>";
         } catch (\Exception $e) {
             echo "<pre>";
-            var_dump($e);
+            print_r($e->getMessage());
             echo "</pre>";
         }
     }

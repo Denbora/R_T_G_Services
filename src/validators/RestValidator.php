@@ -6,7 +6,6 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 class RestValidator extends BaseValidator implements ValidatorInterface
 {
-
     /**
      * @param $query
      * @return bool
@@ -14,11 +13,11 @@ class RestValidator extends BaseValidator implements ValidatorInterface
      */
     protected function validate($query): bool
     {
-        if (is_string($query)) {
-            return true;
-        } else {
+        if (!is_string($query)) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
             throw new R_T_G_ServiceException($errorPrefix . ' transmitted parameter should be string');
         }
+
+        return true;
     }
 }
