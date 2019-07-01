@@ -24,8 +24,7 @@ class RestService implements RestServiceInterface
         ValidatorInterface $validator,
         RestResponse $response,
         string $baseUrl
-    )
-    {
+    ) {
         $this->certificate = $certificate;
         $this->key = $key;
         $this->password = $password;

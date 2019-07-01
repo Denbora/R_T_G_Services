@@ -4,18 +4,18 @@ namespace denbora\R_T_G_Services\helpers;
 
 class UrlHelper
 {
-//    /**
-//     * @param string        $baseUrl
-//     * @param string        $pathPattern
-//     *                      @example api/player/{playerId}/token/{playerToken} parameter will be taken from query
-//     * @param string        $queryJSON
-//     * @param bool|array    $queryParameters
-//     *                      true - use all parameters from $query
-//     *                      false - is don`t use query parameters
-//     *                      array - with for use from $query
-//     *
-//     * @return string
-//     */
+    /**
+     * @param string        $baseUrl
+     * @param string        $pathPattern
+     *                      @example api/player/{playerId}/token/{playerToken} parameter will be taken from query
+     * @param string        $queryJSON
+     * @param bool|array    $queryParameters
+     *                      true - use all options for queries
+     *                      false - вo not use the GET parameters
+     *                      array - the list of keys to be used for the query
+     *
+     * @return string
+     */
     public static function createFullUrl(
         string $baseUrl,
         string $pathPattern,
