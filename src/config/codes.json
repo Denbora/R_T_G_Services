@@ -69,6 +69,36 @@
         "playerid": {
             "401": "Unauthorized",
             "404": "Player was not found."
+        },
+        "balance": {
+            "401": "Unauthorized",
+            "404": "Player was not found."
+        },
+        "set-password": {
+            "200": "OK",
+            "400": "Bad request.",
+            "401": "Unauthorized",
+            "404": "Player was not found.",
+            "409": "Set player's password failed."
+        },
+        "token": {
+            "400": "Bad request.",
+            "401": "Unauthorized",
+            "404": "Player was not found.",
+            "409": "The player is banned or deactivated.",
+            "412": "Player password has been reset.",
+            "417": "The application is not registered."
+        },
+        "ban": {
+            "200": "OK",
+            "401": "Unauthorized",
+            "404": "Player was not found.",
+            "409": "Invalid ban type."
+        },
+        "unban": {
+            "200": "OK",
+            "401": "Unauthorized",
+            "404": "Player was not found."
         }
     },
     "cashier": {
@@ -89,6 +119,18 @@
             "404": "Player was not found.",
             "409": "Invalid number of decimal places in the amount.",
             "417": "Transaction denied."
+        }
+    },
+    "casino": {
+        "skins": {
+            "401": "Unauthorized"
+        },
+        "clients": {
+            "401": "Unauthorized"
+        },
+        "totals": {
+            "400": "Bad request.",
+            "401": "Unauthorized"
         }
     },
     "games": {
