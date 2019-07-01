@@ -24,8 +24,7 @@ class RestService implements RestServiceInterface
         ValidatorInterface $validator,
         RestResponse $response,
         string $baseUrl
-    )
-    {
+    ) {
         $this->certificate = $certificate;
         $this->key = $key;
         $this->password = $password;
@@ -106,25 +105,43 @@ class RestService implements RestServiceInterface
     /**
      * @param string $url
      * @param string $data
-     * @return mixed
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
      */
     public function delete(string $url, $data = '')
     {
-        // TODO: Implement delete() method.
+        try {
+            $response = Request::delete($url)
+                ->authenticateWithCert($this->certificate, $this->key, $this->password)
+                ->contentType('json')
+                ->body($data)
+                ->send();
+
+            $result = $this->response->getContent($response);
+
+            return $result;
+        } catch (Exception $e) {
+            $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
+            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
+        }
     }
 
     /**
      * @param object $request
      * @return string
      */
-    protected function toUrlFormat($request)
+    protected function toUrlFormat($request): string
     {
         $urlParameters = [];
         foreach ($request as $key => $value) {
             $urlParameters[$key] = urlencode($value);
         }
 
-        return '?' . http_build_query($urlParameters);
+        if (!empty($urlParameters)) {
+            return '?' . http_build_query($urlParameters);
+        }
+
+        return '';
     }
 
     /**
@@ -279,5 +296,13 @@ class RestService implements RestServiceInterface
         }
 
         return json_encode($data);
+    }
+
+    /**
+     * @param string $action
+     */
+    protected function setRequestAction(string $action)
+    {
+        $this->response->requestAction = '/api/' . $action;
     }
 }

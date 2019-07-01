@@ -13,11 +13,13 @@ class GetPlayers
     public function __construct($casino)
     {
         try {
-            $query = '{
-                "startDate": "2017-08-09",
-                "endDate": "2017-08-10"
-            }';
-            $result = $casino->player->getPlayers($query);
+            $query = [
+                'startDate' => '2017-08-09',    //optional
+                'endDate' => '2017-08-10',      //optional
+                'playerClassId' => 2,           //optional
+                'email' => 'test@test.com'      //optional
+            ];
+            $result = $casino->player->getPlayers(json_encode($query));
 
             echo "<pre>";
             var_dump($result);

@@ -3,37 +3,66 @@
 namespace denbora\R_T_G_Services\responses;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
+use Httpful\Response;
 
 class RestResponse implements ResponseInterface
 {
+    const HTTP_SUCCESSFUL_OPERATION = [200, 201, 204];
+
     /**
      * array with RTG error codes and messages
      *
      * @var array
      */
     private $codeList;
+    private $codeListV2;
 
-    /**
-     * Requested method
-     *
-     * @var string
-     */
-    private $method;
+    public $requestAction = null;
 
     public function __construct()
     {
         $this->codeList = json_decode(file_get_contents(__DIR__ . '/../config/codes.json', true), true);
+        $this->codeListV2 = json_decode(file_get_contents(__DIR__ . '/../config/codes_v2.json', true), true);
     }
+
+    /**
+     * @param Response $response
+     * @return array|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getContent(Response $response)
+    {
+        if (!in_array($response->code, self::HTTP_SUCCESSFUL_OPERATION)) {
+            if ($response->code != 500) {
+                $message = $this->getError($response);
+            } else {
+                $message = 'Error in request execution. Please contact Support.';
+            }
+
+            throw new R_T_G_ServiceException('RTG Message - ' . $message);
+        }
+
+        return $response->body;
+    }
+
+
 
     /**
      * get error from codeList using code
      *
-     * @param string $code
-     * @param string $uri
-     * @return string
+     * @param Response $response
+     * @return mixed
      */
-    private function getError($code, $uri)
+    private function getError(Response $response)
     {
+        $code = $response->code;
+        $uri  = $response->request->uri;
+        $method = $response->request->method;
+
+        if (!empty($this->requestAction)) {
+            return $this->getErrorMessage(strtoupper($method) . ' ' . $this->requestAction, $code);
+        }
+
         $pattern = "/api/";
         $data = explode($pattern, $uri);
         $category = explode('/', $data[1]);
@@ -44,32 +73,13 @@ class RestResponse implements ResponseInterface
             $action = 'index';
         }
 
-        if (!isset($this->codeList[$categoryName][$action][$code])) {
-            $message = $this->codeList[$categoryName][$action][$this->method][$code];
-        } else {
-            $message = $this->codeList[$categoryName][$action][$code];
-        }
+        $actions = $this->codeList[$categoryName][$action];
 
-        return $message;
+        return $actions[$code] ?? $actions[$method][$code];
     }
 
-    /**
-     * @param $response
-     * @return mixed
-     * @throws R_T_G_ServiceException
-     */
-    public function getContent($response)
+    private function getErrorMessage(string $action, int $code): string
     {
-        if ($response->code != 200 && $response->code != 201) {
-            if ($response->code != 500) {
-                $this->method = $response->request->method;
-                $message = $this->getError($response->code, $response->request->uri);
-            } else {
-                $message = 'Error in request execution. Please contact Support.';
-            }
-            throw new R_T_G_ServiceException('RTG Messaage - ' . $message);
-        } else {
-            return $response->body;
-        }
+        return $this->codeListV2[$action][$code];
     }
 }

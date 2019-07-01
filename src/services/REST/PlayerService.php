@@ -2,14 +2,14 @@
 
 namespace denbora\R_T_G_Services\services\REST;
 
+use denbora\R_T_G_Services\helpers\UrlHelper;
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 class PlayerService extends RestService
 {
-    /**
-     * First part in url after /api/
-     */
-    const APIURL = 'players';
+    const API_URL = 'players';
+
+    const API_URL_V2 = 'v2/players';
 
     /**
      * @param $query
@@ -21,7 +21,7 @@ class PlayerService extends RestService
     private function callGet($query, $array = null, $endpoint = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
-            return $this->get($this->createGetFullUrl($query, self::APIURL, $array, $endpoint));
+            return $this->get($this->createGetFullUrl($query, self::API_URL, $array, $endpoint));
         }
         return false;
     }
@@ -33,7 +33,7 @@ class PlayerService extends RestService
      */
     public function getPlayers($query = '')
     {
-        return $this->callGet($query);
+        return $this->callGet(self::API_URL, $query);
     }
 
     /**
@@ -115,7 +115,7 @@ class PlayerService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->put(
-                $this->createFullUrl($query, self::APIURL, array('playerId'), ''),
+                $this->createFullUrl($query, self::API_URL, array('playerId'), ''),
                 $this->removeFromQuery($query, array('playerId'))
             );
         }
@@ -130,7 +130,7 @@ class PlayerService extends RestService
     public function postPlayer($query = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
-            return $this->post($this->createFullUrl('', self::APIURL, null), $query);
+            return $this->post($this->createFullUrl('', self::API_URL, null), $query);
         }
         return false;
     }
@@ -144,7 +144,7 @@ class PlayerService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, array('playerId'), 'notes'),
+                $this->createFullUrl($query, self::API_URL, array('playerId'), 'notes'),
                 $this->removeFromQuery($query, array('playerId'))
             );
         }
@@ -180,7 +180,7 @@ class PlayerService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, array('playerId'), 'token'),
+                $this->createFullUrl($query, self::API_URL, array('playerId'), 'token'),
                 $this->removeFromQuery($query, array('playerId'))
             );
         }
@@ -226,7 +226,7 @@ class PlayerService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->put(
-                $this->createFullUrl($query, self::APIURL, array('playerId'), 'class'),
+                $this->createFullUrl($query, self::API_URL, array('playerId'), 'class'),
                 $this->removeFromQuery($query, array('playerId'))
             );
         }
@@ -273,7 +273,7 @@ class PlayerService extends RestService
         if ($query != '' || $this->validator->call('validate', $query)) {
             $status = json_decode($query)->status;
             return $this->put(
-                $this->createFullUrl($query, self::APIURL, array('playerId'), 'email-verification-status'),
+                $this->createFullUrl($query, self::API_URL, array('playerId'), 'email-verification-status'),
                 $status
             );
         }
@@ -289,7 +289,7 @@ class PlayerService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->put(
-                $this->createFullUrl($query, self::APIURL, array('playerId'), 'reset-special-features'),
+                $this->createFullUrl($query, self::API_URL, array('playerId'), 'reset-special-features'),
                 $this->removeFromQuery($query, array('playerId'))
             );
         }
@@ -305,10 +305,283 @@ class PlayerService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, '', 'external'),
+                $this->createFullUrl($query, self::API_URL, '', 'external'),
                 $query
             );
         }
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function getClasses(string $query = '')
+    {
+        $pathPattern = self::API_URL . '/classes';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function getCouponsActive(string $query = '')
+    {
+        $pathPattern = self::API_URL . '/{playerId}/coupons/active';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function getPhoneNumberStatus(string $query = '')
+    {
+        $pathPattern = self::API_URL . '/{playerId}/phone-number-status';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function putPhoneNumberStatus($query = '')
+    {
+        $pathPattern = self::API_URL . '/{playerId}/phone-number-status';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->put(
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query),
+                $this->removeFromQuery($query, ['playerId'])
+            );
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function getBalance(string $query = '')
+    {
+        $pathPattern = self::API_URL . '/{playerId}/balance';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query));
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function getCouponsAvailable(string $query = '')
+    {
+        $pathPattern = self::API_URL . '/{playerId}/coupons';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function getCouponDetails(string $query = '')
+    {
+        $pathPattern = self::API_URL . '/{playerId}/couponDetails';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function getTokenValidation(string $query = '')
+    {
+        $pathPattern = self::API_URL . '/{playerId}/token/{playerToken}';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function getCouponsRedeemed(string $query = '')
+    {
+        $pathPattern = self::API_URL_V2 . '/coupons';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function putCompPoints(string $query = '')
+    {
+        $pathPattern = self::API_URL . '/{playerId}/comp-points';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->put(
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query),
+                $this->removeFromQuery($query, ['playerId'])
+            );
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function putPromotionVisited(string $query = '')
+    {
+        $pathPattern = self::API_URL . '/{playerId}/promotions/{promotionId}';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->put(
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query),
+                $this->removeFromQuery($query, ['playerId', 'promotionId'])
+            );
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function postTransactionFailed(string $query = '')
+    {
+        $pathPattern = self::API_URL . '/{playerId}/transaction/failed';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->post(
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query),
+                $this->removeFromQuery($query, ['playerId'])
+            );
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function postRedeemCompPoints(string $query = '')
+    {
+        $pathPattern = self::API_URL . '/{playerId}/redeemed-comp-points';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->post(
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true),
+                $this->removeFromQuery($query, ['playerId', 'amount'])
+            );
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function deleteCoupon(string $query = '')
+    {
+        $pathPattern = self::API_URL_V2 . '/{playerId}/coupons';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->delete(
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, ['couponCode']),
+                $this->removeFromQuery($query, ['playerId', 'couponCode'])
+            );
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $query
+     * @return bool|mixed
+     * @throws R_T_G_ServiceException
+     */
+    public function postCouponRedeem(string $query = '')
+    {
+        $pathPattern = self::API_URL_V2 . '/{playerId}/coupons';
+
+        if ($query != '' || $this->validator->call('validate', $query)) {
+            $this->setRequestAction($pathPattern);
+            return $this->post(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+        }
+
         return false;
     }
 }
