@@ -317,13 +317,13 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function getClasses(string $query = '')
+    public function getClasses(string $query = '{}')
     {
         $pathPattern = self::API_URL . '/classes';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
             list($url, $query) =
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true), true);
 
             $this->setRequestAction($pathPattern);
             return $this->get($url, json_encode($query));
@@ -337,7 +337,7 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function getCouponsActive(string $query = '')
+    public function getCouponsActive(string $query = '{}')
     {
         $pathPattern = self::API_URL . '/{playerId}/coupons/active';
 
@@ -357,13 +357,13 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function getPhoneNumberStatus(string $query = '')
+    public function getPhoneNumberStatus(string $query = '{}')
     {
         $pathPattern = self::API_URL . '/{playerId}/phone-number-status';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
             list($url, $query) =
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true), true);
 
             $this->setRequestAction($pathPattern);
             return $this->get($url, json_encode($query));
@@ -377,7 +377,7 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function putPhoneNumberStatus($query = '')
+    public function putPhoneNumberStatus($query = '{}')
     {
         $pathPattern = self::API_URL . '/{playerId}/phone-number-status';
 
@@ -397,13 +397,13 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function getBalance(string $query = '')
+    public function getBalance(string $query = '{}')
     {
         $pathPattern = self::API_URL . '/{playerId}/balance';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
             list($url, $query) =
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true), true);
 
             $this->setRequestAction($pathPattern);
             return $this->get($url, json_encode($query));
@@ -417,13 +417,13 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function getCouponsAvailable(string $query = '')
+    public function getCouponsAvailable(string $query = '{}')
     {
         $pathPattern = self::API_URL . '/{playerId}/coupons';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
             list($url, $query) =
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true), true);
 
             $this->setRequestAction($pathPattern);
             return $this->get($url, json_encode($query));
@@ -437,13 +437,13 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function getCouponDetails(string $query = '')
+    public function getCouponDetails(string $query = '{}')
     {
         $pathPattern = self::API_URL . '/{playerId}/couponDetails';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
             list($url, $query) =
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true), true);
 
             $this->setRequestAction($pathPattern);
             return $this->get($url, json_encode($query));
@@ -457,13 +457,13 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function getTokenValidation(string $query = '')
+    public function getTokenValidation(string $query = '{}')
     {
         $pathPattern = self::API_URL . '/{playerId}/token/{playerToken}';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
             list($url, $query) =
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true), true);
 
             $this->setRequestAction($pathPattern);
             return $this->get($url, json_encode($query));
@@ -477,13 +477,13 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function getCouponsRedeemed(string $query = '')
+    public function getCouponsRedeemed(string $query = '{}')
     {
         $pathPattern = self::API_URL_V2 . '/coupons';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
             list($url, $query) =
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true), true);
 
             $this->setRequestAction($pathPattern);
             return $this->get($url, json_encode($query));
@@ -497,13 +497,13 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function putCompPoints(string $query = '')
+    public function putCompPoints(string $query = '{}')
     {
         $pathPattern = self::API_URL . '/{playerId}/comp-points';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
             list($url, $query) =
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query));
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true));
 
             $this->setRequestAction($pathPattern);
             return $this->put($url, json_encode($query));
@@ -517,13 +517,13 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function putPromotionVisited(string $query = '')
+    public function putPromotionVisited(string $query = '{}')
     {
         $pathPattern = self::API_URL . '/{playerId}/promotions/{promotionId}';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
             list($url, $query) =
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query));
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true));
 
             $this->setRequestAction($pathPattern);
             return $this->put($url, json_encode($query));
@@ -537,13 +537,13 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function postTransactionFailed(string $query = '')
+    public function postTransactionFailed(string $query = '{}')
     {
         $pathPattern = self::API_URL . '/{playerId}/transaction/failed';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
             list($url, $query) =
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query));
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true));
 
             $this->setRequestAction($pathPattern);
             return $this->post($url, json_encode($query));
@@ -557,13 +557,13 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function postRedeemCompPoints(string $query = '')
+    public function postRedeemCompPoints(string $query = '{}')
     {
         $pathPattern = self::API_URL . '/{playerId}/redeemed-comp-points';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
             list($url, $query) =
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), ['amount']);
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true), ['amount']);
 
             $this->setRequestAction($pathPattern);
             return $this->post($url, $query);
@@ -577,7 +577,7 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function deleteCoupon(string $query = '')
+    public function deleteCoupon(string $query = '{}')
     {
         $pathPattern = self::API_URL_V2 . '/{playerId}/coupons';
 
@@ -585,7 +585,7 @@ class PlayerService extends RestService
             $this->setRequestAction($pathPattern);
 
             list($url, $query) =
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), ['couponCode']);
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true), ['couponCode']);
 
             return $this->delete($url, $query);
         }
@@ -598,10 +598,10 @@ class PlayerService extends RestService
      * @return bool|mixed
      * @throws R_T_G_ServiceException
      */
-    public function postCouponRedeem(string $query = '')
+    public function postCouponRedeem(string $query = '{}')
     {
         $pathPattern = self::API_URL_V2 . '/{playerId}/coupons';
-        list($url, $query) = UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+        list($url, $query) = UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query, true), true);
         if ($query != '' || $this->validator->call('validate', $query)) {
             $this->setRequestAction($pathPattern);
             return $this->post($url);
