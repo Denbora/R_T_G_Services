@@ -9,7 +9,7 @@ class ServiceService extends RestService
     /**
      * First part in url after /api/
      */
-    const APIURL = 'service';
+    const API_URL = 'service';
 
     /**
      * @param $query
@@ -21,7 +21,7 @@ class ServiceService extends RestService
     private function callGet($query, $array = null, $endpoint = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
-            return $this->get($this->createGetFullUrl($query, self::APIURL, $array, $endpoint));
+            return $this->get($this->createGetFullUrl($query, self::API_URL, $array, $endpoint));
         }
         return false;
     }
@@ -65,7 +65,7 @@ class ServiceService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, '', 'comments'),
+                $this->createFullUrl($query, self::API_URL, '', 'comments'),
                 $query
             );
         }
@@ -81,7 +81,7 @@ class ServiceService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, '', 'download-id'),
+                $this->createFullUrl($query, self::API_URL, '', 'download-id'),
                 $query
             );
         }

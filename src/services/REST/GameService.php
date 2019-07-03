@@ -9,7 +9,7 @@ class GameService extends RestService
     /**
      * First part in url after /api/
      */
-    const APIURL = 'games';
+    const API_URL = 'games';
 
     /**
      * @param $query
@@ -21,7 +21,7 @@ class GameService extends RestService
     private function callGet($query, $array = null, $endpoint = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
-            return $this->get($this->createGetFullUrl($query, self::APIURL, $array, $endpoint));
+            return $this->get($this->createGetFullUrl($query, self::API_URL, $array, $endpoint));
         }
         return false;
     }
@@ -105,7 +105,7 @@ class GameService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, '', 'block'),
+                $this->createFullUrl($query, self::API_URL, '', 'block'),
                 $query
             );
         }

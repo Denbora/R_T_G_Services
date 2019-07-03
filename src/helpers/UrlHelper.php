@@ -8,48 +8,50 @@ class UrlHelper
      * @param string        $baseUrl
      * @param string        $pathPattern
      *                      @example api/player/{playerId}/token/{playerToken} parameter will be taken from query
-     * @param string        $queryJSON
+     * @param array        $query
      * @param bool|array    $queryParameters
      *                      true - use all options for queries
      *                      false - вo not use the GET parameters
      *                      array - the list of keys to be used for the query
      *
-     * @return string
+     * @return array
      */
     public static function createFullUrl(
         string $baseUrl,
         string $pathPattern,
-        string $queryJSON,
+        array $query,
         $queryParameters = false
     ) {
         $url = $baseUrl;
 
-        $queryArray = !empty($queryJSON) ? json_decode($queryJSON, true) : [];
-
-        foreach ($queryArray as $key => $value) {
+        foreach ($query as $key => $value) {
             $urlParameter = '{' . $key . '}';
 
             if (strripos($pathPattern, $urlParameter) !== false) {
                 $path = str_replace($urlParameter, $value, $pathPattern);
-                unset($queryArray[$key]);
+                unset($query[$key]);
             }
         }
 
-        $url .= $path ?? '';
+        $url .= $path ?? $pathPattern;
 
         if ($queryParameters !== false) {
-            $urlParameters = $queryArray;
+            $urlParameters = $query;
 
             if (is_array($queryParameters)) {
-                $urlParameters = array_filter($queryArray, function ($key) use ($queryParameters) {
-                    return in_array($key, $queryParameters);
+                $urlParameters = array_filter($query, function ($key) use ($queryParameters) {
+                    if (in_array($key, $queryParameters)) {
+                        unset($queryParameters[$key]);
+                        return true;
+                    }
+                    return false;
                 }, ARRAY_FILTER_USE_KEY);
             }
 
             $url .= self::createUrlParameters($urlParameters ?? []);
         }
 
-        return $url;
+        return [$url, $query];
     }
 
     protected static function createUrlParameters(array $query): string

@@ -10,23 +10,16 @@ require_once __DIR__ . '/../experiments/config.php';
 
 //$casino = new Casino($base_url_US, $certificateUS, $rtgPasswordUS);
 
-$casinoRest = new CasinoRest($restBaseUrlUS, $certificateUS, $rtgKeyUS, $rtgPasswordUS);
+$casinoRest = new \denbora\R_T_G_Services\casino\CasinoRest($restBaseUrlUS, $certificateUS, $rtgKeyUS, $rtgPasswordUS);
+$casinoRestV2 = new \denbora\R_T_G_Services\casino\CasinoRestV2($restBaseUrlUS, $certificateUS, $rtgKeyUS, $rtgPasswordUS);
 $method = 'getPlayerAccountBalance';
 $service = 'Player';
-//$method = 'getDownloadInformationByDates';
-//$service = 'Download';
 
 try {
-    //$casino->testAllMethods();
-    //Loader::call($service, $method, $casino);
-    Loader::rest($service, $method, $casinoRest);
-    /*if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        Create::savePlayer($_POST, $casino);
-    } else {
-        Create::printForm();
-    }*/
+//    $test = $casinoRest->player->getClasses();
+    $test = $casinoRestV2->PlayerService->getPlayerClassesGET();
 } catch (\Exception $e) {
     echo "<pre>";
-    var_dump($e);
+    print_r($e->getMessage());
     echo "</pre>";
 }

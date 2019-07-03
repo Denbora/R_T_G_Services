@@ -9,7 +9,7 @@ class ReportService extends RestService
     /**
      * First part in url after /api/
      */
-    const APIURL = 'reports';
+    const API_URL = 'reports';
 
     /**
      * @param $query
@@ -21,7 +21,7 @@ class ReportService extends RestService
     private function callGet($query, $array = null, $endpoint = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
-            return $this->get($this->createGetFullUrl($query, self::APIURL, $array, $endpoint));
+            return $this->get($this->createGetFullUrl($query, self::API_URL, $array, $endpoint));
         }
         return false;
     }

@@ -9,7 +9,7 @@ class JackpotService extends RestService
     /**
      * First part in url after /api/
      */
-    const APIURL = 'jackpots';
+    const API_URL = 'jackpots';
 
     /**
      * @param string $query
@@ -19,7 +19,7 @@ class JackpotService extends RestService
     public function getJackpots($query = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
-            return $this->get($this->createGetFullUrl($query, self::APIURL, '', ''));
+            return $this->get($this->createGetFullUrl($query, self::API_URL, '', ''));
         }
         return false;
     }

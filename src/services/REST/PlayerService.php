@@ -322,8 +322,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL . '/classes';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+
             $this->setRequestAction($pathPattern);
-            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+            return $this->get($url, json_encode($query));
         }
 
         return false;
@@ -339,8 +342,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL . '/{playerId}/coupons/active';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+
             $this->setRequestAction($pathPattern);
-            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+            return $this->get($url, json_encode($query));
         }
 
         return false;
@@ -356,8 +362,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL . '/{playerId}/phone-number-status';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+
             $this->setRequestAction($pathPattern);
-            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+            return $this->get($url, json_encode($query));
         }
 
         return false;
@@ -373,11 +382,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL . '/{playerId}/phone-number-status';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query));
+
             $this->setRequestAction($pathPattern);
-            return $this->put(
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query),
-                $this->removeFromQuery($query, ['playerId'])
-            );
+            return $this->put($url, $query);
         }
 
         return false;
@@ -393,8 +402,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL . '/{playerId}/balance';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+
             $this->setRequestAction($pathPattern);
-            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query));
+            return $this->get($url, json_encode($query));
         }
 
         return false;
@@ -410,8 +422,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL . '/{playerId}/coupons';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+
             $this->setRequestAction($pathPattern);
-            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+            return $this->get($url, json_encode($query));
         }
 
         return false;
@@ -427,8 +442,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL . '/{playerId}/couponDetails';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+
             $this->setRequestAction($pathPattern);
-            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+            return $this->get($url, json_encode($query));
         }
 
         return false;
@@ -444,8 +462,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL . '/{playerId}/token/{playerToken}';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+
             $this->setRequestAction($pathPattern);
-            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+            return $this->get($url, json_encode($query));
         }
 
         return false;
@@ -461,8 +482,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL_V2 . '/coupons';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
+
             $this->setRequestAction($pathPattern);
-            return $this->get(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+            return $this->get($url, json_encode($query));
         }
 
         return false;
@@ -478,11 +502,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL . '/{playerId}/comp-points';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query));
+
             $this->setRequestAction($pathPattern);
-            return $this->put(
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query),
-                $this->removeFromQuery($query, ['playerId'])
-            );
+            return $this->put($url, json_encode($query));
         }
 
         return false;
@@ -498,11 +522,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL . '/{playerId}/promotions/{promotionId}';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query));
+
             $this->setRequestAction($pathPattern);
-            return $this->put(
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query),
-                $this->removeFromQuery($query, ['playerId', 'promotionId'])
-            );
+            return $this->put($url, json_encode($query));
         }
 
         return false;
@@ -518,11 +542,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL . '/{playerId}/transaction/failed';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query));
+
             $this->setRequestAction($pathPattern);
-            return $this->post(
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query),
-                $this->removeFromQuery($query, ['playerId'])
-            );
+            return $this->post($url, json_encode($query));
         }
 
         return false;
@@ -538,11 +562,11 @@ class PlayerService extends RestService
         $pathPattern = self::API_URL . '/{playerId}/redeemed-comp-points';
 
         if ($query != '' || $this->validator->call('validate', $query)) {
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), ['amount']);
+
             $this->setRequestAction($pathPattern);
-            return $this->post(
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true),
-                $this->removeFromQuery($query, ['playerId', 'amount'])
-            );
+            return $this->post($url, $query);
         }
 
         return false;
@@ -559,10 +583,11 @@ class PlayerService extends RestService
 
         if ($query != '' || $this->validator->call('validate', $query)) {
             $this->setRequestAction($pathPattern);
-            return $this->delete(
-                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, ['couponCode']),
-                $this->removeFromQuery($query, ['playerId', 'couponCode'])
-            );
+
+            list($url, $query) =
+                UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), ['couponCode']);
+
+            return $this->delete($url, $query);
         }
 
         return false;
@@ -576,10 +601,10 @@ class PlayerService extends RestService
     public function postCouponRedeem(string $query = '')
     {
         $pathPattern = self::API_URL_V2 . '/{playerId}/coupons';
-
+        list($url, $query) = UrlHelper::createFullUrl($this->baseUrl, $pathPattern, json_decode($query), true);
         if ($query != '' || $this->validator->call('validate', $query)) {
             $this->setRequestAction($pathPattern);
-            return $this->post(UrlHelper::createFullUrl($this->baseUrl, $pathPattern, $query, true));
+            return $this->post($url);
         }
 
         return false;
