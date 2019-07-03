@@ -45,8 +45,6 @@ class RestResponse implements ResponseInterface
         return $response->body;
     }
 
-
-
     /**
      * get error from codeList using code
      *

@@ -8,7 +8,7 @@ use denbora\R_T_G_Services\validators\ValidatorInterface;
 use Httpful\Request;
 use \Exception;
 
-class RestService implements RestServiceInterface
+abstract class RestService implements RestServiceInterface
 {
     private $certificate;
     private $key;
@@ -35,10 +35,11 @@ class RestService implements RestServiceInterface
 
     /**
      * @param string $url
-     * @return mixed
+     * @param string $data
+     * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
-    public function get(string $url)
+    public function get(string $url, $data = '')
     {
         try {
             $response = Request::get($url)
@@ -57,7 +58,7 @@ class RestService implements RestServiceInterface
     /**
      * @param string $url
      * @param string $data
-     * @return mixed
+     * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
     public function post(string $url, $data = '')
@@ -81,7 +82,7 @@ class RestService implements RestServiceInterface
     /**
      * @param string $url
      * @param string $data
-     * @return mixed
+     * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
     public function put(string $url, $data = '')
@@ -203,7 +204,7 @@ class RestService implements RestServiceInterface
      * @param string $endpoint
      * @return string
      */
-    public function createGetFullUrl(string $query, string $serviceApiUrl, $pathParams = null, string $endpoint = '')
+    protected function createGetFullUrl(string $query, string $serviceApiUrl, $pathParams = null, string $endpoint = '')
     {
         if ($query != '') {
             $path = '';

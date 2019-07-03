@@ -35,27 +35,27 @@ class CasinoRest implements CasinoInterface
     /**
      * @var string
      */
-    private $baseUrl;
+    protected $baseUrl;
 
     /**
      * @var string
      */
-    private $certificateFile;
+    protected $certificateFile;
 
     /**
      * @var string
      */
-    private $keyFile;
+    protected $keyFile;
 
     /**
      * @var string
      */
-    private $password;
+    protected $password;
 
     /**
      * @var /BaseValidator
      */
-    private $validator;
+    protected $validator;
 
     /**
      * @var array
@@ -63,19 +63,19 @@ class CasinoRest implements CasinoInterface
     protected $serviceDescription;
 
     /**
-     * @param string $name
+     * @param string $serviceName
      * @return object
      * @throws R_T_G_ServiceException
      */
-    public function __get($name)
+    public function __get(string $serviceName)
     {
-        $className = ucwords($name) . 'Service';
+        $className = ucwords($serviceName) . 'Service';
         $fullClassName = 'denbora\R_T_G_Services\services\REST\\' . $className;
 
         if (class_exists($fullClassName)) {
-            return $this->getService(ucwords($name));
+            return $this->getService(ucwords($serviceName));
         } else {
-            throw new R_T_G_ServiceException('No such service - ' . $name);
+            throw new R_T_G_ServiceException('No such service - ' . $serviceName);
         }
     }
 

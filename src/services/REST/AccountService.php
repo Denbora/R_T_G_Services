@@ -9,7 +9,7 @@ class AccountService extends RestService
     /**
      * First part in url after /api/
      */
-    const APIURL = 'accounts';
+    const API_URL = 'accounts';
 
     /**
      * @param string $query
@@ -20,7 +20,7 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, '', 'activate'),
+                $this->createFullUrl($query, self::API_URL, '', 'activate'),
                 $query
             );
         }
@@ -36,7 +36,7 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, '', 'deactivate'),
+                $this->createFullUrl($query, self::API_URL, '', 'deactivate'),
                 $query
             );
         }
@@ -52,7 +52,7 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, '', 'login'),
+                $this->createFullUrl($query, self::API_URL, '', 'login'),
                 $query
             );
         }
@@ -68,7 +68,7 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->put(
-                $this->createFullUrl($query, self::APIURL, '', 'change-password'),
+                $this->createFullUrl($query, self::API_URL, '', 'change-password'),
                 $query
             );
         }
@@ -84,7 +84,7 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->put(
-                $this->createFullUrl($query, self::APIURL, '', 'change-password-with-token'),
+                $this->createFullUrl($query, self::API_URL, '', 'change-password-with-token'),
                 $query
             );
         }
@@ -100,7 +100,7 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, '', 'reset-password'),
+                $this->createFullUrl($query, self::API_URL, '', 'reset-password'),
                 $query
             );
         }
@@ -116,7 +116,7 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->put(
-                $this->createFullUrl($query, self::APIURL, '', 'forgot-password'),
+                $this->createFullUrl($query, self::API_URL, '', 'forgot-password'),
                 $query
             );
         }
@@ -132,7 +132,7 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->put(
-                $this->createFullUrl($query, self::APIURL, '', 'forgot-username'),
+                $this->createFullUrl($query, self::API_URL, '', 'forgot-username'),
                 $query
             );
         }
@@ -147,7 +147,7 @@ class AccountService extends RestService
     public function getIncompleteSignups($query = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
-            return $this->get($this->createGetFullUrl($query, self::APIURL, '', 'incomplete-signups'));
+            return $this->get($this->createGetFullUrl($query, self::API_URL, '', 'incomplete-signups'));
         }
         return false;
     }
@@ -161,7 +161,7 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, '', 'incomplete-signups'),
+                $this->createFullUrl($query, self::API_URL, '', 'incomplete-signups'),
                 $query
             );
         }
@@ -177,7 +177,7 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, '', 'logout'),
+                $this->createFullUrl($query, self::API_URL, '', 'logout'),
                 $query
             );
         }
@@ -192,7 +192,7 @@ class AccountService extends RestService
     public function getPlayerid($query = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
-            return $this->get($this->createGetFullUrl($query, self::APIURL, '', 'playerid'));
+            return $this->get($this->createGetFullUrl($query, self::API_URL, '', 'playerid'));
         }
         return false;
     }
@@ -207,7 +207,7 @@ class AccountService extends RestService
     public function getBalance($query = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
-            return $this->get($this->createGetFullUrl($query, self::APIURL, '', 'balance'));
+            return $this->get($this->createGetFullUrl($query, self::API_URL, '', 'balance'));
         }
         return false;
     }
@@ -223,7 +223,7 @@ class AccountService extends RestService
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
             return $this->post(
-                $this->createFullUrl($query, self::APIURL, '', 'set-password'),
+                $this->createFullUrl($query, self::API_URL, '', 'set-password'),
                 $query
             );
         }
@@ -240,7 +240,7 @@ class AccountService extends RestService
     public function postToken($query = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
-            $url = $this->createFullUrl($query, self::APIURL, '', 'token');
+            $url = $this->createFullUrl($query, self::API_URL, '', 'token');
             $url = $this->addQueryParametersToUrl($query, ['login'], $url);
             $query = $this->removeParametersFromQuery($query, ['login']);
 
@@ -263,7 +263,7 @@ class AccountService extends RestService
     public function postBan($query = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
-            $url = $this->createFullUrl($query, self::APIURL, '', 'ban');
+            $url = $this->createFullUrl($query, self::API_URL, '', 'ban');
             $url = $this->addQueryParametersToUrl($query, ['deductAffiliateEarnings'], $url);
             $query = $this->removeParametersFromQuery($query, ['deductAffiliateEarnings']);
 
@@ -285,7 +285,7 @@ class AccountService extends RestService
     public function postUnban($query = '')
     {
         if ($query != '' || $this->validator->call('validate', $query)) {
-            $url = $this->createFullUrl($query, self::APIURL, '', 'unban');
+            $url = $this->createFullUrl($query, self::API_URL, '', 'unban');
             $url = $this->addQueryParametersToUrl($query, ['includeAffiliateEarnings'], $url);
             $query = $this->removeParametersFromQuery($query, ['includeAffiliateEarnings']);
 
