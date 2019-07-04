@@ -33,7 +33,7 @@ class PlayerService extends RestService
      */
     public function getPlayers($query = '')
     {
-        return $this->callGet(self::API_URL, $query);
+        return $this->callGet($query);
     }
 
     /**
