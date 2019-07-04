@@ -16,6 +16,9 @@ class GetPlayer
     {
         try {
             $playerService = $casino->getService($service);
+
+            var_dump($playerService);die();
+
             $pid = '10013051';
 
             $result = $playerService->call($method, $pid);

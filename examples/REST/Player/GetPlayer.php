@@ -14,7 +14,7 @@ class GetPlayer
     {
         try {
             $query = [
-                'playerId' => '10024193'
+                'email' => 'test@test.com'
             ];
 
             $result = $casino->player->getPlayer(json_encode($query));
@@ -24,7 +24,7 @@ class GetPlayer
             echo "</pre>";
         } catch (\Exception $e) {
             echo "<pre>";
-            var_dump($e);
+            var_dump($e->getMessage());
             echo "</pre>";
         }
     }

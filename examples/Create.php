@@ -3,6 +3,7 @@
 namespace denbora\R_T_G_Services\examples;
 
 use denbora\R_T_G_Services\casino\Casino;
+use denbora\R_T_G_Services\casino\CasinoRestV2;
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 class Create
@@ -39,5 +40,20 @@ class Create
 
         echo "<pre>";
         var_dump($result);
+    }
+
+    /**
+     * @return CasinoRestV2
+     * @throws R_T_G_ServiceException
+     */
+    public static function createCasinoRESTv2(): CasinoRestV2
+    {
+        $restBaseUrl = '';
+        $certificate = '';
+        $key = '';
+        $password = '';
+
+        //TODO: create variables for creating object
+        return new CasinoRestV2($restBaseUrl, $certificate, $key, $password);
     }
 }
