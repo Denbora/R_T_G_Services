@@ -25,10 +25,11 @@ abstract class RestV2Service extends RestService implements RestServiceInterface
         string $password,
         ValidatorInterface $validator,
         RestResponse $response,
-        string $baseUrl
+        string $baseUrl,
+        string $apiKey
     ) {
         $this->restMethods = json_decode(file_get_contents(self::METHOD_V2_PATH), true);
-        parent::__construct($certificate, $key, $password, $validator, $response, $baseUrl);
+        parent::__construct($certificate, $key, $password, $validator, $response, $baseUrl, $apiKey);
     }
 
     /**

@@ -51,9 +51,23 @@ class CasinoRestV2 extends CasinoRest implements CasinoInterface
      */
     protected static $services = [];
 
-    public function __construct(string $baseUrl, string $certificate, string $key, string $password)
-    {
-        parent::__construct($baseUrl, $certificate, $key, $password);
+    /**
+     * CasinoRestV2 constructor.
+     * @param string $baseUrl
+     * @param string $certificate
+     * @param string $key
+     * @param string $password
+     * @param string $apiKey
+     * @throws R_T_G_ServiceException
+     */
+    public function __construct(
+        string $baseUrl,
+        string $certificate,
+        string $key,
+        string $password,
+        string $apiKey = ''
+    ) {
+        parent::__construct($baseUrl, $certificate, $key, $password, $apiKey);
     }
 
     /**
@@ -85,7 +99,8 @@ class CasinoRestV2 extends CasinoRest implements CasinoInterface
                 $this->password,
                 new RestV2Validator(),
                 new RestV2Response(),
-                $this->baseUrl
+                $this->baseUrl,
+                $this->apiKey
             );
         }
 
