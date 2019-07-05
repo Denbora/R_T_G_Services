@@ -16,13 +16,13 @@ class ActivatePlayerPOST extends RestExample
     {
         try {
             $query = [
-                'login' => 'tony_0001'
+                'player_id' => '10307426' //this is tony_0001
             ];
 
             $result = $casino->AccountService->activatePlayerPOST(json_encode($query));
-            $this->dumpCLI($result);
+            dd($result);
         } catch (R_T_G_ServiceException $exception) {
-            $this->dumpCLI($exception->getMessage());
+            dd($exception->getMessage());
         }
     }
 }

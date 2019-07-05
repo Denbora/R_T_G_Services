@@ -46,8 +46,6 @@ abstract class RestService implements RestServiceInterface
                 ->authenticateWithCert($this->certificate, $this->key, $this->password)
                 ->send();
 
-            var_dump($response->raw_body);die();
-
             $result = $this->response->getContent($response);
 
             return $result;

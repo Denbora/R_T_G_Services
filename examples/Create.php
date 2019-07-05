@@ -48,12 +48,16 @@ class Create
      */
     public static function createCasinoRESTv2(): CasinoRestV2
     {
-        $restBaseUrl = '';
-        $certificate = '';
-        $key = '';
-        $password = '';
+        $credsPath = __DIR__ . '/../experiments/config_project/creds/';
+        $config = json_decode(file_get_contents(__DIR__ . '/../experiments/config_project/links/config.json'), true);
 
         //TODO: create variables for creating object
+
+        $restBaseUrl = $config['url.rest'];
+        $certificate =  $credsPath . $config['crt'];
+        $key = $credsPath . $config['key'];
+        $password = $config['pass'];
+
         return new CasinoRestV2($restBaseUrl, $certificate, $key, $password);
     }
 }
