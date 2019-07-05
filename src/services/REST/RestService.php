@@ -137,6 +137,12 @@ abstract class RestService implements RestServiceInterface
      */
     protected function optionalUrl(string $url, array $query = [])
     {
+        //deleted last '/' from path
+        $path = parse_url($url, PHP_URL_PATH);
+        if ($path) {
+            $url = str_replace($path, rtrim($path, '/'), $url);
+        }
+
         if (!empty($this->apiKey)) {
             $query['apiKey'] = $this->apiKey;
             $url .= (parse_url($url, PHP_URL_QUERY) ? '&' : '?') . http_build_query($query);
