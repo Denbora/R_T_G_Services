@@ -16,6 +16,7 @@ abstract class RestService implements RestServiceInterface
     protected $validator;
     private $response;
     protected $baseUrl;
+    protected $apiKey;
 
     public function __construct(
         string $certificate,
@@ -23,7 +24,8 @@ abstract class RestService implements RestServiceInterface
         string $password,
         ValidatorInterface $validator,
         RestResponse $response,
-        string $baseUrl
+        string $baseUrl,
+        string $apiKey
     ) {
         $this->certificate = $certificate;
         $this->key = $key;
@@ -31,6 +33,7 @@ abstract class RestService implements RestServiceInterface
         $this->validator = $validator;
         $this->response = $response;
         $this->baseUrl = $baseUrl;
+        $this->apiKey = $apiKey;
     }
 
     /**
@@ -42,7 +45,7 @@ abstract class RestService implements RestServiceInterface
     public function get(string $url, $data = '')
     {
         try {
-            $response = Request::get($url)
+            $response = Request::get($this->optionalUrl($url))
                 ->authenticateWithCert($this->certificate, $this->key, $this->password)
                 ->send();
 
@@ -64,7 +67,7 @@ abstract class RestService implements RestServiceInterface
     public function post(string $url, $data = '')
     {
         try {
-            $response = Request::post($url)
+            $response = Request::post($this->optionalUrl($url))
                 ->authenticateWithCert($this->certificate, $this->key, $this->password)
                 ->sendsJSON()
                 ->body($data)
@@ -88,7 +91,7 @@ abstract class RestService implements RestServiceInterface
     public function put(string $url, $data = '')
     {
         try {
-            $response = Request::put($url)
+            $response = Request::put($this->optionalUrl($url))
                 ->authenticateWithCert($this->certificate, $this->key, $this->password)
                 ->sendsJSON()
                 ->body($data)
@@ -112,7 +115,7 @@ abstract class RestService implements RestServiceInterface
     public function delete(string $url, $data = '')
     {
         try {
-            $response = Request::delete($url)
+            $response = Request::delete($this->optionalUrl($url))
                 ->authenticateWithCert($this->certificate, $this->key, $this->password)
                 ->contentType('json')
                 ->body($data)
@@ -125,6 +128,21 @@ abstract class RestService implements RestServiceInterface
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
             throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
         }
+    }
+
+    /**
+     * @param string $url
+     * @param array $query
+     * @return string
+     */
+    protected function optionalUrl(string $url, array $query = [])
+    {
+        if (!empty($this->apiKey)) {
+            $query['apiKey'] = $this->apiKey;
+            $url .= (parse_url($url, PHP_URL_QUERY) ? '&' : '?') . http_build_query($query);
+        }
+
+        return $url;
     }
 
     /**

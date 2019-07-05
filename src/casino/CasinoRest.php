@@ -63,6 +63,11 @@ class CasinoRest implements CasinoInterface
     protected $serviceDescription;
 
     /**
+     * @var string
+     */
+    protected $apiKey;
+
+    /**
      * @param string $serviceName
      * @return object
      * @throws R_T_G_ServiceException
@@ -85,10 +90,18 @@ class CasinoRest implements CasinoInterface
      * @param string $certificate
      * @param string $key
      * @param string $password
+     * @param string $apiKey
      * @throws R_T_G_ServiceException
      */
-    public function __construct(string $baseUrl, string $certificate, string $key, string $password)
-    {
+    public function __construct(
+        string $baseUrl,
+        string $certificate,
+        string $key,
+        string $password,
+        string $apiKey = ''
+    ) {
+        $this->apiKey = $apiKey;
+
         $this->validator = ValidatorFactory::build('CasinoValidator');
 
         if ($this->validator->call('baseWebServiceUrl', $baseUrl)) {
@@ -147,7 +160,8 @@ class CasinoRest implements CasinoInterface
             $this->password,
             $serviceValidator,
             $serviceResponse,
-            $this->baseUrl
+            $this->baseUrl,
+            $this->apiKey
         );
 
         return $service;
