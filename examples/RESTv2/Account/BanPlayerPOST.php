@@ -9,7 +9,7 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 class BanPlayerPOST extends RestExample
 {
     /**
-     * GetPlayerClassesGET constructor.
+     * BanPlayerPOST constructor.
      * @param CasinoRestV2 $casino
      */
     public function __construct(CasinoRestV2 $casino)
@@ -18,7 +18,7 @@ class BanPlayerPOST extends RestExample
             $query = [
                 'ban_type' => 'email',
                 'comment' => 'Ban me',
-                'player_id' => '10307426', //this is tony_0001
+                'player_id' => '10314061', //this is tony_0003
                 'deductAffiliateEarnings' => 'false'
             ];
 

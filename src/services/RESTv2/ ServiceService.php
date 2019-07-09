@@ -22,6 +22,7 @@ class ServiceService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function getCommentGET($queryJSON = '{}')
     {
@@ -32,6 +33,7 @@ class ServiceService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function updateCommentPUT($queryJSON = '{}')
     {
@@ -42,6 +44,7 @@ class ServiceService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function deleteCommentDELETE($queryJSON = '{}')
     {
@@ -112,6 +115,7 @@ class ServiceService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function createCommentPOST($queryJSON = '{}')
     {

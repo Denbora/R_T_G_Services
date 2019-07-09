@@ -35,6 +35,10 @@ class RunExample extends Command
 
         $classExample = self::EXAMPLE_NAMESPACE . $serviceName . '\\' . $methodName;
 
-        new $classExample(Create::createCasinoRESTv2());
+        if (class_exists($classExample)) {
+            new $classExample(Create::createCasinoRESTv2());
+        } else {
+            $output->writeln('<error>Example not found!!!</error>');
+        }
     }
 }

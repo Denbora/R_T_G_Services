@@ -15,11 +15,10 @@ class GetPlayerClassesGET extends RestExample
     public function __construct(CasinoRestV2 $casino)
     {
         try {
-            $query = [];
-            $result = $casino->PlayerService->getPlayerClassesGET(json_encode($query));
-            $this->dumpCLI($result);
+            $result = $casino->PlayerService->getPlayerClassesGET();
+            dd($result);
         } catch (R_T_G_ServiceException $exception) {
-            $this->dumpCLI($exception->getMessage());
+            dd($exception->getMessage());
         }
     }
 }

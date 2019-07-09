@@ -9,7 +9,7 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 class CashbackGET extends RestExample
 {
     /**
-     * GetPlayerClassesGET constructor.
+     * CashbackGET constructor.
      * @param CasinoRestV2 $casino
      */
     public function __construct(CasinoRestV2 $casino)
