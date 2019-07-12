@@ -39,16 +39,14 @@ class UrlHelper
         $url .= $path ?? $pathPattern;
 
         if ($queryParameters !== false) {
-            $urlParameters = $query;
-
             if (is_array($queryParameters)) {
-                $urlParameters = array_filter($query, function ($key) use ($queryParameters) {
+                $queryArray = $query;
+                foreach ($queryArray as $key => $value) {
                     if (in_array($key, $queryParameters)) {
-                        unset($queryParameters[$key]);
-                        return true;
+                        unset($query[$key]);
+                        $urlParameters[$key] = $value;
                     }
-                    return false;
-                }, ARRAY_FILTER_USE_KEY);
+                }
             }
 
             $url .= self::createUrlParameters($urlParameters ?? []);
