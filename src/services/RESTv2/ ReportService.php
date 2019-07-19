@@ -232,6 +232,7 @@ class ReportService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function getVendorGameStatsGET($queryJSON = '{}')
     {
@@ -262,6 +263,7 @@ class ReportService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function getVendorGameStatsByPlayerGET($queryJSON = '{}')
     {

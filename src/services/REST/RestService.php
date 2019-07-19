@@ -69,7 +69,7 @@ abstract class RestService implements RestServiceInterface
         try {
             $response = Request::post($this->optionalUrl($url))
                 ->authenticateWithCert($this->certificate, $this->key, $this->password)
-                ->sendsJSON()
+                ->contentType('json')
                 ->body($data)
                 ->send();
 
@@ -93,7 +93,7 @@ abstract class RestService implements RestServiceInterface
         try {
             $response = Request::put($this->optionalUrl($url))
                 ->authenticateWithCert($this->certificate, $this->key, $this->password)
-                ->sendsJSON()
+                ->contentType('json')
                 ->body($data)
                 ->send();
 

@@ -6,6 +6,7 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestV2Response;
 use denbora\R_T_G_Services\services\RESTv2\HelperService;
 use denbora\R_T_G_Services\services\RESTv2\PlayerService;
+use denbora\R_T_G_Services\services\RESTv2\PromotionService;
 use denbora\R_T_G_Services\services\RESTv2\RestV2Service;
 use denbora\R_T_G_Services\validators\RestV2Validator;
 use denbora\R_T_G_Services\services\RESTv2\AccountService;
@@ -37,6 +38,7 @@ use denbora\R_T_G_Services\services\RESTv2\WalletService;
  * @property JackpotService JackpotService
  * @property MessageService MessageService
  * @property PlayerService PlayerService
+ * @property PromotionService PromotionService
  * @property ReportService ReportService
  * @property ServiceService ServiceService
  * @property SettingsService SettingsService

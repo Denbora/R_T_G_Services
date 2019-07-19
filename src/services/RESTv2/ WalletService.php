@@ -22,6 +22,7 @@ class WalletService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function getNotificationGET($queryJSON = '{}')
     {
@@ -32,6 +33,7 @@ class WalletService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function subscribeNotificationPOST($queryJSON = '{}')
     {
@@ -42,6 +44,7 @@ class WalletService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function unsubscribeNotificationDELETE($queryJSON = '{}')
     {
@@ -52,6 +55,7 @@ class WalletService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function getBalancesPOST($queryJSON = '{}')
     {
@@ -62,6 +66,7 @@ class WalletService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function placeBetPOST($queryJSON = '{}')
     {
@@ -72,6 +77,7 @@ class WalletService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function cancelBetDELETE($queryJSON = '{}')
     {
@@ -81,7 +87,8 @@ class WalletService extends RestV2Service implements RestServiceInterface
     /**
      * @param string $queryJSON
      * @return array|mixed|object|string
-     * @throws R_T_G_ServiceException
+     * @throws R_T_G_ServiceException.
+     * @deprecated this method not tested
      */
     public function placeSettlementPOST($queryJSON = '{}')
     {

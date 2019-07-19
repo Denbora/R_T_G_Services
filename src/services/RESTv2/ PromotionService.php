@@ -22,6 +22,7 @@ class PromotionService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function updatePromotionPUT($queryJSON = '{}')
     {
@@ -32,6 +33,7 @@ class PromotionService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function deletePromotionDELETE($queryJSON = '{}')
     {
@@ -72,6 +74,7 @@ class PromotionService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function createPromotionPOST($queryJSON = '{}')
     {
@@ -92,6 +95,7 @@ class PromotionService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function addBannerPOST($queryJSON = '{}')
     {

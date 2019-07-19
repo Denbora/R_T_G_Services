@@ -18,7 +18,7 @@ class UpdateServicesList extends Command
     {
         $services = $this->parseJsonSwaggerApi();
 
-        file_put_contents(self::SERVICES_LIST, json_encode($services));
+        file_put_contents(self::SERVICES_LIST, json_encode($services, JSON_PRETTY_PRINT));
 
         $io = new SymfonyStyle($input, $output);
 
@@ -27,42 +27,42 @@ class UpdateServicesList extends Command
 
     private function parseJsonSwaggerApi(): array
     {
-        $json = file_get_contents(__DIR__ . '/openAPI.json');
-
-        $apiData = json_decode($json, true);
+        $apiData = json_decode(file_get_contents(__DIR__ . '/openAPI.json'), true);
 
         try {
-            foreach ($apiData['paths'] as $pathTemplate => $methods) {
-                foreach ($methods as $methodType => $method) {
-                    list($categoryName, $methodName) = explode('_', $method['operationId']);
+            if (!empty($apiData)) {
+                foreach ($apiData['paths'] as $pathTemplate => $methods) {
+                    foreach ($methods as $methodType => $method) {
+                        list($categoryName, $methodName) = explode('_', $method['operationId']);
 
-                    if (isset($method['parameters'])) {
-                        $parameters = [];
-                        foreach ($method['parameters'] as $parameter) {
-                            if (!isset($parameter['schema'])) {
-                                $parameters[$parameter['name']] = [
-                                    'dataType' => $parameter['type'],
-                                    'parameterType' => $parameter['in'],
-                                    'required' => $parameter['required'],
-                                    'description' => $parameter['description'] ?? ''
-                                ];
-                            } else {
-                                $parameters[$parameter['name']] = 'JSON';
+                        if (isset($method['parameters'])) {
+                            $parameters = [];
+                            foreach ($method['parameters'] as $parameter) {
+                                if (!isset($parameter['schema'])) {
+                                    $parameters[$parameter['name']] = [
+                                        'dataType' => $parameter['type'],
+                                        'parameterType' => $parameter['in'],
+                                        'required' => $parameter['required'],
+                                        'description' => $parameter['description'] ?? ''
+                                    ];
+                                } else {
+                                    $parameters[$parameter['name']] = 'JSON';
+                                }
                             }
                         }
-                    }
 
-                    $responses = [];
-                    foreach ($method['responses'] as $code => $response) {
-                        $responses[$code] = $response['description'];
-                    }
+                        $responses = [];
+                        foreach ($method['responses'] as $code => $response) {
+                            $responses[$code] = $response['description'];
+                        }
 
-                    $result[$categoryName][$methodName] = [
-                        'method' => strtoupper($methodType),
-                        'path' => $pathTemplate,
-                        'parameters' => $parameters ?? [],
-                        'responses' => $responses ?? []
-                    ];
+                        $result[$categoryName][$methodName] = [
+                            'method' => strtoupper($methodType),
+                            'path' => $pathTemplate,
+                            'parameters' => $parameters ?? [],
+                            'responses' => $responses ?? []
+                        ];
+                    }
                 }
             }
         } catch (Exception $exception) {
