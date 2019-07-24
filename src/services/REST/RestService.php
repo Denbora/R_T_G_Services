@@ -45,9 +45,13 @@ abstract class RestService implements RestServiceInterface
     public function get(string $url, $data = '')
     {
         try {
-            $response = Request::get($this->optionalUrl($url))
-                ->authenticateWithCert($this->certificate, $this->key, $this->password)
-                ->send();
+            $request = Request::get($this->optionalUrl($url));
+
+            if (empty($this->apiKey)) {
+                $request->authenticateWithCert($this->certificate, $this->key, $this->password);
+            }
+
+            $response = $request->send();
 
             $result = $this->response->getContent($response);
 
@@ -67,11 +71,15 @@ abstract class RestService implements RestServiceInterface
     public function post(string $url, $data = '')
     {
         try {
-            $response = Request::post($this->optionalUrl($url))
-                ->authenticateWithCert($this->certificate, $this->key, $this->password)
+            $request =  Request::post($this->optionalUrl($url))
                 ->contentType('json')
-                ->body($data)
-                ->send();
+                ->body($data);
+
+            if (empty($this->apiKey)) {
+                $request->authenticateWithCert($this->certificate, $this->key, $this->password);
+            }
+
+            $response = $request->send();
 
             $result = $this->response->getContent($response);
 
