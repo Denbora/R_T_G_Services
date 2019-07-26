@@ -6,7 +6,7 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestResponse;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
 
-class ReportService extends RestV2Service implements RestServiceInterface
+class ReportService extends RestV2Service
 {
     const SERVICE_NAME = 'Report';
 

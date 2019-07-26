@@ -7,7 +7,6 @@ use denbora\R_T_G_Services\responses\RestV2Response;
 use denbora\R_T_G_Services\services\RESTv2\HelperService;
 use denbora\R_T_G_Services\services\RESTv2\PlayerService;
 use denbora\R_T_G_Services\services\RESTv2\PromotionService;
-use denbora\R_T_G_Services\services\RESTv2\RestV2Service;
 use denbora\R_T_G_Services\validators\RestV2Validator;
 use denbora\R_T_G_Services\services\RESTv2\AccountService;
 use denbora\R_T_G_Services\services\RESTv2\CashierService;
@@ -19,11 +18,11 @@ use denbora\R_T_G_Services\services\RESTv2\HistoryService;
 use denbora\R_T_G_Services\services\RESTv2\JackpotService;
 use denbora\R_T_G_Services\services\RESTv2\MessageService;
 use denbora\R_T_G_Services\services\RESTv2\ReportService;
-use denbora\R_T_G_Services\services\RESTv2\RestServiceInterface;
 use denbora\R_T_G_Services\services\RESTv2\ServiceService;
 use denbora\R_T_G_Services\services\RESTv2\SettingsService;
 use denbora\R_T_G_Services\services\RESTv2\VigService;
 use denbora\R_T_G_Services\services\RESTv2\WalletService;
+use denbora\R_T_G_Services\services\REST\RestServiceInterface;
 
 /**
  * Class CasinoRestV2
@@ -51,7 +50,7 @@ class CasinoRestV2 extends CasinoRest implements CasinoInterface
     /**
      * @var array
      */
-    protected static $services = [];
+    protected static $restV2Services = [];
 
     /**
      * CasinoRestV2 constructor.
@@ -94,8 +93,9 @@ class CasinoRestV2 extends CasinoRest implements CasinoInterface
      */
     protected function createService(string $serviceName): RestServiceInterface
     {
-        if (!key_exists($serviceName, static::$services)) {
-            static::$services[$serviceName] = new $serviceName(
+        if (!key_exists($serviceName, static::$restV2Services)) {
+            /** @var $serviceInstance RestServiceInterface */
+            $serviceInstance = new $serviceName(
                 $this->certificateFile,
                 $this->keyFile,
                 $this->password,
@@ -104,8 +104,18 @@ class CasinoRestV2 extends CasinoRest implements CasinoInterface
                 $this->baseUrl,
                 $this->apiKey
             );
+
+            if (!$serviceInstance->hasConnectTimeout()) {
+                $serviceInstance->setConnectTimeout($this->connectTimeout);
+            }
+
+            if (!$serviceInstance->hasTimeout()) {
+                $serviceInstance->setTimeout($this->timeout);
+            }
+
+            static::$restV2Services[$serviceName] = $serviceInstance;
         }
 
-        return static::$services[$serviceName];
+        return static::$restV2Services[$serviceName];
     }
 }

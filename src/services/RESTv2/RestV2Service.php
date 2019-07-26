@@ -7,10 +7,9 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestResponse;
 use denbora\R_T_G_Services\entity\RestEntity;
 use denbora\R_T_G_Services\services\REST\RestService;
-use denbora\R_T_G_Services\services\REST\RestServiceInterface;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
 
-abstract class RestV2Service extends RestService implements RestServiceInterface
+abstract class RestV2Service extends RestService implements RestV2ServiceInterface
 {
     const METHOD_V2_PATH = __DIR__ . '/../../config/restMethodsV2.json';
 

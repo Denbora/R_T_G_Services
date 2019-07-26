@@ -2,6 +2,7 @@
 
 namespace denbora\R_T_G_Services\services\REST;
 
+use denbora\R_T_G_Services\casino\CasinoRest;
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestResponse;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
@@ -19,8 +20,8 @@ abstract class RestService implements RestServiceInterface
     protected $baseUrl;
     protected $apiKey;
 
-    protected $connectTimeout = 5;
-    protected $timeout = 20;
+    protected $connectTimeout;
+    protected $timeout;
 
     public function __construct(
         string $certificate,
@@ -46,9 +47,27 @@ abstract class RestService implements RestServiceInterface
         return $this;
     }
 
+    public function hasTimeout(): bool
+    {
+        return !empty($this->timeout);
+    }
+
     public function setConnectTimeout(int $sec)
     {
         $this->connectTimeout = $sec;
+        return $this;
+    }
+
+    public function hasConnectTimeout(): bool
+    {
+        return !empty($this->connectTimeout);
+    }
+
+    public function resetTimeouts()
+    {
+        $this->connectTimeout = CasinoRest::DEFAULT_CONNECT_TIMEOUT;
+        $this->timeout = CasinoRest::DEFAULT_TIMEOUT;
+        return $this;
     }
 
     /**
@@ -59,6 +78,7 @@ abstract class RestService implements RestServiceInterface
      */
     public function get(string $url, $data = '')
     {
+        dd($this->timeout);
         try {
             $request = Request::get($this->optionalUrl($url))
                 ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
