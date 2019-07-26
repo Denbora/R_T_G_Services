@@ -78,7 +78,6 @@ abstract class RestService implements RestServiceInterface
      */
     public function get(string $url, $data = '')
     {
-        dd($this->timeout);
         try {
             $request = Request::get($this->optionalUrl($url))
                 ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
