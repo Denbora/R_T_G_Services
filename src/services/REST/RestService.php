@@ -6,17 +6,21 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestResponse;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
 use Httpful\Request;
-use \Exception;
+use Exception;
 
 abstract class RestService implements RestServiceInterface
 {
     private $certificate;
     private $key;
     private $password;
-    protected $validator;
     private $response;
+
+    protected $validator;
     protected $baseUrl;
     protected $apiKey;
+
+    protected $connectTimeout = 5;
+    protected $timeout = 20;
 
     public function __construct(
         string $certificate,
@@ -36,6 +40,17 @@ abstract class RestService implements RestServiceInterface
         $this->apiKey = $apiKey;
     }
 
+    public function setTimeout(int $sec)
+    {
+        $this->timeout = $sec;
+        return $this;
+    }
+
+    public function setConnectTimeout(int $sec)
+    {
+        $this->connectTimeout = $sec;
+    }
+
     /**
      * @param string $url
      * @param string $data
@@ -45,7 +60,9 @@ abstract class RestService implements RestServiceInterface
     public function get(string $url, $data = '')
     {
         try {
-            $request = Request::get($this->optionalUrl($url));
+            $request = Request::get($this->optionalUrl($url))
+                ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
+                ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout);
 
             if (empty($this->apiKey)) {
                 $request->authenticateWithCert($this->certificate, $this->key, $this->password);
@@ -56,9 +73,9 @@ abstract class RestService implements RestServiceInterface
             $result = $this->response->getContent($response);
 
             return $result;
-        } catch (Exception $e) {
+        } catch (Exception $exception) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
+            throw new R_T_G_ServiceException($errorPrefix . $exception->getMessage());
         }
     }
 
@@ -72,6 +89,8 @@ abstract class RestService implements RestServiceInterface
     {
         try {
             $request =  Request::post($this->optionalUrl($url))
+                ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
+                ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout)
                 ->contentType('json')
                 ->body($data);
 
@@ -99,11 +118,18 @@ abstract class RestService implements RestServiceInterface
     public function put(string $url, $data = '')
     {
         try {
-            $response = Request::put($this->optionalUrl($url))
+            $request = Request::put($this->optionalUrl($url))
+                ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
+                ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout)
                 ->authenticateWithCert($this->certificate, $this->key, $this->password)
                 ->contentType('json')
-                ->body($data)
-                ->send();
+                ->body($data);
+
+            if (empty($this->apiKey)) {
+                $request->authenticateWithCert($this->certificate, $this->key, $this->password);
+            }
+
+            $response = $request->send();
 
             $result = $this->response->getContent($response);
 
@@ -123,11 +149,17 @@ abstract class RestService implements RestServiceInterface
     public function delete(string $url, $data = '')
     {
         try {
-            $response = Request::delete($this->optionalUrl($url))
-                ->authenticateWithCert($this->certificate, $this->key, $this->password)
+            $request = Request::delete($this->optionalUrl($url))
+                ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
+                ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout)
                 ->contentType('json')
-                ->body($data)
-                ->send();
+                ->body($data);
+
+            if (empty($this->apiKey)) {
+                $request->authenticateWithCert($this->certificate, $this->key, $this->password);
+            }
+
+            $response = $request->send();
 
             $result = $this->response->getContent($response);
 

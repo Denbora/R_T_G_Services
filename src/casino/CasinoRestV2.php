@@ -94,7 +94,7 @@ class CasinoRestV2 extends CasinoRest implements CasinoInterface
      */
     protected function createService(string $serviceName): RestServiceInterface
     {
-        if (!key_exists($serviceName, self::$services)) {
+        if (!key_exists($serviceName, static::$services)) {
             static::$services[$serviceName] = new $serviceName(
                 $this->certificateFile,
                 $this->keyFile,

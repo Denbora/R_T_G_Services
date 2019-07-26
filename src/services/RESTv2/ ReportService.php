@@ -3,10 +3,35 @@
 namespace denbora\R_T_G_Services\services\RESTv2;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
+use denbora\R_T_G_Services\responses\RestResponse;
+use denbora\R_T_G_Services\validators\ValidatorInterface;
 
 class ReportService extends RestV2Service implements RestServiceInterface
 {
     const SERVICE_NAME = 'Report';
+
+    /**
+     * SettingsService constructor.
+     * @param string $certificate
+     * @param string $key
+     * @param string $password
+     * @param ValidatorInterface $validator
+     * @param RestResponse $response
+     * @param string $baseUrl
+     * @param string $apiKey
+     */
+    public function __construct(
+        string $certificate,
+        string $key,
+        string $password,
+        ValidatorInterface $validator,
+        RestResponse $response,
+        string $baseUrl,
+        string $apiKey
+    ) {
+        $this->setTimeout(80);
+        parent::__construct($certificate, $key, $password, $validator, $response, $baseUrl, $apiKey);
+    }
 
     /**
      * @param string $queryJSON
