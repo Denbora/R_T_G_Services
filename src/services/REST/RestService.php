@@ -94,7 +94,7 @@ abstract class RestService implements RestServiceInterface
             return $result;
         } catch (Exception $exception) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $exception->getMessage());
+            throw new R_T_G_ServiceException($errorPrefix . $exception->getMessage(), $exception->getCode());
         }
     }
 
@@ -122,9 +122,9 @@ abstract class RestService implements RestServiceInterface
             $result = $this->response->getContent($response);
 
             return $result;
-        } catch (Exception $e) {
+        } catch (Exception $exception) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
+            throw new R_T_G_ServiceException($errorPrefix . $exception->getMessage(), $exception->getCode());
         }
     }
 
@@ -153,9 +153,9 @@ abstract class RestService implements RestServiceInterface
             $result = $this->response->getContent($response);
 
             return $result;
-        } catch (Exception $e) {
+        } catch (Exception $exception) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
+            throw new R_T_G_ServiceException($errorPrefix . $exception->getMessage(), $exception->getCode());
         }
     }
 
@@ -183,9 +183,9 @@ abstract class RestService implements RestServiceInterface
             $result = $this->response->getContent($response);
 
             return $result;
-        } catch (Exception $e) {
+        } catch (Exception $exception) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
+            throw new R_T_G_ServiceException($errorPrefix . $exception->getMessage(), $exception->getCode());
         }
     }
 
