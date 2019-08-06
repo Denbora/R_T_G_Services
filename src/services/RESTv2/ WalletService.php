@@ -87,7 +87,7 @@ class WalletService extends RestV2Service
     /**
      * @param string $queryJSON
      * @return array|mixed|object|string
-     * @throws R_T_G_ServiceException.
+     * @throws R_T_G_ServiceException
      * @deprecated this method not tested
      */
     public function placeSettlementPOST($queryJSON = '{}')

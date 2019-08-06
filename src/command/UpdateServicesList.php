@@ -11,14 +11,16 @@ use Exception;
 class UpdateServicesList extends Command
 {
     const SERVICES_LIST = __DIR__ . '/../config/restMethodsV2.json';
+    const RESPONSE_CODES = __DIR__ . '/../config/codes_v2.json';
 
     protected static $defaultName = 'app:update-services-list';
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $services = $this->parseJsonSwaggerApi();
+        list($services, $responseCodes) = $this->parseJsonSwaggerApi();
 
         file_put_contents(self::SERVICES_LIST, json_encode($services, JSON_PRETTY_PRINT));
+        file_put_contents(self::RESPONSE_CODES, json_encode($responseCodes, JSON_PRETTY_PRINT));
 
         $io = new SymfonyStyle($input, $output);
 
@@ -56,21 +58,25 @@ class UpdateServicesList extends Command
                             $responses[$code] = $response['description'];
                         }
 
-                        $result[$categoryName][$methodName] = [
+                        $services[$categoryName][$methodName] = [
                             'method' => strtoupper($methodType),
                             'path' => $pathTemplate,
                             'parameters' => $parameters ?? [],
                             'responses' => $responses ?? []
                         ];
+
+                        $queryPathTemplate = strtoupper($methodType) . ' ' . $pathTemplate;
+                        $responseCodes[$queryPathTemplate] = $responses ?? [];
                     }
                 }
             }
         } catch (Exception $exception) {
-            var_dump([
-                $exception, $response ?? null, $method
-            ]);
+            dd($exception, $response ?? null, $method);
         }
 
-        return $result ?? [];
+        return [
+            $services ?? [],
+            $responseCodes ?? []
+        ];
     }
 }

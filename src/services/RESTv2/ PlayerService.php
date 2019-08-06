@@ -123,6 +123,38 @@ class PlayerService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function listPlayerIdInformationGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ListPlayerIdInformation', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
+     */
+    public function modifyPlayerIdInformationPUT($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ModifyPlayerIdInformation', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
+     */
+    public function deletePlayerIdInformationDELETE($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'DeletePlayerIdInformation', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function getPlayerNotesGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetPlayerNotes', $queryJSON);
