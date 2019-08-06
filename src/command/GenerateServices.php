@@ -3,7 +3,6 @@
 namespace denbora\R_T_G_Services\command;
 
 use denbora\R_T_G_Services\examples\RESTv2\RestExample;
-use denbora\R_T_G_Services\services\RESTv2\RestServiceInterface;
 use denbora\R_T_G_Services\services\RESTv2\RestV2Service;
 use Nette\PhpGenerator\PsrPrinter;
 use Symfony\Component\Console\Command\Command;
@@ -39,7 +38,7 @@ class GenerateServices extends Command
             $serviceClassFile = __DIR__ . '/../services/RESTv2/ ' . $serviceClass . '.php';
 
             $class = $nameSpace->addClass($serviceClass);
-            $class->setExtends(RestV2Service::class)->addImplement(RestServiceInterface::class);
+            $class->setExtends(RestV2Service::class);
             $class->addConstant('SERVICE_NAME', $serviceName);
 
             foreach ($serviceMethods as $methodName => $method) {

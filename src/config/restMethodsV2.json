@@ -425,6 +425,182 @@
                 "401": "Unauthorized"
             }
         },
+        "ListIdTypes": {
+            "method": "GET",
+            "path": "\/api\/casino\/idInfoType",
+            "parameters": {
+                "commonWalletEntry": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized"
+            }
+        },
+        "ModifyTypeInformation": {
+            "method": "PUT",
+            "path": "\/api\/casino\/idInfoType",
+            "parameters": {
+                "id": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                },
+                "description": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                },
+                "enabled": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                },
+                "parentId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "NotFound"
+            }
+        },
+        "AddTypeInformation": {
+            "method": "POST",
+            "path": "\/api\/casino\/idInfoType",
+            "parameters": {
+                "description": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                },
+                "enabled": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                },
+                "parentId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Chosen parent id does not exist."
+            }
+        },
+        "DeleteTypeInformation": {
+            "method": "DELETE",
+            "path": "\/api\/casino\/idInfoType",
+            "parameters": {
+                "id": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "409": "You cannot delete an item that is in use!"
+            }
+        },
+        "ListIdInformation": {
+            "method": "GET",
+            "path": "\/api\/casino\/idInformation",
+            "parameters": {
+                "id": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized"
+            }
+        },
+        "ModifyIdInformation": {
+            "method": "PUT",
+            "path": "\/api\/casino\/idInformation",
+            "parameters": {
+                "id": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                },
+                "description": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                },
+                "enabled": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "You cannot modify an id that does not exist."
+            }
+        },
+        "AddIdInformation": {
+            "method": "POST",
+            "path": "\/api\/casino\/idInformation",
+            "parameters": {
+                "description": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                },
+                "enabled": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized"
+            }
+        },
+        "DeleteIdInformation": {
+            "method": "DELETE",
+            "path": "\/api\/casino\/idInformation",
+            "parameters": {
+                "id": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "You cannot delete an item that is in use!"
+            }
+        },
         "GetCasinoTotals": {
             "method": "GET",
             "path": "\/api\/casino\/totals",
@@ -1910,6 +2086,81 @@
                 "404": "Player was not found.",
                 "409": "Unable to set player's phone number status.",
                 "400": "Bad request."
+            }
+        },
+        "ListPlayerIdInformation": {
+            "method": "GET",
+            "path": "\/api\/players\/{playerId}\/playerIdInformation",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": ""
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found."
+            }
+        },
+        "ModifyPlayerIdInformation": {
+            "method": "PUT",
+            "path": "\/api\/players\/{playerId}\/playerIdInformation",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": ""
+                },
+                "poiId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                },
+                "url": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                },
+                "expiracyDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found."
+            }
+        },
+        "DeletePlayerIdInformation": {
+            "method": "DELETE",
+            "path": "\/api\/players\/{playerId}\/playerIdInformation",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": ""
+                },
+                "poiId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": ""
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found."
             }
         },
         "GetPlayerNotes": {
