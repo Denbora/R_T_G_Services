@@ -2,12 +2,11 @@
 
 namespace denbora\R_T_G_Services\casino;
 
-use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestV2Response;
+use denbora\R_T_G_Services\validators\RestV2Validator;
 use denbora\R_T_G_Services\services\RESTv2\HelperService;
 use denbora\R_T_G_Services\services\RESTv2\PlayerService;
 use denbora\R_T_G_Services\services\RESTv2\PromotionService;
-use denbora\R_T_G_Services\validators\RestV2Validator;
 use denbora\R_T_G_Services\services\RESTv2\AccountService;
 use denbora\R_T_G_Services\services\RESTv2\CashierService;
 use denbora\R_T_G_Services\services\RESTv2\CasinoService;
@@ -23,6 +22,7 @@ use denbora\R_T_G_Services\services\RESTv2\SettingsService;
 use denbora\R_T_G_Services\services\RESTv2\VigService;
 use denbora\R_T_G_Services\services\RESTv2\WalletService;
 use denbora\R_T_G_Services\services\REST\RestServiceInterface;
+use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 /**
  * Class CasinoRestV2
@@ -45,7 +45,7 @@ use denbora\R_T_G_Services\services\REST\RestServiceInterface;
  * @property WalletService WalletService
  * @property HelperService HelperService
  */
-class CasinoRestV2 extends CasinoRest implements CasinoInterface
+class CasinoRestV2 extends AbstractCasinoRest
 {
     /**
      * @var array
@@ -85,6 +85,16 @@ class CasinoRestV2 extends CasinoRest implements CasinoInterface
         }
 
         throw new R_T_G_ServiceException('No such service - ' . $serviceName);
+    }
+
+    /**
+     * @param string $serviceName
+     * @return RestServiceInterface
+     * @throws R_T_G_ServiceException
+     */
+    public function getService(string $serviceName): RestServiceInterface
+    {
+        return $this->__get($serviceName);
     }
 
     /**

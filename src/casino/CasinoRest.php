@@ -2,11 +2,10 @@
 
 namespace denbora\R_T_G_Services\casino;
 
-use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\ResponseFactory;
+use denbora\R_T_G_Services\validators\ValidatorFactory;
 use denbora\R_T_G_Services\services\REST\CasinoService;
 use denbora\R_T_G_Services\services\REST\RestServiceInterface;
-use denbora\R_T_G_Services\validators\ValidatorFactory;
 use denbora\R_T_G_Services\services\REST\AccountService;
 use denbora\R_T_G_Services\services\REST\CashierService;
 use denbora\R_T_G_Services\services\REST\GameService;
@@ -16,6 +15,7 @@ use denbora\R_T_G_Services\services\REST\PlayerService;
 use denbora\R_T_G_Services\services\REST\ReportService;
 use denbora\R_T_G_Services\services\REST\ServiceService;
 use denbora\R_T_G_Services\services\REST\SettingsService;
+use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 /**
  * Class CasinoRest
@@ -31,7 +31,7 @@ use denbora\R_T_G_Services\services\REST\SettingsService;
  * @property SettingsService settings
  * @property CasinoService casino
  */
-class CasinoRest implements CasinoInterface
+class CasinoRest extends AbstractCasinoRest
 {
     /**
      * @var array
@@ -120,38 +120,7 @@ class CasinoRest implements CasinoInterface
         string $password,
         string $apiKey = ''
     ) {
-        $this->apiKey = $apiKey;
-
-        $this->validator = ValidatorFactory::build('CasinoValidator');
-
-        if ($this->validator->call('baseWebServiceUrl', $baseUrl)) {
-            $this->baseUrl = $baseUrl;
-        } else {
-            throw new R_T_G_ServiceException('Base URL does not meet requirements');
-        }
-
-        if ($this->validator->call('certFile', $certificate)) {
-            $this->certificateFile = $certificate;
-        } else {
-            throw new R_T_G_ServiceException('Certificate does not meet requirements or not found');
-        }
-
-        if ($this->validator->call('certFile', $key)) {
-            $this->keyFile = $key;
-        } else {
-            throw new R_T_G_ServiceException('Key does not meet requirements or not found');
-        }
-
-        if ($this->validator->call('password', $password)) {
-            $this->password = $password;
-        } else {
-            throw new R_T_G_ServiceException('Password does not meet requirements');
-        }
-
-        $services = json_decode(file_get_contents(__DIR__ . '/../config/services.json', true), true);
-        $this->serviceDescription = $services['Rest'];
-
-        $this->resetTimeouts();
+        parent::__construct($baseUrl, $certificate, $key, $password, $apiKey);
     }
 
     /**
@@ -177,7 +146,7 @@ class CasinoRest implements CasinoInterface
         }
 
         if (!key_exists($serviceClass, static::$restServices)) {
-            /**@var $serviceInstance RestServiceInterface*/
+            /**@var $serviceInstance RestServiceInterface */
             $serviceInstance = new $serviceClass(
                 $this->certificateFile,
                 $this->keyFile,
@@ -200,50 +169,5 @@ class CasinoRest implements CasinoInterface
         }
 
         return static::$restServices[$serviceClass];
-    }
-
-    /**
-     * Setting timeout to RTG API
-     *
-     * @param int $sec
-     * @return $this
-     */
-    public function setTimeout(int $sec)
-    {
-        $this->timeout = $sec;
-        return $this;
-    }
-
-    /**
-     * Setting connect timeout to RTG API
-     *
-     * @param int $sec
-     * @return $this
-     */
-    public function setConnectTimeout(int $sec)
-    {
-        $this->connectTimeout = $sec;
-        return $this;
-    }
-
-    /**
-     * Setting default timeouts
-     */
-    public function resetTimeouts()
-    {
-        $this->connectTimeout = self::DEFAULT_CONNECT_TIMEOUT;
-        $this->timeout = self::DEFAULT_TIMEOUT;
-    }
-
-    /**
-     * @param string $serviceName
-     * @param string $serviceClass
-     * @param string $serviceEndPoint
-     * @return bool
-     */
-    public function addService(string $serviceName, string $serviceClass, string $serviceEndPoint): bool
-    {
-        // TODO: Implement addService() method.
-        return false;
     }
 }

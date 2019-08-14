@@ -224,17 +224,6 @@ class Casino implements CasinoInterface
     }
 
     /**
-     * @param string $serviceName
-     * @param string $serviceClass
-     * @param string $serviceEndPoint
-     * @return bool
-     */
-    public function addService(string $serviceName, string $serviceClass, string $serviceEndPoint): bool
-    {
-        // ToDo: Implement addService() method.
-    }
-
-    /**
      * comparison of functions in methods.json with __getFunctions result
      *
      */

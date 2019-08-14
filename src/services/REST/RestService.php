@@ -2,7 +2,7 @@
 
 namespace denbora\R_T_G_Services\services\REST;
 
-use denbora\R_T_G_Services\casino\CasinoRest;
+use denbora\R_T_G_Services\casino\AbstractCasinoRest;
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestResponse;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
@@ -65,8 +65,8 @@ abstract class RestService implements RestServiceInterface
 
     public function resetTimeouts()
     {
-        $this->connectTimeout = CasinoRest::DEFAULT_CONNECT_TIMEOUT;
-        $this->timeout = CasinoRest::DEFAULT_TIMEOUT;
+        $this->connectTimeout = AbstractCasinoRest::DEFAULT_CONNECT_TIMEOUT;
+        $this->timeout = AbstractCasinoRest::DEFAULT_TIMEOUT;
         return $this;
     }
 
