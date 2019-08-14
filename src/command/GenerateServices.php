@@ -35,7 +35,7 @@ class GenerateServices extends Command
 
             $serviceClass = $serviceName . 'Service';
 
-            $serviceClassFile = __DIR__ . '/../services/RESTv2/ ' . $serviceClass . '.php';
+            $serviceClassFile = __DIR__ . '/../services/RESTv2/' . $serviceClass . '.php';
 
             $class = $nameSpace->addClass($serviceClass);
             $class->setExtends(RestV2Service::class);
