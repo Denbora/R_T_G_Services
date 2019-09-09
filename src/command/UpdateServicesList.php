@@ -11,14 +11,16 @@ use Exception;
 class UpdateServicesList extends Command
 {
     const SERVICES_LIST = __DIR__ . '/../config/restMethodsV2.json';
+    const RESPONSE_CODES = __DIR__ . '/../config/codes_v2.json';
 
     protected static $defaultName = 'app:update-services-list';
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $services = $this->parseJsonSwaggerApi();
+        list($services, $responseCodes) = $this->parseJsonSwaggerApi();
 
-        file_put_contents(self::SERVICES_LIST, json_encode($services));
+        file_put_contents(self::SERVICES_LIST, json_encode($services, JSON_PRETTY_PRINT));
+        file_put_contents(self::RESPONSE_CODES, json_encode($responseCodes, JSON_PRETTY_PRINT));
 
         $io = new SymfonyStyle($input, $output);
 
@@ -27,50 +29,54 @@ class UpdateServicesList extends Command
 
     private function parseJsonSwaggerApi(): array
     {
-        $json = file_get_contents(__DIR__ . '/openAPI.json');
-
-        $apiData = json_decode($json, true);
+        $apiData = json_decode(file_get_contents(__DIR__ . '/openAPI.json'), true);
 
         try {
-            foreach ($apiData['paths'] as $pathTemplate => $methods) {
-                foreach ($methods as $methodType => $method) {
-                    list($categoryName, $methodName) = explode('_', $method['operationId']);
+            if (!empty($apiData)) {
+                foreach ($apiData['paths'] as $pathTemplate => $methods) {
+                    foreach ($methods as $methodType => $method) {
+                        list($categoryName, $methodName) = explode('_', $method['operationId']);
 
-                    if (isset($method['parameters'])) {
-                        $parameters = [];
-                        foreach ($method['parameters'] as $parameter) {
-                            if (!isset($parameter['schema'])) {
-                                $parameters[$parameter['name']] = [
-                                    'dataType' => $parameter['type'],
-                                    'parameterType' => $parameter['in'],
-                                    'required' => $parameter['required'],
-                                    'description' => $parameter['description'] ?? ''
-                                ];
-                            } else {
-                                $parameters[$parameter['name']] = 'JSON';
+                        if (isset($method['parameters'])) {
+                            $parameters = [];
+                            foreach ($method['parameters'] as $parameter) {
+                                if (!isset($parameter['schema'])) {
+                                    $parameters[$parameter['name']] = [
+                                        'dataType' => $parameter['type'],
+                                        'parameterType' => $parameter['in'],
+                                        'required' => $parameter['required'],
+                                        'description' => $parameter['description'] ?? ''
+                                    ];
+                                } else {
+                                    $parameters[$parameter['name']] = 'JSON';
+                                }
                             }
                         }
-                    }
 
-                    $responses = [];
-                    foreach ($method['responses'] as $code => $response) {
-                        $responses[$code] = $response['description'];
-                    }
+                        $responses = [];
+                        foreach ($method['responses'] as $code => $response) {
+                            $responses[$code] = $response['description'];
+                        }
 
-                    $result[$categoryName][$methodName] = [
-                        'method' => strtoupper($methodType),
-                        'path' => $pathTemplate,
-                        'parameters' => $parameters ?? [],
-                        'responses' => $responses ?? []
-                    ];
+                        $services[$categoryName][$methodName] = [
+                            'method' => strtoupper($methodType),
+                            'path' => $pathTemplate,
+                            'parameters' => $parameters ?? [],
+                            'responses' => $responses ?? []
+                        ];
+
+                        $queryPathTemplate = strtoupper($methodType) . ' ' . $pathTemplate;
+                        $responseCodes[$queryPathTemplate] = $responses ?? [];
+                    }
                 }
             }
         } catch (Exception $exception) {
-            var_dump([
-                $exception, $response ?? null, $method
-            ]);
+            dd($exception, $response ?? null, $method);
         }
 
-        return $result ?? [];
+        return [
+            $services ?? [],
+            $responseCodes ?? []
+        ];
     }
 }

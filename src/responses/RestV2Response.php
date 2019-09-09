@@ -22,7 +22,7 @@ class RestV2Response extends RestResponse implements ResponseInterface
                 $message = 'Error in request execution. Please contact Support.';
             }
 
-            throw new R_T_G_ServiceException('RTG Message - ' . $message);
+            throw new R_T_G_ServiceException('RTG Message - ' . $message, $response->code);
         }
 
         return $response->body;

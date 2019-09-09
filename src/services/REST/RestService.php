@@ -2,20 +2,26 @@
 
 namespace denbora\R_T_G_Services\services\REST;
 
+use denbora\R_T_G_Services\casino\AbstractCasinoRest;
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestResponse;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
 use Httpful\Request;
-use \Exception;
+use Exception;
 
 abstract class RestService implements RestServiceInterface
 {
     private $certificate;
     private $key;
     private $password;
-    protected $validator;
     private $response;
+
+    protected $validator;
     protected $baseUrl;
+    protected $apiKey;
+
+    protected $connectTimeout;
+    protected $timeout;
 
     public function __construct(
         string $certificate,
@@ -23,7 +29,8 @@ abstract class RestService implements RestServiceInterface
         string $password,
         ValidatorInterface $validator,
         RestResponse $response,
-        string $baseUrl
+        string $baseUrl,
+        string $apiKey
     ) {
         $this->certificate = $certificate;
         $this->key = $key;
@@ -31,6 +38,36 @@ abstract class RestService implements RestServiceInterface
         $this->validator = $validator;
         $this->response = $response;
         $this->baseUrl = $baseUrl;
+        $this->apiKey = $apiKey;
+    }
+
+    public function setTimeout(int $sec)
+    {
+        $this->timeout = $sec;
+        return $this;
+    }
+
+    public function hasTimeout(): bool
+    {
+        return !empty($this->timeout);
+    }
+
+    public function setConnectTimeout(int $sec)
+    {
+        $this->connectTimeout = $sec;
+        return $this;
+    }
+
+    public function hasConnectTimeout(): bool
+    {
+        return !empty($this->connectTimeout);
+    }
+
+    public function resetTimeouts()
+    {
+        $this->connectTimeout = AbstractCasinoRest::DEFAULT_CONNECT_TIMEOUT;
+        $this->timeout = AbstractCasinoRest::DEFAULT_TIMEOUT;
+        return $this;
     }
 
     /**
@@ -42,16 +79,22 @@ abstract class RestService implements RestServiceInterface
     public function get(string $url, $data = '')
     {
         try {
-            $response = Request::get($url)
-                ->authenticateWithCert($this->certificate, $this->key, $this->password)
-                ->send();
+            $request = Request::get($this->optionalUrl($url))
+                ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
+                ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout);
+
+            if (empty($this->apiKey)) {
+                $request->authenticateWithCert($this->certificate, $this->key, $this->password);
+            }
+
+            $response = $request->send();
 
             $result = $this->response->getContent($response);
 
             return $result;
-        } catch (Exception $e) {
+        } catch (Exception $exception) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
+            throw new R_T_G_ServiceException($errorPrefix . $exception->getMessage(), $exception->getCode());
         }
     }
 
@@ -64,18 +107,24 @@ abstract class RestService implements RestServiceInterface
     public function post(string $url, $data = '')
     {
         try {
-            $response = Request::post($url)
-                ->authenticateWithCert($this->certificate, $this->key, $this->password)
-                ->sendsJSON()
-                ->body($data)
-                ->send();
+            $request =  Request::post($this->optionalUrl($url))
+                ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
+                ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout)
+                ->contentType('json')
+                ->body($data);
+
+            if (empty($this->apiKey)) {
+                $request->authenticateWithCert($this->certificate, $this->key, $this->password);
+            }
+
+            $response = $request->send();
 
             $result = $this->response->getContent($response);
 
             return $result;
-        } catch (Exception $e) {
+        } catch (Exception $exception) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
+            throw new R_T_G_ServiceException($errorPrefix . $exception->getMessage(), $exception->getCode());
         }
     }
 
@@ -88,18 +137,25 @@ abstract class RestService implements RestServiceInterface
     public function put(string $url, $data = '')
     {
         try {
-            $response = Request::put($url)
+            $request = Request::put($this->optionalUrl($url))
+                ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
+                ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout)
                 ->authenticateWithCert($this->certificate, $this->key, $this->password)
-                ->sendsJSON()
-                ->body($data)
-                ->send();
+                ->contentType('json')
+                ->body($data);
+
+            if (empty($this->apiKey)) {
+                $request->authenticateWithCert($this->certificate, $this->key, $this->password);
+            }
+
+            $response = $request->send();
 
             $result = $this->response->getContent($response);
 
             return $result;
-        } catch (Exception $e) {
+        } catch (Exception $exception) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
+            throw new R_T_G_ServiceException($errorPrefix . $exception->getMessage(), $exception->getCode());
         }
     }
 
@@ -112,19 +168,46 @@ abstract class RestService implements RestServiceInterface
     public function delete(string $url, $data = '')
     {
         try {
-            $response = Request::delete($url)
-                ->authenticateWithCert($this->certificate, $this->key, $this->password)
+            $request = Request::delete($this->optionalUrl($url))
+                ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
+                ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout)
                 ->contentType('json')
-                ->body($data)
-                ->send();
+                ->body($data);
+
+            if (empty($this->apiKey)) {
+                $request->authenticateWithCert($this->certificate, $this->key, $this->password);
+            }
+
+            $response = $request->send();
 
             $result = $this->response->getContent($response);
 
             return $result;
-        } catch (Exception $e) {
+        } catch (Exception $exception) {
             $errorPrefix = 'Error in ' . __FUNCTION__ . ' - ';
-            throw new R_T_G_ServiceException($errorPrefix . $e->getMessage());
+            throw new R_T_G_ServiceException($errorPrefix . $exception->getMessage(), $exception->getCode());
         }
+    }
+
+    /**
+     * @param string $url
+     * @param array $query
+     * @return string
+     */
+    protected function optionalUrl(string $url, array $query = [])
+    {
+        //deleted last '/' from path
+        $path = parse_url($url, PHP_URL_PATH);
+        if ($path) {
+            $url = str_replace($path, rtrim($path, '/'), $url);
+        }
+
+        if (!empty($this->apiKey)) {
+            $query['apiKey'] = $this->apiKey;
+            $url .= (parse_url($url, PHP_URL_QUERY) ? '&' : '?') . http_build_query($query);
+        }
+
+        return $url;
     }
 
     /**

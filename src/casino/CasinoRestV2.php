@@ -2,12 +2,11 @@
 
 namespace denbora\R_T_G_Services\casino;
 
-use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestV2Response;
+use denbora\R_T_G_Services\validators\RestV2Validator;
 use denbora\R_T_G_Services\services\RESTv2\HelperService;
 use denbora\R_T_G_Services\services\RESTv2\PlayerService;
-use denbora\R_T_G_Services\services\RESTv2\RestV2Service;
-use denbora\R_T_G_Services\validators\RestV2Validator;
+use denbora\R_T_G_Services\services\RESTv2\PromotionService;
 use denbora\R_T_G_Services\services\RESTv2\AccountService;
 use denbora\R_T_G_Services\services\RESTv2\CashierService;
 use denbora\R_T_G_Services\services\RESTv2\CasinoService;
@@ -18,11 +17,12 @@ use denbora\R_T_G_Services\services\RESTv2\HistoryService;
 use denbora\R_T_G_Services\services\RESTv2\JackpotService;
 use denbora\R_T_G_Services\services\RESTv2\MessageService;
 use denbora\R_T_G_Services\services\RESTv2\ReportService;
-use denbora\R_T_G_Services\services\RESTv2\RestServiceInterface;
 use denbora\R_T_G_Services\services\RESTv2\ServiceService;
 use denbora\R_T_G_Services\services\RESTv2\SettingsService;
 use denbora\R_T_G_Services\services\RESTv2\VigService;
 use denbora\R_T_G_Services\services\RESTv2\WalletService;
+use denbora\R_T_G_Services\services\REST\RestServiceInterface;
+use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 /**
  * Class CasinoRestV2
@@ -37,6 +37,7 @@ use denbora\R_T_G_Services\services\RESTv2\WalletService;
  * @property JackpotService JackpotService
  * @property MessageService MessageService
  * @property PlayerService PlayerService
+ * @property PromotionService PromotionService
  * @property ReportService ReportService
  * @property ServiceService ServiceService
  * @property SettingsService SettingsService
@@ -44,16 +45,30 @@ use denbora\R_T_G_Services\services\RESTv2\WalletService;
  * @property WalletService WalletService
  * @property HelperService HelperService
  */
-class CasinoRestV2 extends CasinoRest implements CasinoInterface
+class CasinoRestV2 extends AbstractCasinoRest
 {
     /**
      * @var array
      */
-    protected static $services = [];
+    protected static $restV2Services = [];
 
-    public function __construct(string $baseUrl, string $certificate, string $key, string $password)
-    {
-        parent::__construct($baseUrl, $certificate, $key, $password);
+    /**
+     * CasinoRestV2 constructor.
+     * @param string $baseUrl
+     * @param string $certificate
+     * @param string $key
+     * @param string $password
+     * @param string $apiKey
+     * @throws R_T_G_ServiceException
+     */
+    public function __construct(
+        string $baseUrl,
+        string $certificate,
+        string $key,
+        string $password,
+        string $apiKey = ''
+    ) {
+        parent::__construct($baseUrl, $certificate, $key, $password, $apiKey);
     }
 
     /**
@@ -75,20 +90,42 @@ class CasinoRestV2 extends CasinoRest implements CasinoInterface
     /**
      * @param string $serviceName
      * @return RestServiceInterface
+     * @throws R_T_G_ServiceException
+     */
+    public function getService(string $serviceName): RestServiceInterface
+    {
+        return $this->__get($serviceName);
+    }
+
+    /**
+     * @param string $serviceName
+     * @return RestServiceInterface
      */
     protected function createService(string $serviceName): RestServiceInterface
     {
-        if (!key_exists($serviceName, self::$services)) {
-            static::$services[$serviceName] = new $serviceName(
+        if (!key_exists($serviceName, static::$restV2Services)) {
+            /** @var $serviceInstance RestServiceInterface */
+            $serviceInstance = new $serviceName(
                 $this->certificateFile,
                 $this->keyFile,
                 $this->password,
                 new RestV2Validator(),
                 new RestV2Response(),
-                $this->baseUrl
+                $this->baseUrl,
+                $this->apiKey
             );
+
+            if (!$serviceInstance->hasConnectTimeout()) {
+                $serviceInstance->setConnectTimeout($this->connectTimeout);
+            }
+
+            if (!$serviceInstance->hasTimeout()) {
+                $serviceInstance->setTimeout($this->timeout);
+            }
+
+            static::$restV2Services[$serviceName] = $serviceInstance;
         }
 
-        return static::$services[$serviceName];
+        return static::$restV2Services[$serviceName];
     }
 }

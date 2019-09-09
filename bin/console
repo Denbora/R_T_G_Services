@@ -3,12 +3,17 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use denbora\R_T_G_Services\command\RunExample;
+use denbora\R_T_G_Services\command\GenerateServices;
+use denbora\R_T_G_Services\command\UpdateServicesList;
+
 use Symfony\Component\Console\Application;
 
 $application = new Application();
 
-$application->add(new \denbora\R_T_G_Services\command\GenerateServices());
-$application->add(new \denbora\R_T_G_Services\command\UpdateServicesList());
+$application->add(new RunExample());
+$application->add(new GenerateServices());
+$application->add(new UpdateServicesList());
 
 $application->run();
 

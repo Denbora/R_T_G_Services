@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\services\RESTv2;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 
-class CouponService extends RestV2Service implements RestServiceInterface
+class CouponService extends RestV2Service
 {
     const SERVICE_NAME = 'Coupon';
 
@@ -22,6 +22,8 @@ class CouponService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated use {@see RESTv2/PlayerService::getRequestedAndRedeemedCouponsGET()}
+     *
      */
     public function getRequestedAndRedeemedCouponsGET($queryJSON = '{}')
     {
@@ -32,6 +34,7 @@ class CouponService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated use {@see RESTv2/PlayerService::redeemCouponPOST()}
      */
     public function redeemCouponPOST($queryJSON = '{}')
     {
@@ -42,6 +45,8 @@ class CouponService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated use {@see RESTv2/PlayerService::discardCouponDELETE()}
+     *
      */
     public function discardCouponDELETE($queryJSON = '{}')
     {
@@ -62,39 +67,59 @@ class CouponService extends RestV2Service implements RestServiceInterface
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function createBonusBalanceSingleUseFixedAmountOnRedemptionCouponPOST($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'CreateBonusBalanceSingleUseFixedAmountOnRedemptionCoupon', $queryJSON);
+        return $this->callMethod(
+            self::SERVICE_NAME,
+            'CreateBonusBalanceSingleUseFixedAmountOnRedemptionCoupon',
+            $queryJSON
+        );
     }
 
     /**
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function createBonusBalanceSingleAccountFaPercentageOfNextDepositCouponPOST($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'CreateBonusBalanceSingleAccountFaPercentageOfNextDepositCoupon', $queryJSON);
+        return $this->callMethod(
+            self::SERVICE_NAME,
+            'CreateBonusBalanceSingleAccountFaPercentageOfNextDepositCoupon',
+            $queryJSON
+        );
     }
 
     /**
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function createBonusBalanceSingleUseModFixedAmountNextDepositCouponPOST($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'CreateBonusBalanceSingleUseModFixedAmountNextDepositCoupon', $queryJSON);
+        return $this->callMethod(
+            self::SERVICE_NAME,
+            'CreateBonusBalanceSingleUseModFixedAmountNextDepositCoupon',
+            $queryJSON
+        );
     }
 
     /**
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
      */
     public function createBonusBalanceSingleAccountModPercentageOfNextDepositCouponPOST($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'CreateBonusBalanceSingleAccountModPercentageOfNextDepositCoupon', $queryJSON);
+        return $this->callMethod(
+            self::SERVICE_NAME,
+            'CreateBonusBalanceSingleAccountModPercentageOfNextDepositCoupon',
+            $queryJSON
+        );
     }
 }

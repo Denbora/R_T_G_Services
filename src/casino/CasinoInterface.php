@@ -13,12 +13,4 @@ interface CasinoInterface
      * @return mixed
      */
     public function getService(string $serviceName);
-
-    /**
-     * @param string $serviceName
-     * @param string $serviceClass
-     * @param string $serviceEndPoint
-     * @return bool
-     */
-    public function addService(string $serviceName, string $serviceClass, string $serviceEndPoint): bool;
 }

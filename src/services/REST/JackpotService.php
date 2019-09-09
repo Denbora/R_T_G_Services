@@ -32,6 +32,6 @@ class JackpotService extends RestService
      */
     public function getJeckpots($query = '')
     {
-        return $this->getJackpots();
+        return $this->getJackpots($query);
     }
 }

@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\services\RESTv2;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 
-class PlayerService extends RestV2Service implements RestServiceInterface
+class PlayerService extends RestV2Service
 {
     const SERVICE_NAME = 'Player';
 
@@ -116,6 +116,38 @@ class PlayerService extends RestV2Service implements RestServiceInterface
     public function setPlayerPhoneNumberStatusPUT($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'SetPlayerPhoneNumberStatus', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function listPlayerIdInformationGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ListPlayerIdInformation', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
+     */
+    public function modifyPlayerIdInformationPUT($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ModifyPlayerIdInformation', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     * @deprecated this method not tested
+     */
+    public function deletePlayerIdInformationDELETE($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'DeletePlayerIdInformation', $queryJSON);
     }
 
     /**

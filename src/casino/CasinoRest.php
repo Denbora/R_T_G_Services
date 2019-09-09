@@ -2,10 +2,10 @@
 
 namespace denbora\R_T_G_Services\casino;
 
-use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\ResponseFactory;
-use denbora\R_T_G_Services\services\REST\CasinoService;
 use denbora\R_T_G_Services\validators\ValidatorFactory;
+use denbora\R_T_G_Services\services\REST\CasinoService;
+use denbora\R_T_G_Services\services\REST\RestServiceInterface;
 use denbora\R_T_G_Services\services\REST\AccountService;
 use denbora\R_T_G_Services\services\REST\CashierService;
 use denbora\R_T_G_Services\services\REST\GameService;
@@ -15,6 +15,7 @@ use denbora\R_T_G_Services\services\REST\PlayerService;
 use denbora\R_T_G_Services\services\REST\ReportService;
 use denbora\R_T_G_Services\services\REST\ServiceService;
 use denbora\R_T_G_Services\services\REST\SettingsService;
+use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 /**
  * Class CasinoRest
@@ -30,8 +31,27 @@ use denbora\R_T_G_Services\services\REST\SettingsService;
  * @property SettingsService settings
  * @property CasinoService casino
  */
-class CasinoRest implements CasinoInterface
+class CasinoRest extends AbstractCasinoRest
 {
+    /**
+     * @var array
+     */
+    protected static $restServices = [];
+
+    const DEFAULT_CONNECT_TIMEOUT = 5;
+
+    const DEFAULT_TIMEOUT = 20;
+
+    /**
+     * @var int
+     */
+    protected $connectTimeout;
+
+    /**
+     * @var int
+     */
+    protected $timeout;
+
     /**
      * @var string
      */
@@ -63,6 +83,11 @@ class CasinoRest implements CasinoInterface
     protected $serviceDescription;
 
     /**
+     * @var string
+     */
+    protected $apiKey;
+
+    /**
      * @param string $serviceName
      * @return object
      * @throws R_T_G_ServiceException
@@ -85,38 +110,17 @@ class CasinoRest implements CasinoInterface
      * @param string $certificate
      * @param string $key
      * @param string $password
+     * @param string $apiKey
      * @throws R_T_G_ServiceException
      */
-    public function __construct(string $baseUrl, string $certificate, string $key, string $password)
-    {
-        $this->validator = ValidatorFactory::build('CasinoValidator');
-
-        if ($this->validator->call('baseWebServiceUrl', $baseUrl)) {
-            $this->baseUrl = $baseUrl;
-        } else {
-            throw new R_T_G_ServiceException('Base URL does not meet requirements');
-        }
-
-        if ($this->validator->call('certFile', $certificate)) {
-            $this->certificateFile = $certificate;
-        } else {
-            throw new R_T_G_ServiceException('Certificate does not meet requirements or not found');
-        }
-
-        if ($this->validator->call('certFile', $key)) {
-            $this->keyFile = $key;
-        } else {
-            throw new R_T_G_ServiceException('Key does not meet requirements or not found');
-        }
-
-        if ($this->validator->call('password', $password)) {
-            $this->password = $password;
-        } else {
-            throw new R_T_G_ServiceException('Password does not meet requirements');
-        }
-
-        $services = json_decode(file_get_contents(__DIR__ . '/../config/services.json', true), true);
-        $this->serviceDescription = $services['Rest'];
+    public function __construct(
+        string $baseUrl,
+        string $certificate,
+        string $key,
+        string $password,
+        string $apiKey = ''
+    ) {
+        parent::__construct($baseUrl, $certificate, $key, $password, $apiKey);
     }
 
     /**
@@ -141,26 +145,29 @@ class CasinoRest implements CasinoInterface
             $serviceClass = 'denbora\R_T_G_Services\services' . '\\' . 'REST' . '\\' . $serviceName . 'Service';
         }
 
-        $service = new $serviceClass(
-            $this->certificateFile,
-            $this->keyFile,
-            $this->password,
-            $serviceValidator,
-            $serviceResponse,
-            $this->baseUrl
-        );
+        if (!key_exists($serviceClass, static::$restServices)) {
+            /**@var $serviceInstance RestServiceInterface */
+            $serviceInstance = new $serviceClass(
+                $this->certificateFile,
+                $this->keyFile,
+                $this->password,
+                $serviceValidator,
+                $serviceResponse,
+                $this->baseUrl,
+                $this->apiKey
+            );
 
-        return $service;
-    }
+            if (!$serviceInstance->hasConnectTimeout()) {
+                $serviceInstance->setConnectTimeout($this->connectTimeout);
+            }
 
-    /**
-     * @param string $serviceName
-     * @param string $serviceClass
-     * @param string $serviceEndPoint
-     * @return bool
-     */
-    public function addService(string $serviceName, string $serviceClass, string $serviceEndPoint): bool
-    {
-        // TODO: Implement addService() method.
+            if (!$serviceInstance->hasTimeout()) {
+                $serviceInstance->setTimeout($this->timeout);
+            }
+
+            static::$restServices[$serviceClass] = $serviceInstance;
+        }
+
+        return static::$restServices[$serviceClass];
     }
 }

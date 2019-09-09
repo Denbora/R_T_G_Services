@@ -4,7 +4,12 @@ namespace denbora\R_T_G_Services\services\RESTv2;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 
-class HistoryService extends RestV2Service implements RestServiceInterface
+/**
+ * Class HistoryService
+ * @package denbora\R_T_G_Services\services\RESTv2
+ * @deprecated this service is not working :(
+ */
+class HistoryService extends RestV2Service
 {
     const SERVICE_NAME = 'History';
 

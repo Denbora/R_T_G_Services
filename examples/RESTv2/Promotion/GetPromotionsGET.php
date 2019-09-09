@@ -2,8 +2,32 @@
 
 namespace denbora\R_T_G_Services\examples\RESTv2\Promotion;
 
+use denbora\R_T_G_Services\casino\CasinoRestV2;
 use denbora\R_T_G_Services\examples\RESTv2\RestExample;
+use denbora\R_T_G_Services\R_T_G_ServiceException;
 
 class GetPromotionsGET extends RestExample
 {
+    /**
+     * GetPromotionsGET constructor.
+     * @param CasinoRestV2 $casino
+     */
+    public function __construct(CasinoRestV2 $casino)
+    {
+        #IS NOT TESTED#
+        try {
+            $query = [
+                'skinIds' => [1, 10],
+                'activationDates' => [1, 10],
+                'priorities' => [1, 10],
+                'playerStatuses' => [1, 10],
+                'status' => false
+            ];
+
+            $result = $casino->PromotionService->getPromotionsGET(json_encode($query));
+            dd($result);
+        } catch (R_T_G_ServiceException $exception) {
+            dd($exception->getMessage());
+        }
+    }
 }
