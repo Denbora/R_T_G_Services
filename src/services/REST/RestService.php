@@ -81,6 +81,7 @@ abstract class RestService implements RestServiceInterface
         try {
             $request = Request::get($this->optionalUrl($url))
                 ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
+                ->addOnCurlOption(CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1)
                 ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout);
 
             if (empty($this->apiKey)) {
@@ -109,6 +110,7 @@ abstract class RestService implements RestServiceInterface
         try {
             $request =  Request::post($this->optionalUrl($url))
                 ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
+                ->addOnCurlOption(CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1)
                 ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout)
                 ->contentType('json')
                 ->body($data);
@@ -139,6 +141,7 @@ abstract class RestService implements RestServiceInterface
         try {
             $request = Request::put($this->optionalUrl($url))
                 ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
+                ->addOnCurlOption(CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1)
                 ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout)
                 ->authenticateWithCert($this->certificate, $this->key, $this->password)
                 ->contentType('json')
@@ -170,6 +173,7 @@ abstract class RestService implements RestServiceInterface
         try {
             $request = Request::delete($this->optionalUrl($url))
                 ->addOnCurlOption(CURLOPT_CONNECTTIMEOUT, $this->connectTimeout)
+                ->addOnCurlOption(CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1)
                 ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout)
                 ->contentType('json')
                 ->body($data);
