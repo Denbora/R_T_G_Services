@@ -207,7 +207,7 @@ abstract class RestService implements RestServiceInterface
         }
 
         if (!empty($this->apiKey)) {
-            $query['apiKey'] = $this->apiKey;
+//            $query['apiKey'] = $this->apiKey;
             $query['api_key'] = $this->apiKey; // Change name form api key for Proxy service on api key for RTG
             $url .= (parse_url($url, PHP_URL_QUERY) ? '&' : '?') . http_build_query($query);
         }
