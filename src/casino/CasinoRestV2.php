@@ -2,30 +2,31 @@
 
 namespace denbora\R_T_G_Services\casino;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestV2Response;
-use denbora\R_T_G_Services\validators\RestV2Validator;
-use denbora\R_T_G_Services\services\RESTv2\HelperService;
-use denbora\R_T_G_Services\services\RESTv2\PlayerService;
-use denbora\R_T_G_Services\services\RESTv2\PromotionService;
+use denbora\R_T_G_Services\services\REST\RestServiceInterface;
 use denbora\R_T_G_Services\services\RESTv2\AccountService;
 use denbora\R_T_G_Services\services\RESTv2\CashierService;
 use denbora\R_T_G_Services\services\RESTv2\CasinoService;
 use denbora\R_T_G_Services\services\RESTv2\CouponService;
 use denbora\R_T_G_Services\services\RESTv2\EmailNotificationService;
 use denbora\R_T_G_Services\services\RESTv2\GameService;
+use denbora\R_T_G_Services\services\RESTv2\HelperService;
 use denbora\R_T_G_Services\services\RESTv2\HistoryService;
 use denbora\R_T_G_Services\services\RESTv2\JackpotService;
 use denbora\R_T_G_Services\services\RESTv2\MessageService;
+use denbora\R_T_G_Services\services\RESTv2\PlayerService;
+use denbora\R_T_G_Services\services\RESTv2\PromotionService;
 use denbora\R_T_G_Services\services\RESTv2\ReportService;
 use denbora\R_T_G_Services\services\RESTv2\ServiceService;
 use denbora\R_T_G_Services\services\RESTv2\SettingsService;
 use denbora\R_T_G_Services\services\RESTv2\VigService;
 use denbora\R_T_G_Services\services\RESTv2\WalletService;
-use denbora\R_T_G_Services\services\REST\RestServiceInterface;
-use denbora\R_T_G_Services\R_T_G_ServiceException;
+use denbora\R_T_G_Services\validators\RestV2Validator;
 
 /**
  * Class CasinoRestV2
+ *
  * @package denbora\R_T_G_Services\casino
  * @property AccountService AccountService
  * @property CashierService CashierService
@@ -50,26 +51,7 @@ class CasinoRestV2 extends AbstractCasinoRest
     /**
      * @var array
      */
-    protected static $restV2Services = [];
-
-    /**
-     * CasinoRestV2 constructor.
-     * @param string $baseUrl
-     * @param string $certificate
-     * @param string $key
-     * @param string $password
-     * @param string $apiKey
-     * @throws R_T_G_ServiceException
-     */
-    public function __construct(
-        string $baseUrl,
-        string $certificate,
-        string $key,
-        string $password,
-        string $apiKey = ''
-    ) {
-        parent::__construct($baseUrl, $certificate, $key, $password, $apiKey);
-    }
+    protected $restV2Services = [];
 
     /**
      * @param string $serviceName
@@ -103,7 +85,7 @@ class CasinoRestV2 extends AbstractCasinoRest
      */
     protected function createService(string $serviceName): RestServiceInterface
     {
-        if (!key_exists($serviceName, static::$restV2Services)) {
+        if (!key_exists($serviceName, $this->restV2Services)) {
             /** @var $serviceInstance RestServiceInterface */
             $serviceInstance = new $serviceName(
                 $this->certificateFile,
@@ -123,9 +105,9 @@ class CasinoRestV2 extends AbstractCasinoRest
                 $serviceInstance->setTimeout($this->timeout);
             }
 
-            static::$restV2Services[$serviceName] = $serviceInstance;
+            $this->restV2Services[$serviceName] = $serviceInstance;
         }
 
-        return static::$restV2Services[$serviceName];
+        return $this->restV2Services[$serviceName];
     }
 }

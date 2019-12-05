@@ -2,23 +2,24 @@
 
 namespace denbora\R_T_G_Services\casino;
 
+use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\ResponseFactory;
-use denbora\R_T_G_Services\validators\ValidatorFactory;
-use denbora\R_T_G_Services\services\REST\CasinoService;
-use denbora\R_T_G_Services\services\REST\RestServiceInterface;
 use denbora\R_T_G_Services\services\REST\AccountService;
 use denbora\R_T_G_Services\services\REST\CashierService;
+use denbora\R_T_G_Services\services\REST\CasinoService;
 use denbora\R_T_G_Services\services\REST\GameService;
 use denbora\R_T_G_Services\services\REST\HistoryService;
 use denbora\R_T_G_Services\services\REST\JackpotService;
 use denbora\R_T_G_Services\services\REST\PlayerService;
 use denbora\R_T_G_Services\services\REST\ReportService;
+use denbora\R_T_G_Services\services\REST\RestServiceInterface;
 use denbora\R_T_G_Services\services\REST\ServiceService;
 use denbora\R_T_G_Services\services\REST\SettingsService;
-use denbora\R_T_G_Services\R_T_G_ServiceException;
+use denbora\R_T_G_Services\validators\ValidatorFactory;
 
 /**
  * Class CasinoRest
+ *
  * @package denbora\R_T_G_Services\casino
  * @property AccountService account
  * @property CashierService cashier
@@ -36,7 +37,7 @@ class CasinoRest extends AbstractCasinoRest
     /**
      * @var array
      */
-    protected static $restServices = [];
+    protected $restServices = [];
 
     const DEFAULT_CONNECT_TIMEOUT = 5;
 
@@ -105,25 +106,6 @@ class CasinoRest extends AbstractCasinoRest
     }
 
     /**
-     * CasinoRest constructor.
-     * @param string $baseUrl
-     * @param string $certificate
-     * @param string $key
-     * @param string $password
-     * @param string $apiKey
-     * @throws R_T_G_ServiceException
-     */
-    public function __construct(
-        string $baseUrl,
-        string $certificate,
-        string $key,
-        string $password,
-        string $apiKey = ''
-    ) {
-        parent::__construct($baseUrl, $certificate, $key, $password, $apiKey);
-    }
-
-    /**
      * @param string $serviceName
      * @return mixed
      * @throws R_T_G_ServiceException
@@ -145,7 +127,7 @@ class CasinoRest extends AbstractCasinoRest
             $serviceClass = 'denbora\R_T_G_Services\services' . '\\' . 'REST' . '\\' . $serviceName . 'Service';
         }
 
-        if (!key_exists($serviceClass, static::$restServices)) {
+        if (!key_exists($serviceClass, $this->restServices)) {
             /**@var $serviceInstance RestServiceInterface */
             $serviceInstance = new $serviceClass(
                 $this->certificateFile,
@@ -165,9 +147,9 @@ class CasinoRest extends AbstractCasinoRest
                 $serviceInstance->setTimeout($this->timeout);
             }
 
-            static::$restServices[$serviceClass] = $serviceInstance;
+            $this->restServices[$serviceClass] = $serviceInstance;
         }
 
-        return static::$restServices[$serviceClass];
+        return $this->restServices[$serviceClass];
     }
 }
