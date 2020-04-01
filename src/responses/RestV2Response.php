@@ -42,7 +42,14 @@ class RestV2Response extends RestResponse implements ResponseInterface
         $responseStatuses = $restEntity->getResponseStatuses();
 
         if (isset($responseStatuses[$responseCode])) {
-            return $responseStatuses[$responseCode] . ' Error from rtg - ' . $response;
+            $bodyString = $response->__toString();
+            $rtgErrorMessage = '';
+
+            if (!empty($bodyString)) {
+                $rtgErrorMessage = ' Error from rtg - ' . $bodyString;
+            }
+
+            return $responseStatuses[$responseCode] . $rtgErrorMessage;
         }
 
         return 'Response code: ' . $responseCode;
