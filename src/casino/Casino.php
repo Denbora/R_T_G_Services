@@ -119,7 +119,10 @@ class Casino implements CasinoInterface
                 'verify_peer' => false,
                 'verify_peer_name' => false,
                 'allow_self_signed' => true
-            ]
+            ],
+            'http' => [
+                'timeout' => 60.0
+            ],
         ]);
 
         $webUrl = $this->createUrl($serviceName);
