@@ -400,6 +400,22 @@
                 "417": "Transaction denied.",
                 "400": "Bad request."
             }
+        },
+        "GetBankingMethods": {
+            "method": "GET",
+            "path": "\/api\/cashier\/banking-methods",
+            "parameters": {
+                "isCash": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "is cash true or false."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized"
+            }
         }
     },
     "Casino": {
