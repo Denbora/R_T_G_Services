@@ -57,4 +57,14 @@ class CashierService extends RestV2Service
     {
         return $this->callMethod(self::SERVICE_NAME, 'WithdrawalCommonWallet', $queryJSON);
     }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function bankingMethodsGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetBankingMethods', $queryJSON);
+    }
 }
