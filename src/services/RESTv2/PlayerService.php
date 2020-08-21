@@ -419,4 +419,84 @@ class PlayerService extends RestV2Service
     {
         return $this->callMethod(self::SERVICE_NAME, 'DiscardCoupon', $queryJSON);
     }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getPendingGamesGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetPendingGames', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function closePendingGamesDELETE($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ClosePendingGames', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getBatchCouponRedemptionStatusGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetBatchCouponRedemptionStatus', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function redeemsBatchCouponsPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'RedeemsBatchCoupons', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getAllPlayersPendingGamesGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetAllPlayersPendingGames', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function createSecurityGameTokenPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'CreateSecurityGameToken', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function updateWalletCodePOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'UpdateWalletCode', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function couponDenyDELETE($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'CouponDeny', $queryJSON);
+    }
 }

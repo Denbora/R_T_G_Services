@@ -117,4 +117,24 @@ class GameService extends RestV2Service
     {
         return $this->callMethod(self::SERVICE_NAME, 'RemoveGame', $queryJSON);
     }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function closePendingGamesByGameNumberListDELETE($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ClosePendingGamesByGameNumberList', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function closePendingGamesByGameNumberDELETE($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ClosePendingGamesByGameNumber', $queryJSON);
+    }
 }

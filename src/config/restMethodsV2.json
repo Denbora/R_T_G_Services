@@ -295,6 +295,63 @@
                 "401": "Unauthorized",
                 "404": "Player was not found."
             }
+        },
+        "ValidateCredentials": {
+            "method": "POST",
+            "path": "\/api\/accounts\/validate-credentials",
+            "parameters": {
+                "login": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Player Login."
+                },
+                "hashedPassword": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Player hashed password"
+                },
+                "forMoney": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Play real or fun"
+                },
+                "ipAddress": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Player IP address"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized",
+                "409": "Invalid credentials.",
+                "410": "Player login restricted.",
+                "412": "Player password expired."
+            }
+        }
+    },
+    "AutoComplete": {
+        "CompletesAnyPendingGames": {
+            "method": "POST",
+            "path": "\/api\/autocomplete-requests",
+            "parameters": {
+                "playerIds": {
+                    "dataType": "array",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "List of player Ids"
+                }
+            },
+            "responses": {
+                "201": "Created",
+                "401": "Unauthorized",
+                "500": "InternalServerError"
+            }
         }
     },
     "Cashier": {
@@ -633,9 +690,49 @@
                 "401": "Unauthorized",
                 "400": "Bad request."
             }
+        },
+        "PendingGames": {
+            "method": "DELETE",
+            "path": "\/api\/casino\/pending-games",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start date"
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End date"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "The request is invalid",
+                "401": "Unauthorized"
+            }
         }
     },
     "Coupon": {
+        "GetCouponDetails": {
+            "method": "GET",
+            "path": "\/api\/coupons\/coupon-details",
+            "parameters": {
+                "couponCode": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "The code of the coupon to show"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Coupon was not found."
+            }
+        },
         "GetCoupons": {
             "method": "GET",
             "path": "\/api\/v2\/coupons",
@@ -840,6 +937,53 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
+            }
+        }
+    },
+    "ExternalLobby": {
+        "GetExternalLobbies": {
+            "method": "GET",
+            "path": "\/api\/externalLobby",
+            "parameters": {},
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized"
+            }
+        },
+        "GetExternalLobby": {
+            "method": "GET",
+            "path": "\/api\/externalLobby\/{lobbyId}",
+            "parameters": {
+                "lobbyId": {
+                    "dataType": "integer",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "The lobby ID"
+                },
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "The skin ID."
+                },
+                "pid": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Player’s ID"
+                },
+                "clientType": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "The client type used by the player (download|instantplay|mobile)"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "NotFound",
+                "417": "Lobby not active"
             }
         }
     },
@@ -1131,12 +1275,63 @@
                 "404": "Player was not found.",
                 "400": "Bad request."
             }
+        },
+        "ClosePendingGamesByGameNumberList": {
+            "method": "DELETE",
+            "path": "\/api\/games\/pending-games",
+            "parameters": {
+                "gamesParam": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized"
+            }
+        },
+        "ClosePendingGamesByGameNumber": {
+            "method": "DELETE",
+            "path": "\/api\/games\/{gameId}\/pending-games\/{gameNum}",
+            "parameters": {
+                "gameId": {
+                    "dataType": "integer",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Game id"
+                },
+                "gameNum": {
+                    "dataType": "integer",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Game number."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized"
+            }
         }
     },
     "History": {
         "GetRsvsGameDetailsHistory": {
             "method": "GET",
             "path": "\/api\/history\/rsvs-game-details",
+            "parameters": {
+                "gameNumber": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Game number."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Game was not found."
+            }
+        },
+        "GetBoardGameDetailsHistory": {
+            "method": "GET",
+            "path": "\/api\/history\/board-game-details",
             "parameters": {
                 "gameNumber": {
                     "dataType": "integer",
@@ -1344,6 +1539,23 @@
                     "parameterType": "query",
                     "required": true,
                     "description": "Game number."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Game was not found."
+            }
+        },
+        "GetShootingGameDetailsHistory": {
+            "method": "GET",
+            "path": "\/api\/history\/shooting-game-details",
+            "parameters": {
+                "batchGameNumber": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "External Game number."
                 }
             },
             "responses": {
@@ -1683,6 +1895,29 @@
         "GetVegasThreeCardRummyHistoryDetail": {
             "method": "GET",
             "path": "\/api\/history\/vegas-three-card-rummy",
+            "parameters": {
+                "machineId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Machine ID."
+                },
+                "gameNumber": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Game number."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Game was not found."
+            }
+        },
+        "GetVideoPokerHistoryDetailV2": {
+            "method": "GET",
+            "path": "\/api\/v2\/history\/video-poker",
             "parameters": {
                 "machineId": {
                     "dataType": "integer",
@@ -2944,6 +3179,168 @@
                     "parameterType": "query",
                     "required": true,
                     "description": "The code of the coupon to discard"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "417": "Coupon is invalid"
+            }
+        },
+        "GetPendingGames": {
+            "method": "GET",
+            "path": "\/api\/players\/{playerId}\/pending-games",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request",
+                "401": "Unauthorized",
+                "404": "Player was not found."
+            }
+        },
+        "ClosePendingGames": {
+            "method": "DELETE",
+            "path": "\/api\/players\/{playerId}\/pending-games",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request",
+                "401": "Unauthorized",
+                "404": "Player was not found."
+            }
+        },
+        "GetBatchCouponRedemptionStatus": {
+            "method": "GET",
+            "path": "\/api\/v2\/players\/coupons\/batch",
+            "parameters": {
+                "requestId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Request id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request",
+                "401": "Unauthorized",
+                "404": "Player was not found."
+            }
+        },
+        "RedeemsBatchCoupons": {
+            "method": "POST",
+            "path": "\/api\/v2\/players\/coupons\/batch",
+            "parameters": {
+                "couponBatch": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request",
+                "401": "Unauthorized"
+            }
+        },
+        "GetAllPlayersPendingGames": {
+            "method": "GET",
+            "path": "\/api\/players\/all-pending-games",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start Date."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End Date."
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": false,
+                    "description": "Player id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request",
+                "401": "Unauthorized",
+                "404": "Player was not found."
+            }
+        },
+        "CreateSecurityGameToken": {
+            "method": "POST",
+            "path": "\/api\/players\/{playerId}\/game-token",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player id"
+                },
+                "gameParameters": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "409": "Game Token creation failed."
+            }
+        },
+        "UpdateWalletCode": {
+            "method": "POST",
+            "path": "\/api\/players\/wallet\/code",
+            "parameters": {
+                "playerLogin": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Player Login"
+                },
+                "walletCode": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Wallet Code"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized"
+            }
+        },
+        "CouponDeny": {
+            "method": "DELETE",
+            "path": "\/api\/v2\/players\/{playerId}\/coupon\/deny",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player id"
+                },
+                "couponCode": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Wallet Code"
                 }
             },
             "responses": {
@@ -4524,6 +4921,29 @@
                 "200": "OK",
                 "401": "Unauthorized"
             }
+        },
+        "GetUnsupportedBrowser": {
+            "method": "GET",
+            "path": "\/api\/settings\/unsupported-browser",
+            "parameters": {
+                "client": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Client ID can be Download, Instant Play or Mobile (download|instantplay|mobile)"
+                },
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No data for the client"
+            }
         }
     },
     "Vig": {
@@ -4555,6 +4975,125 @@
             "responses": {
                 "200": "OK",
                 "404": "Player was not found."
+            }
+        },
+        "GetWalletSetupInfoEndpoint": {
+            "method": "GET",
+            "path": "\/api\/wallet\/endpoint",
+            "parameters": {
+                "walletCode": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Wallet Code."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "404": "No wallet configuration was found. Please configure the casino with seamless wallet"
+            }
+        },
+        "CreateEndpoint": {
+            "method": "POST",
+            "path": "\/api\/wallet\/endpoint",
+            "parameters": {
+                "walletUrl": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "wallet url"
+                },
+                "walletTimeout": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "wallet timeout"
+                },
+                "balanceThreshold": {
+                    "dataType": "double",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "balance threshold"
+                },
+                "providerOptions": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "provider options"
+                },
+                "isActive": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "is active"
+                },
+                "walletCode": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "wallet code"
+                },
+                "cancelFailedWithdrawal": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "cancel failed withdrawal"
+                }
+            },
+            "responses": {
+                "200": "OK"
+            }
+        },
+        "UpdateEndpoint": {
+            "method": "PUT",
+            "path": "\/api\/wallet\/endpoint",
+            "parameters": {
+                "walletCode": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "wallet code"
+                },
+                "walletUrl": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "wallet url"
+                },
+                "walletTimeout": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "wallet timeout"
+                },
+                "balanceThreshold": {
+                    "dataType": "double",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "balance threshold"
+                },
+                "providerOptions": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "provider options"
+                },
+                "cancelFailedWithdrawal": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "cancel failed withdrawal"
+                },
+                "isActive": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "is active"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request."
             }
         },
         "GetNotification": {
@@ -4626,6 +5165,19 @@
                 "200": "OK",
                 "404": "Player was not found or Player is not active.",
                 "417": "Invalid ClientId."
+            }
+        },
+        "PlaceSettlementInSeamless": {
+            "method": "POST",
+            "path": "\/api\/wallet\/settlement",
+            "parameters": {
+                "walletSettlementParams": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "404": "Player was not found.",
+                "409": "Currency mismatch, player currency is different.",
+                "412": "Game not found."
             }
         },
         "GetBalances": {

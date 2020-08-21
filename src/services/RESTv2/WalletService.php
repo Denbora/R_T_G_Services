@@ -22,7 +22,36 @@ class WalletService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated this method not tested
+     */
+    public function getWalletSetupInfoEndpointGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetWalletSetupInfoEndpoint', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function createEndpointPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'CreateEndpoint', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function updateEndpointPUT($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'UpdateEndpoint', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
      */
     public function getNotificationGET($queryJSON = '{}')
     {
@@ -55,7 +84,16 @@ class WalletService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated this method not tested
+     */
+    public function placeSettlementInSeamlessPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'PlaceSettlementInSeamless', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
      */
     public function getBalancesPOST($queryJSON = '{}')
     {

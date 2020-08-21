@@ -123,4 +123,14 @@ class CasinoService extends RestV2Service
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetCasinoTotals', $queryJSON);
     }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function pendingGamesDELETE($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'PendingGames', $queryJSON);
+    }
 }
