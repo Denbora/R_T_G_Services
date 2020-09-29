@@ -28,6 +28,16 @@ class HistoryService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function getBoardGameDetailsHistoryGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetBoardGameDetailsHistory', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function getWarHistoryDetailGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetWarHistoryDetail', $queryJSON);
@@ -111,6 +121,16 @@ class HistoryService extends RestV2Service
     public function getBlackjackHistoryDetailGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetBlackjackHistoryDetail', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getShootingGameDetailsHistoryGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetShootingGameDetailsHistory', $queryJSON);
     }
 
     /**
@@ -261,6 +281,16 @@ class HistoryService extends RestV2Service
     public function getVegasThreeCardRummyHistoryDetailGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetVegasThreeCardRummyHistoryDetail', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getVideoPokerHistoryDetailV2GET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetVideoPokerHistoryDetailV2', $queryJSON);
     }
 
     /**

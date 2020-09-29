@@ -6,10 +6,12 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestV2Response;
 use denbora\R_T_G_Services\services\REST\RestServiceInterface;
 use denbora\R_T_G_Services\services\RESTv2\AccountService;
+use denbora\R_T_G_Services\services\RESTv2\AutoCompleteService;
 use denbora\R_T_G_Services\services\RESTv2\CashierService;
 use denbora\R_T_G_Services\services\RESTv2\CasinoService;
 use denbora\R_T_G_Services\services\RESTv2\CouponService;
 use denbora\R_T_G_Services\services\RESTv2\EmailNotificationService;
+use denbora\R_T_G_Services\services\RESTv2\ExternalLobbyService;
 use denbora\R_T_G_Services\services\RESTv2\GameService;
 use denbora\R_T_G_Services\services\RESTv2\HelperService;
 use denbora\R_T_G_Services\services\RESTv2\HistoryService;
@@ -29,10 +31,12 @@ use denbora\R_T_G_Services\validators\RestV2Validator;
  *
  * @package denbora\R_T_G_Services\casino
  * @property AccountService AccountService
+ * @property AutoCompleteService AutoCompleteService
  * @property CashierService CashierService
  * @property CasinoService CasinoService
  * @property CouponService CouponService
  * @property EmailNotificationService EmailNotificationService
+ * @property ExternalLobbyService ExternalLobbyService
  * @property GameService GameService
  * @property HistoryService HistoryService
  * @property JackpotService JackpotService

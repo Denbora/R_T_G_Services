@@ -13,6 +13,16 @@ class CouponService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function getCouponDetailsGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetCouponDetails', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function getCouponsGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetCoupons', $queryJSON);
