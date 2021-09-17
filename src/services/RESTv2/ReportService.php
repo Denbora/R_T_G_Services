@@ -127,6 +127,8 @@ class ReportService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     *
+     * @deprecated use {@see RESTv2/AffiliateService::getPlayersSessionsHistoryGET()}
      */
     public function getPlayersSessionsHistoryGET($queryJSON = '{}')
     {
@@ -187,6 +189,8 @@ class ReportService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     *
+     * @deprecated use {@see RESTv2/AffiliateService::getNewPlayerSignUpsGET()}
      */
     public function getNewPlayerSignupsGET($queryJSON = '{}')
     {
@@ -197,6 +201,8 @@ class ReportService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     *
+     * @deprecated use {@see RESTv2/AffiliateService::getPlayersSummaryGET()}
      */
     public function getPlayerSummaryAllGET($queryJSON = '{}')
     {

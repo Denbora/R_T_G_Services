@@ -6,6 +6,7 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestV2Response;
 use denbora\R_T_G_Services\services\REST\RestServiceInterface;
 use denbora\R_T_G_Services\services\RESTv2\AccountService;
+use denbora\R_T_G_Services\services\RESTv2\AffiliateService;
 use denbora\R_T_G_Services\services\RESTv2\AutoCompleteService;
 use denbora\R_T_G_Services\services\RESTv2\CashierService;
 use denbora\R_T_G_Services\services\RESTv2\CasinoService;
@@ -31,6 +32,7 @@ use denbora\R_T_G_Services\validators\RestV2Validator;
  *
  * @package denbora\R_T_G_Services\casino
  * @property AccountService AccountService
+ * @property AffiliateService AffiliateService
  * @property AutoCompleteService AutoCompleteService
  * @property CashierService CashierService
  * @property CasinoService CasinoService

@@ -298,7 +298,7 @@
         },
         "ValidateCredentials": {
             "method": "POST",
-            "path": "\/api\/accounts\/validate-credentials",
+            "path": "\/api\/v2\/accounts\/validate-credentials",
             "parameters": {
                 "login": {
                     "dataType": "string",
@@ -332,6 +332,319 @@
                 "409": "Invalid credentials.",
                 "410": "Player login restricted.",
                 "412": "Player password expired."
+            }
+        }
+    },
+    "Affiliate": {
+        "ListAffiliates": {
+            "method": "GET",
+            "path": "\/api\/affiliates",
+            "parameters": {
+                "affiliateType": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Values: local or global."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No affiliates found"
+            }
+        },
+        "CreateAffiliate": {
+            "method": "POST",
+            "path": "\/api\/affiliates",
+            "parameters": {
+                "affiliate": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized",
+                "404": "Program Id must be valid.",
+                "409": "Conflict"
+            }
+        },
+        "GetGlobalLinked": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/list-global-linked",
+            "parameters": {
+                "globalId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Global Affiliate ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized",
+                "404": "No matches found for globalId"
+            }
+        },
+        "GetAccountLedgerAll": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/account-ledger-all",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Starting date of the date range (inclusive)."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Ending date of date range (inclusive)."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized",
+                "404": "No accounting ledger data available"
+            }
+        },
+        "GetDownloadInformationAll": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/download-information-all",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Starting date of the date range (inclusive)."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Ending date of date range (inclusive)."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized",
+                "404": "No players found"
+            }
+        },
+        "GetBannedDeactivatedPlayersAll": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/banned-deactivated-players",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Starting date of the date range (inclusive)."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Ending date of date range (inclusive)."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized",
+                "404": "No players found"
+            }
+        },
+        "GetUnbannedPlayers": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/unbanned-players",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Starting date of the date range (inclusive)."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Ending date of date range (inclusive)."
+                },
+                "aId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Affiliate ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized",
+                "404": "No players found"
+            }
+        },
+        "GetPlayersSessionsHistory": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/sessions",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start Date."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End Date."
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized"
+            }
+        },
+        "GetNewPlayerSignUps": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/player-signups",
+            "parameters": {
+                "fromDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start Date."
+                },
+                "toDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End Date."
+                },
+                "defaultAffiliateId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Default Affiliate ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized"
+            }
+        },
+        "GetPlayersSummary": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/players-summary",
+            "parameters": {
+                "fromDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start Date."
+                },
+                "toDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End Date."
+                },
+                "defaultAffiliateId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Default Affiliate ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized"
+            }
+        },
+        "GetDownloads": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/downloads",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player ID."
+                },
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Start date."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "End date."
+                },
+                "downloadId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Download ID."
+                },
+                "affiliateId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Affiliate ID."
+                },
+                "trackingId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Tracking ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized",
+                "404": "Player was not found."
+            }
+        },
+        "LinkGlobalAffiliate": {
+            "method": "POST",
+            "path": "\/api\/affiliates\/global-link",
+            "parameters": {
+                "globalId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Global Affiliate ID."
+                },
+                "localId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Local Affiliate ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request.",
+                "401": "Unauthorized",
+                "404": "Affiliate was not found.",
+                "409": "Affiliate link already exists."
             }
         }
     },
@@ -1965,7 +2278,7 @@
     "Jackpot": {
         "GetLobbyGetProgressiveJackpot": {
             "method": "GET",
-            "path": "\/api\/jackpots\/lobby-progressive-jackpot",
+            "path": "\/api\/v2\/jackpots\/lobby-progressive-jackpot",
             "parameters": {
                 "forMoney": {
                     "dataType": "boolean",
@@ -2266,7 +2579,7 @@
         },
         "GetActiveCouponDetailsByPlayer": {
             "method": "GET",
-            "path": "\/api\/players\/{playerId}\/coupons\/active",
+            "path": "\/api\/v2\/players\/{playerId}\/coupons\/active",
             "parameters": {
                 "playerId": {
                     "dataType": "string",
