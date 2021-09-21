@@ -9,8 +9,9 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 class GetDownloadsGET extends RestExample
 {
     /**
-     * GetIncompleteSignupsGET constructor.
+     * GetDownloadsGET constructor.
      * @param CasinoRestV2 $casino
+     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {

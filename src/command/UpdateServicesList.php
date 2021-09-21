@@ -58,11 +58,18 @@ class UpdateServicesList extends Command
                             $responses[$code] = $response['description'];
                         }
 
+                        $deprecated = "";
+                        if (isset($method['deprecated']) && true === $method['deprecated']) {
+                            $deprecated = $method['description'];
+                        }
+
+
                         $services[$categoryName][$methodName] = [
                             'method' => strtoupper($methodType),
                             'path' => $pathTemplate,
                             'parameters' => $parameters ?? [],
-                            'responses' => $responses ?? []
+                            'responses' => $responses ?? [],
+                            'deprecated' => $deprecated,
                         ];
 
                         $queryPathTemplate = strtoupper($methodType) . ' ' . $pathTemplate;

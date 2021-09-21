@@ -860,9 +860,7 @@
         "GetSkins": {
             "method": "GET",
             "path": "\/api\/casino\/skins",
-            "parameters": {
-                "request": "JSON"
-            },
+            "parameters": {},
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
@@ -871,9 +869,7 @@
         "GetClientChannels": {
             "method": "GET",
             "path": "\/api\/casino\/clients",
-            "parameters": {
-                "request": "JSON"
-            },
+            "parameters": {},
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
@@ -882,9 +878,7 @@
         "ListUsStates": {
             "method": "GET",
             "path": "\/api\/casino\/us-states",
-            "parameters": {
-                "request": "JSON"
-            },
+            "parameters": {},
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
@@ -894,9 +888,7 @@
         "ListIdTypes": {
             "method": "GET",
             "path": "\/api\/casino\/idInfoType",
-            "parameters": {
-                "request": "JSON"
-            },
+            "parameters": {},
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
@@ -1386,9 +1378,7 @@
         "GetRfmScoreForAllPlayers": {
             "method": "GET",
             "path": "\/api\/data-science\/rfm\/players",
-            "parameters": {
-                "couponInput": "JSON"
-            },
+            "parameters": {},
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
@@ -1399,9 +1389,7 @@
         "GetAllSegments": {
             "method": "GET",
             "path": "\/api\/data-science\/rfm\/segments",
-            "parameters": {
-                "couponInput": "JSON"
-            },
+            "parameters": {},
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
@@ -1534,32 +1522,7 @@
         "GetExternalGames": {
             "method": "GET",
             "path": "\/api\/games\/external",
-            "parameters": {
-                "lobbyId": {
-                    "dataType": "integer",
-                    "parameterType": "path",
-                    "required": true,
-                    "description": "The External Lobby ID"
-                },
-                "skinId": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "The skin ID per Casino."
-                },
-                "pid": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "System unique identifier of the player"
-                },
-                "clientType": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Channels: Mobile\/Instant Play\/Download"
-                }
-            },
+            "parameters": {},
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
@@ -6267,20 +6230,7 @@
         "GetCasinoList": {
             "method": "GET",
             "path": "\/api\/tournaments\/casino-list",
-            "parameters": {
-                "client": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Client ID can be Download, Instant Play or Mobile"
-                },
-                "skinId": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Skin ID."
-                }
-            },
+            "parameters": {},
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",

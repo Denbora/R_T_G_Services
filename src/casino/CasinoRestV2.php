@@ -10,19 +10,23 @@ use denbora\R_T_G_Services\services\RESTv2\AffiliateService;
 use denbora\R_T_G_Services\services\RESTv2\AutoCompleteService;
 use denbora\R_T_G_Services\services\RESTv2\CashierService;
 use denbora\R_T_G_Services\services\RESTv2\CasinoService;
+use denbora\R_T_G_Services\services\RESTv2\CdkService;
 use denbora\R_T_G_Services\services\RESTv2\CouponService;
+use denbora\R_T_G_Services\services\RESTv2\DataScienceService;
 use denbora\R_T_G_Services\services\RESTv2\EmailNotificationService;
 use denbora\R_T_G_Services\services\RESTv2\ExternalLobbyService;
 use denbora\R_T_G_Services\services\RESTv2\GameService;
 use denbora\R_T_G_Services\services\RESTv2\HelperService;
 use denbora\R_T_G_Services\services\RESTv2\HistoryService;
 use denbora\R_T_G_Services\services\RESTv2\JackpotService;
+use denbora\R_T_G_Services\services\RESTv2\LobbyService;
 use denbora\R_T_G_Services\services\RESTv2\MessageService;
 use denbora\R_T_G_Services\services\RESTv2\PlayerService;
 use denbora\R_T_G_Services\services\RESTv2\PromotionService;
 use denbora\R_T_G_Services\services\RESTv2\ReportService;
 use denbora\R_T_G_Services\services\RESTv2\ServiceService;
 use denbora\R_T_G_Services\services\RESTv2\SettingsService;
+use denbora\R_T_G_Services\services\RESTv2\TournamentService;
 use denbora\R_T_G_Services\services\RESTv2\VigService;
 use denbora\R_T_G_Services\services\RESTv2\WalletService;
 use denbora\R_T_G_Services\validators\RestV2Validator;
@@ -36,18 +40,22 @@ use denbora\R_T_G_Services\validators\RestV2Validator;
  * @property AutoCompleteService AutoCompleteService
  * @property CashierService CashierService
  * @property CasinoService CasinoService
+ * @property CdkService CdkService
  * @property CouponService CouponService
+ * @property DataScienceService DataScienceService
  * @property EmailNotificationService EmailNotificationService
  * @property ExternalLobbyService ExternalLobbyService
  * @property GameService GameService
  * @property HistoryService HistoryService
  * @property JackpotService JackpotService
+ * @property LobbyService LobbyService
  * @property MessageService MessageService
  * @property PlayerService PlayerService
  * @property PromotionService PromotionService
  * @property ReportService ReportService
  * @property ServiceService ServiceService
  * @property SettingsService SettingsService
+ * @property TournamentService TournamentService
  * @property VigService VigService
  * @property WalletService WalletService
  * @property HelperService HelperService

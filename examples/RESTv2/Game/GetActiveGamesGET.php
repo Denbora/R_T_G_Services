@@ -11,6 +11,7 @@ class GetActiveGamesGET extends RestExample
     /**
      * GetActiveGamesGET constructor.
      * @param CasinoRestV2 $casino
+     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
@@ -19,9 +20,10 @@ class GetActiveGamesGET extends RestExample
                 'skinId' => 1,
                 'includeMenu' => true,
                 'playerId' => '10307426',
+                'languageCode' => 'German',
             ];
 
-            $result = $casino->GameService->getActiveFlashGamesGET(json_encode($query));
+            $result = $casino->GameService->getActiveGamesGET(json_encode($query));
             dd($result);
         } catch (R_T_G_ServiceException $exception) {
             dd($exception->getMessage());

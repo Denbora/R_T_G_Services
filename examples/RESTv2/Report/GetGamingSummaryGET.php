@@ -11,6 +11,7 @@ class GetGamingSummaryGET extends RestExample
     /**
      * GetGamingSummaryGET constructor.
      * @param CasinoRestV2 $casino
+     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
@@ -20,7 +21,7 @@ class GetGamingSummaryGET extends RestExample
                 'endDate' => '2019-07-09',
                 'playerId' => '10307426',
             ];
-            $result = $casino->ReportService->getGameDetailSummaryGET(json_encode($query));
+            $result = $casino->ReportService->getGamingSummaryGET(json_encode($query));
 
             dd($result);
         } catch (R_T_G_ServiceException $exception) {
