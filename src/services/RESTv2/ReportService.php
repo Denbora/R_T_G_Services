@@ -68,6 +68,16 @@ class ReportService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function getGlobalLinkedGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetGlobalLinked', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function getOptInStatisticsGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetOptInStatistics', $queryJSON);
@@ -118,6 +128,16 @@ class ReportService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function getAllTopGamesPlayedGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetAllTopGamesPlayed', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function getLastGamesPlayedGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetLastGamesPlayed', $queryJSON);
@@ -140,9 +160,39 @@ class ReportService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function getAffiliatesStatsSummaryDailyGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetAffiliatesStatsSummaryDaily', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getAffiliatesStatsSummaryHourlyGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetAffiliatesStatsSummaryHourly', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function getGamingSummaryGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetGamingSummary', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getAccountHistoryByDateRangeGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetAccountHistoryByDateRange', $queryJSON);
     }
 
     /**
@@ -224,9 +274,19 @@ class ReportService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
-    public function getPlayedGamesGET($queryJSON = '{}')
+    public function getGamingActivityReportGET($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'GetPlayedGames', $queryJSON);
+        return $this->callMethod(self::SERVICE_NAME, 'GetGamingActivityReport', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getPlayedGamesJackpotGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetPlayedGamesJackpot', $queryJSON);
     }
 
     /**
@@ -247,6 +307,16 @@ class ReportService extends RestV2Service
     public function getPlayerFullGameStatsDetailGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetPlayerFullGameStatsDetail', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getPlayerGameStatsByDateRangeGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetPlayerGameStatsByDateRange', $queryJSON);
     }
 
     /**
@@ -285,9 +355,29 @@ class ReportService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function getEmailVerifyReportGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetEmailVerifyReport', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function thirdPartyOptInOptOutGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'ThirdPartyOptInOptOut', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getPlayerSessionsGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetPlayerSessions', $queryJSON);
     }
 
     /**
@@ -319,6 +409,16 @@ class ReportService extends RestV2Service
     public function getPlayerGameStatsDetailByGameGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetPlayerGameStatsDetailByGame', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getPlayedGamesGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetPlayedGames', $queryJSON);
     }
 
     /**

@@ -23,6 +23,16 @@ class AccountService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function validateLoginGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ValidateLogin', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function getAccountBalanceGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetAccountBalance', $queryJSON);
@@ -163,6 +173,26 @@ class AccountService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function loginWithPlayerDevicePOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'LoginWithPlayerDevice', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function validateCredentialsPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ValidateCredentials', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function banPlayerPOST($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'BanPlayer', $queryJSON);
@@ -176,15 +206,5 @@ class AccountService extends RestV2Service
     public function unBanPlayerPOST($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'UnBanPlayer', $queryJSON);
-    }
-
-    /**
-     * @param string $queryJSON
-     * @return array|mixed|object|string
-     * @throws R_T_G_ServiceException
-     */
-    public function validateCredentialsPOST($queryJSON = '{}')
-    {
-        return $this->callMethod(self::SERVICE_NAME, 'ValidateCredentials', $queryJSON);
     }
 }

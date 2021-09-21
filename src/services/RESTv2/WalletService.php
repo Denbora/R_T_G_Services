@@ -22,10 +22,11 @@ class WalletService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated use {@see WalletService::getWalletEndpointGET()}
      */
     public function getWalletSetupInfoEndpointGET($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'GetWalletSetupInfoEndpoint', $queryJSON);
+        return $this->getWalletEndpointGET($queryJSON);
     }
 
     /**
@@ -33,19 +34,51 @@ class WalletService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
-    public function createEndpointPOST($queryJSON = '{}')
+    public function getWalletEndpointGET($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'CreateEndpoint', $queryJSON);
+        return $this->callMethod(self::SERVICE_NAME, 'GetWalletEndpoint', $queryJSON);
     }
 
     /**
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated use {@see WalletService::updateWalletEndpointPUT()}
      */
     public function updateEndpointPUT($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'UpdateEndpoint', $queryJSON);
+        return $this->updateWalletEndpointPUT($queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function updateWalletEndpointPUT($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'UpdateWalletEndpoint', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     * @deprecated use {@see WalletService::createWalletEndpointPOST()}
+     */
+    public function createEndpointPOST($queryJSON = '{}')
+    {
+        return $this->createWalletEndpointPOST($queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function createWalletEndpointPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'CreateWalletEndpoint', $queryJSON);
     }
 
     /**
@@ -84,10 +117,21 @@ class WalletService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated use {@see WalletService::placeSeamlessWalletSettlementPOST()}
      */
     public function placeSettlementInSeamlessPOST($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'PlaceSettlementInSeamless', $queryJSON);
+        return $this->placeSeamlessWalletSettlementPOST($queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function placeSeamlessWalletSettlementPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'PlaceSeamlessWalletSettlement', $queryJSON);
     }
 
     /**

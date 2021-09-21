@@ -52,9 +52,20 @@ class SettingsService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated use {@see SettingsService::getUnsupportedBrowsersGET()}
      */
     public function getUnsupportedBrowserGET($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'GetUnsupportedBrowser', $queryJSON);
+        return $this->getUnsupportedBrowsersGET($queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getUnsupportedBrowsersGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetUnsupportedBrowsers', $queryJSON);
     }
 }

@@ -37,8 +37,8 @@ class UpdateServicesList extends Command
                     foreach ($methods as $methodType => $method) {
                         list($categoryName, $methodName) = explode('_', $method['operationId']);
 
+                        $parameters = [];
                         if (isset($method['parameters'])) {
-                            $parameters = [];
                             foreach ($method['parameters'] as $parameter) {
                                 if (!isset($parameter['schema'])) {
                                     $parameters[$parameter['name']] = [

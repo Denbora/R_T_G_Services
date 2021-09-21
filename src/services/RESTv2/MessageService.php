@@ -33,6 +33,16 @@ class MessageService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function getMessagesListGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetMessagesList', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function createMessagePOST($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'CreateMessage', $queryJSON);

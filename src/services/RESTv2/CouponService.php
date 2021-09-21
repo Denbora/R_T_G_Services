@@ -13,6 +13,16 @@ class CouponService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function couponBatchResultsGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'CouponBatchResults', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function getCouponDetailsGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetCouponDetails', $queryJSON);
@@ -32,7 +42,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated use {@see RESTv2/PlayerService::getRequestedAndRedeemedCouponsGET()}
+     * @deprecated use {@see PlayerService::getRequestedAndRedeemedCouponsGET()}
      *
      */
     public function getRequestedAndRedeemedCouponsGET($queryJSON = '{}')
@@ -44,7 +54,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated use {@see RESTv2/PlayerService::redeemCouponPOST()}
+     * @deprecated use {@see PlayerService::redeemCouponPOST()}
      */
     public function redeemCouponPOST($queryJSON = '{}')
     {
@@ -55,7 +65,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated use {@see RESTv2/PlayerService::discardCouponDELETE()}
+     * @deprecated use {@see PlayerService::discardCouponDELETE()}
      *
      */
     public function discardCouponDELETE($queryJSON = '{}')
@@ -71,6 +81,16 @@ class CouponService extends RestV2Service
     public function copyCouponPOST($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'CopyCoupon', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function importCouponListPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ImportCouponList', $queryJSON);
     }
 
     /**

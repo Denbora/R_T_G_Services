@@ -13,6 +13,16 @@ class GameService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function getExternalGamesGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetExternalGames', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function getRecommendedGamesGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetRecommendedGames', $queryJSON);
@@ -36,16 +46,6 @@ class GameService extends RestV2Service
     public function getFavoriteGamesGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetFavoriteGames', $queryJSON);
-    }
-
-    /**
-     * @param string $queryJSON
-     * @return array|mixed|object|string
-     * @throws R_T_G_ServiceException
-     */
-    public function getActiveGamesGET($queryJSON = '{}')
-    {
-        return $this->callMethod(self::SERVICE_NAME, 'GetActiveGames', $queryJSON);
     }
 
     /**
@@ -93,6 +93,16 @@ class GameService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function getActiveGamesGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetActiveGames', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function blockGamesPOST($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'BlockGames', $queryJSON);
@@ -123,18 +133,8 @@ class GameService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
-    public function closePendingGamesByGameNumberListDELETE($queryJSON = '{}')
+    public function closePendingGamesDELETE($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'ClosePendingGamesByGameNumberList', $queryJSON);
-    }
-
-    /**
-     * @param string $queryJSON
-     * @return array|mixed|object|string
-     * @throws R_T_G_ServiceException
-     */
-    public function closePendingGamesByGameNumberDELETE($queryJSON = '{}')
-    {
-        return $this->callMethod(self::SERVICE_NAME, 'ClosePendingGamesByGameNumber', $queryJSON);
+        return $this->callMethod(self::SERVICE_NAME, 'ClosePendingGames', $queryJSON);
     }
 }

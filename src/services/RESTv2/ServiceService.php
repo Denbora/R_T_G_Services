@@ -131,4 +131,14 @@ class ServiceService extends RestV2Service
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetDownloadId', $queryJSON);
     }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function pinCommentPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'PinComment', $queryJSON);
+    }
 }
