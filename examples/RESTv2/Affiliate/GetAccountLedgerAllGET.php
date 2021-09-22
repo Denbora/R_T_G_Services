@@ -11,14 +11,13 @@ class GetAccountLedgerAllGET extends RestExample
     /**
      * GetAccountLedgerAllGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
-                'startDate' => '2021-09-09',
-                'endDate' => '2021-09-10'
+                'startDate' => '2021-09-22 00:00:00',
+                'endDate' => '2021-09-22 02:59:59'
             ];
 
             $result = $casino->AffiliateService->getAccountLedgerAllGET(json_encode($query));

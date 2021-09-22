@@ -11,14 +11,12 @@ class ValidateLoginGET extends RestExample
     /**
      * ValidateLoginGET constructor.
      * @param CasinoRestV2 $casino
-     *
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
-                'login' => 'tony_0003',
+                'login' => 'emmett123',
             ];
 
             $result = $casino->AccountService->validateLoginGET(json_encode($query));

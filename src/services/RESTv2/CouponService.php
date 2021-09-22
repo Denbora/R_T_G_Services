@@ -97,7 +97,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated this method not tested
+     * @deprecated this method not tested. Use {@see \denbora\R_T_G_Services\services\RESTv3\CouponService::createBonusBalanceSingleUseFixedAmountOnRedemptionCouponPOST()}
      */
     public function createBonusBalanceSingleUseFixedAmountOnRedemptionCouponPOST($queryJSON = '{}')
     {
@@ -112,7 +112,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated this method not tested
+     * @deprecated this method not tested. Use {@see \denbora\R_T_G_Services\services\RESTv3\CouponService::createBonusBalanceSingleAccountFaPercentageOfNextDepositCouponPOST()}
      */
     public function createBonusBalanceSingleAccountFaPercentageOfNextDepositCouponPOST($queryJSON = '{}')
     {
@@ -127,7 +127,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated this method not tested
+     * @deprecated this method not tested. Use {@see \denbora\R_T_G_Services\services\RESTv3\CouponService::createBonusBalanceSingleUseModFixedAmountNextDepositCouponPOST()}
      */
     public function createBonusBalanceSingleUseModFixedAmountNextDepositCouponPOST($queryJSON = '{}')
     {
@@ -142,7 +142,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated this method not tested
+     * @deprecated this method not tested. Use {@see \denbora\R_T_G_Services\services\RESTv3\CouponService::createBonusBalanceSingleAccountModPercentageOfNextDepositCouponPOST()}
      */
     public function createBonusBalanceSingleAccountModPercentageOfNextDepositCouponPOST($queryJSON = '{}')
     {

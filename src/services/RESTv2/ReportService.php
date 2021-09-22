@@ -67,6 +67,7 @@ class ReportService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\AffiliateService::getGlobalLinkedGET()}
      */
     public function getGlobalLinkedGET($queryJSON = '{}')
     {

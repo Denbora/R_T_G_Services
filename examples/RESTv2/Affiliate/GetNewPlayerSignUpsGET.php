@@ -11,15 +11,14 @@ class GetNewPlayerSignUpsGET extends RestExample
     /**
      * GetNewPlayerSignUpsGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
-                'fromDate' => '2021-09-07',
-                'toDate' => '2021-09-08',
-                'defaultAffiliateId' => 0
+                'fromDate' => '2021-09-22 00:00:00',
+                'toDate' => '2021-09-22 00:09:59',
+                'defaultAffiliateId' => 142
             ];
 
             $result = $casino->AffiliateService->getNewPlayerSignupsGET(json_encode($query));

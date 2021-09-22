@@ -17,7 +17,7 @@ class GetPlayersOfSegmentGET extends RestExample
     {
         try {
             $query = [
-                'playerSegmentId' => '10307426',
+                'playerSegmentId' => '10798420', //emmett123
             ];
 
             $result = $casino->DataScienceService->getPlayersOfSegmentGET(json_encode($query));

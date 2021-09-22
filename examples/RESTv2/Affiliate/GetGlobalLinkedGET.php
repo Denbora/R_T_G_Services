@@ -17,7 +17,7 @@ class GetGlobalLinkedGET extends RestExample
     {
         try {
             $query = [
-                'globalId' => 1
+                'globalId' => 1 // ?
             ];
 
             $result = $casino->AffiliateService->getGlobalLinkedGET(json_encode($query));

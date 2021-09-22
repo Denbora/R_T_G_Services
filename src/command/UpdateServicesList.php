@@ -60,9 +60,8 @@ class UpdateServicesList extends Command
 
                         $deprecated = "";
                         if (isset($method['deprecated']) && true === $method['deprecated']) {
-                            $deprecated = $method['description'];
+                            $deprecated = $this->getDeprecationInfo($method['description'], $methodType);
                         }
-
 
                         $services[$categoryName][$methodName] = [
                             'method' => strtoupper($methodType),
@@ -85,5 +84,36 @@ class UpdateServicesList extends Command
             $services ?? [],
             $responseCodes ?? []
         ];
+    }
+
+    /**
+     * @param string $description
+     * @param string $methodType
+     * @return string
+     */
+    private function getDeprecationInfo(string $description, string $methodType): string
+    {
+        $deprecated = "";
+
+        preg_match('/(?<=<a href="#!\/)(.*)(?=">~)/', $description, $matches);
+        if (count($matches)) {
+            $deprecationUseClass = current($matches);
+
+            $isRestV3 = strpos(
+                $deprecationUseClass,
+                '/v3/'
+            );
+
+            $serviceNamespace = '\denbora\R_T_G_Services\services\\' . ($isRestV3 ? 'RESTv3\\' : 'RESTv2\\');
+
+            list($serviceName, $methodName) = explode('/', str_replace('/v3/', '/', $deprecationUseClass));
+
+            $methodName = str_replace($serviceName . "_", "", $methodName);
+            $methodName = lcfirst($methodName) . strtoupper($methodType);
+
+            $deprecated = "Use {@see " . $serviceNamespace . $serviceName . 'Service' . "::" . $methodName . "()}";
+        }
+
+        return $deprecated;
     }
 }

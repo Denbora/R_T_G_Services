@@ -45,7 +45,12 @@ class GenerateServices extends Command
                 $servicesMethod = $class->addMethod(lcfirst($methodName) . strtoupper($method['method']));
                 $servicesMethod->addComment('@param string $queryJSON');
                 $servicesMethod->addComment('@return array|mixed|object|string');
-                $servicesMethod->addComment('@throws R_T_G_ServiceException');
+
+
+                if(isset($method['deprecated']) && !empty($method['deprecated'])){
+                    $servicesMethod->addComment(sprintf('@deprecated %s', $method['deprecated']));
+                }
+
                 $servicesMethod->addParameter('queryJSON', '{}');
                 $servicesMethod
                     ->addBody('return $this->callMethod(self::SERVICE_NAME, \'' . $methodName . '\', $queryJSON);');

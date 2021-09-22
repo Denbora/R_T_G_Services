@@ -95,6 +95,7 @@ class ServiceService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\AffiliateService::getDownloadsGET()}
      */
     public function getDownloadsGET($queryJSON = '{}')
     {

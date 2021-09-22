@@ -17,7 +17,7 @@ class GetRfmScoreForSpecificPlayerGET extends RestExample
     {
         try {
             $query = [
-                'playerId' => '10307426',
+                'playerId' => '10798420', //emmett123
             ];
 
             $result = $casino->DataScienceService->getRfmScoreForSpecificPlayerGET(json_encode($query));

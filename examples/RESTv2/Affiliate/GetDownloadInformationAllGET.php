@@ -11,14 +11,14 @@ class GetDownloadInformationAllGET extends RestExample
     /**
      * GetDownloadInformationAllGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
+     * @deprecated Need testing. Fail - timeout
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
-                'startDate' => '2021-09-09',
-                'endDate' => '2021-09-10'
+                'startDate' => '2021-09-22 00:00:00',
+                'endDate' => '2021-09-22 00:02:59'
             ];
 
             $result = $casino->AffiliateService->getDownloadInformationAllGET(json_encode($query));
