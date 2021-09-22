@@ -310,22 +310,6 @@
             },
             "deprecated": ""
         },
-        "ValidateCredentialsV2": {
-            "method": "POST",
-            "path": "\/api\/v2\/accounts\/validate-credentials",
-            "parameters": {
-                "credentials": "JSON"
-            },
-            "responses": {
-                "200": "Credentials are valid",
-                "401": "Unauthorized",
-                "409": "Invalid credentials.",
-                "410": "Player login restricted.",
-                "412": "Player password expired.",
-                "400": "Bad request."
-            },
-            "deprecated": ""
-        },
         "BanPlayer": {
             "method": "POST",
             "path": "\/api\/accounts\/ban",
@@ -1250,37 +1234,6 @@
             },
             "deprecated": ""
         },
-        "GetCoupons": {
-            "method": "GET",
-            "path": "\/api\/v2\/coupons",
-            "parameters": {
-                "startDate": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Coupon creation start date."
-                },
-                "endDate": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Coupon creation end date."
-                },
-                "status": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Coupon status."
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "401": "Unauthorized",
-                "416": "More than 30 days of data is not allowed.",
-                "400": "Bad request."
-            },
-            "deprecated": ""
-        },
         "GetRequestedAndRedeemedCoupons": {
             "method": "GET",
             "path": "\/api\/coupons",
@@ -1396,9 +1349,9 @@
         },
         "CreateBonusBalanceSingleUseFixedAmountOnRedemptionCoupon": {
             "method": "POST",
-            "path": "\/api\/v2\/coupons\/bonus-balance\/single-use\/fixed-amount-on-redemption",
+            "path": "\/api\/v3\/coupons\/bonus-balance\/single-use\/fixed-amount-on-redemption",
             "parameters": {
-                "couponInput": "JSON"
+                "coupon": "JSON"
             },
             "responses": {
                 "200": "OK",
@@ -1406,13 +1359,13 @@
                 "409": "Coupon could not be created.",
                 "400": "Bad request."
             },
-            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv3\\CouponService::createBonusBalanceSingleUseFixedAmountOnRedemptionCouponPOST()}"
+            "deprecated": ""
         },
         "CreateBonusBalanceSingleAccountFaPercentageOfNextDepositCoupon": {
             "method": "POST",
-            "path": "\/api\/v2\/coupons\/bonus-balance\/single-account\/fixed-amount\/percentage-next-deposit",
+            "path": "\/api\/v3\/coupons\/bonus-balance\/single-account\/fixed-amount\/percentage-next-deposit",
             "parameters": {
-                "couponInput": "JSON"
+                "coupon": "JSON"
             },
             "responses": {
                 "200": "OK",
@@ -1420,13 +1373,13 @@
                 "409": "Coupon could not be created.",
                 "400": "Bad request."
             },
-            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv3\\CouponService::createBonusBalanceSingleAccountFaPercentageOfNextDepositCouponPOST()}"
+            "deprecated": ""
         },
         "CreateBonusBalanceSingleUseModFixedAmountNextDepositCoupon": {
             "method": "POST",
-            "path": "\/api\/v2\/coupons\/bonus-balance\/single-use\/multiple-of-deposit\/fixed-amount-next-deposit",
+            "path": "\/api\/v3\/coupons\/bonus-balance\/single-use\/multiple-of-deposit\/fixed-amount-next-deposit",
             "parameters": {
-                "couponInput": "JSON"
+                "coupon": "JSON"
             },
             "responses": {
                 "200": "OK",
@@ -1434,13 +1387,13 @@
                 "409": "Coupon could not be created.",
                 "400": "Bad request."
             },
-            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv3\\CouponService::createBonusBalanceSingleUseModFixedAmountNextDepositCouponPOST()}"
+            "deprecated": ""
         },
         "CreateBonusBalanceSingleAccountModPercentageOfNextDepositCoupon": {
             "method": "POST",
-            "path": "\/api\/v2\/coupons\/bonus-balance\/single-account\/multiple-of-deposit\/percentage-next-deposit",
+            "path": "\/api\/v3\/coupons\/bonus-balance\/single-account\/multiple-of-deposit\/percentage-next-deposit",
             "parameters": {
-                "couponInput": "JSON"
+                "coupon": "JSON"
             },
             "responses": {
                 "200": "OK",
@@ -1448,7 +1401,7 @@
                 "409": "Coupon could not be created.",
                 "400": "Bad request."
             },
-            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv3\\CouponService::createBonusBalanceSingleAccountModPercentageOfNextDepositCouponPOST()}"
+            "deprecated": ""
         }
     },
     "DataScience": {
@@ -2600,30 +2553,6 @@
             },
             "deprecated": ""
         },
-        "GetVideoPokerHistoryListDetail": {
-            "method": "GET",
-            "path": "\/api\/v2\/history\/video-poker",
-            "parameters": {
-                "machineId": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Machine ID."
-                },
-                "gameNumber": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Game number."
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "401": "Unauthorized",
-                "404": "Game was not found."
-            },
-            "deprecated": ""
-        },
         "GetTexasHoldemBonusPokerHistoryDetail": {
             "method": "GET",
             "path": "\/api\/history\/texas-holdem-bonus-poker",
@@ -2769,36 +2698,6 @@
                     "parameterType": "query",
                     "required": false,
                     "description": "Number of winners to return, default is 10"
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "401": "Unauthorized",
-                "400": "Bad request."
-            },
-            "deprecated": ""
-        },
-        "GetLobbyGetProgressiveJackpotV2": {
-            "method": "GET",
-            "path": "\/api\/v2\/jackpots\/lobby-progressive-jackpot",
-            "parameters": {
-                "forMoney": {
-                    "dataType": "boolean",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Real or fun games."
-                },
-                "skinId": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Skin ID."
-                },
-                "optionId": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Option ID."
                 }
             },
             "responses": {
@@ -3634,26 +3533,6 @@
             },
             "deprecated": ""
         },
-        "GetActiveCouponDetailsByPlayerV2": {
-            "method": "GET",
-            "path": "\/api\/v2\/players\/{playerId}\/coupons\/active",
-            "parameters": {
-                "playerId": {
-                    "dataType": "string",
-                    "parameterType": "path",
-                    "required": true,
-                    "description": "Player ID."
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "204": "Coupon was not found.",
-                "401": "Unauthorized",
-                "404": "Player was not found.",
-                "400": "Bad request."
-            },
-            "deprecated": ""
-        },
         "GetAccountBalance": {
             "method": "GET",
             "path": "\/api\/players\/{playerId}\/balance",
@@ -3700,38 +3579,6 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
-                "400": "Bad request."
-            },
-            "deprecated": ""
-        },
-        "GetBatchCouponStatus": {
-            "method": "GET",
-            "path": "\/api\/v2\/players\/coupons\/batch",
-            "parameters": {
-                "requestId": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Request Id."
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "401": "Unauthorized",
-                "404": "Request was not found",
-                "400": "Bad request."
-            },
-            "deprecated": ""
-        },
-        "BatchRedeemCoupon": {
-            "method": "POST",
-            "path": "\/api\/v2\/players\/coupons\/batch",
-            "parameters": {
-                "couponBatch": "JSON"
-            },
-            "responses": {
-                "200": "OK",
-                "401": "Unauthorized",
                 "400": "Bad request."
             },
             "deprecated": ""
@@ -4215,48 +4062,6 @@
             },
             "deprecated": ""
         },
-        "GetRequestedAndRedeemedCoupons": {
-            "method": "GET",
-            "path": "\/api\/v2\/players\/coupons",
-            "parameters": {
-                "startDate": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": ""
-                },
-                "endDate": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": ""
-                },
-                "couponStatus": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": ""
-                },
-                "playerId": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": ""
-                },
-                "couponCode": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": ""
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "401": "Unauthorized",
-                "400": "Bad request."
-            },
-            "deprecated": ""
-        },
         "AdjustPlayerCompPoints": {
             "method": "PUT",
             "path": "\/api\/players\/{playerId}\/comp-points",
@@ -4465,107 +4270,6 @@
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            },
-            "deprecated": ""
-        },
-        "RedeemCoupon": {
-            "method": "POST",
-            "path": "\/api\/v2\/players\/{playerId}\/coupons",
-            "parameters": {
-                "playerId": {
-                    "dataType": "string",
-                    "parameterType": "path",
-                    "required": true,
-                    "description": ""
-                },
-                "couponCode": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": ""
-                },
-                "sessionId": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": ""
-                },
-                "redeem": {
-                    "dataType": "boolean",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "If you put this in false will not redeem the code"
-                },
-                "template": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Use the optional parameter \"template\" to populate the \"template\" web hook configured in the Coupon Redeem-Deposit Required Custom URL"
-                },
-                "ignorePlayerRestrictions": {
-                    "dataType": "boolean",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": ""
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "401": "Unauthorized",
-                "404": "Player was not found.",
-                "409": "Transaction conflict.",
-                "412": "Transaction failed.",
-                "400": "Bad request."
-            },
-            "deprecated": ""
-        },
-        "DiscardCoupon": {
-            "method": "DELETE",
-            "path": "\/api\/v2\/players\/{playerId}\/coupons",
-            "parameters": {
-                "playerId": {
-                    "dataType": "string",
-                    "parameterType": "path",
-                    "required": true,
-                    "description": "Player id"
-                },
-                "couponCode": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "The code of the coupon to discard"
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "401": "Unauthorized",
-                "404": "Player was not found.",
-                "417": "Coupon is invalid"
-            },
-            "deprecated": ""
-        },
-        "DenyCoupon": {
-            "method": "DELETE",
-            "path": "\/api\/v2\/players\/{playerId}\/coupon\/deny",
-            "parameters": {
-                "playerId": {
-                    "dataType": "string",
-                    "parameterType": "path",
-                    "required": true,
-                    "description": "Player id"
-                },
-                "couponCode": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "The code of the coupon to Deny"
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "401": "Unauthorized",
-                "404": "Player was not found.",
-                "417": "Coupon is invalid"
             },
             "deprecated": ""
         }
