@@ -2,6 +2,7 @@
 
 namespace denbora\R_T_G_Services\command;
 
+use denbora\R_T_G_Services\ParseAPIException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -27,15 +28,27 @@ class UpdateServicesList extends Command
         $io->success('Generated services list');
     }
 
+    /**
+     * @return array[]
+     */
     private function parseJsonSwaggerApi(): array
     {
         $apiData = json_decode(file_get_contents(__DIR__ . '/openAPI.json'), true);
 
         try {
             if (!empty($apiData)) {
+                $listOfOperationIds = [];
                 foreach ($apiData['paths'] as $pathTemplate => $methods) {
                     foreach ($methods as $methodType => $method) {
                         list($categoryName, $methodName) = explode('_', $method['operationId']);
+
+                        if (in_array($method['operationId'], $listOfOperationIds)) {
+                            throw new ParseAPIException(
+                                sprintf("Duplicate method  name \"%s\" in \"%s\" category", $methodName, $categoryName)
+                            );
+                        }
+
+                        $listOfOperationIds[] = $method['operationId'];
 
                         $parameters = [];
                         if (isset($method['parameters'])) {
@@ -76,7 +89,9 @@ class UpdateServicesList extends Command
                     }
                 }
             }
-        } catch (Exception $exception) {
+        } catch (ParseAPIException $exception) {
+            dd($exception->getMessage());
+        }catch (Exception $exception) {
             dd($exception, $response ?? null, $method);
         }
 
