@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\services\RESTv2;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 
-class TournamentService extends RestV2Service
+class TournamentService extends RestV3Service
 {
     const SERVICE_NAME = 'Tournament';
 

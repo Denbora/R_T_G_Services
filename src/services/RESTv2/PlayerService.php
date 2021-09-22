@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\services\RESTv2;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 
-class PlayerService extends RestV2Service
+class PlayerService extends RestV3Service
 {
     const SERVICE_NAME = 'Player';
 
@@ -112,6 +112,7 @@ class PlayerService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\PlayerService::getActiveCouponDetailsByPlayerV2GET()}
      */
     public function getActiveCouponDetailsByPlayerGET($queryJSON = '{}')
     {
@@ -228,6 +229,16 @@ class PlayerService extends RestV2Service
     public function setPlayerEmailVerificationStatusPUT($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'SetPlayerEmailVerificationStatus', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getActiveCouponDetailsByPlayerV2GET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetActiveCouponDetailsByPlayerV2', $queryJSON);
     }
 
     /**

@@ -6,7 +6,7 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestResponse;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
 
-class ReportService extends RestV2Service
+class ReportService extends RestV3Service
 {
     const SERVICE_NAME = 'Report';
 
@@ -148,8 +148,7 @@ class ReportService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     *
-     * @deprecated use {@see RESTv2/AffiliateService::getPlayersSessionsHistoryGET()}
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\AffiliateService::getPlayersSessionsHistoryGET()}
      */
     public function getPlayersSessionsHistoryGET($queryJSON = '{}')
     {
@@ -240,8 +239,7 @@ class ReportService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     *
-     * @deprecated use {@see RESTv2/AffiliateService::getNewPlayerSignUpsGET()}
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\AffiliateService::getNewPlayerSignUpsGET()}
      */
     public function getNewPlayerSignupsGET($queryJSON = '{}')
     {
@@ -252,8 +250,7 @@ class ReportService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     *
-     * @deprecated use {@see RESTv2/AffiliateService::getPlayersSummaryGET()}
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\AffiliateService::getPlayersSummaryGET()}
      */
     public function getPlayerSummaryAllGET($queryJSON = '{}')
     {
@@ -440,5 +437,15 @@ class ReportService extends RestV2Service
     public function getAuditTrailReportGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetAuditTrailReport', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getPlayerTransactionsPerSkinGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetPlayerTransactionsPerSkin', $queryJSON);
     }
 }

@@ -9,7 +9,7 @@ use denbora\R_T_G_Services\R_T_G_ServiceException;
  * @package denbora\R_T_G_Services\services\RESTv2
  * @deprecated this service is not working :(
  */
-class HistoryService extends RestV2Service
+class HistoryService extends RestV3Service
 {
     const SERVICE_NAME = 'History';
 
@@ -141,17 +141,6 @@ class HistoryService extends RestV2Service
     public function getLetEmRideHistoryDetailGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetLetEmRideHistoryDetail', $queryJSON);
-    }
-
-    /**
-     * @param string $queryJSON
-     * @return array|mixed|object|string
-     * @throws R_T_G_ServiceException
-     * @deprecated use {@see HistoryService::getVideoPokerHistoryDetailGET()}
-     */
-    public function getVideoPokerHistoryDetailV2GET($queryJSON = '{}')
-    {
-        return $this->getVideoPokerHistoryDetailGET($queryJSON);
     }
 
     /**

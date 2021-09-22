@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\services\RESTv2;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 
-class AccountService extends RestV2Service
+class AccountService extends RestV3Service
 {
     const SERVICE_NAME = 'Account';
 
@@ -183,9 +183,9 @@ class AccountService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
-    public function validateCredentialsPOST($queryJSON = '{}')
+    public function validateCredentialsV2POST($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'ValidateCredentials', $queryJSON);
+        return $this->callMethod(self::SERVICE_NAME, 'ValidateCredentialsV2', $queryJSON);
     }
 
     /**
@@ -206,5 +206,16 @@ class AccountService extends RestV2Service
     public function unBanPlayerPOST($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'UnBanPlayer', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\AccountService::validateCredentialsV2POST()}
+     */
+    public function validateCredentialsPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ValidateCredentials', $queryJSON);
     }
 }

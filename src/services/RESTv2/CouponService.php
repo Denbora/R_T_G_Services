@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\services\RESTv2;
 
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 
-class CouponService extends RestV2Service
+class CouponService extends RestV3Service
 {
     const SERVICE_NAME = 'Coupon';
 
@@ -42,8 +42,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated use {@see PlayerService::getRequestedAndRedeemedCouponsGET()}
-     *
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\PlayerService::getRequestedAndRedeemedCouponsGET()}
      */
     public function getRequestedAndRedeemedCouponsGET($queryJSON = '{}')
     {
@@ -54,7 +53,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated use {@see PlayerService::redeemCouponPOST()}
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\PlayerService::redeemCouponPOST()}
      */
     public function redeemCouponPOST($queryJSON = '{}')
     {
@@ -65,8 +64,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated use {@see PlayerService::discardCouponDELETE()}
-     *
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\PlayerService::discardCouponDELETE()}
      */
     public function discardCouponDELETE($queryJSON = '{}')
     {

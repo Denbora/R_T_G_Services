@@ -3,7 +3,9 @@
 namespace denbora\R_T_G_Services\command;
 
 use denbora\R_T_G_Services\examples\RESTv2\RestExample;
+use denbora\R_T_G_Services\examples\RESTv3\RestExample as RestExampleV3;
 use denbora\R_T_G_Services\services\RESTv2\RestV2Service;
+use denbora\R_T_G_Services\services\RESTv3\RestV3Service;
 use Nette\PhpGenerator\PsrPrinter;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
@@ -28,24 +30,24 @@ class GenerateServices extends Command
         $services = json_decode(file_get_contents(UpdateServicesList::SERVICES_LIST), true);
 
         foreach ($services as $serviceName => $serviceMethods) {
-            $serviceNamespace = 'denbora\R_T_G_Services\services\RESTv2';
+            $serviceNamespace = 'denbora\R_T_G_Services\services\RESTv3';
             $serviceFile = new PhpFile();
             $nameSpace = $serviceFile->addNamespace($serviceNamespace);
             $nameSpace->addUse('denbora\R_T_G_Services\R_T_G_ServiceException');
 
             $serviceClass = $serviceName . 'Service';
 
-            $serviceClassFile = __DIR__ . '/../services/RESTv2/' . $serviceClass . '.php';
+            $serviceClassFile = __DIR__ . '/../services/RESTv3/' . $serviceClass . '.php';
 
             $class = $nameSpace->addClass($serviceClass);
-            $class->setExtends(RestV2Service::class);
+            $class->setExtends(RestV3Service::class);
             $class->addConstant('SERVICE_NAME', $serviceName);
 
             foreach ($serviceMethods as $methodName => $method) {
                 $servicesMethod = $class->addMethod(lcfirst($methodName) . strtoupper($method['method']));
                 $servicesMethod->addComment('@param string $queryJSON');
                 $servicesMethod->addComment('@return array|mixed|object|string');
-
+                $servicesMethod->addComment('@throws R_T_G_ServiceException');
 
                 if(isset($method['deprecated']) && !empty($method['deprecated'])){
                     $servicesMethod->addComment(sprintf('@deprecated %s', $method['deprecated']));
@@ -76,12 +78,12 @@ class GenerateServices extends Command
 
     private function createExample(string $serviceName, string $methodName)
     {
-        $exampleNamespace = 'denbora\\R_T_G_Services\\examples\\RESTv2\\';
+        $exampleNamespace = 'denbora\\R_T_G_Services\\examples\\RESTv3\\';
 
         $exampleFile = new PhpFile();
         $nameSpace = $exampleFile->addNamespace($exampleNamespace . $serviceName);
 
-        $directory = __DIR__ . '/../../examples/RESTv2/' . $serviceName;
+        $directory = __DIR__ . '/../../examples/RESTv3/' . $serviceName;
         $exampleClassFile = $directory . '/' . $methodName . '.php';
 
         if (!file_exists($exampleClassFile)) {
@@ -90,9 +92,9 @@ class GenerateServices extends Command
             }
 
             $exampleClass = $nameSpace
-                ->addUse(RestExample::class)
+                ->addUse(RestExampleV3::class)
                 ->addClass($methodName)
-                ->setExtends(RestExample::class);
+                ->setExtends(RestExampleV3::class);
 
             $handleExampleFile = fopen($exampleClassFile, 'w') or die("Can't create file");
             fwrite($handleExampleFile, (new PsrPrinter())->printFile($exampleFile));
