@@ -11,14 +11,13 @@ class GetSlotTournamentDetailsGET extends RestExample
     /**
      * GetSlotTournamentDetailsGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
-                'tournamentId' => 1,
-                'playerId' => '10307426',
+                'tournamentId' => 2004679,
+                'playerId' => '10798420', //emmett123
             ];
 
             $result = $casino->TournamentService->getSlotTournamentDetailsGET(json_encode($query));

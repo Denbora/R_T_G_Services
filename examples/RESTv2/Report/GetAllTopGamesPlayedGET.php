@@ -11,13 +11,12 @@ class GetAllTopGamesPlayedGET extends RestExample
     /**
      * GetAllTopGamesPlayedGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
-                'numberOfGames' => 1,
+                'numberOfGames' => 2,
                 'skinId' => 1,
             ];
 

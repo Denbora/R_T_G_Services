@@ -11,7 +11,6 @@ class GetExternalLobbyUrlGET extends RestExample
     /**
      * GetExternalLobbyUrlGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
@@ -19,8 +18,8 @@ class GetExternalLobbyUrlGET extends RestExample
             $query = [
                 'lobbyId' => 1,
                 'skinId' => 1,
-                'pid' => '10000338',
-                'clientType' => 'download' //download|instantplay|mobile
+                'pid' => '10798420', //emmett123
+                'clientType' => 'instantplay' //download|instantplay|mobile
             ];
 
             $result = $casino->ExternalLobbyService->getExternalLobbyUrlGET(json_encode($query));

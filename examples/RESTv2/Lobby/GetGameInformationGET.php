@@ -11,15 +11,14 @@ class GetGameInformationGET extends RestExample
     /**
      * GetGameInformationGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
                 'skinId' => 1,
-                'gameId' => 1,
-                'playerId' => '1'
+                'gameId' => 18,
+                'playerId' => '10798420', //emmett123
             ];
 
             $result = $casino->LobbyService->getGameInformationGET(json_encode($query));

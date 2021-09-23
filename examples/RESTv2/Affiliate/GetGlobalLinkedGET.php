@@ -11,7 +11,6 @@ class GetGlobalLinkedGET extends RestExample
     /**
      * GetGlobalLinkedGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {

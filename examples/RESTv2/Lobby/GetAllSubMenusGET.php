@@ -11,7 +11,6 @@ class GetAllSubMenusGET extends RestExample
     /**
      * GetAllSubMenusGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {

@@ -11,7 +11,6 @@ class GetExternalGamesGET extends RestExample
     /**
      * GetExternalGamesGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {

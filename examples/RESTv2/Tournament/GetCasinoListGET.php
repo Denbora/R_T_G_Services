@@ -11,7 +11,6 @@ class GetCasinoListGET extends RestExample
     /**
      * GetCasinoListGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {

@@ -11,15 +11,14 @@ class GetGamingSummaryGET extends RestExample
     /**
      * GetGamingSummaryGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
-                'startDate' => '2019-06-06',
-                'endDate' => '2019-07-09',
-                'playerId' => '10307426',
+                'startDate' => '2021-09-22 00:00:00',
+                'endDate' => '2021-09-22 23:59:59',
+                'playerId' => '10798420', //emmett123
             ];
             $result = $casino->ReportService->getGamingSummaryGET(json_encode($query));
 

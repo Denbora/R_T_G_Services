@@ -11,14 +11,13 @@ class GetGamesBySubMenuGET extends RestExample
     /**
      * GetGamesBySubMenuGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
-                'playerId' => '1',
-                'subMenuId' => 1,
+                'playerId' => '10798420', //emmett123
+                'subMenuId' => 16,
                 'skinId' => 1,
             ];
 

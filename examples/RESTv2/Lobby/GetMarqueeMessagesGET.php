@@ -11,13 +11,12 @@ class GetMarqueeMessagesGET extends RestExample
     /**
      * GetMarqueeMessagesGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
-                'playerId' => '1',
+                'playerId' => '10798420', //emmett123
                 'forMoney' => false,
                 'skinId' => 1,
             ];

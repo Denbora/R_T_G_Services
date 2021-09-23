@@ -11,7 +11,6 @@ class GetActiveGamesGET extends RestExample
     /**
      * GetActiveGamesGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
@@ -19,7 +18,7 @@ class GetActiveGamesGET extends RestExample
             $query = [
                 'skinId' => 1,
                 'includeMenu' => true,
-                'playerId' => '10307426',
+                'includeVersion' => false,
                 'languageCode' => 'German',
             ];
 

@@ -11,14 +11,13 @@ class GetAffiliatesStatsSummaryDailyGET extends RestExample
     /**
      * GetAffiliatesStatsSummaryDailyGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
-                'beginDate' => '2021-06-02 00:00:00',
-                'endDate' => '2021-06-02 23:59:59',
+                'beginDate' => '2021-09-22 00:00:00',
+                'endDate' => '2021-09-22 01:59:59',
             ];
 
             $result = $casino->ReportService->getAffiliatesStatsSummaryDailyGET(json_encode($query));

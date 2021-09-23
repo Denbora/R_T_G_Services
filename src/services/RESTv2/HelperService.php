@@ -7,7 +7,7 @@ use denbora\R_T_G_Services\responses\RestResponse;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 
-class HelperService extends RestV3Service
+class HelperService extends RestV2Service
 {
     const RESPONSE_CODES = __DIR__ . '/../../config/codes_v2.json';
 

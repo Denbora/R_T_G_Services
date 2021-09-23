@@ -11,14 +11,13 @@ class GetFullMenuStructureGET extends RestExample
     /**
      * GetFullMenuStructureGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
                 'skinId' => 1,
-                'playerId' => '1',
+                'playerId' => '10798420', //emmett123
             ];
 
             $result = $casino->LobbyService->getFullMenuStructureGET(json_encode($query));

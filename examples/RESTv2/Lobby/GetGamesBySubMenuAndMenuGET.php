@@ -11,16 +11,15 @@ class GetGamesBySubMenuAndMenuGET extends RestExample
     /**
      * GetGamesBySubMenuAndMenuGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
-                'playerId' => '1',
-                'menuId' => 1,
-                'subMenuId' => 1,
                 'skinId' => 1,
+                'menuId' => 7,
+                'subMenuId' => 16,
+                'playerId' => '10798420', //emmett123
             ];
 
             $result = $casino->LobbyService->getGamesBySubMenuAndMenuGET(json_encode($query));

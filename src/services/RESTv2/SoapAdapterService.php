@@ -6,7 +6,7 @@ use denbora\R_T_G_Services\casino\Casino;
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\services\SOAP\ServiceInterface;
 
-class SoapAdapterService extends RestV3Service
+class SoapAdapterService extends RestV2Service
 {
     /**
      * @var null|Casino

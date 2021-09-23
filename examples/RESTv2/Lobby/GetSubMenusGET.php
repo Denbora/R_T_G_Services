@@ -11,14 +11,13 @@ class GetSubMenusGET extends RestExample
     /**
      * GetSubMenusGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
                 'skinId' => 1,
-                'menuId' => 1,
+                'menuId' => 7,
             ];
 
             $result = $casino->LobbyService->getSubMenusGET(json_encode($query));

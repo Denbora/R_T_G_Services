@@ -11,15 +11,14 @@ class GetEmailVerifyReportGET extends RestExample
     /**
      * GetEmailVerifyReportGET constructor.
      * @param CasinoRestV2 $casino
-     * @deprecated Need testing
      */
     public function __construct(CasinoRestV2 $casino)
     {
         try {
             $query = [
-                'startDate' => '2019-06-06',
-                'endDate' => '2019-07-09',
-                'email' => '',
+                'startDate' => '2021-09-21 00:00:00',
+                'endDate' => '2021-09-22 23:00:00',
+                'email' => 'erer@wewe.gh',
                 'status' => '',
                 'pageNumber' => 0,
                 'rowsPPage' => 10,
