@@ -31,12 +31,12 @@ class UrlHelper
             $urlParameter = '{' . $key . '}';
 
             if (strripos($pathPattern, $urlParameter) !== false) {
-                $path = str_replace($urlParameter, $value, $pathPattern);
+                $pathPattern = str_replace($urlParameter, $value, $pathPattern);
                 unset($query[$key]);
             }
         }
 
-        $url .= $path ?? $pathPattern;
+        $url .= $pathPattern;
 
         if ($queryParameters !== false) {
             if (is_array($queryParameters)) {

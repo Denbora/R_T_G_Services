@@ -12,6 +12,7 @@ class JackpotService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\JackpotService::getLobbyGetProgressiveJackpotV2GET()}
      */
     public function getLobbyGetProgressiveJackpotGET($queryJSON = '{}')
     {
@@ -46,5 +47,15 @@ class JackpotService extends RestV2Service
     public function getJackpotWinnersGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetJackpotWinners', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function getLobbyGetProgressiveJackpotV2GET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetLobbyGetProgressiveJackpotV2', $queryJSON);
     }
 }

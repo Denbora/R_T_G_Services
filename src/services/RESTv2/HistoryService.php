@@ -288,9 +288,9 @@ class HistoryService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
-    public function getVideoPokerHistoryDetailV2GET($queryJSON = '{}')
+    public function getVideoPokerHistoryListDetailGET($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'GetVideoPokerHistoryDetailV2', $queryJSON);
+        return $this->callMethod(self::SERVICE_NAME, 'GetVideoPokerHistoryListDetail', $queryJSON);
     }
 
     /**

@@ -14,13 +14,12 @@ class GetCustomerCategoriesGET extends RestExample
      */
     public function __construct(CasinoRestV2 $casino)
     {
-        #IS NOT TESTED#
         try {
             $query = [
-                'typeId' => ''
+                'typeId' => 'b524a32e-b2bb-4a18-896e-c3a08ef0022e', // "description": "Comment",
             ];
 
-            $result = $casino->ServiceService->getCustomerStatusesGET(json_encode($query));
+            $result = $casino->ServiceService->getCustomerCategoriesGET(json_encode($query));
 
             dd($result);
         } catch (R_T_G_ServiceException $exception) {

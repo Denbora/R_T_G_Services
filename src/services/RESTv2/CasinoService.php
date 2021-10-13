@@ -33,6 +33,16 @@ class CasinoService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function listUsStatesGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ListUsStates', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function listIdTypesGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'ListIdTypes', $queryJSON);
@@ -129,8 +139,31 @@ class CasinoService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function getCountriesAvailabilityGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetCountriesAvailability', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     * @deprecated use {@see CasinoService::closePendingGamesDELETE()}
+     */
     public function pendingGamesDELETE($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'PendingGames', $queryJSON);
+        return $this->closePendingGamesDELETE($queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     *
+     * @note Prev method name: PendingGames
+     */
+    public function closePendingGamesDELETE($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ClosePendingGames', $queryJSON);
     }
 }

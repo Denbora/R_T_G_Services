@@ -8,14 +8,33 @@
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Player login."
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Player was not found."
-            }
+            },
+            "deprecated": ""
+        },
+        "ValidateLogin": {
+            "method": "GET",
+            "path": "\/api\/accounts\/login-validation",
+            "parameters": {
+                "login": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Player's login."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found."
+            },
+            "deprecated": ""
         },
         "GetAccountBalance": {
             "method": "GET",
@@ -38,7 +57,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Player was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetIncompleteSignups": {
             "method": "GET",
@@ -48,13 +68,13 @@
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "Start date."
+                    "description": "YYYY\/MM\/DD HH:MM:SS"
                 },
                 "endDate": {
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "End date."
+                    "description": "YYYY\/MM\/DD HH:MM:SS"
                 },
                 "status": {
                     "dataType": "string",
@@ -73,7 +93,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "CreateIncompleteSignup": {
             "method": "POST",
@@ -87,7 +108,8 @@
                 "409": "Player with such login or email already exists.",
                 "412": "Creation of incomplete signup failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "ChangePlayerPassword": {
             "method": "PUT",
@@ -96,14 +118,15 @@
                 "changePassword": "JSON"
             },
             "responses": {
-                "200": "OK",
+                "200": "Password changed",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "409": "Old password doesn't match.",
                 "412": "Change player password failed.",
                 "417": "New password does not comply with the account creation requirements.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "ForgotPassword": {
             "method": "PUT",
@@ -112,12 +135,13 @@
                 "account": "JSON"
             },
             "responses": {
-                "200": "OK",
+                "200": "Email sent",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "409": "Sending forgot password email failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "ForgotUsername": {
             "method": "PUT",
@@ -126,12 +150,13 @@
                 "forgotUsername": "JSON"
             },
             "responses": {
-                "200": "OK",
+                "200": "Email sent",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "409": "Sending forgot username email failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "ChangePlayerPasswordWithToken": {
             "method": "PUT",
@@ -140,7 +165,7 @@
                 "changePasswordWithToken": "JSON"
             },
             "responses": {
-                "200": "OK",
+                "200": "Password changed",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "409": "Token is invalid or expired.",
@@ -148,7 +173,8 @@
                 "412": "Change player password failed.",
                 "417": "New password does not comply with the account creation requirements.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "LoginPlayer": {
             "method": "POST",
@@ -159,12 +185,13 @@
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
-                "404": "Player was not found.",
+                "404": "Player was not found. \/ Skin ID does not exist \/ Client ID does not exist",
                 "409": "Player login failed.",
                 "410": "Player login restricted.",
                 "412": "Player password expired.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "LogoutPlayer": {
             "method": "POST",
@@ -173,13 +200,14 @@
                 "playerLogout": "JSON"
             },
             "responses": {
-                "200": "OK",
+                "200": "Players logged out of the casino",
                 "202": "Player is not logged in.",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "409": "Players logout failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "ActivatePlayer": {
             "method": "POST",
@@ -188,12 +216,13 @@
                 "account": "JSON"
             },
             "responses": {
-                "200": "OK",
+                "200": "Player activation succeed",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "412": "Player activation failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "DeactivateAndLogoutPlayer": {
             "method": "POST",
@@ -202,12 +231,13 @@
                 "account": "JSON"
             },
             "responses": {
-                "200": "OK",
+                "200": "Player deactivation and logout succeed",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "412": "Player deactivation failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "SetPlayerPassword": {
             "method": "POST",
@@ -216,12 +246,13 @@
                 "setPassword": "JSON"
             },
             "responses": {
-                "200": "OK",
+                "200": "The player's password was set correctly.",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "409": "Set player's password failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "ResetPlayerPassword": {
             "method": "POST",
@@ -230,12 +261,13 @@
                 "accountChange": "JSON"
             },
             "responses": {
-                "200": "OK",
+                "200": "Password reseted",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "412": "Reset player password failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "CreateToken": {
             "method": "POST",
@@ -257,7 +289,42 @@
                 "412": "Player password has been reset.",
                 "417": "The application is not registered.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "LoginWithPlayerDevice": {
+            "method": "POST",
+            "path": "\/api\/accounts\/login-with-player-device",
+            "parameters": {
+                "playerLogin": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "202": "Login completed, but not send notification.",
+                "401": "Unauthorized",
+                "404": "Player was not found. \/ Skin ID does not exist \/ Client ID does not exist",
+                "409": "Player login failed.",
+                "410": "Player login restricted.",
+                "412": "Player password expired.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "ValidateCredentialsV2": {
+            "method": "POST",
+            "path": "\/api\/v2\/accounts\/validate-credentials",
+            "parameters": {
+                "credentials": "JSON"
+            },
+            "responses": {
+                "200": "Credentials are valid",
+                "401": "Unauthorized",
+                "409": "Invalid credentials.",
+                "410": "Player login restricted.",
+                "412": "Player password expired.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "BanPlayer": {
             "method": "POST",
@@ -272,11 +339,12 @@
                 }
             },
             "responses": {
-                "200": "OK",
+                "200": "Player successfully banned",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "409": "Invalid ban type."
-            }
+            },
+            "deprecated": ""
         },
         "UnBanPlayer": {
             "method": "POST",
@@ -287,14 +355,15 @@
                     "dataType": "boolean",
                     "parameterType": "query",
                     "required": true,
-                    "description": "Include affiliate earnings with unban"
+                    "description": "Include affiliate earnings back once unban is executed"
                 }
             },
             "responses": {
-                "200": "OK",
+                "200": "Player unbanned",
                 "401": "Unauthorized",
                 "404": "Player was not found."
-            }
+            },
+            "deprecated": ""
         },
         "ValidateCredentials": {
             "method": "POST",
@@ -304,57 +373,397 @@
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "Player Login."
+                    "description": "Player's login."
                 },
                 "hashedPassword": {
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "Player hashed password"
+                    "description": "Player's hashed password"
                 },
                 "forMoney": {
                     "dataType": "boolean",
                     "parameterType": "query",
                     "required": true,
-                    "description": "Play real or fun"
+                    "description": "True for real play or false for fun play"
                 },
                 "ipAddress": {
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "Player IP address"
+                    "description": "Player's IP address"
+                }
+            },
+            "responses": {
+                "200": "Credentials are valid",
+                "401": "Unauthorized",
+                "409": "Invalid credentials.",
+                "410": "Player login restricted.",
+                "412": "Player password expired.",
+                "400": "Bad request."
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv2\\AccountService::validateCredentialsV2POST()}"
+        }
+    },
+    "Affiliate": {
+        "ListAffiliates": {
+            "method": "GET",
+            "path": "\/api\/affiliates",
+            "parameters": {
+                "affiliateType": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Values: local or global."
                 }
             },
             "responses": {
                 "200": "OK",
-                "400": "Bad request.",
                 "401": "Unauthorized",
-                "409": "Invalid credentials.",
-                "410": "Player login restricted.",
-                "412": "Player password expired."
-            }
-        }
-    },
-    "AutoComplete": {
-        "CompletesAnyPendingGames": {
+                "404": "No affiliates found"
+            },
+            "deprecated": ""
+        },
+        "CreateAffiliate": {
             "method": "POST",
-            "path": "\/api\/autocomplete-requests",
+            "path": "\/api\/affiliates",
             "parameters": {
-                "playerIds": {
-                    "dataType": "array",
+                "affiliate": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Program Id must be valid.",
+                "409": "Conflict",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetGlobalLinked": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/list-global-linked",
+            "parameters": {
+                "globalId": {
+                    "dataType": "integer",
                     "parameterType": "query",
                     "required": true,
-                    "description": "List of player Ids"
+                    "description": "Global Affiliate ID."
                 }
             },
             "responses": {
-                "201": "Created",
+                "200": "OK",
                 "401": "Unauthorized",
-                "500": "InternalServerError"
-            }
+                "404": "No matches found for globalId",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetAccountLedgerAll": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/account-ledger-all",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Starting date of the date range (inclusive)."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Ending date of date range (inclusive)."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No accounting ledger data available",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetDownloadInformationAll": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/download-information-all",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Starting date of the date range (inclusive)."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Ending date of date range (inclusive)."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No players found",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetBannedDeactivatedPlayersAll": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/banned-deactivated-players",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Starting date of the date range (inclusive)."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Ending date of date range (inclusive)."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No players found",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetUnbannedPlayers": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/unbanned-players",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Starting date of the date range (inclusive)."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Ending date of date range (inclusive)."
+                },
+                "aId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Affiliate ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No players found",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetPlayersSessionsHistory": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/sessions",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start Date."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End Date."
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetNewPlayerSignUps": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/player-signups",
+            "parameters": {
+                "fromDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start Date."
+                },
+                "toDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End Date."
+                },
+                "defaultAffiliateId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Default Affiliate ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetPlayersSummary": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/players-summary",
+            "parameters": {
+                "fromDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start Date."
+                },
+                "toDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End Date."
+                },
+                "defaultAffiliateId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Default Affiliate ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetDownloads": {
+            "method": "GET",
+            "path": "\/api\/affiliates\/downloads",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player ID."
+                },
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Start date."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "End date."
+                },
+                "downloadId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Download ID."
+                },
+                "affiliateId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Affiliate ID."
+                },
+                "trackingId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Tracking ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "LinkGlobalAffiliate": {
+            "method": "POST",
+            "path": "\/api\/affiliates\/global-link",
+            "parameters": {
+                "globalId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Global Affiliate ID."
+                },
+                "localId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Local Affiliate ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Affiliate was not found.",
+                "409": "Affiliate link already exists.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        }
+    },
+    "AutoComplete": {
+        "CompletePendingGames": {
+            "method": "POST",
+            "path": "\/api\/autocomplete-requests\/autocomplete-requests",
+            "parameters": {
+                "playerIds": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "201": "Request added successfully and returns the ReferenceId for the created request",
+                "401": "Unauthorized",
+                "500": "Error in the request execution."
+            },
+            "deprecated": ""
         }
     },
     "Cashier": {
+        "GetAllBankingMethods": {
+            "method": "GET",
+            "path": "\/api\/cashier\/banking-methods",
+            "parameters": {
+                "isCash": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": ""
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized"
+            },
+            "deprecated": ""
+        },
         "Cashback": {
             "method": "GET",
             "path": "\/api\/cashier\/cashback",
@@ -395,7 +804,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetCashierSettings": {
             "method": "POST",
@@ -411,7 +821,8 @@
                 "410": "Token couldn't be created because player password has been reset.",
                 "417": "Cashier settings were not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "Chargeback": {
             "method": "POST",
@@ -422,7 +833,8 @@
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "DepositCommonWallet": {
             "method": "POST",
@@ -436,10 +848,12 @@
                 "202": "Transaction pending.",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
+                "405": "Method ID not allowed for deposits.",
                 "409": "Invalid number of decimal places in the amount.",
                 "417": "Transaction denied.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "WithdrawalCommonWallet": {
             "method": "POST",
@@ -453,61 +867,93 @@
                 "202": "Transaction pending.",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
+                "405": "Method ID not allowed for withdrawals.",
                 "409": "Invalid number of decimal places in the amount.",
                 "417": "Transaction denied.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
-        "GetBankingMethods": {
-            "method": "GET",
-            "path": "\/api\/cashier\/banking-methods",
+        "Deposit": {
+            "method": "POST",
+            "path": "\/api\/cashier\/common-wallet-deposit-simplified",
             "parameters": {
-                "isCash": {
-                    "dataType": "boolean",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "is cash true or false."
-                }
+                "request": "JSON"
             },
             "responses": {
                 "200": "OK",
-                "401": "Unauthorized"
-            }
+                "201": "Deposit succeeded but coupon not processed.",
+                "202": "Transaction pending.",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "405": "Method ID not allowed for deposits.",
+                "409": "Invalid number of decimal places in the amount.",
+                "417": "Transaction denied.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "Withdrawal": {
+            "method": "POST",
+            "path": "\/api\/cashier\/common-wallet-withdrawal-simplified",
+            "parameters": {
+                "request": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "201": "Deposit succeeded but coupon not processed.",
+                "202": "Transaction pending.",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "405": "Method ID not allowed for withdrawals.",
+                "409": "Invalid number of decimal places in the amount.",
+                "417": "Transaction denied.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         }
     },
     "Casino": {
         "GetSkins": {
             "method": "GET",
             "path": "\/api\/casino\/skins",
-            "parameters": {
-                "commonWalletEntry": "JSON"
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetClientChannels": {
             "method": "GET",
             "path": "\/api\/casino\/clients",
-            "parameters": {
-                "commonWalletEntry": "JSON"
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
+        },
+        "ListUsStates": {
+            "method": "GET",
+            "path": "\/api\/casino\/us-states",
+            "parameters": [],
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No States found."
+            },
+            "deprecated": ""
         },
         "ListIdTypes": {
             "method": "GET",
             "path": "\/api\/casino\/idInfoType",
-            "parameters": {
-                "commonWalletEntry": "JSON"
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "ModifyTypeInformation": {
             "method": "PUT",
@@ -517,32 +963,33 @@
                     "dataType": "integer",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Id of Type value to be updated"
                 },
                 "description": {
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Type value description"
                 },
                 "enabled": {
                     "dataType": "boolean",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Type value's availability to be associated to a player"
                 },
                 "parentId": {
                     "dataType": "integer",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Parent ID"
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "NotFound"
-            }
+            },
+            "deprecated": ""
         },
         "AddTypeInformation": {
             "method": "POST",
@@ -552,26 +999,27 @@
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Type value description"
                 },
                 "enabled": {
                     "dataType": "boolean",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Availability of the ID value to be associated to a player"
                 },
                 "parentId": {
                     "dataType": "integer",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Parent ID"
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Chosen parent id does not exist."
-            }
+            },
+            "deprecated": ""
         },
         "DeleteTypeInformation": {
             "method": "DELETE",
@@ -581,30 +1029,25 @@
                     "dataType": "integer",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Type Value id"
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
                 "409": "You cannot delete an item that is in use!"
-            }
+            },
+            "deprecated": ""
         },
         "ListIdInformation": {
             "method": "GET",
             "path": "\/api\/casino\/idInformation",
-            "parameters": {
-                "id": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": ""
-                }
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "ModifyIdInformation": {
             "method": "PUT",
@@ -614,26 +1057,27 @@
                     "dataType": "integer",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Id of ID information value to be updated"
                 },
                 "description": {
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "ID information description"
                 },
                 "enabled": {
                     "dataType": "boolean",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Availability to be associated to a player"
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "You cannot modify an id that does not exist."
-            }
+            },
+            "deprecated": ""
         },
         "AddIdInformation": {
             "method": "POST",
@@ -643,19 +1087,20 @@
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "ID information description"
                 },
                 "enabled": {
                     "dataType": "boolean",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Availability to be associated to a player"
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "DeleteIdInformation": {
             "method": "DELETE",
@@ -665,14 +1110,15 @@
                     "dataType": "integer",
                     "parameterType": "query",
                     "required": true,
-                    "description": ""
+                    "description": "Identifier for the ID Information value to be deleted"
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "You cannot delete an item that is in use!"
-            }
+            },
+            "deprecated": ""
         },
         "GetCasinoTotals": {
             "method": "GET",
@@ -682,16 +1128,41 @@
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "Day to get casino total balances."
+                    "description": "Day to get casino total balances in date-time format YYYY-MM-DD-HH-MM-SS, example: 2020\/02\/22 00:00:00."
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
-        "PendingGames": {
+        "GetCountriesAvailability": {
+            "method": "GET",
+            "path": "\/api\/casino\/country-availability",
+            "parameters": {
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Skin ID."
+                },
+                "availabilityFilter": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Availability Filter"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "ClosePendingGames": {
             "method": "DELETE",
             "path": "\/api\/casino\/pending-games",
             "parameters": {
@@ -699,23 +1170,68 @@
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "Start date"
+                    "description": "Start Date, format YYYY-MM-DD-HH-MM-SS, example: 2020\/02\/22 00:00:00"
                 },
                 "endDate": {
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "End date"
+                    "description": "End Date, format YYYY-MM-DD-HH-MM-SS, example: 2020\/02\/23 00:00:00"
                 }
             },
             "responses": {
                 "200": "OK",
-                "400": "The request is invalid",
+                "401": "Unauthorized",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        }
+    },
+    "Cdk": {
+        "ValidatePlayerIsLoggedIn": {
+            "method": "POST",
+            "path": "\/api\/cdk\/{login}\/isLoggedIn",
+            "parameters": {
+                "sessionGuid": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Session GUID of player logged in, this is a unique alphanumeric id created when a player logged in."
+                },
+                "login": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Login."
+                }
+            },
+            "responses": {
+                "200": "OK. Returns a boolean value",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         }
     },
     "Coupon": {
+        "CouponBatchResults": {
+            "method": "GET",
+            "path": "\/api\/coupons\/get-batch-results",
+            "parameters": {
+                "batchId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Id of the coupon batch"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Batch Id was not found.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
         "GetCouponDetails": {
             "method": "GET",
             "path": "\/api\/coupons\/coupon-details",
@@ -731,7 +1247,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Coupon was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetCoupons": {
             "method": "GET",
@@ -761,7 +1278,8 @@
                 "401": "Unauthorized",
                 "416": "More than 30 days of data is not allowed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetRequestedAndRedeemedCoupons": {
             "method": "GET",
@@ -802,7 +1320,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv2\\PlayerService::getRequestedAndRedeemedCouponsGET()}"
         },
         "RedeemCoupon": {
             "method": "POST",
@@ -817,7 +1336,8 @@
                 "409": "Transaction conflict.",
                 "412": "Transaction failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv2\\PlayerService::redeemCouponPOST()}"
         },
         "DiscardCoupon": {
             "method": "DELETE",
@@ -841,7 +1361,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "417": "Coupon is invalid"
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv2\\PlayerService::discardCouponDELETE()}"
         },
         "CopyCoupon": {
             "method": "POST",
@@ -854,7 +1375,24 @@
                 "401": "Unauthorized",
                 "404": "Coupon was not found.",
                 "409": "This coupon cannot be copied."
-            }
+            },
+            "deprecated": ""
+        },
+        "ImportCouponList": {
+            "method": "POST",
+            "path": "\/api\/coupons\/import-coupon-list",
+            "parameters": {
+                "couponList": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Model coupon was not found.",
+                "409": "Batch name is already in use.",
+                "500": "Error in the request execution",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "CreateBonusBalanceSingleUseFixedAmountOnRedemptionCoupon": {
             "method": "POST",
@@ -867,7 +1405,8 @@
                 "401": "Unauthorized",
                 "409": "Coupon could not be created.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv3\\CouponService::createBonusBalanceSingleUseFixedAmountOnRedemptionCouponPOST()}"
         },
         "CreateBonusBalanceSingleAccountFaPercentageOfNextDepositCoupon": {
             "method": "POST",
@@ -880,7 +1419,8 @@
                 "401": "Unauthorized",
                 "409": "Coupon could not be created.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv3\\CouponService::createBonusBalanceSingleAccountFaPercentageOfNextDepositCouponPOST()}"
         },
         "CreateBonusBalanceSingleUseModFixedAmountNextDepositCoupon": {
             "method": "POST",
@@ -893,7 +1433,8 @@
                 "401": "Unauthorized",
                 "409": "Coupon could not be created.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv3\\CouponService::createBonusBalanceSingleUseModFixedAmountNextDepositCouponPOST()}"
         },
         "CreateBonusBalanceSingleAccountModPercentageOfNextDepositCoupon": {
             "method": "POST",
@@ -906,20 +1447,84 @@
                 "401": "Unauthorized",
                 "409": "Coupon could not be created.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv3\\CouponService::createBonusBalanceSingleAccountModPercentageOfNextDepositCouponPOST()}"
+        }
+    },
+    "DataScience": {
+        "GetRfmScoreForAllPlayers": {
+            "method": "GET",
+            "path": "\/api\/data-science\/rfm\/players",
+            "parameters": [],
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No players found",
+                "417": "Not subscribed to BI data"
+            },
+            "deprecated": ""
+        },
+        "GetAllSegments": {
+            "method": "GET",
+            "path": "\/api\/data-science\/rfm\/segments",
+            "parameters": [],
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No segments found",
+                "417": "Not subscribed to BI data"
+            },
+            "deprecated": ""
+        },
+        "GetRfmScoreForSpecificPlayer": {
+            "method": "GET",
+            "path": "\/api\/data-science\/rfm\/players\/{playerId}",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "417": "Not subscribed to BI data"
+            },
+            "deprecated": ""
+        },
+        "GetPlayersOfSegment": {
+            "method": "GET",
+            "path": "\/api\/data-science\/rfm\/segments\/{playerSegmentId}\/players",
+            "parameters": {
+                "playerSegmentId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player segment ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Segment was not found",
+                "417": "Not subscribed to BI data"
+            },
+            "deprecated": ""
         }
     },
     "EmailNotification": {
         "GetEmailNotifications": {
             "method": "GET",
             "path": "\/api\/email-notifications",
-            "parameters": {
-                "couponInput": "JSON"
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "UpdateEmailResponse": {
             "method": "PUT",
@@ -936,21 +1541,24 @@
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
+                "500": "Error in the request execution",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         }
     },
     "ExternalLobby": {
-        "GetExternalLobbies": {
+        "Get": {
             "method": "GET",
             "path": "\/api\/externalLobby",
-            "parameters": {},
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
-        "GetExternalLobby": {
+        "GetExternalLobbyUrl": {
             "method": "GET",
             "path": "\/api\/externalLobby\/{lobbyId}",
             "parameters": {
@@ -958,25 +1566,25 @@
                     "dataType": "integer",
                     "parameterType": "path",
                     "required": true,
-                    "description": "The lobby ID"
+                    "description": "The External Lobby ID"
                 },
                 "skinId": {
                     "dataType": "integer",
                     "parameterType": "query",
                     "required": true,
-                    "description": "The skin ID."
+                    "description": "The skin ID per Casino."
                 },
                 "pid": {
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "Player’s ID"
+                    "description": "System unique identifier of the player"
                 },
                 "clientType": {
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "The client type used by the player (download|instantplay|mobile)"
+                    "description": "Channels: Mobile\/Instant Play\/Download"
                 }
             },
             "responses": {
@@ -984,10 +1592,21 @@
                 "401": "Unauthorized",
                 "404": "NotFound",
                 "417": "Lobby not active"
-            }
+            },
+            "deprecated": ""
         }
     },
     "Game": {
+        "GetExternalGames": {
+            "method": "GET",
+            "path": "\/api\/games\/external",
+            "parameters": [],
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized"
+            },
+            "deprecated": ""
+        },
         "GetRecommendedGames": {
             "method": "GET",
             "path": "\/api\/games\/recommended",
@@ -1003,7 +1622,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetGameDetails": {
             "method": "GET",
@@ -1026,7 +1646,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetFavoriteGames": {
             "method": "GET",
@@ -1050,30 +1671,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
-        },
-        "GetActiveGames": {
-            "method": "GET",
-            "path": "\/api\/games\/active",
-            "parameters": {
-                "skinId": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Skin ID."
-                },
-                "languageCode": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Help file language."
-                }
             },
-            "responses": {
-                "200": "OK",
-                "401": "Unauthorized",
-                "400": "Bad request."
-            }
+            "deprecated": ""
         },
         "GetFavoriteFlashGames": {
             "method": "GET",
@@ -1097,7 +1696,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetGames": {
             "method": "GET",
@@ -1119,7 +1719,8 @@
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetActiveFlashGames": {
             "method": "GET",
@@ -1149,7 +1750,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetFlashGames": {
             "method": "GET",
@@ -1191,7 +1793,44 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetActiveGames": {
+            "method": "GET",
+            "path": "\/api\/games\/active",
+            "parameters": {
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin ID."
+                },
+                "includeMenu": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Include menu categories."
+                },
+                "includeVersion": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Include game versions."
+                },
+                "languageCode": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Help file language."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "BlockGames": {
             "method": "POST",
@@ -1202,7 +1841,8 @@
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "AddGame": {
             "method": "POST",
@@ -1231,14 +1871,22 @@
                     "parameterType": "query",
                     "required": true,
                     "description": "Skin id."
+                },
+                "hands": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Number of hands."
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
-                "404": "Player was not found.",
+                "404": "NotFound",
+                "409": "Conflict",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "RemoveGame": {
             "method": "DELETE",
@@ -1267,16 +1915,24 @@
                     "parameterType": "query",
                     "required": true,
                     "description": "Skin id."
+                },
+                "hands": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Number of hands."
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
-                "404": "Player was not found.",
+                "404": "NotFound",
+                "409": "Conflict",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
-        "ClosePendingGamesByGameNumberList": {
+        "ClosePendingGamesByList": {
             "method": "DELETE",
             "path": "\/api\/games\/pending-games",
             "parameters": {
@@ -1284,11 +1940,12 @@
             },
             "responses": {
                 "200": "OK",
-                "400": "Bad request.",
+                "400": "BadRequest",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
-        "ClosePendingGamesByGameNumber": {
+        "ClosePendingGames": {
             "method": "DELETE",
             "path": "\/api\/games\/{gameId}\/pending-games\/{gameNum}",
             "parameters": {
@@ -1296,19 +1953,20 @@
                     "dataType": "integer",
                     "parameterType": "path",
                     "required": true,
-                    "description": "Game id"
+                    "description": "Game Id"
                 },
                 "gameNum": {
                     "dataType": "integer",
                     "parameterType": "path",
                     "required": true,
-                    "description": "Game number."
+                    "description": "Game Number"
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         }
     },
     "History": {
@@ -1327,7 +1985,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetBoardGameDetailsHistory": {
             "method": "GET",
@@ -1344,7 +2003,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetWarHistoryDetail": {
             "method": "GET",
@@ -1367,7 +2027,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetKenoHistoryDetail": {
             "method": "GET",
@@ -1390,7 +2051,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetBingoHistoryDetail": {
             "method": "GET",
@@ -1413,7 +2075,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetCrapsHistoryDetail": {
             "method": "GET",
@@ -1436,7 +2099,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetRsvsHistoryWithIcons": {
             "method": "GET",
@@ -1453,7 +2117,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetSicBoHistoryDetail": {
             "method": "GET",
@@ -1476,7 +2141,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetBaccaratHistoryDetail": {
             "method": "GET",
@@ -1499,7 +2165,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetRouletteHistoryDetail": {
             "method": "GET",
@@ -1522,7 +2189,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetBlackjackHistoryDetail": {
             "method": "GET",
@@ -1545,7 +2213,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetShootingGameDetailsHistory": {
             "method": "GET",
@@ -1562,7 +2231,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetLetEmRideHistoryDetail": {
             "method": "GET",
@@ -1585,7 +2255,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetVideoPokerHistoryDetail": {
             "method": "GET",
@@ -1608,7 +2279,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetPaiGowPokerHistoryDetail": {
             "method": "GET",
@@ -1631,7 +2303,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetScratchCardsHistoryDetail": {
             "method": "GET",
@@ -1654,7 +2327,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetSlotsThreeReelsHistoryDetail": {
             "method": "GET",
@@ -1677,7 +2351,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetCaribbeanDrawHistoryDetail": {
             "method": "GET",
@@ -1700,7 +2375,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetCaribbeanStudHistoryDetail": {
             "method": "GET",
@@ -1723,7 +2399,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetTriCardPokerHistoryDetail": {
             "method": "GET",
@@ -1746,7 +2423,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetCaribbeanHoldemHistoryDetail": {
             "method": "GET",
@@ -1769,7 +2447,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetSevenStudPokerHistoryDetail": {
             "method": "GET",
@@ -1792,7 +2471,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetRsvsHistory": {
             "method": "GET",
@@ -1821,7 +2501,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetEuropeanSlotsPokerHistoryDetail": {
             "method": "GET",
@@ -1844,7 +2525,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetMultiPlayerRouletteHistoryDetail": {
             "method": "GET",
@@ -1867,7 +2549,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetMultiHandVideoPokerHistoryDetail": {
             "method": "GET",
@@ -1890,7 +2573,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetVegasThreeCardRummyHistoryDetail": {
             "method": "GET",
@@ -1913,9 +2597,10 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
-        "GetVideoPokerHistoryDetailV2": {
+        "GetVideoPokerHistoryListDetail": {
             "method": "GET",
             "path": "\/api\/v2\/history\/video-poker",
             "parameters": {
@@ -1936,7 +2621,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetTexasHoldemBonusPokerHistoryDetail": {
             "method": "GET",
@@ -1959,7 +2645,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Game was not found."
-            }
+            },
+            "deprecated": ""
         }
     },
     "Jackpot": {
@@ -1990,7 +2677,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv2\\JackpotService::getLobbyGetProgressiveJackpotV2GET()}"
         },
         "GetProgressiveJackpots": {
             "method": "GET",
@@ -2026,7 +2714,8 @@
                 "401": "Unauthorized",
                 "404": "Game was not found",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetTopLocalAuslotJackpots": {
             "method": "GET",
@@ -2056,7 +2745,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetJackpotWinners": {
             "method": "GET",
@@ -2085,7 +2775,315 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetLobbyGetProgressiveJackpotV2": {
+            "method": "GET",
+            "path": "\/api\/v2\/jackpots\/lobby-progressive-jackpot",
+            "parameters": {
+                "forMoney": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Real or fun games."
+                },
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Skin ID."
+                },
+                "optionId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Option ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        }
+    },
+    "Lobby": {
+        "GetMenus": {
+            "method": "GET",
+            "path": "\/api\/lobby\/menus",
+            "parameters": {
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin Id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "SkinID does not exist",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetAllSubMenus": {
+            "method": "GET",
+            "path": "\/api\/lobby\/menus\/submenus",
+            "parameters": {
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin Id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "SkinID does not exist",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetSubMenus": {
+            "method": "GET",
+            "path": "\/api\/lobby\/menus\/{menuId}\/submenus",
+            "parameters": {
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin Id"
+                },
+                "menuId": {
+                    "dataType": "integer",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Menu Id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "SkinID \/ MenuID does not exist",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetGameInformation": {
+            "method": "GET",
+            "path": "\/api\/lobby\/games\/{gameId}",
+            "parameters": {
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin Id"
+                },
+                "gameId": {
+                    "dataType": "integer",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Game Menu Id"
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player Id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "SkinID \/ gameID \/ playerID does not exist",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetFullMenuStructure": {
+            "method": "GET",
+            "path": "\/api\/lobby\/full-menu-structure",
+            "parameters": {
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin Id"
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player Id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "SkinID \/ playerID does not exist",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetGames": {
+            "method": "GET",
+            "path": "\/api\/lobby\/menus\/submenus\/games",
+            "parameters": {
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin Id"
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player Id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "SkinID \/ playerID does not exist",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetMarqueeMessages": {
+            "method": "GET",
+            "path": "\/api\/lobby\/{playerId}\/marquee-messages",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player Id \/ Pid"
+                },
+                "forMoney": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "True for real play \/ false for fun play"
+                },
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin ID"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found. \/ Skin ID does not exist",
+                "409": "Conflict",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetGamesByMenu": {
+            "method": "GET",
+            "path": "\/api\/lobby\/menus\/{menuId}\/submenus\/games",
+            "parameters": {
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin Id"
+                },
+                "menuId": {
+                    "dataType": "integer",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Menu Id"
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player Id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "SkinID \/ MenuID \/ playerID does not exist",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetGamesBySubMenu": {
+            "method": "GET",
+            "path": "\/api\/lobby\/menus\/submenus\/{subMenuId}\/games",
+            "parameters": {
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin Id"
+                },
+                "subMenuId": {
+                    "dataType": "integer",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "SubMenu Id"
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player Id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "SkinID \/ SubMenuId \/ playerID does not exist",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetGamesBySubMenuAndMenu": {
+            "method": "GET",
+            "path": "\/api\/lobby\/menus\/{menuId}\/submenus\/{subMenuId}\/games",
+            "parameters": {
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin Id"
+                },
+                "menuId": {
+                    "dataType": "integer",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Menu Id"
+                },
+                "subMenuId": {
+                    "dataType": "integer",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "SubMenu Id"
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player Id"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Skin ID \/ MenuId \/ SubMenuId \/ player ID does not exist",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         }
     },
     "Message": {
@@ -2102,8 +3100,10 @@
             },
             "responses": {
                 "200": "OK",
-                "404": "The message was not found."
-            }
+                "401": "Unauthorized",
+                "404": "The message was not found. Check if messageId is valid."
+            },
+            "deprecated": ""
         },
         "UpdateMessage": {
             "method": "PUT",
@@ -2119,10 +3119,48 @@
             },
             "responses": {
                 "200": "OK",
-                "404": "The message was not found.",
+                "401": "Unauthorized",
+                "404": "The message was not found. Check if messageId is valid.",
                 "409": "The message code is already used by another message.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetMessagesList": {
+            "method": "GET",
+            "path": "\/api\/messages",
+            "parameters": {
+                "pid": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Player ID."
+                },
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin ID."
+                },
+                "moneyType": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "The type of playing mode fun or real."
+                },
+                "clientType": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "The client type mode instantplay,download or mobile."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found."
+            },
+            "deprecated": ""
         },
         "CreateMessage": {
             "method": "POST",
@@ -2131,23 +3169,24 @@
                 "message": "JSON"
             },
             "responses": {
-                "200": "OK",
+                "200": "OK. Returns Message Id",
+                "401": "Unauthorized",
                 "409": "The message code is already used by another message.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         }
     },
     "Player": {
         "GetPlayerClasses": {
             "method": "GET",
             "path": "\/api\/players\/classes",
-            "parameters": {
-                "message": "JSON"
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayer": {
             "method": "GET",
@@ -2165,7 +3204,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "UpdatePlayer": {
             "method": "PUT",
@@ -2187,7 +3227,8 @@
                 "409": "Player update failed.",
                 "417": "Player object validation failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerClass": {
             "method": "GET",
@@ -2205,7 +3246,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "SetPlayerClass": {
             "method": "PUT",
@@ -2226,7 +3268,8 @@
                 "409": "Player class update failed.",
                 "417": "Invalid player class ID.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerLedger": {
             "method": "GET",
@@ -2244,7 +3287,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerPasscode": {
             "method": "GET",
@@ -2262,7 +3306,66 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetSessionHash": {
+            "method": "GET",
+            "path": "\/api\/players\/{playerId}\/session-hash",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player Id \/ Pid"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "409": "Player doesn't have an active session",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetPendingGames": {
+            "method": "GET",
+            "path": "\/api\/players\/{playerId}\/pending-games",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": ""
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "ClosePendingGames": {
+            "method": "DELETE",
+            "path": "\/api\/players\/{playerId}\/pending-games",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player Id \/ Pid"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "GetActiveCouponDetailsByPlayer": {
             "method": "GET",
@@ -2281,7 +3384,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv2\\PlayerService::getActiveCouponDetailsByPlayerV2GET()}"
         },
         "GetAdjustedNetWin": {
             "method": "GET",
@@ -2299,7 +3403,27 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetActiveCouponCodeByPlayer": {
+            "method": "GET",
+            "path": "\/api\/players\/{playerId}\/active-coupon-code",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "GetPlayerPhoneNumberStatus": {
             "method": "GET",
@@ -2317,7 +3441,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "SetPlayerPhoneNumberStatus": {
             "method": "PUT",
@@ -2337,7 +3462,8 @@
                 "404": "Player was not found.",
                 "409": "Unable to set player's phone number status.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "ListPlayerIdInformation": {
             "method": "GET",
@@ -2354,7 +3480,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Player was not found."
-            }
+            },
+            "deprecated": ""
         },
         "ModifyPlayerIdInformation": {
             "method": "PUT",
@@ -2389,7 +3516,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Player was not found."
-            }
+            },
+            "deprecated": ""
         },
         "DeletePlayerIdInformation": {
             "method": "DELETE",
@@ -2412,7 +3540,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Player was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerNotes": {
             "method": "GET",
@@ -2436,7 +3565,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "SavePlayerNotes": {
             "method": "POST",
@@ -2456,7 +3586,8 @@
                 "404": "Player was not found.",
                 "409": "Unable to save player note.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerEmailVerificationStatus": {
             "method": "GET",
@@ -2474,7 +3605,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "SetPlayerEmailVerificationStatus": {
             "method": "PUT",
@@ -2486,7 +3618,12 @@
                     "required": true,
                     "description": "Player ID."
                 },
-                "status": "JSON"
+                "status": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Status to set."
+                }
             },
             "responses": {
                 "200": "OK",
@@ -2494,7 +3631,28 @@
                 "404": "Player was not found.",
                 "409": "Unable to set player's email verification status.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetActiveCouponDetailsByPlayerV2": {
+            "method": "GET",
+            "path": "\/api\/v2\/players\/{playerId}\/coupons\/active",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "204": "Coupon was not found.",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "GetAccountBalance": {
             "method": "GET",
@@ -2518,7 +3676,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerCoupons": {
             "method": "GET",
@@ -2542,31 +3701,40 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
-        "GetPlayerCouponDetails": {
+        "GetBatchCouponStatus": {
             "method": "GET",
-            "path": "\/api\/players\/{playerId}\/couponDetails",
+            "path": "\/api\/v2\/players\/coupons\/batch",
             "parameters": {
-                "playerId": {
-                    "dataType": "string",
-                    "parameterType": "path",
-                    "required": true,
-                    "description": "Player ID."
-                },
-                "clientId": {
+                "requestId": {
                     "dataType": "integer",
                     "parameterType": "query",
-                    "required": false,
-                    "description": "Client ID."
+                    "required": true,
+                    "description": "Request Id."
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized",
-                "404": "Player was not found.",
+                "404": "Request was not found",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "BatchRedeemCoupon": {
+            "method": "POST",
+            "path": "\/api\/v2\/players\/coupons\/batch",
+            "parameters": {
+                "couponBatch": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "ValidateToken": {
             "method": "GET",
@@ -2597,7 +3765,39 @@
                 "404": "Player was not found.",
                 "417": "The application is not registered.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetAvailableCoupons": {
+            "method": "GET",
+            "path": "\/api\/players\/{playerId}\/coupons-available",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "The player id."
+                },
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "The skin id."
+                },
+                "clientId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "The client id."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "GetNonCashTotal": {
             "method": "GET",
@@ -2627,7 +3827,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerBalanceSummary": {
             "method": "GET",
@@ -2657,7 +3858,39 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetAllPendingGames": {
+            "method": "GET",
+            "path": "\/api\/players\/all-pending-games",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start Date"
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End Date"
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player Id \/ Pid"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "GetAllAccounts": {
             "method": "GET",
@@ -2692,7 +3925,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "CreatePlayer": {
             "method": "POST",
@@ -2705,10 +3939,48 @@
                 "201": "Created",
                 "202": "Player created but the communication with DoughFlow failed.",
                 "401": "Unauthorized",
-                "409": "Player creation failed. Will return any of the following messages: 0 - failed, 2 - banned, 3 - already_exists, 4 - email_already_exists, 6 - xss_validation_failed, 7 - currency_error, 8 - field_validation_error.",
+                "409": "Player creation failed. Will return any of the following messages: 0 - failed, 2 - banned, 3 - already_exists, 4 - email_already_exists, 6 - xss_validation_failed, 7 - currency_error, 8 - field_validation_error, 9 - min_age_requirement_not_met",
                 "417": "Player object validation failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetPlayerCouponDetails": {
+            "method": "GET",
+            "path": "\/api\/players\/{playerId}\/couponDetails",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player ID."
+                },
+                "clientId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Client ID."
+                },
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Start date to pull in data."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "End date to pull in data."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "GetGamingActivity": {
             "method": "GET",
@@ -2744,7 +4016,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetRsvsSummaryHistory": {
             "method": "GET",
@@ -2792,7 +4065,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetBaccaratHistory": {
             "method": "GET",
@@ -2840,7 +4114,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetRouletteHistory": {
             "method": "GET",
@@ -2888,7 +4163,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetBlackjackHistory": {
             "method": "GET",
@@ -2936,7 +4212,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetRequestedAndRedeemedCoupons": {
             "method": "GET",
@@ -2977,7 +4254,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "AdjustPlayerCompPoints": {
             "method": "PUT",
@@ -2997,7 +4275,8 @@
                 "404": "Player was not found.",
                 "409": "Unable to adjust player's comppoints.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "ResetSpecialFeatures": {
             "method": "PUT",
@@ -3017,7 +4296,8 @@
                 "409": "Failed to reset player's counters and special features.",
                 "412": "Unable to reset player's counters and special features. The player is logged in.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "MarkPromotionAsVisited": {
             "method": "PUT",
@@ -3041,7 +4321,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "409": "Promotion was not found."
-            }
+            },
+            "deprecated": ""
         },
         "External": {
             "method": "POST",
@@ -3055,10 +4336,11 @@
                 "202": "Player created but the communication with DoughFlow failed.",
                 "401": "Unauthorized",
                 "403": "The application is not registered.",
-                "409": "Player creation failed. Will return any of the following messages: 0 - failed, 2 - banned, 3 - already_exists, 4 - email_already_exists, 6 - xss_validation_failed, 7 - currency_error, 8 - field_validation_error.",
+                "409": "Player creation failed. Will return any of the following messages: 0 - failed, 2 - banned, 3 - already_exists, 4 - email_already_exists, 6 - xss_validation_failed, 7 - currency_error, 8 - field_validation_error, 9 - min_age_requirement_not_met",
                 "417": "Player object validation failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "CreateToken": {
             "method": "POST",
@@ -3080,7 +4362,42 @@
                 "412": "Player password has been reset.",
                 "417": "The application is not registered.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetPlayersSearchDetails": {
+            "method": "POST",
+            "path": "\/api\/players\/player-search-details",
+            "parameters": {
+                "playerSearch": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "CreateGameToken": {
+            "method": "POST",
+            "path": "\/api\/players\/{playerId}\/game-token",
+            "parameters": {
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "path",
+                    "required": true,
+                    "description": "Player ID."
+                },
+                "gameParameters": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "409": "Game Token creation failed.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "RecordFailedTransaction": {
             "method": "POST",
@@ -3099,7 +4416,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "RedeemPlayerCompPoints": {
             "method": "POST",
@@ -3119,12 +4437,36 @@
                 }
             },
             "responses": {
-                "200": "OK",
+                "200": "Comp Points were Redeemed",
                 "401": "Unauthorized",
                 "404": "Player was not found.",
-                "409": "Unable to redeem player's comppoints.",
+                "409": "Unable to redeem player's comppoints. Will return any of the following messages: 2 - exceed_amount_comp_points, 3 - others, 4 -cannot_redeemed_now, 6 -amount_requested_is_lower_than_minimum_allowed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "UpdateWalletCode": {
+            "method": "POST",
+            "path": "\/api\/players\/wallet\/code",
+            "parameters": {
+                "playerLogin": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Player Login"
+                },
+                "walletCode": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Wallet Code"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized"
+            },
+            "deprecated": ""
         },
         "RedeemCoupon": {
             "method": "POST",
@@ -3153,6 +4495,18 @@
                     "parameterType": "query",
                     "required": false,
                     "description": "If you put this in false will not redeem the code"
+                },
+                "template": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Use the optional parameter \"template\" to populate the \"template\" web hook configured in the Coupon Redeem-Deposit Required Custom URL"
+                },
+                "ignorePlayerRestrictions": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": ""
                 }
             },
             "responses": {
@@ -3162,7 +4516,8 @@
                 "409": "Transaction conflict.",
                 "412": "Transaction failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "DiscardCoupon": {
             "method": "DELETE",
@@ -3186,147 +4541,10 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "417": "Coupon is invalid"
-            }
-        },
-        "GetPendingGames": {
-            "method": "GET",
-            "path": "\/api\/players\/{playerId}\/pending-games",
-            "parameters": {
-                "playerId": {
-                    "dataType": "string",
-                    "parameterType": "path",
-                    "required": true,
-                    "description": "Player id"
-                }
             },
-            "responses": {
-                "200": "OK",
-                "400": "Bad request",
-                "401": "Unauthorized",
-                "404": "Player was not found."
-            }
+            "deprecated": ""
         },
-        "ClosePendingGames": {
-            "method": "DELETE",
-            "path": "\/api\/players\/{playerId}\/pending-games",
-            "parameters": {
-                "playerId": {
-                    "dataType": "string",
-                    "parameterType": "path",
-                    "required": true,
-                    "description": "Player id"
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "400": "Bad request",
-                "401": "Unauthorized",
-                "404": "Player was not found."
-            }
-        },
-        "GetBatchCouponRedemptionStatus": {
-            "method": "GET",
-            "path": "\/api\/v2\/players\/coupons\/batch",
-            "parameters": {
-                "requestId": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Request id"
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "400": "Bad request",
-                "401": "Unauthorized",
-                "404": "Player was not found."
-            }
-        },
-        "RedeemsBatchCoupons": {
-            "method": "POST",
-            "path": "\/api\/v2\/players\/coupons\/batch",
-            "parameters": {
-                "couponBatch": "JSON"
-            },
-            "responses": {
-                "200": "OK",
-                "400": "Bad request",
-                "401": "Unauthorized"
-            }
-        },
-        "GetAllPlayersPendingGames": {
-            "method": "GET",
-            "path": "\/api\/players\/all-pending-games",
-            "parameters": {
-                "startDate": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Start Date."
-                },
-                "endDate": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "End Date."
-                },
-                "playerId": {
-                    "dataType": "string",
-                    "parameterType": "path",
-                    "required": false,
-                    "description": "Player id"
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "400": "Bad request",
-                "401": "Unauthorized",
-                "404": "Player was not found."
-            }
-        },
-        "CreateSecurityGameToken": {
-            "method": "POST",
-            "path": "\/api\/players\/{playerId}\/game-token",
-            "parameters": {
-                "playerId": {
-                    "dataType": "string",
-                    "parameterType": "path",
-                    "required": true,
-                    "description": "Player id"
-                },
-                "gameParameters": "JSON"
-            },
-            "responses": {
-                "200": "OK",
-                "400": "Bad request",
-                "401": "Unauthorized",
-                "404": "Player was not found.",
-                "409": "Game Token creation failed."
-            }
-        },
-        "UpdateWalletCode": {
-            "method": "POST",
-            "path": "\/api\/players\/wallet\/code",
-            "parameters": {
-                "playerLogin": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Player Login"
-                },
-                "walletCode": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Wallet Code"
-                }
-            },
-            "responses": {
-                "200": "OK",
-                "401": "Unauthorized"
-            }
-        },
-        "CouponDeny": {
+        "DenyCoupon": {
             "method": "DELETE",
             "path": "\/api\/v2\/players\/{playerId}\/coupon\/deny",
             "parameters": {
@@ -3340,7 +4558,7 @@
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "Wallet Code"
+                    "description": "The code of the coupon to Deny"
                 }
             },
             "responses": {
@@ -3348,7 +4566,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "417": "Coupon is invalid"
-            }
+            },
+            "deprecated": ""
         }
     },
     "Promotion": {
@@ -3366,7 +4585,8 @@
             "responses": {
                 "200": "OK",
                 "404": "Promotion was not found."
-            }
+            },
+            "deprecated": ""
         },
         "UpdatePromotion": {
             "method": "PUT",
@@ -3384,7 +4604,8 @@
                 "200": "OK",
                 "404": "Promotion was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "DeletePromotion": {
             "method": "DELETE",
@@ -3400,7 +4621,8 @@
             "responses": {
                 "200": "OK",
                 "404": "Promotion was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetActivePromotions": {
             "method": "GET",
@@ -3422,7 +4644,8 @@
             "responses": {
                 "200": "OK",
                 "404": "Player was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetPromotionStatistics": {
             "method": "GET",
@@ -3450,7 +4673,8 @@
             "responses": {
                 "200": "OK",
                 "404": "Promotion was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetPromotions": {
             "method": "GET",
@@ -3489,7 +4713,8 @@
             },
             "responses": {
                 "200": "OK"
-            }
+            },
+            "deprecated": ""
         },
         "CreatePromotion": {
             "method": "POST",
@@ -3501,7 +4726,8 @@
                 "200": "OK",
                 "201": "Created",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "UpdatePromotionStatus": {
             "method": "PUT",
@@ -3523,7 +4749,8 @@
             "responses": {
                 "200": "OK",
                 "404": "Promotion was not found."
-            }
+            },
+            "deprecated": ""
         },
         "AddBanner": {
             "method": "POST",
@@ -3534,31 +4761,30 @@
             "responses": {
                 "200": "OK",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         }
     },
     "Report": {
         "GetJackpot": {
             "method": "GET",
             "path": "\/api\/reports\/jackpot-data",
-            "parameters": {
-                "image": "JSON"
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetActiveSessions": {
             "method": "GET",
             "path": "\/api\/reports\/active-sessions",
-            "parameters": {
-                "image": "JSON"
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetAffiliates": {
             "method": "GET",
@@ -3576,7 +4802,27 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetGlobalLinked": {
+            "method": "GET",
+            "path": "\/api\/reports\/list-global-linked",
+            "parameters": {
+                "globalId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Global Affiliate ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No matches found for globalId",
+                "400": "Bad request."
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv2\\AffiliateService::getGlobalLinkedGET()}"
         },
         "GetOptInStatistics": {
             "method": "GET",
@@ -3599,7 +4845,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetNonDepositors": {
             "method": "GET",
@@ -3616,7 +4863,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetDepositors": {
             "method": "GET",
@@ -3639,7 +4887,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetSideBetsStatistics": {
             "method": "GET",
@@ -3662,7 +4911,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetGameDetailSummary": {
             "method": "GET",
@@ -3685,7 +4935,32 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetAllTopGamesPlayed": {
+            "method": "GET",
+            "path": "\/api\/reports\/all-top-games-played",
+            "parameters": {
+                "numberOfGames": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Number of games to return."
+                },
+                "skinId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "GetLastGamesPlayed": {
             "method": "GET",
@@ -3709,7 +4984,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayersSessionsHistory": {
             "method": "GET",
@@ -3738,7 +5014,58 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv2\\AffiliateService::getPlayersSessionsHistoryGET()}"
+        },
+        "GetAffiliatesStatsSummaryDaily": {
+            "method": "GET",
+            "path": "\/api\/reports\/affiliates-stats-summary-daily",
+            "parameters": {
+                "beginDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Starting date of the date range (inclusive)."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Ending date of date range (inclusive)."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No daily stats data available",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetAffiliatesStatsSummaryHourly": {
+            "method": "GET",
+            "path": "\/api\/reports\/affiliates-stats-summary-hourly",
+            "parameters": {
+                "beginDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Starting date of the date range (inclusive)."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Ending date of date range (inclusive)."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No hourly stats data available",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "GetGamingSummary": {
             "method": "GET",
@@ -3767,7 +5094,39 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetAccountHistoryByDateRange": {
+            "method": "GET",
+            "path": "\/api\/reports\/account-history",
+            "parameters": {
+                "fromDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Initial date."
+                },
+                "toDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End date."
+                },
+                "playerLogin": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Login filter."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Login not found",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "GetPlayerDepositors": {
             "method": "GET",
@@ -3790,7 +5149,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerTransactionHistory": {
             "method": "GET",
@@ -3820,7 +5180,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerDepositWithdrawalHistory": {
             "method": "GET",
@@ -3850,7 +5211,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetTopGamesPlayed": {
             "method": "GET",
@@ -3880,7 +5242,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetNewPlayerSignups": {
             "method": "GET",
@@ -3909,7 +5272,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv2\\AffiliateService::getNewPlayerSignUpsGET()}"
         },
         "GetPlayerSummaryAll": {
             "method": "GET",
@@ -3938,7 +5302,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv2\\AffiliateService::getPlayersSummaryGET()}"
         },
         "GetPlayerGameStatistics": {
             "method": "GET",
@@ -3966,11 +5331,49 @@
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
-        "GetPlayedGames": {
+        "GetGamingActivityReport": {
             "method": "GET",
-            "path": "\/api\/reports\/played-games",
+            "path": "\/api\/reports\/gaming-activity",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start date of the history."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End date of the history."
+                },
+                "forMoney": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Real or fun games."
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player ID."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "GetPlayedGamesJackpot": {
+            "method": "GET",
+            "path": "\/api\/reports\/jackpot-group-played-games",
             "parameters": {
                 "startDate": {
                     "dataType": "string",
@@ -3984,35 +5387,18 @@
                     "required": true,
                     "description": "End Date."
                 },
-                "machIds": {
-                    "dataType": "array",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Machine Ids separated by comma."
-                },
-                "gameIds": {
-                    "dataType": "array",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Game ids separated by comma."
-                },
-                "forMoney": {
-                    "dataType": "boolean",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Real or fun games."
-                },
-                "clientId": {
+                "jackpotGroupId": {
                     "dataType": "integer",
                     "parameterType": "query",
-                    "required": false,
-                    "description": "Cliend id."
+                    "required": true,
+                    "description": "Jackpot Group Id."
                 }
             },
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerSessionsDayOfWeek": {
             "method": "GET",
@@ -4047,18 +5433,13 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerFullGameStatsDetail": {
             "method": "GET",
             "path": "\/api\/reports\/fullgame-stats",
             "parameters": {
-                "playerId": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "Player ID."
-                },
                 "startDate": {
                     "dataType": "string",
                     "parameterType": "query",
@@ -4069,7 +5450,13 @@
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "Start date."
+                    "description": "End date."
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player ID."
                 },
                 "gameId": {
                     "dataType": "integer",
@@ -4081,7 +5468,7 @@
                     "dataType": "integer",
                     "parameterType": "query",
                     "required": false,
-                    "description": "Mach ID."
+                    "description": "Machine ID."
                 }
             },
             "responses": {
@@ -4089,7 +5476,45 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetPlayerGameStatsByDateRange": {
+            "method": "GET",
+            "path": "\/api\/reports\/game-statistics-by-date-range",
+            "parameters": {
+                "fromDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Initial date."
+                },
+                "toDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End date."
+                },
+                "forMoney": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Real or fun games."
+                },
+                "playerLogin": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Login filter."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Login not found",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "GetGamingStats": {
             "method": "GET",
@@ -4131,7 +5556,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetVendorGameStats": {
             "method": "GET",
@@ -4166,7 +5592,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetAllAccountsDelta": {
             "method": "GET",
@@ -4194,7 +5621,56 @@
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
+        },
+        "GetEmailVerifyReport": {
+            "method": "GET",
+            "path": "\/api\/reports\/email-verify",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start Date."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End Date."
+                },
+                "email": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Email."
+                },
+                "status": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Status."
+                },
+                "pageNumber": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Page number."
+                },
+                "rowsPPage": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Rows per page."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "ThirdPartyOptInOptOut": {
             "method": "GET",
@@ -4237,7 +5713,44 @@
                 "404": "Player was not found.",
                 "409": "Game not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetPlayerSessions": {
+            "method": "GET",
+            "path": "\/api\/reports\/player-sessions-detail",
+            "parameters": {
+                "fromLogoutDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Session logout start date."
+                },
+                "toLogoutDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Session logout end date."
+                },
+                "includeNoGamePlay": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Flag to retrieve or ignore no game played sessions."
+                },
+                "login": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player's login."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         },
         "GetVendorGameStatsByPlayer": {
             "method": "GET",
@@ -4279,7 +5792,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "ThirdPartyGameStats": {
             "method": "GET",
@@ -4335,7 +5849,8 @@
                 "409": "Game not found.",
                 "417": "High bet cannot be lower than the low bet.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerGameStatsDetailByGame": {
             "method": "GET",
@@ -4390,7 +5905,55 @@
                 "404": "Player was not found.",
                 "409": "Game was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "GetPlayedGames": {
+            "method": "GET",
+            "path": "\/api\/reports\/played-games",
+            "parameters": {
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start Date."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End Date."
+                },
+                "machIds": {
+                    "dataType": "array",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Machine Ids separated by comma."
+                },
+                "gameIds": {
+                    "dataType": "array",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Game ids separated by comma."
+                },
+                "forMoney": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Real or fun games."
+                },
+                "clientId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Cliend id."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized"
+            },
+            "deprecated": ""
         },
         "GetPlayerTransactions": {
             "method": "GET",
@@ -4450,7 +6013,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetAuditTrailReport": {
             "method": "GET",
@@ -4478,7 +6042,7 @@
                     "dataType": "string",
                     "parameterType": "query",
                     "required": false,
-                    "description": "Area."
+                    "description": "AreaId."
                 },
                 "accessLevel": {
                     "dataType": "string",
@@ -4490,7 +6054,7 @@
                     "dataType": "string",
                     "parameterType": "query",
                     "required": false,
-                    "description": "Player class."
+                    "description": "Player class ID."
                 },
                 "gameId": {
                     "dataType": "string",
@@ -4520,79 +6084,81 @@
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
+        },
+        "GetPlayerTransactionsPerSkin": {
+            "method": "GET",
+            "path": "\/api\/reports\/transactions-per-skin",
+            "parameters": {
+                "skinIds": {
+                    "dataType": "array",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Skin ID."
+                },
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Start Date."
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "End Date."
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player ID."
+                },
+                "trackingOne": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Tracking One."
+                },
+                "trackingTwo": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Tracking Two."
+                },
+                "trackingThree": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Tracking Three."
+                },
+                "trackingFour": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Tracking Four."
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "Player was not found.",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         }
     },
     "Service": {
         "GetCurrencies": {
             "method": "GET",
             "path": "\/api\/service\/currencies",
-            "parameters": {
-                "startDate": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Start date."
-                },
-                "endDate": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "End date."
-                },
-                "playersIds": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Ids of multiple players divided by comma."
-                },
-                "area": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Area."
-                },
-                "accessLevel": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Access level."
-                },
-                "playerClass": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Player class."
-                },
-                "gameId": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Gamer ID."
-                },
-                "machId": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Mach ID."
-                },
-                "users": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Usernames of users divided by comma."
-                },
-                "couponCode": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "Coupon code."
-                }
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetComment": {
             "method": "GET",
@@ -4609,7 +6175,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Comment was not found."
-            }
+            },
+            "deprecated": ""
         },
         "UpdateComment": {
             "method": "PUT",
@@ -4629,7 +6196,8 @@
                 "404": "Comment not found.",
                 "417": "Comment validation failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "DeleteComment": {
             "method": "DELETE",
@@ -4652,7 +6220,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "Comment was not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetDownloadUrl": {
             "method": "GET",
@@ -4670,7 +6239,8 @@
                 "401": "Unauthorized",
                 "404": "Download URL was not found.",
                 "412": "Unable to get download URL."
-            }
+            },
+            "deprecated": ""
         },
         "GetCustomerTypes": {
             "method": "GET",
@@ -4686,7 +6256,8 @@
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetCustomerCategories": {
             "method": "GET",
@@ -4702,7 +6273,8 @@
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetCustomerStatuses": {
             "method": "GET",
@@ -4718,7 +6290,8 @@
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetDownloads": {
             "method": "GET",
@@ -4766,7 +6339,8 @@
                 "401": "Unauthorized",
                 "404": "Player was not found.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": "Use {@see \\denbora\\R_T_G_Services\\services\\RESTv2\\AffiliateService::getDownloadsGET()}"
         },
         "SearchComment": {
             "method": "GET",
@@ -4849,7 +6423,8 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "CreateComment": {
             "method": "POST",
@@ -4862,7 +6437,8 @@
                 "401": "Unauthorized",
                 "417": "Comment validation failed.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "GetDownloadId": {
             "method": "POST",
@@ -4874,55 +6450,77 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
+        },
+        "PinComment": {
+            "method": "POST",
+            "path": "\/api\/service\/pin-comment",
+            "parameters": {
+                "pinned": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Select true to pin or false to unpin the comment."
+                },
+                "commentId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Comment Identifier."
+                }
+            },
+            "responses": {
+                "200": "Pin changed successfully",
+                "401": "Unauthorized",
+                "404": "Comment was not found",
+                "400": "Bad request."
+            },
+            "deprecated": ""
         }
     },
     "Settings": {
         "GetFlashConfiguration": {
             "method": "GET",
             "path": "\/api\/settings\/flash-config",
-            "parameters": {
-                "downloadEntry": "JSON"
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetAccountFieldsLogin": {
             "method": "GET",
             "path": "\/api\/settings\/login-fields",
-            "parameters": {
-                "downloadEntry": "JSON"
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetAccountFieldsCreation": {
             "method": "GET",
             "path": "\/api\/settings\/account-fields",
-            "parameters": {
-                "downloadEntry": "JSON"
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
         "GetPlayerRestrictions": {
             "method": "GET",
             "path": "\/api\/settings\/player-restrictions",
-            "parameters": {
-                "downloadEntry": "JSON"
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         },
-        "GetUnsupportedBrowser": {
+        "GetUnsupportedBrowsers": {
             "method": "GET",
             "path": "\/api\/settings\/unsupported-browser",
             "parameters": {
@@ -4930,7 +6528,7 @@
                     "dataType": "string",
                     "parameterType": "query",
                     "required": true,
-                    "description": "Client ID can be Download, Instant Play or Mobile (download|instantplay|mobile)"
+                    "description": "Client ID can be Download, Instant Play or Mobile"
                 },
                 "skinId": {
                     "dataType": "integer",
@@ -4943,21 +6541,127 @@
                 "200": "OK",
                 "401": "Unauthorized",
                 "404": "No data for the client"
-            }
+            },
+            "deprecated": ""
+        }
+    },
+    "Tournament": {
+        "GetCasinoList": {
+            "method": "GET",
+            "path": "\/api\/tournaments\/casino-list",
+            "parameters": [],
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No Casinos found."
+            },
+            "deprecated": ""
+        },
+        "GetSlotTournamentDetails": {
+            "method": "GET",
+            "path": "\/api\/tournaments\/slot-tournament-details",
+            "parameters": {
+                "tournamentId": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Tournament Id"
+                },
+                "playerId": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Player ID"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized"
+            },
+            "deprecated": ""
+        },
+        "GetSlotTournamentsList": {
+            "method": "GET",
+            "path": "\/api\/tournaments\/slot-tournaments",
+            "parameters": {
+                "status": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "Tournament's status"
+                },
+                "startDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Tournament's start date"
+                },
+                "endDate": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "Tournament's end date"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No tournaments found."
+            },
+            "deprecated": ""
+        },
+        "GetPlayerClassList": {
+            "method": "POST",
+            "path": "\/api\/tournaments\/player-class-list",
+            "parameters": {
+                "casinoList": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "400": "BadRequest",
+                "401": "Unauthorized",
+                "404": "No player classes found."
+            },
+            "deprecated": ""
+        },
+        "GetRestrictedTournaments": {
+            "method": "POST",
+            "path": "\/api\/tournaments\/restricted-tournaments",
+            "parameters": {
+                "restrictedParams": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No restricted tournaments found."
+            },
+            "deprecated": ""
+        },
+        "GetUnRestrictedTournaments": {
+            "method": "POST",
+            "path": "\/api\/tournaments\/unrestricted-tournaments",
+            "parameters": {
+                "unRestrictedParams": "JSON"
+            },
+            "responses": {
+                "200": "OK",
+                "401": "Unauthorized",
+                "404": "No unrestricted tournaments found."
+            },
+            "deprecated": ""
         }
     },
     "Vig": {
         "HandleMessage": {
             "method": "POST",
             "path": "\/api\/vig\/message",
-            "parameters": {
-                "downloadEntry": "JSON"
-            },
+            "parameters": [],
             "responses": {
                 "200": "OK",
                 "400": "BadRequest",
                 "401": "Unauthorized"
-            }
+            },
+            "deprecated": ""
         }
     },
     "Wallet": {
@@ -4975,9 +6679,10 @@
             "responses": {
                 "200": "OK",
                 "404": "Player was not found."
-            }
+            },
+            "deprecated": ""
         },
-        "GetWalletSetupInfoEndpoint": {
+        "GetWalletEndpoint": {
             "method": "GET",
             "path": "\/api\/wallet\/endpoint",
             "parameters": {
@@ -4991,9 +6696,63 @@
             "responses": {
                 "200": "OK",
                 "404": "No wallet configuration was found. Please configure the casino with seamless wallet"
-            }
+            },
+            "deprecated": ""
         },
-        "CreateEndpoint": {
+        "UpdateWalletEndpoint": {
+            "method": "PUT",
+            "path": "\/api\/wallet\/endpoint",
+            "parameters": {
+                "walletCode": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": true,
+                    "description": "wallet code"
+                },
+                "walletUrl": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "wallet url"
+                },
+                "walletTimeout": {
+                    "dataType": "integer",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "wallet timeout"
+                },
+                "balanceThreshold": {
+                    "dataType": "number",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "balance threshold"
+                },
+                "providerOptions": {
+                    "dataType": "string",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "provider options"
+                },
+                "cancelFailedWithdrawal": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "cancel failed withdrawal"
+                },
+                "isActive": {
+                    "dataType": "boolean",
+                    "parameterType": "query",
+                    "required": false,
+                    "description": "is active"
+                }
+            },
+            "responses": {
+                "200": "OK",
+                "400": "Bad request."
+            },
+            "deprecated": ""
+        },
+        "CreateWalletEndpoint": {
             "method": "POST",
             "path": "\/api\/wallet\/endpoint",
             "parameters": {
@@ -5010,7 +6769,7 @@
                     "description": "wallet timeout"
                 },
                 "balanceThreshold": {
-                    "dataType": "double",
+                    "dataType": "number",
                     "parameterType": "query",
                     "required": true,
                     "description": "balance threshold"
@@ -5042,59 +6801,8 @@
             },
             "responses": {
                 "200": "OK"
-            }
-        },
-        "UpdateEndpoint": {
-            "method": "PUT",
-            "path": "\/api\/wallet\/endpoint",
-            "parameters": {
-                "walletCode": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": true,
-                    "description": "wallet code"
-                },
-                "walletUrl": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "wallet url"
-                },
-                "walletTimeout": {
-                    "dataType": "integer",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "wallet timeout"
-                },
-                "balanceThreshold": {
-                    "dataType": "double",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "balance threshold"
-                },
-                "providerOptions": {
-                    "dataType": "string",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "provider options"
-                },
-                "cancelFailedWithdrawal": {
-                    "dataType": "boolean",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "cancel failed withdrawal"
-                },
-                "isActive": {
-                    "dataType": "boolean",
-                    "parameterType": "query",
-                    "required": false,
-                    "description": "is active"
-                }
             },
-            "responses": {
-                "200": "OK",
-                "400": "Bad request."
-            }
+            "deprecated": ""
         },
         "GetNotification": {
             "method": "GET",
@@ -5116,7 +6824,8 @@
             "responses": {
                 "200": "OK",
                 "404": "Notification was not found"
-            }
+            },
+            "deprecated": ""
         },
         "SubscribeNotification": {
             "method": "POST",
@@ -5142,7 +6851,8 @@
                 "409": "Subscription already exists.",
                 "417": "Invalid ClientId.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "UnsubscribeNotification": {
             "method": "DELETE",
@@ -5165,9 +6875,10 @@
                 "200": "OK",
                 "404": "Player was not found or Player is not active.",
                 "417": "Invalid ClientId."
-            }
+            },
+            "deprecated": ""
         },
-        "PlaceSettlementInSeamless": {
+        "PlaceSeamlessWalletSettlement": {
             "method": "POST",
             "path": "\/api\/wallet\/settlement",
             "parameters": {
@@ -5178,7 +6889,8 @@
                 "404": "Player was not found.",
                 "409": "Currency mismatch, player currency is different.",
                 "412": "Game not found."
-            }
+            },
+            "deprecated": ""
         },
         "GetBalances": {
             "method": "POST",
@@ -5188,7 +6900,8 @@
             },
             "responses": {
                 "200": "OK"
-            }
+            },
+            "deprecated": ""
         },
         "PlaceBet": {
             "method": "POST",
@@ -5216,7 +6929,8 @@
                 "412": "Invalid Transaction.",
                 "417": "Invalid ClientId.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "CancelBet": {
             "method": "DELETE",
@@ -5242,7 +6956,8 @@
                 "412": "Invalid Transaction.",
                 "417": "Invalid ClientId.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         },
         "PlaceSettlement": {
             "method": "POST",
@@ -5269,7 +6984,8 @@
                 "412": "Invalid Transaction.",
                 "417": "Invalid ClientId.",
                 "400": "Bad request."
-            }
+            },
+            "deprecated": ""
         }
     }
 }

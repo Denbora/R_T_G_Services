@@ -18,10 +18,11 @@ class GetActiveGamesGET extends RestExample
             $query = [
                 'skinId' => 1,
                 'includeMenu' => true,
-                'playerId' => '10307426',
+                'includeVersion' => false,
+                'languageCode' => 'German',
             ];
 
-            $result = $casino->GameService->getActiveFlashGamesGET(json_encode($query));
+            $result = $casino->GameService->getActiveGamesGET(json_encode($query));
             dd($result);
         } catch (R_T_G_ServiceException $exception) {
             dd($exception->getMessage());

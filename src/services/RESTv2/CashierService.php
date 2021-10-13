@@ -13,6 +13,27 @@ class CashierService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function getAllBankingMethodsGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'GetAllBankingMethods', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     * @deprecated use {@see CashierService::getAllBankingMethodsGET()}
+     */
+    public function bankingMethodsGET($queryJSON = '{}')
+    {
+        return $this->getAllBankingMethodsGET($queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function cashbackGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'Cashback', $queryJSON);
@@ -63,8 +84,18 @@ class CashierService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
-    public function bankingMethodsGET($queryJSON = '{}')
+    public function depositPOST($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'GetBankingMethods', $queryJSON);
+        return $this->callMethod(self::SERVICE_NAME, 'Deposit', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function withdrawalPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'Withdrawal', $queryJSON);
     }
 }

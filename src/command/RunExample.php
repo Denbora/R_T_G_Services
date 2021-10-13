@@ -30,7 +30,9 @@ class RunExample extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $serviceName = ucwords(str_replace('Service', '', $input->getArgument('service')));
+        $serviceName = ('Service' !== $input->getArgument('service')) ?
+            ucwords(str_replace('Service', '', $input->getArgument('service')))
+            : 'Service';
         $methodName = ucwords($input->getArgument('method'));
 
         $classExample = self::EXAMPLE_NAMESPACE . $serviceName . '\\' . $methodName;

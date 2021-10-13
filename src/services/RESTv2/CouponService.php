@@ -13,6 +13,16 @@ class CouponService extends RestV2Service
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
      */
+    public function couponBatchResultsGET($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'CouponBatchResults', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
     public function getCouponDetailsGET($queryJSON = '{}')
     {
         return $this->callMethod(self::SERVICE_NAME, 'GetCouponDetails', $queryJSON);
@@ -32,8 +42,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated use {@see RESTv2/PlayerService::getRequestedAndRedeemedCouponsGET()}
-     *
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\PlayerService::getRequestedAndRedeemedCouponsGET()}
      */
     public function getRequestedAndRedeemedCouponsGET($queryJSON = '{}')
     {
@@ -44,7 +53,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated use {@see RESTv2/PlayerService::redeemCouponPOST()}
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\PlayerService::redeemCouponPOST()}
      */
     public function redeemCouponPOST($queryJSON = '{}')
     {
@@ -55,8 +64,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated use {@see RESTv2/PlayerService::discardCouponDELETE()}
-     *
+     * @deprecated Use {@see \denbora\R_T_G_Services\services\RESTv2\PlayerService::discardCouponDELETE()}
      */
     public function discardCouponDELETE($queryJSON = '{}')
     {
@@ -77,7 +85,17 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated this method not tested
+     */
+    public function importCouponListPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'ImportCouponList', $queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     * @deprecated this method not tested. Use {@see \denbora\R_T_G_Services\services\RESTv3\CouponService::createBonusBalanceSingleUseFixedAmountOnRedemptionCouponPOST()}
      */
     public function createBonusBalanceSingleUseFixedAmountOnRedemptionCouponPOST($queryJSON = '{}')
     {
@@ -92,7 +110,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated this method not tested
+     * @deprecated this method not tested. Use {@see \denbora\R_T_G_Services\services\RESTv3\CouponService::createBonusBalanceSingleAccountFaPercentageOfNextDepositCouponPOST()}
      */
     public function createBonusBalanceSingleAccountFaPercentageOfNextDepositCouponPOST($queryJSON = '{}')
     {
@@ -107,7 +125,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated this method not tested
+     * @deprecated this method not tested. Use {@see \denbora\R_T_G_Services\services\RESTv3\CouponService::createBonusBalanceSingleUseModFixedAmountNextDepositCouponPOST()}
      */
     public function createBonusBalanceSingleUseModFixedAmountNextDepositCouponPOST($queryJSON = '{}')
     {
@@ -122,7 +140,7 @@ class CouponService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
-     * @deprecated this method not tested
+     * @deprecated this method not tested. Use {@see \denbora\R_T_G_Services\services\RESTv3\CouponService::createBonusBalanceSingleAccountModPercentageOfNextDepositCouponPOST()}
      */
     public function createBonusBalanceSingleAccountModPercentageOfNextDepositCouponPOST($queryJSON = '{}')
     {

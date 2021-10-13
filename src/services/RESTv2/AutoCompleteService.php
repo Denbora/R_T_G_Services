@@ -12,9 +12,20 @@ class AutoCompleteService extends RestV2Service
      * @param string $queryJSON
      * @return array|mixed|object|string
      * @throws R_T_G_ServiceException
+     * @deprecated use {@see AutoCompleteService::completePendingGamesPOST()}
      */
     public function completesAnyPendingGamesPOST($queryJSON = '{}')
     {
-        return $this->callMethod(self::SERVICE_NAME, 'CompletesAnyPendingGames', $queryJSON);
+        return $this->completePendingGamesPOST($queryJSON);
+    }
+
+    /**
+     * @param string $queryJSON
+     * @return array|mixed|object|string
+     * @throws R_T_G_ServiceException
+     */
+    public function completePendingGamesPOST($queryJSON = '{}')
+    {
+        return $this->callMethod(self::SERVICE_NAME, 'CompletePendingGames', $queryJSON);
     }
 }
