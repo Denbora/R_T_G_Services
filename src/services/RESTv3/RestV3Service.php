@@ -9,7 +9,7 @@ use denbora\R_T_G_Services\entity\RestEntity;
 use denbora\R_T_G_Services\services\REST\RestService;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
 
-abstract class RestV3Service extends RestService implements RESTv3ServiceInterface
+abstract class RestV3Service extends RestService implements RestV3ServiceInterface
 {
     const METHOD_V3_PATH = __DIR__ . '/../../config/restMethodsV3.json';
 
