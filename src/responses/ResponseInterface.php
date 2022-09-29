@@ -2,7 +2,7 @@
 
 namespace denbora\R_T_G_Services\responses;
 
-use Httpful\Response;
+use denbora\R_T_G_Services\Httpful\Response;
 
 interface ResponseInterface
 {

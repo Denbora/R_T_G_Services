@@ -4,7 +4,7 @@ namespace denbora\R_T_G_Services\responses;
 
 use denbora\R_T_G_Services\entity\RestEntity;
 use denbora\R_T_G_Services\R_T_G_ServiceException;
-use Httpful\Response;
+use denbora\R_T_G_Services\Httpful\Response;
 
 class RestV2Response extends RestResponse implements ResponseInterface
 {
