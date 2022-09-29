@@ -4,8 +4,12 @@
     "description": "RTG Services",
     "require": {
         "php": ">=7.0",
-        "nategood/httpful": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-fileinfo": "*",
+        "ext-dom": "*",
+        "ext-xmlwriter": "*",
+        "ext-simplexml": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.3",

@@ -6,7 +6,7 @@ use denbora\R_T_G_Services\casino\AbstractCasinoRest;
 use denbora\R_T_G_Services\R_T_G_ServiceException;
 use denbora\R_T_G_Services\responses\RestResponse;
 use denbora\R_T_G_Services\validators\ValidatorInterface;
-use Httpful\Request;
+use denbora\R_T_G_Services\Httpful\Request;
 use Exception;
 
 abstract class RestService implements RestServiceInterface
