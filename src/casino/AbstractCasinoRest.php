@@ -56,6 +56,10 @@ abstract class AbstractCasinoRest implements CasinoRestInterface
      */
     protected $apiKey;
 
+    protected $curlOptions;
+
+    protected $options;
+
     /**
      * AbstractCasinoRest constructor.
      * @param string $baseUrl
@@ -63,6 +67,7 @@ abstract class AbstractCasinoRest implements CasinoRestInterface
      * @param string $key
      * @param string $password
      * @param string $apiKey
+     * @param array $options
      * @throws R_T_G_ServiceException
      */
     public function __construct(
@@ -70,7 +75,8 @@ abstract class AbstractCasinoRest implements CasinoRestInterface
         string $certificate,
         string $key,
         string $password,
-        string $apiKey = ''
+        string $apiKey = '',
+        array $options = []
     ) {
         $this->apiKey = $apiKey;
 
@@ -104,6 +110,12 @@ abstract class AbstractCasinoRest implements CasinoRestInterface
         $this->serviceDescription = $services['Rest'];
 
         $this->resetTimeouts();
+
+        $this->options = $options;
+
+        if (!empty($options['curl']) && is_array($options['curl'])) {
+            $this->curlOptions = $options['curl'];
+        }
     }
 
     /**

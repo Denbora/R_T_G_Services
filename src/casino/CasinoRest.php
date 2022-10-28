@@ -136,7 +136,8 @@ class CasinoRest extends AbstractCasinoRest
                 $serviceValidator,
                 $serviceResponse,
                 $this->baseUrl,
-                $this->apiKey
+                $this->apiKey,
+                $this->options
             );
 
             if (!$serviceInstance->hasConnectTimeout()) {
