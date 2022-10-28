@@ -22,6 +22,8 @@ abstract class RestService implements RestServiceInterface
 
     protected $connectTimeout;
     protected $timeout;
+    protected $curlOptions;
+    protected $options;
 
     public function __construct(
         string $certificate,
@@ -30,7 +32,8 @@ abstract class RestService implements RestServiceInterface
         ValidatorInterface $validator,
         RestResponse $response,
         string $baseUrl,
-        string $apiKey
+        string $apiKey,
+        $options = []
     ) {
         $this->certificate = $certificate;
         $this->key = $key;
@@ -39,6 +42,11 @@ abstract class RestService implements RestServiceInterface
         $this->response = $response;
         $this->baseUrl = $baseUrl;
         $this->apiKey = $apiKey;
+        $this->options = $options;
+
+        if (!empty($options['curl']) && is_array($options['curl'])) {
+            $this->curlOptions = $options['curl'];
+        }
     }
 
     public function setTimeout(int $sec)

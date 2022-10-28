@@ -19,6 +19,7 @@ class ReportService extends RestV2Service
      * @param RestResponse $response
      * @param string $baseUrl
      * @param string $apiKey
+     * @param array $options
      */
     public function __construct(
         string $certificate,
@@ -27,10 +28,11 @@ class ReportService extends RestV2Service
         ValidatorInterface $validator,
         RestResponse $response,
         string $baseUrl,
-        string $apiKey
+        string $apiKey,
+        $options = []
     ) {
         $this->setTimeout(80);
-        parent::__construct($certificate, $key, $password, $validator, $response, $baseUrl, $apiKey);
+        parent::__construct($certificate, $key, $password, $validator, $response, $baseUrl, $apiKey, $options);
     }
 
     /**

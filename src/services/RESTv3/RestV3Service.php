@@ -25,10 +25,11 @@ abstract class RestV3Service extends RestService implements RestV3ServiceInterfa
         ValidatorInterface $validator,
         RestResponse $response,
         string $baseUrl,
-        string $apiKey
+        string $apiKey,
+        $options = []
     ) {
         $this->restMethods = json_decode(file_get_contents(self::METHOD_V3_PATH), true);
-        parent::__construct($certificate, $key, $password, $validator, $response, $baseUrl, $apiKey);
+        parent::__construct($certificate, $key, $password, $validator, $response, $baseUrl, $apiKey, $options);
     }
 
     /**

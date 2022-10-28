@@ -23,10 +23,11 @@ class HelperService extends RestV2Service
         ValidatorInterface $validator,
         RestResponse $response,
         string $baseUrl,
-        string $apiKey
+        string $apiKey,
+        $options = []
     ) {
         $this->responseStatuses = json_decode(file_get_contents(self::RESPONSE_CODES), true);
-        parent::__construct($certificate, $key, $password, $validator, $response, $baseUrl, $apiKey);
+        parent::__construct($certificate, $key, $password, $validator, $response, $baseUrl, $apiKey, $options);
     }
 
     /**

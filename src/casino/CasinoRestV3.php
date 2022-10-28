@@ -106,7 +106,8 @@ class CasinoRestV3 extends AbstractCasinoRest
                 new RestV3Validator(),
                 new RestV2Response(),
                 $this->baseUrl,
-                $this->apiKey
+                $this->apiKey,
+                $this->options
             );
 
             if (!$serviceInstance->hasConnectTimeout()) {
