@@ -55,7 +55,7 @@ final class Headers implements \ArrayAccess, \Countable {
      * @param string $offset
      * @return mixed
      */
-    public function offsetGet($offset): mixed
+    public function offsetGet($offset)
     {
         return $this->getCaseInsensitive($offset);
     }
@@ -65,7 +65,7 @@ final class Headers implements \ArrayAccess, \Countable {
      * @param string $value
      * @throws Exception
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet($offset, $value)
     {
         throw new Exception("Headers are read-only.");
     }
@@ -74,7 +74,7 @@ final class Headers implements \ArrayAccess, \Countable {
      * @param string $offset
      * @throws Exception
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset($offset)
     {
         throw new Exception("Headers are read-only.");
     }
