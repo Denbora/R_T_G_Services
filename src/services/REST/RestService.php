@@ -92,6 +92,17 @@ abstract class RestService implements RestServiceInterface
                 ->addOnCurlOption(CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1)
                 ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout);
 
+            if (!empty($this->curlOptions) && is_array($this->curlOptions)) {
+                foreach ($this->curlOptions as $constName => $value) {
+                    try {
+                        $constValue = constant($constName);
+                        $request->addOnCurlOption($constValue, $value);
+                    } catch (Exception $e) {
+                        continue;
+                    }
+                }
+            }
+
             if (empty($this->apiKey)) {
                 $request->authenticateWithCert($this->certificate, $this->key, $this->password);
             }
@@ -122,6 +133,17 @@ abstract class RestService implements RestServiceInterface
                 ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout)
                 ->contentType('json')
                 ->body($data);
+
+            if (!empty($this->curlOptions) && is_array($this->curlOptions)) {
+                foreach ($this->curlOptions as $constName => $value) {
+                    try {
+                        $constValue = constant($constName);
+                        $request->addOnCurlOption($constValue, $value);
+                    } catch (Exception $e) {
+                        continue;
+                    }
+                }
+            }
 
             if (empty($this->apiKey)) {
                 $request->authenticateWithCert($this->certificate, $this->key, $this->password);
@@ -155,6 +177,17 @@ abstract class RestService implements RestServiceInterface
                 ->contentType('json')
                 ->body($data);
 
+            if (!empty($this->curlOptions) && is_array($this->curlOptions)) {
+                foreach ($this->curlOptions as $constName => $value) {
+                    try {
+                        $constValue = constant($constName);
+                        $request->addOnCurlOption($constValue, $value);
+                    } catch (Exception $e) {
+                        continue;
+                    }
+                }
+            }
+
             if (empty($this->apiKey)) {
                 $request->authenticateWithCert($this->certificate, $this->key, $this->password);
             }
@@ -185,6 +218,17 @@ abstract class RestService implements RestServiceInterface
                 ->addOnCurlOption(CURLOPT_TIMEOUT, $this->timeout)
                 ->contentType('json')
                 ->body($data);
+
+            if (!empty($this->curlOptions) && is_array($this->curlOptions)) {
+                foreach ($this->curlOptions as $constName => $value) {
+                    try {
+                        $constValue = constant($constName);
+                        $request->addOnCurlOption($constValue, $value);
+                    } catch (Exception $e) {
+                        continue;
+                    }
+                }
+            }
 
             if (empty($this->apiKey)) {
                 $request->authenticateWithCert($this->certificate, $this->key, $this->password);
